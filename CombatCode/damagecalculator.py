@@ -1,8 +1,8 @@
 import random
 from math import floor
-from pokemondex import BattlePokedex
+from CombatCode.pokemondex import BattlePokedex
 
-print BattlePokedex["pikachu"]["abilities"]
+print(BattlePokedex["pikachu"]["abilities"])
 def BaseDamage(level, basePower, attackStat, defenseStat):
     #damage before modifiers
     damage = ((((((2 * level)/ 5) + 2) * basePower * (attackStat * 1.0) / defenseStat) / 50 ) + 2)
