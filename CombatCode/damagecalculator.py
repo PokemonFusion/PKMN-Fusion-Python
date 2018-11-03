@@ -1,6 +1,6 @@
 import random
 from math import floor
-from PokemonDex import BattlePokedex
+from pokemondex import BattlePokedex
 
 print BattlePokedex["pikachu"]["abilities"]
 def BaseDamage(level, basePower, attackStat, defenseStat):
