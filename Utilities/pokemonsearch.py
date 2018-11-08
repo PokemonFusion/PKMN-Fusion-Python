@@ -32,3 +32,8 @@ def pokesearch(category, lookingFor):
 
     return result
 
+def pokemovesearch(pokemove):
+    pokemove = pokemove.capitalize()
+    results = pokemove('moves', pokemove)
+    print(results)
+
