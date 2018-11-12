@@ -1,6 +1,7 @@
 import json
 import string
 import parsed_learnset as pl
+import learnsets
 
 # Each move is defined as follows, with the first character being the generation number:
 #	T - Move is learned via Move Tutor
@@ -18,8 +19,7 @@ def create_move_tables():
 	t_moves = {}
 	l_moves = {}
 	e_moves = {}
-	with open('learnset.json', 'r') as fp:
-		learnset = json.load(fp)
+	learnset = learnsets.BattleLearnsets
 	for pokemon in learnset:
 		# Make sure we don't get any alternate-form pokemon, like Alolan or like Luchador Pikachu.
 		# Also make sure Porygon and Kabuto are okay, as the both fit into a similar format.
