@@ -1,5 +1,6 @@
 import json
 import string
+import parsed_learnset as pl
 
 # Each move is defined as follows, with the first character being the generation number:
 #	T - Move is learned via Move Tutor
@@ -49,19 +50,18 @@ def create_move_tables():
 							parsed_learnset[pokemon]["tm"].append(move)
 			previous = pokemon
 			i+=1
-	f = open("parsed_learnset.json", "w")
-	f.write(json.dumps(parsed_learnset, separators=(',',':'), indent=4))
+	learnset_text = "pfLearnset = " + json.dumps(parsed_learnset, separators=(',',':'), indent=4)
+	f = open("parsed_learnset.py", "w")
+	f.write(learnset_text)
 	f.close()
 
 def can_learn_move(pokemon, move, method):
-	with open("parsed_learnset.json") as f:
-		learnset = json.load(f)
+	learnset = pl.pfLearnset
 	if(move.lower() in learnset[pokemon.lower()][method.lower()]): return True
 	else: return False
 
 def level_moves(pokemon, level):
-	with open("parsed_learnset.json") as f:
-		learnset = json.load(f)
+	learnset = pl.pfLearnset
 	moveList = ""
 	for i in range(1,level):
 		try:
