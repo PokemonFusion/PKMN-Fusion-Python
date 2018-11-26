@@ -6,12 +6,19 @@ class BattleData:
         self.battle = {}
         self.turndata = {}
 
-    class teams:
-        pass
-    
-    class battle:
-        pass
-    
-    class turn_data:
-        pass
-        
+
+class teams:
+    pass
+
+
+class battle:
+    pass
+
+
+class turn_data:
+    pass
+
+
+class pokemon:
+    pass
+
