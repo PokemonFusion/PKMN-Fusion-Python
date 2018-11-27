@@ -63,9 +63,13 @@ def can_learn_move(pokemon, move, method):
 def level_moves(pokemon, level):
 	learnset = pl.pfLearnset
 	moveList = {}
+	target = learnset[pokemon.lower()]['level']
 	for i in range(1,level):
 		try:
-			moveList.update({f"{i}": {learnset[pokemon.lower()]['level'][f'{i}']}})
+			if("," in target[f'{i}']):
+				atkList = target[f'{i}'].split(",")
+				moveList.update({i: atkList})
+			else: moveList.update({i: [target[f'{i}']]})
 		except KeyError:
 			continue
 	return moveList
