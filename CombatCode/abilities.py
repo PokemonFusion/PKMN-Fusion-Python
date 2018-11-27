@@ -69,12 +69,7 @@ BattleAbilities = {
 		"desc": "This Pokemon's Normal-type moves become Flying-type moves and have their power multiplied by 1.2. This effect comes after other effects that change a move's type, but before Ion Deluge and Electrify's effects.",
 		"shortDesc": "This Pokemon's Normal-type moves become Flying type and have 1.2x power.",
 		"onModifyMovePriority": -1,
-		"onModifyMove": function (move, pokemon) {
-			if (move.type === 'Normal' && !['judgment', 'multiattack', 'naturalgift', 'revelationdance', 'technoblast', 'weatherball'].includes(move.id) && !(move.isZ && move.category !== 'Status')) {
-				move.type = 'Flying';
-				move.aerilateBoosted = true;
-			}
-		},
+		"onModifyMove": ,
 		"onBasePowerPriority": 8,
 		"onBasePower": function (basePower, pokemon, target, move) {
 			if (move.aerilateBoosted) return this.chainModify([0x1333, 0x1000]);
