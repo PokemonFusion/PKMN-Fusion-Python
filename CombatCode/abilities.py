@@ -35,7 +35,7 @@ Ratings and how they work:
 	ex. Desolate Land, Shadow Tag
 
 """
-
+from Abilities import *
 
 BattleAbilities = {
 	"noability": {
@@ -49,9 +49,7 @@ BattleAbilities = {
 	"adaptability": {
 		"desc": "This Pokemon's moves that match one of its types have a same-type attack bonus (STAB) of 2 instead of 1.5.",
 		"shortDesc": "This Pokemon's same-type attack bonus (STAB) is 2 instead of 1.5.",
-		"onModifyMove": function (move) {
-			move.stab = 2;
-		},
+		"onModifyMove": adaptability.onModifyMove,
 		"id": "adaptability",
 		"name": "Adaptability",
 		"rating": 4,
@@ -63,11 +61,7 @@ BattleAbilities = {
 		"id": "aftermath",
 		"name": "Aftermath",
 		"onAfterDamageOrder": 1,
-		"onAfterDamage": function (damage, target, source, move) {
-			if (source && source !== target && move && move.flags['contact'] && !target.hp) {
-				this.damage(source.maxhp / 4, source, target);
-			}
-		},
+		"onAfterDamage": aftermath.onAfterDamage,
 		"rating": 2.5,
 		"num": 106,
 	},
