@@ -1,6 +1,6 @@
 import random
 from math import floor
-from CombatCode.pokemondex import BattlePokedex
+from pokeglobals import Moves
 
 """
  Assumptions:
@@ -12,8 +12,11 @@ from CombatCode.pokemondex import BattlePokedex
  BattleData = { "teams" : { "A" : { 1 : {*Pokemon information/stats*}} },
                 "battle" : {},
                 "turn" : { "position" : { "field-A1" : 1  } }
-
  }
+
+ Update: 11/28/2018
+    Decided to go with a class instead of a dictionary the class is in the battledata.py file
+
 
 """
 

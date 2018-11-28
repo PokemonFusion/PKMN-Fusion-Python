@@ -1,3 +1,4 @@
+import copy
 from moves import BattleMoveDex
 
 def keycheck(dictionary, subdictionary, key) -> object:

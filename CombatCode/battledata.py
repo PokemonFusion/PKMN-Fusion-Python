@@ -2,23 +2,23 @@ class BattleData:
 
     def __init__(self):
         # These will eventually be classes
-        self.teams = {}
-        self.battle = {}
-        self.turndata = {}
+        self.teams = {"A": Teams(), "B": Teams()}
+        self.battle = Battle()
+        self.turndata = TurnData()
 
 
-class teams:
+class Teams:
     pass
 
 
-class battle:
+class Battle:
     pass
 
 
-class turn_data:
+class TurnData:
     pass
 
 
-class pokemon:
+class Pokemon:
     pass
 
