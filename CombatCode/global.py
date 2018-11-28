@@ -25,6 +25,7 @@ class Moves:
         self.priority = movecheck("priority")
         self.flags = movecheck("flags")
         self.secondary = movecheck("secondary")
+        self.self = movecheck("self")
         self.target = movecheck("target")
         self.type = movecheck("type")
         self.zMovePower = movecheck("zMovePower")
