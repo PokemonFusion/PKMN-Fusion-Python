@@ -1,3 +1,4 @@
+from moves import *
 """
 
 List of flags and their descriptions:
@@ -174,13 +175,7 @@ BattleMovedex = {
 		"num": 512,
 		"accuracy": 100,
 		"basePower": 55,
-		"basePowerCallback": function (pokemon, target, move) {
-			if (!pokemon.item) {
-				this.debug("Power doubled for no item");
-				return move.basePower * 2;
-			}
-			return move.basePower;
-		},
+		"basePowerCallback": acrobatics.basePowerCallback,
 		"category": "Physical",
 		"shortDesc": "Power doubles if the user has no held item.",
 		"id": "acrobatics",
@@ -207,24 +202,7 @@ BattleMovedex = {
 		"pp": 30,
 		"priority": 0,
 		"flags": {},
-		"onHit": function (target) {
-			let stats = [];
-			for (let stat in target.boosts) {
-				// @ts-ignore
-				if (target.boosts[stat] < 6) {
-					stats.push(stat);
-				}
-			}
-			if (stats.length) {
-				let randomStat = this.sample(stats);
-				/**@type {{["k": string]: number}} */
-				let boost = {};
-				boost[randomStat] = 2;
-				this.boost(boost);
-			} else {
-				return False;
-			}
-		},
+		"onHit": acupressure.onHit,
 		"secondary": None,
 		"target": "adjacentAllyOrSelf",
 		"type": "Normal",
@@ -281,17 +259,7 @@ BattleMovedex = {
 		"pp": 15,
 		"priority": 0,
 		"flags": {"authentic": 1, "mystery": 1},
-		"onHit": function (target) {
-			if (target.side.active.length < 2) return False; // fails in singles
-			let action = this.willMove(target);
-			if (action) {
-				this.cancelMove(target);
-				this.queue.unshift(action);
-				this.add('-activate', target, '"move": After You');
-			} else {
-				return False;
-			}
-		},
+		"onHit": afteryou.onHit,
 		"secondary": None,
 		"target": "normal",
 		"type": "Normal",
@@ -391,16 +359,8 @@ BattleMovedex = {
 		"pp": 15,
 		"priority": 2,
 		"flags": {},
-		"onTryHit": function (source) {
-			if (source.side.active.length === 1) return False;
-			if (source.side.active.length === 3 && source.position === 1) return False;
-		},
-		"onHit": function (pokemon) {
-			let newPosition = (pokemon.position === 0 ? pokemon.side.active.length - 1 : 0);
-			if (!pokemon.side.active[newPosition]) return False;
-			if (pokemon.side.active[newPosition].fainted) return False;
-			this.swapPosition(pokemon, newPosition, '[from] "move": Ally Switch');
-		},
+		"onTryHit": allyswitch.onTryHit,
+		"onHit": allyswitch.onHit,
 		"secondary": None,
 		"target": "self",
 		"type": "Psychic",
@@ -443,9 +403,7 @@ BattleMovedex = {
 		"flags": {"contact": 1, "protect": 1, "mirror": 1},
 		"secondary": {
 			"chance": 100,
-			"onHit": function (target, source, move) {
-				if (source.isActive) target.addVolatile('trapped', source, move, 'trapper');
-			},
+			"onHit": ancorshot.onHit,
 		},
 		"target": "normal",
 		"type": "Steel",
@@ -514,13 +472,9 @@ BattleMovedex = {
 		"flags": {"snatch": 1},
 		"volatileStatus": 'aquaring',
 		"effect": {
-			"onStart": function (pokemon) {
-				this.add('-start', pokemon, 'Aqua Ring');
-			},
+			"onStart": aquaring.onStart,
 			"onResidualOrder": 6,
-			"onResidual": function (pokemon) {
-				this.heal(pokemon.maxhp / 16);
-			},
+			"onResidual": aquaring.onResidual,
 		},
 		"secondary": None,
 		"target": "self",

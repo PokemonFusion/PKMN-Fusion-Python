@@ -1,5 +1,5 @@
 import copy
-from moves import BattleMoveDex
+from battlemovedex import BattleMoveDex
 
 def keycheck(dictionary, subdictionary, key) -> object:
     if key in dictionary[subdictionary]:
