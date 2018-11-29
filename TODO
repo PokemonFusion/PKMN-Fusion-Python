@@ -7,4 +7,19 @@ Moves:
   ☐ ancorshot.onHit
   ☐ aquaring.onStart
   ☐ aquaring.onResidual
-
+  ☐ aromatherapy.onHit
+  ☐ assist.onHit
+  ☐ assurance.basePowerCallback
+  ☐ attract.onStart
+  ☐ attract.onUpdate 
+  ☐ attract.onBeforeMove
+  ☐ attract.onEnd
+  ☐ auroraveil.onTryHitSide
+  ☐ auroraveil.durationCallback
+  ☐ auroraveil.onAnyModifyDamage
+  ☐ auroraveil.onStart
+  ☐ auroraveil.onEnd
+  ☐ autotomize.onTryHit
+  ☐ autotomize.onStart
+  ☐ autotomize.onRestart
+  ☐ autotomize.onModifyWeight

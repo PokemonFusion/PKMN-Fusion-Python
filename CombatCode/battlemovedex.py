@@ -532,18 +532,7 @@ BattleMovedex = {
 		"pp": 5,
 		"priority": 0,
 		"flags": {"snatch": 1, "distance": 1},
-		"onHit": function (pokemon, source, move) {
-			this.add('-activate', source, '"move": Aromatherapy');
-			let success = False;
-			for (const ally of pokemon.side.pokemon) {
-				if (ally !== source && ((ally.hasAbility('sapsipper')) ||
-						(ally.volatiles['substitute'] && !move.infiltrates))) {
-					continue;
-				}
-				if (ally.cureStatus()) success = True;
-			}
-			return success;
-		},
+		"onHit": aromatherapy.onHit,
 		"target": "allyTeam",
 		"type": "Grass",
 		"zMoveEffect": 'heal',
@@ -582,27 +571,7 @@ BattleMovedex = {
 		"pp": 20,
 		"priority": 0,
 		"flags": {},
-		"onHit": function (target) {
-			let moves = [];
-			for (const pokemon of target.side.pokemon) {
-				if (pokemon === target) continue;
-				for (const moveSlot of pokemon.moveSlots) {
-					let move = moveSlot.id;
-					let noAssist = [
-						'assist', 'banefulbunker', 'beakblast', 'belch', 'bestow', 'bounce', 'chatter', 'circlethrow', 'copycat', 'counter', 'covet', 'destinybond', 'detect', 'dig', 'dive', 'dragontail', 'endure', 'feint', 'fly', 'focuspunch', 'followme', 'helpinghand', 'holdhands', 'kingsshield', 'matblock', 'mefirst', 'metronome', 'mimic', 'mirrorcoat', 'mirrormove', 'naturepower', 'phantomforce', 'protect', 'ragepowder', 'roar', 'shadowforce', 'shelltrap', 'sketch', 'skydrop', 'sleeptalk', 'snatch', 'spikyshield', 'spotlight', 'struggle', 'switcheroo', 'thief', 'transform', 'trick', 'whirlwind',
-					];
-					if (!noAssist.includes(move) && !this.getMove(move).isZ) {
-						moves.push(move);
-					}
-				}
-			}
-			let randomMove = '';
-			if (moves.length) randomMove = this.sample(moves);
-			if (!randomMove) {
-				return False;
-			}
-			this.useMove(randomMove, target);
-		},
+		"onHit": assist.onHit,
 		"secondary": None,
 		"target": "self",
 		"type": "Normal",
@@ -612,13 +581,7 @@ BattleMovedex = {
 		"num": 372,
 		"accuracy": 100,
 		"basePower": 60,
-		"basePowerCallback": function (pokemon, target, move) {
-			if (target.hurtThisTurn) {
-				this.debug('Boosted for being damaged this turn');
-				return move.basePower * 2;
-			}
-			return move.basePower;
-		},
+		"basePowerCallback": assurance.basePowerCallback,
 		"category": "Physical",
 		"desc": "Power doubles if the target has already taken damage this turn, other than direct damage from Belly Drum, confusion, Curse, or Pain Split.",
 		"shortDesc": "Power doubles if target was damaged this turn.",
@@ -688,42 +651,12 @@ BattleMovedex = {
 		"flags": {"protect": 1, "reflectable": 1, "mirror": 1, "authentic": 1},
 		"volatileStatus": 'attract',
 		"effect": {
-			"noCopy": True, // doesn't get copied by Baton Pass
-			"onStart": function (pokemon, source, effect) {
-				if (!(pokemon.gender === 'M' && source.gender === 'F') && !(pokemon.gender === 'F' && source.gender === 'M')) {
-					this.debug('incompatible gender');
-					return False;
-				}
-				if (!this.runEvent('Attract', pokemon, source)) {
-					this.debug('Attract event failed');
-					return False;
-				}
-
-				if (effect.id === 'cutecharm') {
-					this.add('-start', pokemon, 'Attract', '[from] "ability": Cute Charm', '[of] ' + source);
-				} else if (effect.id === 'destinyknot') {
-					this.add('-start', pokemon, 'Attract', '[from] "item": Destiny Knot', '[of] ' + source);
-				} else {
-					this.add('-start', pokemon, 'Attract');
-				}
-			},
-			"onUpdate": function (pokemon) {
-				if (this.effectData.source && !this.effectData.source.isActive && pokemon.volatiles['attract']) {
-					this.debug('Removing Attract volatile on ' + pokemon);
-					pokemon.removeVolatile('attract');
-				}
-			},
+			"noCopy": True,# doesn't get copied by Baton Pass
+			"onStart": attract.onStart,
+			"onUpdate": attract.onUpdate,
 			"onBeforeMovePriority": 2,
-			"onBeforeMove": function (pokemon, target, move) {
-				this.add('-activate', pokemon, '"move": Attract', '[of] ' + this.effectData.source);
-				if (this.randomChance(1, 2)) {
-					this.add('cant', pokemon, 'Attract');
-					return False;
-				}
-			},
-			"onEnd": function (pokemon) {
-				this.add('-end', pokemon, 'Attract', '[silent]');
-			},
+			"onBeforeMove": attract.onBeforeMove,
+			"onEnd": attract.onEnd,
 		},
 		"secondary": None,
 		"target": "normal",
@@ -786,38 +719,15 @@ BattleMovedex = {
 		"priority": 0,
 		"flags": {"snatch": 1},
 		"sideCondition": 'auroraveil',
-		"onTryHitSide": function () {
-			if (!this.isWeather('hail')) return False;
-		},
+		"onTryHitSide": auroraveil.onTryHitSide,
 		"effect": {
 			"duration": 5,
-			"durationCallback": function (target, source, effect) {
-				if (source && source.hasItem('lightclay')) {
-					return 8;
-				}
-				return 5;
-			},
-			"onAnyModifyDamage": function (damage, source, target, move) {
-				if (target !== source && target.side === this.effectData.target) {
-					if ((target.side.sideConditions['reflect'] && this.getCategory(move) === 'Physical') ||
-							(target.side.sideConditions['lightscreen'] && this.getCategory(move) === 'Special')) {
-						return;
-					}
-					if (!move.crit && !move.infiltrates) {
-						this.debug('Aurora Veil weaken');
-						if (target.side.active.length > 1) return this.chainModify([0xAAC, 0x1000]);
-						return this.chainModify(0.5);
-					}
-				}
-			},
-			"onStart": function (side) {
-				this.add('-sidestart', side, '"move": Aurora Veil');
-			},
+			"durationCallback": auroraveil.durationCallback,
+			"onAnyModifyDamage": auroraveil.onAnyModifyDamage,
+			"onStart": auroraveil.onStart,
 			"onResidualOrder": 21,
 			"onResidualSubOrder": 1,
-			"onEnd": function (side) {
-				this.add('-sideend', side, '"move": Aurora Veil');
-			},
+			"onEnd": auroraveil.onEnd,
 		},
 		"secondary": None,
 		"target": "allySide",
@@ -838,38 +748,17 @@ BattleMovedex = {
 		"pp": 15,
 		"priority": 0,
 		"flags": {"snatch": 1},
-		"onTryHit": function (pokemon) {
-			let hasContrary = pokemon.hasAbility('contrary');
-			if ((!hasContrary && pokemon.boosts.spe === 6) || (hasContrary && pokemon.boosts.spe === -6)) {
-				return False;
-			}
-		},
+		"onTryHit": autotomize.onTryHit,
 		"boosts": {
 			"spe": 2,
 		},
 		"volatileStatus": 'autotomize',
 		"effect": {
-			"noCopy": True, // doesn't get copied by Baton Pass
-			"onStart": function (pokemon) {
-				if (pokemon.template.weightkg > 0.1) {
-					this.effectData.multiplier = 1;
-					this.add('-start', pokemon, 'Autotomize');
-				}
-			},
-			"onRestart": function (pokemon) {
-				if (pokemon.template.weightkg - (this.effectData.multiplier * 100) > 0.1) {
-					this.effectData.multiplier++;
-					this.add('-start', pokemon, 'Autotomize');
-				}
-			},
+			"noCopy": True, # doesn't get copied by Baton Pass
+			"onStart": autotomize.onStart,
+			"onRestart": autotomize.onRestart,
 			"onModifyWeightPriority": 1,
-			"onModifyWeight": function (weight, pokemon) {
-				if (this.effectData.multiplier) {
-					weight -= this.effectData.multiplier * 100;
-					if (weight < 0.1) weight = 0.1;
-					return weight;
-				}
-			},
+			"onModifyWeight": autotomize.onModifyWeight,
 		},
 		"secondary": None,
 		"target": "self",
@@ -963,7 +852,7 @@ BattleMovedex = {
 				source.moveThisTurnResult = True;
 				let lockedmove = source.getVolatile('lockedmove');
 				if (lockedmove) {
-					// Outrage counter is reset
+					# Outrage counter is reset
 					if (source.volatiles['lockedmove'].duration === 2) {
 						delete source.volatiles['lockedmove'];
 					}
@@ -1089,7 +978,7 @@ BattleMovedex = {
 		"accuracy": 100,
 		"basePower": 0,
 		"basePowerCallback": function (pokemon, target, move) {
-			// @ts-ignore
+			# @ts-ignore
 			return 5 + Math.floor(move.allies.shift().template.baseStats.atk / 10);
 		},
 		"category": "Physical",
@@ -1122,7 +1011,7 @@ BattleMovedex = {
 		"pp": 10,
 		"priority": 0,
 		"flags": {"protect": 1},
-		// Move disabling implemented in Battle#nextTurn in sim/battle.js
+		# Move disabling implemented in Battle#nextTurn in sim/battle.js
 		"secondary": None,
 		"target": "normal",
 		"type": "Poison",
@@ -1142,7 +1031,7 @@ BattleMovedex = {
 		"priority": 0,
 		"flags": {"snatch": 1},
 		"onHit": function (target) {
-			if (target.hp <= target.maxhp / 2 || target.boosts.atk >= 6 || target.maxhp === 1) { // Shedinja clause
+			if (target.hp <= target.maxhp / 2 || target.boosts.atk >= 6 || target.maxhp === 1) { # Shedinja clause
 				return False;
 			}
 			this.directDamage(target.maxhp / 2);
@@ -1239,7 +1128,7 @@ BattleMovedex = {
 						"effectType": 'Move',
 						"type": 'Normal',
 					};
-					// @ts-ignore
+					# @ts-ignore
 					this.tryMoveHit(target, pokemon, moveData);
 					return False;
 				}
@@ -1675,7 +1564,7 @@ BattleMovedex = {
 		"priority": 0,
 		"flags": {"contact": 1, "protect": 1, "mirror": 1},
 		"onTryHit": function (pokemon) {
-			// will shatter screens through sub, before you hit
+			# will shatter screens through sub, before you hit
 			if (pokemon.runImmunity('Fighting')) {
 				pokemon.side.removeSideCondition('reflect');
 				pokemon.side.removeSideCondition('lightscreen');
@@ -2274,7 +2163,7 @@ BattleMovedex = {
 		},
 		"isZ": "kommoniumz",
 		"secondary": {
-			// Sheer Force negates the selfBoost even though it is not secondary
+			# Sheer Force negates the selfBoost even though it is not secondary
 		},
 		"target": "allAdjacentFoes",
 		"type": "Dragon",
@@ -2740,7 +2629,7 @@ BattleMovedex = {
 				return;
 			}
 			if (!this.singleEvent('TakeItem', yourItem, target.itemData, source, target, move, yourItem) || !source.setItem(yourItem)) {
-				target.item = yourItem.id; // bypass setItem so we don't break choicelock or anything
+				target.item = yourItem.id; # bypass setItem so we don't break choicelock or anything
 				return;
 			}
 			this.add('-item', source, yourItem, '[from] "move": Covet', '[of] ' + target);
@@ -2931,7 +2820,7 @@ BattleMovedex = {
 		"volatileStatus": 'curse',
 		"onModifyMove": function (move, source, target) {
 			if (!source.hasType('Ghost')) {
-				// @ts-ignore
+				# @ts-ignore
 				move.target = move.nonGhostTarget;
 			}
 		},
@@ -3348,7 +3237,7 @@ BattleMovedex = {
 		},
 		"effect": {
 			"duration": 4,
-			"noCopy": True, // doesn't get copied by Baton Pass
+			"noCopy": True, # doesn't get copied by Baton Pass
 			"onStart": function (pokemon, source, effect) {
 				if (!this.willMove(pokemon)) {
 					this.effectData.duration++;
@@ -3373,7 +3262,7 @@ BattleMovedex = {
 						}
 					}
 				}
-				// this can happen if Disable works on a Z-move
+				# this can happen if Disable works on a Z-move
 				return False;
 			},
 			"onResidualOrder": 14,
@@ -4293,7 +4182,7 @@ BattleMovedex = {
 			"onStart": function (pokemon) {
 				this.add('-start', pokemon, 'Embargo');
 			},
-			// Item suppression implemented in Pokemon.ignoringItem() within sim/pokemon.js
+			# Item suppression implemented in Pokemon.ignoringItem() within sim/pokemon.js
 			"onResidualOrder": 18,
 			"onEnd": function (pokemon) {
 				this.add('-end', pokemon, 'Embargo');
@@ -4342,12 +4231,12 @@ BattleMovedex = {
 		"volatileStatus": 'encore',
 		"effect": {
 			"duration": 3,
-			"noCopy": True, // doesn't get copied by Z-Baton Pass
+			"noCopy": True, # doesn't get copied by Z-Baton Pass
 			"onStart": function (target) {
 				let noEncore = ['assist', 'copycat', 'encore', 'mefirst', 'metronome', 'mimic', 'mirrormove', 'naturepower', 'sketch', 'sleeptalk', 'struggle', 'transform'];
 				let moveIndex = target.lastMove ? target.moves.indexOf(target.lastMove.id) : -1;
 				if (!target.lastMove || target.lastMove.isZ || noEncore.includes(target.lastMove.id) || !target.moveSlots[moveIndex] || target.moveSlots[moveIndex].pp <= 0) {
-					// it failed
+					# it failed
 					delete target.volatiles['encore'];
 					return False;
 				}
@@ -4362,7 +4251,7 @@ BattleMovedex = {
 			},
 			"onResidualOrder": 13,
 			"onResidual": function (target) {
-				if (target.moves.includes(this.effectData.move) && target.moveSlots[target.moves.indexOf(this.effectData.move)].pp <= 0) { // early termination if you run out of PP
+				if (target.moves.includes(this.effectData.move) && target.moveSlots[target.moves.indexOf(this.effectData.move)].pp <= 0) { # early termination if you run out of PP
 					delete target.volatiles.encore;
 					this.add('-end', target, 'Encore');
 				}
@@ -4812,7 +4701,7 @@ BattleMovedex = {
 		"priority": 2,
 		"flags": {"mirror": 1},
 		"breaksProtect": True,
-		// Breaking protection implemented in scripts.js
+		# Breaking protection implemented in scripts.js
 		"secondary": None,
 		"target": "normal",
 		"type": "Normal",
@@ -4985,11 +4874,11 @@ BattleMovedex = {
 		"flags": {"protect": 1, "mirror": 1, "nonsky": 1},
 		"onPrepareHit": function (target, source, move) {
 			for (const action of this.queue) {
-				// @ts-ignore
+				# @ts-ignore
 				if (!action.move || !action.pokemon || !action.pokemon.isActive || action.pokemon.fainted) continue;
-				// @ts-ignore
+				# @ts-ignore
 				if (action.pokemon.side === source.side && ['grasspledge', 'waterpledge'].includes(action.move.id)) {
-					// @ts-ignore
+					# @ts-ignore
 					this.prioritizeAction(action);
 					this.add('-waiting', source, action.pokemon);
 					return None;
@@ -5441,7 +5330,7 @@ BattleMovedex = {
 		"flags": {"protect": 1, "reflectable": 1, "heal": 1, "mystery": 1},
 		"onHit": function (target) {
 			if (this.isTerrain('grassyterrain')) {
-				return this.heal(this.modify(target.maxhp, 0.667)); // "TODO": find out the real value
+				return this.heal(this.modify(target.maxhp, 0.667)); # "TODO": find out the real value
 			} else {
 				return this.heal(Math.ceil(target.maxhp * 0.5));
 			}
@@ -5469,7 +5358,7 @@ BattleMovedex = {
 			for (const side of this.sides) {
 				for (const pokemon of side.active) {
 					if (pokemon && pokemon.isActive && pokemon.hasType('Grass')) {
-						// This move affects every Grass-type Pokemon in play.
+						# This move affects every Grass-type Pokemon in play.
 						targets.push(pokemon);
 					}
 				}
@@ -6112,7 +6001,7 @@ BattleMovedex = {
 			}
 		},
 		"effect": {
-			// Ability suppression implemented in Pokemon.ignoringAbility() within sim/pokemon.js
+			# Ability suppression implemented in Pokemon.ignoringAbility() within sim/pokemon.js
 			"onStart": function (pokemon) {
 				this.add('-endability', pokemon);
 				this.singleEvent('End', this.getAbility(pokemon.ability), pokemon.abilityData, pokemon, pokemon, 'gastroacid');
@@ -6403,11 +6292,11 @@ BattleMovedex = {
 		"flags": {"protect": 1, "mirror": 1, "nonsky": 1},
 		"onPrepareHit": function (target, source, move) {
 			for (const action of this.queue) {
-				// @ts-ignore
+				# @ts-ignore
 				if (!action.move || !action.pokemon || !action.pokemon.isActive || action.pokemon.fainted) continue;
-				// @ts-ignore
+				# @ts-ignore
 				if (action.pokemon.side === source.side && ['waterpledge', 'firepledge'].includes(action.move.id)) {
-					// @ts-ignore
+					# @ts-ignore
 					this.prioritizeAction(action);
 					this.add('-waiting', source, action.pokemon);
 					return None;
@@ -6592,7 +6481,7 @@ BattleMovedex = {
 					}
 				}
 			},
-			// groundedness implemented in battle.engine.js:BattlePokemon#isGrounded
+			# groundedness implemented in battle.engine.js:BattlePokemon#isGrounded
 			"onBeforeMovePriority": 6,
 			"onBeforeMove": function (pokemon, target, move) {
 				if (move.flags['gravity']) {
@@ -6741,9 +6630,9 @@ BattleMovedex = {
 			let sourceBoosts = {};
 
 			for (const stat of ['def', 'spd']) {
-				// @ts-ignore
+				# @ts-ignore
 				targetBoosts[stat] = target.boosts[stat];
-				// @ts-ignore
+				# @ts-ignore
 				sourceBoosts[stat] = source.boosts[stat];
 			}
 
@@ -7260,9 +7149,9 @@ BattleMovedex = {
 			let sourceBoosts = {};
 
 			for (let i in target.boosts) {
-				// @ts-ignore
+				# @ts-ignore
 				targetBoosts[i] = target.boosts[i];
-				// @ts-ignore
+				# @ts-ignore
 				sourceBoosts[i] = source.boosts[i];
 			}
 
@@ -8165,7 +8054,7 @@ BattleMovedex = {
 			},
 			"onResidual": function (target) {
 				if (target.lastMove && target.lastMove.id === 'struggle') {
-					// don't lock
+					# don't lock
 					delete target.volatiles['iceball'];
 				}
 			},
@@ -8534,7 +8423,7 @@ BattleMovedex = {
 			"onTrapPokemon": function (pokemon) {
 				pokemon.tryTrap();
 			},
-			// groundedness implemented in battle.engine.js:BattlePokemon#isGrounded
+			# groundedness implemented in battle.engine.js:BattlePokemon#isGrounded
 			"onDragOut": function (pokemon) {
 				this.add('-activate', pokemon, '"move": Ingrain');
 				return None;
@@ -8799,7 +8688,7 @@ BattleMovedex = {
 				source.moveThisTurnResult = True;
 				let lockedmove = source.getVolatile('lockedmove');
 				if (lockedmove) {
-					// Outrage counter is reset
+					# Outrage counter is reset
 					if (source.volatiles['lockedmove'].duration === 2) {
 						delete source.volatiles['lockedmove'];
 					}
@@ -8922,8 +8811,8 @@ BattleMovedex = {
 		"priority": 0,
 		"flags": {"contact": 1, "protect": 1, "mirror": 1},
 		"onTryHit": function (target, source) {
-			if (source.moveSlots.length < 2) return False; // Last Resort fails unless the user knows at least 2 moves
-			let hasLastResort = False; // User must actually have Last Resort for it to succeed
+			if (source.moveSlots.length < 2) return False; # Last Resort fails unless the user knows at least 2 moves
+			let hasLastResort = False; # User must actually have Last Resort for it to succeed
 			for (const moveSlot of source.moveSlots) {
 				if (moveSlot.id === 'lastresort') {
 					hasLastResort = True;
@@ -9300,7 +9189,7 @@ BattleMovedex = {
 			this.add('-activate', source, '"move": Lock-On', '[of] ' + target);
 		},
 		"effect": {
-			"noCopy": True, // doesn't get copied by Baton Pass
+			"noCopy": True, # doesn't get copied by Baton Pass
 			"duration": 2,
 			"onSourceAccuracy": function (accuracy, target, source, move) {
 				if (move && source === this.effectData.target && target === this.effectData.source) return True;
@@ -9408,13 +9297,13 @@ BattleMovedex = {
 		"effect": {
 			"duration": 5,
 			"onStart": function (side) {
-				this.add('-sidestart', side, '"move": Lucky Chant'); // "The Lucky Chant shielded [side.name]'s team from critical hits!"
+				this.add('-sidestart', side, '"move": Lucky Chant'); # "The Lucky Chant shielded [side.name]'s team from critical hits!"
 			},
 			"onCriticalHit": False,
 			"onResidualOrder": 21,
 			"onResidualSubOrder": 5,
 			"onEnd": function (side) {
-				this.add('-sideend', side, '"move": Lucky Chant'); // "[side.name]'s team's Lucky Chant wore off!"
+				this.add('-sideend', side, '"move": Lucky Chant'); # "[side.name]'s team's Lucky Chant wore off!"
 			},
 		},
 		"secondary": None,
@@ -9626,7 +9515,7 @@ BattleMovedex = {
 			"onRestart": function (target, source) {
 				this.removePseudoWeather('magicroom');
 			},
-			// Item suppression implemented in Pokemon.ignoringItem() within sim/pokemon.js
+			# Item suppression implemented in Pokemon.ignoringItem() within sim/pokemon.js
 			"onResidualOrder": 25,
 			"onEnd": function () {
 				this.add('-fieldend', '"move": Magic Room', '[of] ' + this.effectData.source);
@@ -9855,7 +9744,7 @@ BattleMovedex = {
 				source.moveThisTurnResult = True;
 				let lockedmove = source.getVolatile('lockedmove');
 				if (lockedmove) {
-					// Outrage counter is reset
+					# Outrage counter is reset
 					if (source.volatiles['lockedmove'].duration === 2) {
 						delete source.volatiles['lockedmove'];
 					}
@@ -10204,7 +10093,7 @@ BattleMovedex = {
 				let move = exports.BattleMovedex[i];
 				if (i !== move.id) continue;
 				if (move.isZ || move.isNonstandard) continue;
-				// @ts-ignore
+				# @ts-ignore
 				if (effect.noMetronome.includes(move.id)) continue;
 				if (this.getMove(i).gen > this.gen) continue;
 				moves.push(move);
@@ -10517,9 +10406,9 @@ BattleMovedex = {
 				if (source && target !== source && (!effect.infiltrates || target.side === source.side)) {
 					let showMsg = False;
 					for (let i in boost) {
-						// @ts-ignore
+						# @ts-ignore
 						if (boost[i] < 0) {
-							// @ts-ignore
+							# @ts-ignore
 							delete boost[i];
 							showMsg = True;
 						}
@@ -12052,9 +11941,9 @@ BattleMovedex = {
 			let sourceBoosts = {};
 
 			for (const stat of ['atk', 'spa']) {
-				// @ts-ignore
+				# @ts-ignore
 				targetBoosts[stat] = target.boosts[stat];
-				// @ts-ignore
+				# @ts-ignore
 				sourceBoosts[stat] = source.boosts[stat];
 			}
 
@@ -12283,7 +12172,7 @@ BattleMovedex = {
 				source.moveThisTurnResult = True;
 				let lockedmove = source.getVolatile('lockedmove');
 				if (lockedmove) {
-					// Outrage counter is reset
+					# Outrage counter is reset
 					if (source.volatiles['lockedmove'].duration === 2) {
 						delete source.volatiles['lockedmove'];
 					}
@@ -12332,7 +12221,7 @@ BattleMovedex = {
 		"flags": {"authentic": 1, "mystery": 1},
 		"onHit": function (target, source) {
 			for (let i in target.boosts) {
-				// @ts-ignore
+				# @ts-ignore
 				source.boosts[i] = target.boosts[i];
 			}
 			this.add('-copyboost', source, target, '[from] "move": Psych Up');
@@ -12381,7 +12270,7 @@ BattleMovedex = {
 		"priority": 0,
 		"flags": {"bite": 1, "contact": 1, "protect": 1, "mirror": 1},
 		"onTryHit": function (pokemon) {
-			// will shatter screens through sub, before you hit
+			# will shatter screens through sub, before you hit
 			if (pokemon.runImmunity('Psychic')) {
 				pokemon.side.removeSideCondition('reflect');
 				pokemon.side.removeSideCondition('lightscreen');
@@ -12648,7 +12537,7 @@ BattleMovedex = {
 		"accuracy": 100,
 		"basePower": 40,
 		"basePowerCallback": function (pokemon, target, move) {
-			// You can't get here unless the pursuit succeeds
+			# You can't get here unless the pursuit succeeds
 			if (target.beingCalledBack) {
 				this.debug('Pursuit damage boost');
 				return move.basePower * 2;
@@ -12691,8 +12580,8 @@ BattleMovedex = {
 						this.add('-activate', pokemon, '"move": Pursuit');
 						alreadyAdded = True;
 					}
-					// Run through each action in queue to check if the Pursuit user is supposed to Mega Evolve this turn.
-					// If it is, then Mega Evolve before moving.
+					# Run through each action in queue to check if the Pursuit user is supposed to Mega Evolve this turn.
+					# If it is, then Mega Evolve before moving.
 					if (source.canMegaEvo || source.canUltraBurst) {
 						for (const [actionIndex, action] of this.queue.entries()) {
 							if (action.pokemon === source && action.choice === 'megaEvo') {
@@ -12725,7 +12614,7 @@ BattleMovedex = {
 		"priority": 0,
 		"flags": {"protect": 1, "mirror": 1},
 		"onHit": function (target) {
-			if (target.side.active.length < 2) return False; // fails in singles
+			if (target.side.active.length < 2) return False; # fails in singles
 			let action = this.willMove(target);
 			if (action) {
 				action.priority = -7.1;
@@ -12792,8 +12681,8 @@ BattleMovedex = {
 			},
 			"onTryHitPriority": 4,
 			"onTryHit": function (target, source, move) {
-				// Quick Guard blocks moves with positive priority, even those given increased priority by Prankster or Gale Wings.
-				// (e.g. it blocks 0 priority moves boosted by Prankster or Gale Wings; Quick Claw/Custap Berry do not count)
+				# Quick Guard blocks moves with positive priority, even those given increased priority by Prankster or Gale Wings.
+				# (e.g. it blocks 0 priority moves boosted by Prankster or Gale Wings; Quick Claw/Custap Berry do not count)
 				if (move.priority <= 0.1) return;
 				if (!move.flags['protect']) {
 					if (move.isZ) move.zBrokeProtect = True;
@@ -12803,7 +12692,7 @@ BattleMovedex = {
 				source.moveThisTurnResult = True;
 				let lockedmove = source.getVolatile('lockedmove');
 				if (lockedmove) {
-					// Outrage counter is reset
+					# Outrage counter is reset
 					if (source.volatiles['lockedmove'].duration === 2) {
 						delete source.volatiles['lockedmove'];
 					}
@@ -13245,7 +13134,7 @@ BattleMovedex = {
 			if (!target.setStatus('slp')) return False;
 			target.statusData.time = 3;
 			target.statusData.startTime = 3;
-			this.heal(target.maxhp); //Aeshetic only as the healing happens after you fall asleep in-game
+			this.heal(target.maxhp); #Aeshetic only as the healing happens after you fall asleep in-game
 			this.add('-status', target, 'slp', '[from] "move": Rest');
 		},
 		"secondary": None,
@@ -13692,7 +13581,7 @@ BattleMovedex = {
 			},
 			"onResidual": function (target) {
 				if (target.lastMove && target.lastMove.id === 'struggle') {
-					// don't lock
+					# don't lock
 					delete target.volatiles['rollout'];
 				}
 			},
@@ -13759,12 +13648,12 @@ BattleMovedex = {
 						continue;
 					}
 					if (pokemon.hasType('Grass')) {
-						// This move affects every grounded Grass-type Pokemon in play.
+						# This move affects every grounded Grass-type Pokemon in play.
 						targets.push(pokemon);
 					}
 				}
 			}
-			if (!targets.length && !anyAirborne) return False; // Fails when there are no grounded Grass types or airborne Pokemon
+			if (!targets.length && !anyAirborne) return False; # Fails when there are no grounded Grass types or airborne Pokemon
 			for (const pokemon of targets) {
 				this.boost({"atk": 1, "spa": 1}, pokemon, source);
 			}
@@ -13795,11 +13684,11 @@ BattleMovedex = {
 		"flags": {"protect": 1, "mirror": 1, "sound": 1, "authentic": 1},
 		"onTry": function () {
 			for (const action of this.queue) {
-				// @ts-ignore
+				# @ts-ignore
 				if (!action.pokemon || !action.move) continue;
-				// @ts-ignore
+				# @ts-ignore
 				if (action.move.id === 'round') {
-					// @ts-ignore
+					# @ts-ignore
 					this.prioritizeAction(action);
 					return;
 				}
@@ -15216,7 +15105,7 @@ BattleMovedex = {
 					this.add('-start', pokemon, 'Smack Down');
 				}
 			},
-			// groundedness implemented in battle.engine.js:BattlePokemon#isGrounded
+			# groundedness implemented in battle.engine.js:BattlePokemon#isGrounded
 		},
 		"secondary": None,
 		"target": "normal",
@@ -15406,7 +15295,7 @@ BattleMovedex = {
 		"priority": 0,
 		"flags": {"contact": 1, "protect": 1, "mirror": 1, "authentic": 1},
 		"stealsBoosts": True,
-		// Boost stealing implemented in scripts.js
+		# Boost stealing implemented in scripts.js
 		"secondary": None,
 		"target": "normal",
 		"type": "Ghost",
@@ -15473,7 +15362,7 @@ BattleMovedex = {
 				source.moveThisTurnResult = True;
 				let lockedmove = source.getVolatile('lockedmove');
 				if (lockedmove) {
-					// Outrage counter is reset
+					# Outrage counter is reset
 					if (source.volatiles['lockedmove'].duration === 2) {
 						delete source.volatiles['lockedmove'];
 					}
@@ -15791,7 +15680,7 @@ BattleMovedex = {
 		"flags": {"reflectable": 1, "nonsky": 1},
 		"sideCondition": 'spikes',
 		"effect": {
-			// this is a side condition
+			# this is a side condition
 			"onStart": function (side) {
 				this.add('-sidestart', side, 'Spikes');
 				this.effectData.layers = 1;
@@ -15803,7 +15692,7 @@ BattleMovedex = {
 			},
 			"onSwitchIn": function (pokemon) {
 				if (!pokemon.isGrounded()) return;
-				let damageAmounts = [0, 3, 4, 6]; // 1/8, 1/6, 1/4
+				let damageAmounts = [0, 3, 4, 6]; # 1/8, 1/6, 1/4
 				this.damage(damageAmounts[this.effectData.layers] * pokemon.maxhp / 24);
 			},
 		},
@@ -15981,7 +15870,7 @@ BattleMovedex = {
 		"flags": {"reflectable": 1},
 		"sideCondition": 'stealthrock',
 		"effect": {
-			// this is a side condition
+			# this is a side condition
 			"onStart": function (side) {
 				this.add('-sidestart', side, '"move": Stealth Rock');
 			},
@@ -16430,7 +16319,7 @@ BattleMovedex = {
 				this.add('-fail', target, '"move": Substitute');
 				return None;
 			}
-			if (target.hp <= target.maxhp / 4 || target.maxhp === 1) { // Shedinja clause
+			if (target.hp <= target.maxhp / 4 || target.maxhp === 1) { # Shedinja clause
 				this.add('-fail', target, '"move": Substitute', '[weak]');
 				return None;
 			}
@@ -16476,7 +16365,7 @@ BattleMovedex = {
 				}
 				this.singleEvent('AfterSubDamage', move, None, target, source, move);
 				this.runEvent('AfterSubDamage', target, source, move, damage);
-				return 0; // hit
+				return 0; # hit
 			},
 			"onEnd": function (target) {
 				this.add('-end', target, 'Substitute');
@@ -17261,7 +17150,7 @@ BattleMovedex = {
 				return;
 			}
 			if (!this.singleEvent('TakeItem', yourItem, target.itemData, source, target, move, yourItem) || !source.setItem(yourItem)) {
-				target.item = yourItem.id; // bypass setItem so we don't break choicelock or anything
+				target.item = yourItem.id; # bypass setItem so we don't break choicelock or anything
 				return;
 			}
 			this.add('-item', source, yourItem, '[from] "move": Thief', '[of] ' + target);
@@ -17288,8 +17177,8 @@ BattleMovedex = {
 		"onEffectiveness": function (typeMod, type, move) {
 			if (move.type !== 'Ground') return;
 			let target = this.activeTarget;
-			if (!target) return; // avoid crashing when called from a chat plugin
-			// ignore effectiveness if the target is Flying type and immune to Ground
+			if (!target) return; # avoid crashing when called from a chat plugin
+			# ignore effectiveness if the target is Flying type and immune to Ground
 			if (!target.runImmunity('Ground')) {
 				if (target.hasType('Flying')) return 0;
 			}
@@ -17574,9 +17463,9 @@ BattleMovedex = {
 		"onHit": function (target) {
 			let success = False;
 			for (let i in target.boosts) {
-				// @ts-ignore
+				# @ts-ignore
 				if (target.boosts[i] === 0) continue;
-				// @ts-ignore
+				# @ts-ignore
 				target.boosts[i] = -target.boosts[i];
 				success = True;
 			}
@@ -17633,7 +17522,7 @@ BattleMovedex = {
 		"pp": 10,
 		"priority": 0,
 		"flags": {"protect": 1, "reflectable": 1, "mirror": 1},
-		// No Guard-like effect for Poison-type users implemented in BattleScripts#tryMoveHit
+		# No Guard-like effect for Poison-type users implemented in BattleScripts#tryMoveHit
 		"status": 'tox',
 		"secondary": None,
 		"target": "normal",
@@ -17656,7 +17545,7 @@ BattleMovedex = {
 		"flags": {"reflectable": 1, "nonsky": 1},
 		"sideCondition": 'toxicspikes',
 		"effect": {
-			// this is a side condition
+			# this is a side condition
 			"onStart": function (side) {
 				this.add('-sidestart', side, '"move": Toxic Spikes');
 				this.effectData.layers = 1;
@@ -17832,7 +17721,7 @@ BattleMovedex = {
 			this.add('-start', target, 'typeadd', 'Ghost', '[from] "move": Trick-or-Treat');
 
 			if (target.side.active.length === 2 && target.position === 1) {
-				// Curse Glitch
+				# Curse Glitch
 				const action = this.willMove(target);
 				if (action && action.move.id === 'curse') {
 					action.targetLoc = -1;
@@ -17873,7 +17762,7 @@ BattleMovedex = {
 			"onRestart": function (target, source) {
 				this.removePseudoWeather('trickroom');
 			},
-			// Speed modification is changed in Pokemon.getActionSpeed() in sim/pokemon.js
+			# Speed modification is changed in Pokemon.getActionSpeed() in sim/pokemon.js
 			"onResidualOrder": 23,
 			"onEnd": function () {
 				this.add('-fieldend', '"move": Trick Room');
@@ -17938,7 +17827,7 @@ BattleMovedex = {
 		"basePowerCallback": function (source, target, move) {
 			const callerMoveId = move.sourceEffect || move.id;
 			const moveSlot = callerMoveId === 'instruct' ? source.getMoveData(move.id) : source.getMoveData(callerMoveId);
-			// @ts-ignore
+			# @ts-ignore
 			switch (moveSlot.pp) {
 			case 0:
 				return 200;
@@ -18077,7 +17966,7 @@ BattleMovedex = {
 			},
 			"onResidual": function (target) {
 				if (target.lastMove && target.lastMove.id === 'struggle') {
-					// don't lock
+					# don't lock
 					delete target.volatiles['uproar'];
 				}
 				this.add('-start', target, 'Uproar', '[upkeep]');
@@ -18353,11 +18242,11 @@ BattleMovedex = {
 		"flags": {"protect": 1, "mirror": 1, "nonsky": 1},
 		"onPrepareHit": function (target, source, move) {
 			for (const action of this.queue) {
-				// @ts-ignore
+				# @ts-ignore
 				if (!action.move || !action.pokemon || !action.pokemon.isActive || action.pokemon.fainted) continue;
-				// @ts-ignore
+				# @ts-ignore
 				if (action.pokemon.side === source.side && ['firepledge', 'grasspledge'].includes(action.move.id)) {
-					// @ts-ignore
+					# @ts-ignore
 					this.prioritizeAction(action);
 					this.add('-waiting', source, action.pokemon);
 					return None;
@@ -18637,7 +18526,7 @@ BattleMovedex = {
 			},
 			"onTryHitPriority": 4,
 			"onTryHit": function (target, source, move) {
-				// Wide Guard blocks all spread moves
+				# Wide Guard blocks all spread moves
 				if (move && move.target !== 'allAdjacent' && move.target !== 'allAdjacentFoes') {
 					return;
 				}
@@ -18649,7 +18538,7 @@ BattleMovedex = {
 				source.moveThisTurnResult = True;
 				let lockedmove = source.getVolatile('lockedmove');
 				if (lockedmove) {
-					// Outrage counter is reset
+					# Outrage counter is reset
 					if (source.volatiles['lockedmove'].duration === 2) {
 						delete source.volatiles['lockedmove'];
 					}
@@ -18804,7 +18693,7 @@ BattleMovedex = {
 			"onRestart": function (target, source) {
 				this.removePseudoWeather('wonderroom');
 			},
-			// Swapping defenses implemented in sim/pokemon.js:Pokemon#calculateStat and Pokemon#getStat
+			# Swapping defenses implemented in sim/pokemon.js:Pokemon#calculateStat and Pokemon#getStat
 			"onResidualOrder": 24,
 			"onEnd": function () {
 				this.add('-fieldend', '"move": Wonder Room');
@@ -18970,7 +18859,7 @@ BattleMovedex = {
 			}
 		},
 		"effect": {
-			"noCopy": True, // doesn't get copied by Baton Pass
+			"noCopy": True, # doesn't get copied by Baton Pass
 			"duration": 2,
 			"onStart": function (target, source) {
 				this.add('-start', target, '"move": Yawn', '[of] ' + source);
