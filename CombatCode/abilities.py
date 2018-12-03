@@ -905,25 +905,25 @@ BattleAbilities = {
 			pokemon.removeVolatile('flashfire');
 		}""",
 		"effect": {
-			"noCopy": "true",
-		"3": """function (target) {
+		"noCopy": True,
+		"onStart": """function (target) {
 				this.add('-start', target, 'ability: Flash Fire');
 			}""",
-			"onModifyAtkPriority": "5",
-		"3": """function (atk, attacker, defender, move) {
+		"onModifyAtkPriority": 5,
+		"onModifyAtk": """function (atk, attacker, defender, move) {
 				if (move.type === 'Fire') {
 					this.debug('Flash Fire boost');
 					return this.chainModify(1.5);
 				}
 			}""",
-			"onModifySpAPriority": "5",
-		"3": """function (atk, attacker, defender, move) {
+		"onModifySpAPriority": 5,
+		"onModifySpA": """function (atk, attacker, defender, move) {
 				if (move.type === 'Fire') {
 					this.debug('Flash Fire boost');
 					return this.chainModify(1.5);
 				}
 			}""",
-		"3": """function (target) {
+		"onEnd": """function (target) {
 				this.add('-end', target, 'ability: Flash Fire', '[silent]');
 			}""",
 		},
@@ -1749,7 +1749,7 @@ BattleAbilities = {
 			return null;
 		}""",
 		"effect": {
-			"duration": "1",
+		"duration": 1,
 		},
 		"rating": 4.5,
 		"num": 156,
@@ -3028,18 +3028,18 @@ BattleAbilities = {
 			this.add('-end', pokemon, 'Slow Start', '[silent]');
 		}""",
 		"effect": {
-			"duration": "5",
-		"3": """function (target) {
+		"duration": 5,
+		"onStart": """function (target) {
 				this.add('-start', target, 'ability: Slow Start');
 			}""",
-			"onModifyAtkPriority": "5",
-		"3": """function (atk, pokemon) {
+		"onModifyAtkPriority": 5,
+		"onModifyAtk": """function (atk, pokemon) {
 				return this.chainModify(0.5);
 			}""",
-		"3": """function (spe, pokemon) {
+		"onModifySpe": """function (spe, pokemon) {
 				return this.chainModify(0.5);
 			}""",
-		"3": """function (target) {
+		"onEnd": """function (target) {
 				this.add('-end', target, 'Slow Start');
 			}""",
 		},
@@ -3767,7 +3767,7 @@ BattleAbilities = {
 			pokemon.removeVolatile('unburden');
 		}""",
 		"effect": {
-		"3": """function (spe, pokemon) {
+		"onModifySpe": """function (spe, pokemon) {
 				if (!pokemon.item) {
 					return this.chainModify(2);
 				}
@@ -4035,10 +4035,10 @@ BattleAbilities = {
 			pokemon.formeChange('Darmanitan', this.effect, false, '[silent]');
 		}""",
 		"effect": {
-		"3": """function (pokemon) {
+		"onStart": """function (pokemon) {
 				if (pokemon.template.speciesid !== 'darmanitanzen') pokemon.formeChange('Darmanitan-Zen');
 			}""",
-		"3": """function (pokemon) {
+		"onEnd": """function (pokemon) {
 				pokemon.formeChange('Darmanitan');
 			}""",
 		},
@@ -4096,7 +4096,7 @@ BattleAbilities = {
 			return null;
 		}""",
 		"effect": {
-			"duration": "1",
+		"duration": 1,
 		},
 		"rating": 3.5,
 		"num": -3,
