@@ -1,5 +1,3 @@
-
-
 function parseObj(object, lvl) {
 	let newMap = {}
 	let value = "{\n"
@@ -48,8 +46,17 @@ function parseMap(dexMap){
 		pyVal += ("\t\"" + i + "\": {\n");
 		for (var n in dexMap[i]){
 			if (typeof(dexMap[i][n]) == "object") {
-				value = parseObj(dexMap[i][n], 2)
+				value = parseObj(dexMap[i][n], 2);
 				pyVal += ("\t\t\"" + String(n) + "\": "  + String(value) + "\n");
+			}
+			else if (typeof(dexMap[i][n]) == "boolean") {
+				if (dexMap[i][n] == false) { value = "False"; }
+				else { value = "True"; }
+				pyVal += ("\t\t\"" + String(n) + "\": "  + String(value) + ",\n");
+			}
+			else if (typeof(dexMap[i][n]) == "number") {
+				value = String(dexMap[i][n])
+				pyVal += ("\t\t\"" + String(n) + "\": "  + String(value) + ",\n");
 			}
 			else {
 				value = String(dexMap[i][n])
