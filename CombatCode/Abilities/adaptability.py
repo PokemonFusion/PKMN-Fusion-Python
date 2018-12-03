@@ -1,2 +1,6 @@
-def onModifyMove(move):
-	move.stab = 2
+def onModifyMove (move):
+	"""function (move) {
+			move.stab = 2;
+		}
+	""" 
+	pass

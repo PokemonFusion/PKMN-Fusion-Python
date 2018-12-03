@@ -1,3 +1,9 @@
+"""This function is to be run on it's own.  This is used to remove the weirdness of function calls from importing
+a javascript dictionary to python.
+for the move return, you will have to fix the capitalization of the function, because return is a special function
+This will need to be fixed in moves.py, the file name of Return.py, and __init__.py
+"""
+
 import sys, os
 sys.path.append(os.path.abspath(os.path.join('')))
 from CombatCode.moves import BattleMovedex
