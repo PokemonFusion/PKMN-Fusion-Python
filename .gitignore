@@ -105,6 +105,3 @@ venv.bak/
 
 # vsCode
 .vscode/
-
-# Helper Outputs
-HelperCode/FunctionFiles/
