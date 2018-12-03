@@ -1,4 +1,4 @@
-{
+BattleAbilities = {
 	"noability": {
 		"shortDesc": "Does nothing.",
 		"id": "noability",
@@ -904,7 +904,29 @@
 		"onEnd": """function (pokemon) {
 			pokemon.removeVolatile('flashfire');
 		}""",
-		"effect": "{'noCopy': 1, 'onStart': 1, 'onModifyAtkPriority': 1, 'onModifyAtk': 1, 'onModifySpAPriority': 1, 'onModifySpA': 1, 'onEnd': 1, }",
+		"effect": {
+			"noCopy": "true",
+		"3": """function (target) {
+				this.add('-start', target, 'ability: Flash Fire');
+			}""",
+			"onModifyAtkPriority": "5",
+		"3": """function (atk, attacker, defender, move) {
+				if (move.type === 'Fire') {
+					this.debug('Flash Fire boost');
+					return this.chainModify(1.5);
+				}
+			}""",
+			"onModifySpAPriority": "5",
+		"3": """function (atk, attacker, defender, move) {
+				if (move.type === 'Fire') {
+					this.debug('Flash Fire boost');
+					return this.chainModify(1.5);
+				}
+			}""",
+		"3": """function (target) {
+				this.add('-end', target, 'ability: Flash Fire', '[silent]');
+			}""",
+		},
 		"id": "flashfire",
 		"name": "Flash Fire",
 		"rating": "3",
@@ -1726,7 +1748,9 @@
 			this.useMove(newMove, this.effectData.target, source);
 			return null;
 		}""",
-		"effect": "{'duration': 1, }",
+		"effect": {
+			"duration": "1",
+		},
 		"rating": "4.5",
 		"num": "156",
 	},
@@ -3003,7 +3027,22 @@
 			delete pokemon.volatiles['slowstart'];
 			this.add('-end', pokemon, 'Slow Start', '[silent]');
 		}""",
-		"effect": "{'duration': 1, 'onStart': 1, 'onModifyAtkPriority': 1, 'onModifyAtk': 1, 'onModifySpe': 1, 'onEnd': 1, }",
+		"effect": {
+			"duration": "5",
+		"3": """function (target) {
+				this.add('-start', target, 'ability: Slow Start');
+			}""",
+			"onModifyAtkPriority": "5",
+		"3": """function (atk, pokemon) {
+				return this.chainModify(0.5);
+			}""",
+		"3": """function (spe, pokemon) {
+				return this.chainModify(0.5);
+			}""",
+		"3": """function (target) {
+				this.add('-end', target, 'Slow Start');
+			}""",
+		},
 		"id": "slowstart",
 		"name": "Slow Start",
 		"rating": "-2",
@@ -3673,7 +3712,7 @@
 			}
 			pokemon.addVolatile('truant');
 		}""",
-		"effect": "{}",
+		"effect": {},
 		"id": "truant",
 		"name": "Truant",
 		"rating": "-2",
@@ -3727,7 +3766,13 @@
 		"onEnd": """function (pokemon) {
 			pokemon.removeVolatile('unburden');
 		}""",
-		"effect": "{'onModifySpe': 1, }",
+		"effect": {
+		"3": """function (spe, pokemon) {
+				if (!pokemon.item) {
+					return this.chainModify(2);
+				}
+			}""",
+		},
 		"id": "unburden",
 		"name": "Unburden",
 		"rating": "3.5",
@@ -3989,7 +4034,14 @@
 			delete pokemon.volatiles['zenmode'];
 			pokemon.formeChange('Darmanitan', this.effect, false, '[silent]');
 		}""",
-		"effect": "{'onStart': 1, 'onEnd': 1, }",
+		"effect": {
+		"3": """function (pokemon) {
+				if (pokemon.template.speciesid !== 'darmanitanzen') pokemon.formeChange('Darmanitan-Zen');
+			}""",
+		"3": """function (pokemon) {
+				pokemon.formeChange('Darmanitan');
+			}""",
+		},
 		"id": "zenmode",
 		"name": "Zen Mode",
 		"rating": "-1",
@@ -4043,7 +4095,9 @@
 			this.useMove(newMove, this.effectData.target, source);
 			return null;
 		}""",
-		"effect": "{'duration': 1, }",
+		"effect": {
+			"duration": "1",
+		},
 		"rating": "3.5",
 		"num": "-3",
 	},
