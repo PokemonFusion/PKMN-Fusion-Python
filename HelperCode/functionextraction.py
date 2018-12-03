@@ -48,6 +48,7 @@ def dicscan(dictionary : dict, masterkey : str = None):
                 funfile.write(data)
 
 def writenewdict(dictionary, dicname, dicfile):
+    """write the new dictionary file"""
     global basefolder
     with open(os.path.join(basefolder,dicfile), "w+") as filename:
         filename.write("from " + task + " import * \n\n")
@@ -55,12 +56,14 @@ def writenewdict(dictionary, dicname, dicfile):
         pprint(dictionary, stream=filename)
 
 def writenewinit():
+    """Write the new __init__.py file"""
     global modulelist, workingfolder
     with open(os.path.join(workingfolder,"__init__.py"), "w+") as init:
         init.write("__all__ = ")
         pprint(sorted(list(set(modulelist))), stream= init)
 
 def fixdict(dicfile):
+    """fix the dictionary file, removing the delete me parts"""
     global basefolder
     data = ""
 
