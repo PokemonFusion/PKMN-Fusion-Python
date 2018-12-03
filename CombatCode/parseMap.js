@@ -20,6 +20,15 @@ function parseObj(object, lvl) {
 		if(typeof(object[i]) == "object") {
 			value += "\n" + tabs + "\""  + "" + i + "\": " + parseObj(object[i], lvl + 1)
 		}
+		else if (typeof(dexMap[i][n]) == "boolean") {
+			if (dexMap[i][n] == false) { value = "False"; }
+			else { value = "True"; }
+			pyVal += ("\t\t\"" + String(n) + "\": "  + String(value) + ",\n");
+		}
+		else if (typeof(dexMap[i][n]) == "number") {
+			value = String(dexMap[i][n])
+			pyVal += ("\t\t\"" + String(n) + "\": "  + String(value) + ",\n");
+		}
 		else
 		{
 			if(String(object[i]).indexOf("function") !== -1) { value += ("\t\t\"" + String(n) + "\": \"\"\"" + object[i] + "\"\"\",\n"); }
