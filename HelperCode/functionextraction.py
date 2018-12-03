@@ -4,7 +4,7 @@ from CombatCode.moves import BattleMovedex
 from CombatCode.abilities import BattleAbilities
 from pprint import pprint
 
-basefolder = "HelperCode\\FunctionFiles"
+basefolder = os.path.join("HelperCode","FunctionFiles")
 task = ""
 workingfolder = ""
 data = ""
@@ -60,6 +60,15 @@ def writenewinit():
         init.write("__all__ = ")
         pprint(sorted(list(set(modulelist))), stream= init)
 
+def fixdict(dicfile):
+    global basefolder
+    data = ""
+
+    with open(os.path.join(basefolder,dicfile), "r") as filename:
+        data = filename.read().replace("'[deleteme]", "").replace("[/deleteme]'", "")
+    with open(os.path.join(basefolder,dicfile), "w+") as filename:
+        filename.write(data)
+
 makedir(basefolder)
 with open(os.path.join(basefolder, "TODO"), "w+", encoding='utf-8') as todofile:
     pass
@@ -70,12 +79,14 @@ tasks = {"Abilities" : { "dictionary" : BattleAbilities, "file" : "abilities.py"
 for task in tasks:
     tododata = ""
     modulelist = []
-    workingfolder = basefolder + "\\" + task
+    workingfolder = os.path.join(basefolder, task)
+    dicdata = tasks[task]
     makedir(workingfolder)
-    dicscan(tasks[task]["dictionary"])
+    dicscan(dicdata["dictionary"])
     with open(os.path.join(basefolder, "TODO"), "a+", encoding='utf-8') as todofile:
         todofile.write("\n" + task + ":\n")
         todofile.write(tododata)
-    writenewdict(tasks[task]["dictionary"], tasks[task]["dicname"], tasks[task]["file"])
+    writenewdict(dicdata["dictionary"], dicdata["dicname"], dicdata["file"])
     writenewinit()
+    fixdict(dicdata["file"])
 
