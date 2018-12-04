@@ -35,3 +35,6 @@ class Moves:
         self.zMovePower = movecheck("zMovePower")
         self.contestType = movecheck("contestType")
         self.multihit = movecheck("multihit")
+        self.boosts = movecheck("boosts")
+        self.isViable = movecheck("isViable")
+        self.isZ = movecheck("isZ")
