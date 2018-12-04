@@ -1,5 +1,8 @@
+import sys, os
+sys.path.append(os.path.abspath(""))
+
 import copy
-from battlemovedex import BattleMoveDex
+from battlemovedex import BattleMovedex
 
 def keycheck(dictionary, subdictionary, key) -> object:
     if key in dictionary[subdictionary]:
@@ -12,7 +15,7 @@ class Moves:
 
     def __init__(self, move: str):
         def movecheck(key):
-            return keycheck(BattleMoveDex, move, key)
+            return keycheck(BattleMovedex, move, key)
         
         self.num = movecheck("num")
         self.accuracy = movecheck("accuracy")
@@ -31,3 +34,4 @@ class Moves:
         self.type = movecheck("type")
         self.zMovePower = movecheck("zMovePower")
         self.contestType = movecheck("contestType")
+        self.multihit = movecheck("multihit")
