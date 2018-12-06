@@ -38,3 +38,6 @@ class Moves:
         self.boosts = movecheck("boosts")
         self.isViable = movecheck("isViable")
         self.isZ = movecheck("isZ")
+        self.onHit = movecheck("onHit")
+        self.onModifyMove = movecheck("onModifyMove")
+        self.critRatio = movecheck("critRatio")
