@@ -21,9 +21,19 @@ from pokeglobals import Moves
 """
 
 
-def accuracy_check() -> bool:
+def accuracy_check(attacker, target, move) -> bool:
     """This will return if an attack hits or misses the target"""
-    pass
+    #place holders, but we will want to use classes for each properly
+    attacc = attacker.checkacc()
+    tareva = target.checkevade()
+    moveacc = move.accuracy
+    tohit = moveacc * (attacc/tareva)
+    hitroll = random.random()
+    if tohit <= hitroll:
+        return True
+    else:
+        return False
+
 
 
 def critical_hit_check() -> bool:
