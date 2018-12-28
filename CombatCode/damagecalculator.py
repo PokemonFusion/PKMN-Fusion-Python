@@ -19,25 +19,35 @@ from pokeglobals import Moves
 
 
 """
-
-
-def accuracy_check(attacker, target, move) -> bool:
-    """This will return if an attack hits or misses the target"""
-    #place holders, but we will want to use classes for each properly
-    attacc = attacker.checkacc()
-    tareva = target.checkevade()
-    moveacc = move.accuracy
-    tohit = moveacc * (attacc/tareva)
-    hitroll = random.random()
-    if tohit <= hitroll:
+def percent_check(check) -> bool:
+    if check <= random.rancom():
         return True
     else:
         return False
 
 
+def accuracy_check(attacker, target, move) -> bool:
+    """This will return if an attack hits or misses the target"""
+    #place holders, but we will want to use classes for each properly
+    attacc = attacker.checkAcc()
+    tareva = target.checkEvade()
+    moveacc = move.accuracy
+    tohit = moveacc * (attacc/tareva)
+    return percent_check(tohit)
 
-def critical_hit_check() -> bool:
+
+
+def critical_hit_check(attacker) -> bool:
     """This will return if an attack is a crit or a miss"""
+    critstage = attacker.checkCrit()
+
+    #just because I can, I'm going to make a switch statement here
+
+    critdic = { 0 : 1/24, 1 : 1/8, 2: 1/2}
+    critper = critdic.get(critstage, 1)
+
+    return percent_check(critper)
+
     pass
 
 
