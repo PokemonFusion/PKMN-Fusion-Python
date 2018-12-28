@@ -48,8 +48,6 @@ def critical_hit_check(attacker) -> bool:
 
     return percent_check(critper)
 
-    pass
-
 
 def base_damage(level, basePower, attackStat, defenseStat) -> int:
     """Damage before modifiers"""
