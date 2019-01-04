@@ -47,7 +47,7 @@ class Pokemon:
 
     def name(self):
         if self.nickname is None:
-            return self.pokedata["species"]
+            return self.pokedata.species
         else:
             return self.nickname
 
