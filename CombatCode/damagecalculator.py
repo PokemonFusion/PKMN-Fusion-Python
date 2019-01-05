@@ -1,6 +1,6 @@
 import random
 from math import floor
-from pokeglobals import Moves
+from CombatCode.pokeglobals import Moves
 
 """
  Assumptions:

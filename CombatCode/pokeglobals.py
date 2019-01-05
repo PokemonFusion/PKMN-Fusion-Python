@@ -2,7 +2,7 @@ import sys, os
 sys.path.append(os.path.abspath(""))
 
 import copy
-from battlemovedex import BattleMovedex
+from CombatCode.battlemovedex import BattleMovedex
 
 def keycheck(dictionary, subdictionary, key) -> object:
     if key in dictionary[subdictionary]:

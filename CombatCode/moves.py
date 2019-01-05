@@ -1,4 +1,4 @@
-from Moves import * 
+from CombatCode.Moves import * 
 
 BattleMovedex = {'10000000voltthunderbolt': {'accuracy': True,
                              'basePower': 195,
