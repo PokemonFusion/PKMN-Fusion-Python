@@ -6,8 +6,9 @@ This will need to be fixed in moves.py, the file name of Return.py, and __init__
 
 import sys, os
 sys.path.append(os.path.abspath(os.path.join('')))
-from CombatCode.moves import BattleMovedex
-from CombatCode.abilities import BattleAbilities
+#from CombatCode.moves import BattleMovedex
+#from CombatCode.abilities import BattleAbilities
+from HelperCode.itemsdict import BattleItems
 from pprint import pprint
 
 basefolder = os.path.join("HelperCode","FunctionFiles")
@@ -81,8 +82,9 @@ def fixdict(dicfile):
 makedir(basefolder)
 with open(os.path.join(basefolder, "TODO"), "w+", encoding='utf-8') as todofile:
     pass
-tasks = {"Abilities" : { "dictionary" : BattleAbilities, "file" : "abilities.py", "dicname" : "BattleAbilities"} , 
-         "Moves": {"dictionary" : BattleMovedex, "file" : "moves.py", "dicname" : "BattleMovedex"} 
+tasks = {#"Abilities" : { "dictionary" : BattleAbilities, "file" : "abilities.py", "dicname" : "BattleAbilities"} , 
+         #"Moves": {"dictionary" : BattleMovedex, "file" : "moves.py", "dicname" : "BattleMovedex"} 
+         "Items": {"dictionary" : BattleItems, "file": "items.py", "dicname" : "BattleItems"}
          }
 
 for task in tasks:
