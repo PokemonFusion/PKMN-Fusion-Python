@@ -67,6 +67,10 @@ def STAB(attacker, move: Moves) -> float:
     else:
         return 1.0
 
+def elementTypeTotal(target, move:Moves) -> float:
+    #TODO: figure out the best way to calculate type advantage
+    return 1.0
+
 def damage_calc(attacker, target, move: Moves) -> Result:
     """Use this for calculating damage fully"""
     # Initial version of this will heavily reference the way I (Yang/Koden) had coded it in MUF
@@ -95,6 +99,7 @@ def damage_calc(attacker, target, move: Moves) -> Result:
         
         #TODO: figure out where to put 'onUseMoveMessage' functions.
         damage = basedamage * STAB(attacker, move)
+        typetotal = elementTypeTotal(target, move) 
 
     else:
         # TODO: return something for when fails
