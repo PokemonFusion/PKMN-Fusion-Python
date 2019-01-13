@@ -10,6 +10,8 @@ def keycheck(dictionary, subdictionary, key) -> object:
     else:
         return None
 
+class Result:
+    pass
 
 class Moves:
 
@@ -41,3 +43,11 @@ class Moves:
         self.onHit = movecheck("onHit")
         self.onModifyMove = movecheck("onModifyMove")
         self.critRatio = movecheck("critRatio")
+
+    def calculateBasePower(self) -> int:
+        """
+        you'll need to check basePowerCallback and onBasePower
+        """
+        #for now, just pass the basepower
+        return self.basePower
+
