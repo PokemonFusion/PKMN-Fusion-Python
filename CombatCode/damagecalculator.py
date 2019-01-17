@@ -1,6 +1,7 @@
 import random
 from math import floor
 from CombatCode.pokeglobals import Moves, Result
+from CombatCode.elements import ElementEffectiveness as TypeEff
 
 """
  Assumptions:
@@ -68,8 +69,12 @@ def STAB(attacker, move: Moves) -> float:
         return 1.0
 
 def elementTypeTotal(target, move:Moves) -> float:
-    #TODO: figure out the best way to calculate type advantage
-    return 1.0
+    types = target.getTypes() #make/use a method in case there are abilities that would change this
+    effect = 1.0
+    for ptype in types:
+        effect = effect * (TypeEff[move.type][ptype] / 100.0)
+
+    return effect
 
 def damage_calc(attacker, target, move: Moves) -> Result:
     """Use this for calculating damage fully"""
