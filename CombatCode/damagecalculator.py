@@ -63,7 +63,7 @@ def base_damage(level, basePower, attackStat, defenseStat) -> int:
 def STAB(attacker, move: Moves) -> float:
     atypes = attacker.types()
     if move.type in atypes:
-        #TODO: adaptibility goes here
+        #TODO: adaptibility goes here, maybe?
         return 1.5
     else:
         return 1.0
@@ -105,6 +105,7 @@ def damage_calc(attacker, target, move: Moves) -> Result:
         #TODO: figure out where to put 'onUseMoveMessage' functions.
         damage = basedamage * STAB(attacker, move)
         typetotal = elementTypeTotal(target, move) 
+        damage = damage * typetotal * crit
 
     else:
         # TODO: return something for when fails
