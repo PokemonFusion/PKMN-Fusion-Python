@@ -35,43 +35,6 @@ class Pokemon:
         "Quirky":    {},
     }
 
-    class PokeData:
-        def __init__(self, species):
-            self.species = sdic["species"] # Species name.
-            self.types = sdic["types"] # Type or types.
-            
-            self.baseStats = {
-                "hp": stats["hp"],
-                "atk": stats["atk"],
-                "def": stats["def"],
-                "spa": stats["spa"],
-                "spd": stats["spd"],
-                "spe": stats["spe"]
-            }
-            self.iv = {
-                "hp": random.randint(0,31),
-                "atk": random.randint(0,31),
-                "def": random.randint(0,31),
-                "spa": random.randint(0,31),
-                "spd": random.randint(0,31),
-                "spe": random.randint(0,31)
-            }
-            self.ev = {
-                "hp": 0,
-                "atk": 0,
-                "def": 0,
-                "spa": 0,
-                "spd": 0,
-                "spe": 0
-            }
-            self.createStatModifiers() # TODO: Create this!
-            self.abilities = decideAbilities(sdic["abilities"]) # TODO: Create this!
-        
-        def createStatModifiers(): # CONTINUE WORK HERE!
-            pass
-
-    def getStat(self, stat):
-        pass
         
 
 
