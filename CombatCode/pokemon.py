@@ -41,35 +41,37 @@ class Pokemon:
             self.types = sdic["types"] # Type or types.
             
             self.baseStats = {
-                "hp": stats["hp"]
-                "atk": stats["atk"]
-                "def": stats["def"]
-                "spa": stats["spa"]
-                "spd": stats["spd"]
+                "hp": stats["hp"],
+                "atk": stats["atk"],
+                "def": stats["def"],
+                "spa": stats["spa"],
+                "spd": stats["spd"],
                 "spe": stats["spe"]
             }
             self.iv = {
-                "hp": random.randint(0,31)
-                "atk": random.randint(0,31)
-                "def": random.randint(0,31)
-                "spa": random.randint(0,31)
-                "spd": random.randint(0,31)
+                "hp": random.randint(0,31),
+                "atk": random.randint(0,31),
+                "def": random.randint(0,31),
+                "spa": random.randint(0,31),
+                "spd": random.randint(0,31),
                 "spe": random.randint(0,31)
             }
             self.ev = {
-                "hp": 0
-                "atk": 0
-                "def": 0
-                "spa": 0
-                "spd": 0
+                "hp": 0,
+                "atk": 0,
+                "def": 0,
+                "spa": 0,
+                "spd": 0,
                 "spe": 0
             }
             self.createStatModifiers() # TODO: Create this!
-            self.abilities = decideAbilities(sdic["abilities") # TODO: Create this!
+            self.abilities = decideAbilities(sdic["abilities"]) # TODO: Create this!
         
-        def createStatModifiers() # CONTINUE WORK HERE!
+        def createStatModifiers(): # CONTINUE WORK HERE!
+            pass
 
-    def getStat(self, stat)
+    def getStat(self, stat):
+        pass
         
 
 
@@ -142,7 +144,7 @@ class Pokemon:
         # experience points, as an int
         self.xp = self.getXPtoLv(self.level) # Give just enough to reach that level.
         
-        # Whether the Pokémon starts as an egg.
+        # Whether the Pokï¿½mon starts as an egg.
         self.isEgg = isEgg # This doesn't check if it has previous evolutions or anything. So, if for some insane reason, you want a Charizard egg...
         
         # friendship, as an int
@@ -218,7 +220,7 @@ class Pokemon:
         
         # current steps for hatching egg, if applicable.
         self.eggSteps = 0
-    }
+    
     
     # While mutable traits are stored in the class itself,
     # immutable traits of the species are retrieved here from the Pokedex dictionary.
