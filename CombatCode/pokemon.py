@@ -281,12 +281,10 @@ class Pokemon:
         
         # Return calculated stat.
         if statType == "hp":
-            return int((2 * baseStat + self.iv[baseStat] + int(self.ev[basestat]/4)) * self.level / 100) + self.level + 10
+            return int((2 * baseStat + self.iv[baseStat] + int(self.ev[baseStat]/4)) * self.level / 100) + self.level + 10
         else:
-            natureMod = NATURES[self.nature].get(statType)
-            if natureMod == None:
-                natureMod = 1
-            return (int((2 * baseStat + self.iv[baseStat] + int(self.ev[basestat]/4)) * self.level / 100) + 5) * natureMod
+            natureMod = self.NATURES[self.nature].get(statType, 1)
+            return (int((2 * baseStat + self.iv[baseStat] + int(self.ev[baseStat]/4)) * self.level / 100) + 5) * natureMod
     
     # Get the name of the active ability.
     # As with getStat, the species parameter is to account for megas.
