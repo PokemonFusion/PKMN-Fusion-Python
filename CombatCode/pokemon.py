@@ -1,5 +1,5 @@
 import copy, random
-from pokemondex import BattlePokedex as dex
+from CombatCode.pokemondex import BattlePokedex as dex
 
 class Pokemon:
 
@@ -64,10 +64,11 @@ class Pokemon:
             self.gender = sdic.get("gender") # Set gender to default value, if there is one.
             if self.gender == None: # If there isn't, randomize it.
                 genderRatio = sdic.get("genderRatio") # Temporary variable to assist in determining gender.
-                if self.genderRatio.get["M"] == None: # Something's wrong if the gender is undefined and genderRatio's "M" is also undefined. Default to "N".
-                    self.gender = "N"
+                #if no gender ratio is found, it's 50/50
+                if genderRatio == None: 
+                    self.gender = random.choice(["M", "F"])
                 # Randomly set gender according to ratio provided.
-                elif random.random() < self.genderRatio["M"]:
+                elif random.random() < genderRatio["M"]:
                     self.gender = "M"
                 else:
                     self.gender = "F"
@@ -101,6 +102,9 @@ class Pokemon:
         # ( might also not see use due to card system )
         self.met = "at an unknown location."
         
+        # xt rate, as string
+        self.xprate = None
+
         # level, as an int
         self.level = level
         
@@ -236,32 +240,7 @@ class Pokemon:
             self.hp = self.getStat("HP", species)
         if self.hp < 0: # Enforce non-negative.
             self.hp = 0
-    
-    # Get the damage for the move.
-    # With critMod, 1 is non-crit, 2 is crit.
-    # Critical hits should NOT be determined with this function.
-    # The reason is, using this function to determine that would make it hard to know
-    # whether or not to display the crit message.
-    # The default value for critMod is temporary. In the final version, it should be required to specify.
-    # species parameter is to account for megas.
-    def getMoveDamage(self, move, defender, critMod = 1, species = None, defenderSpecies = None):
-        if species == None or species not in dex:
-            species = self.species
-        damage = (((2*self.level)/5+2) * move.power * self.getStat("atk", species) / defender.getStat("def", defenderSpecies) / 50 + 2) # Initialize damage based on move power, attack, defense, and level.
-        # TODO: Adjust based on number targeted.
-        # TODO: Adjust based on weather.
-        # TODO: Adjust based on badge.
-        damage *= critMod # Adjust for critical.
-        damage = int(damage*random.uniform(0.85, 1.0)) # Randomize.
-        if move.type in self.getDicEntry("types", species): # Adjust for STAB.
-            if self.getAbilityName(species) == "adaptability":
-                damage *= 2
-            else:
-                damage *= 1.5
-        # TODO: Adjust for type (dis)advantage.
-        # TODO: Adjust for Burn.
-        # TODO: Adjust for misc. other factors.
-    
+     
     # Get the specified stat for the specified species, default own species, adjusted for factors such as level and IV.
     # The species parameter is primarily to account for mega forms, as those are only present in battle.
     def getStat(self, statType, species = None):

@@ -92,12 +92,12 @@ def damage_calc(attacker, target, move: Moves) -> Result:
         defenseStat = 0
 
         if move.category == 'Physical':
-            attackStat = attacker.calculatePhyAtk()
-            defenseStat = target.calculatePhyDef()
+            attackStat = attacker.getStat("atk")
+            defenseStat = target.getStat("def")
 
         elif move.category == 'Special':
-            attackStat = attacker.calculateSpcAtk()
-            defenseStat = target.calculateSpcDef()
+            attackStat = attacker.getStat("spa")
+            defenseStat = target.getStat("spd")
 
         basedamage = base_damage(
             attacker.level, move.calculateBasePower(), attackStat, defenseStat)
