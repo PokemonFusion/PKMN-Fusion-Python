@@ -1,7 +1,9 @@
 import copy, random
-from CombatCode.pokemondex import BattlePokedex as dex
-
+from CombatCode.pokemonCombinedDex import BattlePokedex as dex
 class Pokemon:
+
+
+
 
     # dict of all the natures and their stat bonuses
     # there's nothing preventing the addition of natures that modify hp,
@@ -34,6 +36,25 @@ class Pokemon:
         "Careful":   {'spd': 1.1, 'spa': 0.9},
         "Quirky":    {},
     }
+    
+    # Get the XP Rate of the pokemon in question.
+    def getXPRate(self):
+        # sdic = self.getDic()
+        # base = sdic.get("baseSpecies")
+        # if base is not None:
+        #     sdic = self.getDic(base)
+        # rate = sdic.get("growthRateId")
+        rate = self.getDicEntry("growthRateId")
+
+        ratedict = {
+            1 : "slow",
+            2 : "mediumfast",
+            3 : "fast",
+            4 : "mediumslow",
+            5 : "erratic",
+            6 : "fluctuating"
+        }
+        return ratedict.get(rate)
 
         
 
@@ -103,7 +124,7 @@ class Pokemon:
         self.met = "at an unknown location."
         
         # xt rate, as string
-        self.xprate = None
+        self.xprate = self.getXPRate()
 
         # level, as an int
         self.level = level
@@ -111,14 +132,14 @@ class Pokemon:
         # experience points, as an int
         self.xp = self.getXPtoLv(self.level) # Give just enough to reach that level.
         
-        # Whether the Pok�mon starts as an egg.
+        # Whether the Pokémon starts as an egg.
         self.isEgg = isEgg # This doesn't check if it has previous evolutions or anything. So, if for some insane reason, you want a Charizard egg...
         
         # friendship, as an int
         if self.isEgg:
             self.friendship = 120 # Eggs are decently friendly. This is true to real life, where eggs sometimes dress up in polka-dots.
         else:
-            self.friendship = sdic['friendship'] # IMPORTANT: ADD THIS TO THE POKEDEX! Or do some alternate thing.
+            self.friendship = self.getDicEntry('baseHappiness')
         
         # bond, as an int
         # this is assuming that nufusion's fusion mechanics are the same
@@ -188,11 +209,10 @@ class Pokemon:
         # current steps for hatching egg, if applicable.
         self.eggSteps = 0
     
-    
     # While mutable traits are stored in the class itself,
     # immutable traits of the species are retrieved here from the Pokedex dictionary.
     # The species parameter is to account for mega evolution.
-    def getDicEntry(self, keyName, species = None):
+    def getDic(self, species=None):
         if species == None or species not in dex:
             species = self.species
         # sdic is the dictionary entry for the species.
@@ -201,8 +221,18 @@ class Pokemon:
             sdic = dex[species.lower()] # Retrieve the dictionary for the species. lower() is used as a safeguard against programmer error, since uppercase keys do not exist in this dictionary (if they do, they should be corrected).
         except KeyError:
             sdic = dex["missingno"] # If the key is not found, default to missingno.
+        return sdic
+
+    # While mutable traits are stored in the class itself,
+    # immutable traits of the species are retrieved here from the Pokedex dictionary.
+    # The species parameter is to account for mega evolution.
+    def getDicEntry(self, keyName, species = None):
+        # take into consideration that the stat may not exist outside of the base form
+        entry = self.getDic(species).get(keyName)
+        if entry is None and keyName != "baseSpecies":
+            entry = self.getDic(self.getDicEntry("baseSpecies"), species).get(keyName)
         # Return the requested dictionary value.
-        return sdic.get(keyName)
+        return entry
     
     # The total XP required to get to the specified level.
     def getXPtoLv(self, level):
@@ -254,16 +284,16 @@ class Pokemon:
             sdic = dex["missingno"] # If the key is not found, default to missingno.
         
         # Retrieve the base stat. If the stat does not exist, return 2 as a failsafe. 2 is a stat that couldn't happen normally (outside of combat), so this should set off a red flag if seen in a status screen or the like.
-        baseStat = sdic["baseStats"].get[statType]
+        baseStat = sdic["baseStats"].get(statType)
         if baseStat == None:
             return 2
         
         # Return calculated stat.
         if statType == "hp":
-            return int((2 * baseStat + self.iv[baseStat] + int(self.ev[baseStat]/4)) * self.level / 100) + self.level + 10
+            return int((2 * baseStat + self.iv["hp"] + int(self.ev["hp"]/4)) * self.level / 100) + self.level + 10
         else:
             natureMod = self.NATURES[self.nature].get(statType, 1)
-            return (int((2 * baseStat + self.iv[baseStat] + int(self.ev[baseStat]/4)) * self.level / 100) + 5) * natureMod
+            return (int((2 * baseStat + self.iv[statType] + int(self.ev[statType]/4)) * self.level / 100) + 5) * natureMod
     
     # Get the name of the active ability.
     # As with getStat, the species parameter is to account for megas.
