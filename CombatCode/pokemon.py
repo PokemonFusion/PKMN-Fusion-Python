@@ -275,7 +275,7 @@ class Pokemon:
      
     # Get the specified stat for the specified species, default own species, adjusted for factors such as level and IV.
     # The species parameter is primarily to account for mega forms, as those are only present in battle.
-    def getStat(self, statType, species = None):
+    def getStat(self, statType, isCrit = False, species = None):
         if species == None or species not in dex:
             species = self.species
         # sdic is the dictionary entry for the species.
@@ -294,6 +294,7 @@ class Pokemon:
         if statType == "hp":
             return int((2 * baseStat + self.iv["hp"] + int(self.ev["hp"]/4)) * self.level / 100) + self.level + 10
         else:
+            #TODO: Make sure that isCrit is checked for the temp stat boosts, and debufs as approperate. don't let burn effect it
             natureMod = self.NATURES[self.nature].get(statType, 1)
             return (int((2 * baseStat + self.iv[statType] + int(self.ev[statType]/4)) * self.level / 100) + 5) * natureMod
     
@@ -312,6 +313,39 @@ class Pokemon:
 
     def getName(self):
         if self.nickname is None:
-            return self.pokedata.species
+            return self.species
         else:
             return self.nickname
+    
+    def checkAcc(self):
+        #For now return 1, we will need to decide how to store this variable properly.
+        return 1
+    
+    def checkEvade(self):
+        #For now return 1, we will need to decide how to store this variable properly.
+        return 1
+
+    def checkCrit(self, moveCritRatio = 0):
+        """ 
+        For now this will just return 0, but have it calculate this later
+        1. Start with a variable C and set it to 0.
+        2. If the user is a Farfetch'd holding a Stick or a Chansey holding a Lucky Punch, set C to 2. (In G/S/C, no further modifications would be made to C if this was the case.)
+        3. If the move has a high critical hit ratio, add 1 to C (2 in G/S/C).
+        4. If the user has used Focus Energy or has a Dire Hit used on it since becoming active, add 2 to C (1 in G/S/C).
+        5. If the user has had a Dire Hit 2 used on it once, add 1 to C; if it has had a Dire Hit 2 used on it more than once, add 2 to C.
+        6. If the user has had a Dire Hit 3 used on it at least once, add 2 to C.
+        7. If the user has the ability Super Luck, add 1 to C.
+        8. If the user is holding a Scope Lens or a Razor Claw, add 1 to C.
+        9. If the user has consumed a Lansat Berry since becoming active, add 2 to C.
+        """
+        if moveCritRatio is None: 
+            moveCritRatio = 0
+        C = moveCritRatio
+        #TODO: Make this actually do something, going to be touching this later when moves and items are put in.
+        return C
+    
+    def getTypes(self) -> list:
+        """return a list containing the types"""
+        types = self.getDicEntry("types")
+        #TODO: Eventually there will be something that changes what type they are, pull from there instead. Odds are just call the species within the getDicEntry
+        return types

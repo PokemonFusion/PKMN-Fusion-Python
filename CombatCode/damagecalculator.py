@@ -23,7 +23,10 @@ from CombatCode.elements import ElementEffectiveness as TypeEff
 
 
 def percent_check(check) -> bool:
-    if check <= random.rancom():
+    """Enter a number between 0.0 and 1.0.
+    A random float will be generated 0.0 <= x < 1.0.
+    If the number being checked is larger return True, else False"""
+    if check > random.random():
         return True
     else:
         return False
@@ -37,13 +40,13 @@ def accuracy_check(attacker, target, move) -> bool:
     moveacc = move.accuracy
     if move.accuracy == True:
         return True
-    tohit = moveacc * (attacc/tareva)
+    tohit = (moveacc * (attacc/tareva)) / 100
     return percent_check(tohit)
 
 
-def critical_hit_check(attacker) -> bool:
+def critical_hit_check(attacker, move) -> bool:
     """This will return if an attack is a crit or a miss"""
-    critstage = attacker.checkCrit()
+    critstage = attacker.checkCrit(move.critRatio)
 
     # just because I can, I'm going to make a switch statement here
 
@@ -55,13 +58,13 @@ def critical_hit_check(attacker) -> bool:
 
 def base_damage(level, basePower, attackStat, defenseStat) -> int:
     """Damage before modifiers"""
-    damage = ((((((2 * level) / 5) + 2) * basePower * (attackStat * 1.0) /
+    damage = (floor(floor(floor(((2 * level) / 5) + 2) * basePower * (attackStat * 1.0) /
                 defenseStat) / 50) + 2)
     randMod = random.randint(85, 100)/100.0
-    return int(damage * randMod)
+    return floor(damage * randMod)
 
 def STAB(attacker, move: Moves) -> float:
-    atypes = attacker.types()
+    atypes = attacker.getTypes()
     if move.type in atypes:
         #TODO: adaptibility goes here, maybe?
         return 1.5
@@ -72,7 +75,7 @@ def elementTypeTotal(target, move:Moves) -> float:
     types = target.getTypes() #make/use a method in case there are abilities that would change this
     effect = 1.0
     for ptype in types:
-        effect = effect * (TypeEff[move.type][ptype] / 100.0)
+        effect = effect * (TypeEff[move.type.lower()][ptype.lower()] / 100.0)
 
     return effect
 
@@ -85,19 +88,18 @@ def damage_calc(attacker, target, move: Moves) -> Result:
     # begin by checking accuracy
     if accuracy_check(attacker, target, move):
         crit = 1
-        if critical_hit_check(attacker):
-            crit = 1.5
-
-        attackStat = 0
-        defenseStat = 0
+        isCrit = False
+        if critical_hit_check(attacker, move):
+            crit = 1.5 #TODO: Criticals ignore def boots and atk drops, except for burn
+            isCrit = True
 
         if move.category == 'Physical':
-            attackStat = attacker.getStat("atk")
-            defenseStat = target.getStat("def")
+            attackStat = attacker.getStat("atk", isCrit)
+            defenseStat = target.getStat("def", isCrit)
 
         elif move.category == 'Special':
-            attackStat = attacker.getStat("spa")
-            defenseStat = target.getStat("spd")
+            attackStat = attacker.getStat("spa", isCrit)
+            defenseStat = target.getStat("spd", isCrit)
 
         basedamage = base_damage(
             attacker.level, move.calculateBasePower(), attackStat, defenseStat)

@@ -1,4 +1,6 @@
-from Moves import * 
+import sys, os
+sys.path.append(os.path.abspath(""))
+from CombatCode.Moves import * 
 
 BattleMovedex = {'10000000voltthunderbolt': {'accuracy': True,
                              'basePower': 195,
