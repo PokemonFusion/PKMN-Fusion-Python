@@ -24,7 +24,8 @@ pokenames = {
     'meowstic-male' : 'meowstic',
     'aegislash-shield' : 'aegislash',
     'pumpkaboo-average' : 'pumpkaboo',
-    'gourgeist-average' : 'gourgeist'
+    'gourgeist-average' : 'gourgeist',
+    'thundurus-incarnate' : 'thundurus'
 
 } #use this dictionary to change the names to what we have in the dictionary. Add new ones as needed.
 

@@ -1,4 +1,6 @@
 import copy, random
+import sys, os
+sys.path.append(os.path.abspath(os.path.join('')))
 from CombatCode.pokemonCombinedDex import BattlePokedex as dex
 class Pokemon:
 
@@ -148,7 +150,7 @@ class Pokemon:
         
         # affection, as an int
         # if bond sticks, this might just be replaced with bond
-        self.affection = 0,
+        self.affection = 0
         
         # moves known, as a dict of dicts
         # each move should have a key of its move data key,
@@ -230,7 +232,7 @@ class Pokemon:
         # take into consideration that the stat may not exist outside of the base form
         entry = self.getDic(species).get(keyName)
         if entry is None and keyName != "baseSpecies":
-            entry = self.getDic(self.getDicEntry("baseSpecies"), species).get(keyName)
+            entry = self.getDic(self.getDicEntry("baseSpecies")).get(keyName)
         # Return the requested dictionary value.
         return entry
     
