@@ -348,4 +348,11 @@ class Pokemon:
         """return a list containing the types"""
         types = self.getDicEntry("types")
         #TODO: Eventually there will be something that changes what type they are, pull from there instead. Odds are just call the species within the getDicEntry
+        #This function needs to exist, there are some abilities/moves/items that modify type that isn't just changing it to a different pokemon
         return types
+
+    def takeDamage(self, damage, species = None) -> int:
+        """Take damage and return current hp"""
+        self.modifyHP(damage * -1, species = species)
+        return self.hp
+

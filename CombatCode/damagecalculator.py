@@ -2,6 +2,7 @@ import random
 from math import floor
 from CombatCode.pokeglobals import Moves, Result
 from CombatCode.elements import ElementEffectiveness as TypeEff
+from CombatCode.battledata import Pokemon
 
 """
  Assumptions:
@@ -79,10 +80,35 @@ def elementTypeTotal(target, move:Moves) -> float:
 
     return effect
 
-def damage_calc(attacker, target, move: Moves) -> Result:
+def damagephrase(target, damage) -> str:
+    maxhp = target.getStat("hp")
+    damper = (damage * 100) / maxhp
+    
+    def dam_name(damper) -> str:
+        if damper >= 100:
+            return "EPIC"
+        elif damper > 75:
+            return "extreme"
+        elif damper > 50:
+            return "heavy"
+        elif damper > 25:
+            return "considerable"
+        elif damper > 15:
+            return "moderate"
+        elif damper > 5:
+            return "light"
+        elif damper > 0:
+            return "puny"
+        else:
+            return "no"
+    return dam_name(damper)
+
+
+def damage_calc(attacker:Pokemon, target:Pokemon, move: Moves) -> Result:
     """Use this for calculating damage fully"""
     # Initial version of this will heavily reference the way I (Yang/Koden) had coded it in MUF
     result = Result()
+    result.debug = {}
     # around here I think is where we would be calling any 'onModifyMove' flags for the ability or move involved
 
     # begin by checking accuracy
@@ -106,8 +132,29 @@ def damage_calc(attacker, target, move: Moves) -> Result:
         
         #TODO: figure out where to put 'onUseMoveMessage' functions.
         damage = basedamage * STAB(attacker, move)
-        typetotal = elementTypeTotal(target, move) 
-        damage = damage * typetotal * crit
+        typetotal = elementTypeTotal(target, move) #hold on to typetotal for the super effective print
+        damage = floor(damage * typetotal * crit)
+        phrase = damagephrase(target, damage)
+
+        #TODO: Substitute would go somewhere around here I think
+        curhp = target.takeDamage(damage)
+
+        
+        result.debug['damage'] = damage
+        effectivePhrase = ""
+
+        if typetotal > 1:
+            effectivePhrase = "it's SUPER EFFECTIVE"
+            if typetotal > 2:
+                effectivePhrase += " x2"
+        elif typetotal == 0:
+            effectivePhrase = "they are immune..."
+        elif typetotal < 1:
+            effectivePhrase = "it's not very effective..."
+            if typetotal  < 0.5:
+                effectivePhrase += " x2"
+
+        result.text = ""
 
     else:
         # TODO: return something for when fails

@@ -1,4 +1,8 @@
+import sys, os
+sys.path.append(os.path.abspath(os.path.join('')))
+import random
 import CombatCode.pokeglobals as pglobals
+import CombatCode.pokemon as pokemon
 
 
 class BattleData:
@@ -38,5 +42,9 @@ class TurnInit:
         self.recharge = recharge  # if pokemon has to recharge, make True
 
 
-class Pokemon:  # may remove this because of it being made somewhere else.
-    pass
+class Pokemon(pokemon.Pokemon):  # may remove this because of it being made somewhere else.
+    
+    def __init__(self, ot, team, slot, species='missingno', nickname=None, gender=None, isEgg=False, level=1, ability=random.choice(['0', '1'])):
+        super().__init__(ot, species=species, nickname=nickname, gender=gender, isEgg=isEgg, level=level, ability=ability)
+        self.position = team + str(slot)
+
