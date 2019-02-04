@@ -130,17 +130,18 @@ def damage_calc(attacker:Pokemon, target:Pokemon, move: Moves) -> Result:
         basedamage = base_damage(
             attacker.level, move.calculateBasePower(), attackStat, defenseStat)
         
-        #TODO: figure out where to put 'onUseMoveMessage' functions.
+        # TODO: figure out where to put 'onUseMoveMessage' functions.
         damage = basedamage * STAB(attacker, move)
-        typetotal = elementTypeTotal(target, move) #hold on to typetotal for the super effective print
+        typetotal = elementTypeTotal(target, move) # hold on to typetotal for the super effective print
         damage = floor(damage * typetotal * crit)
         phrase = damagephrase(target, damage)
 
-        #TODO: Substitute would go somewhere around here I think
+        # TODO: Substitute would go somewhere around here I think
         curhp = target.takeDamage(damage)
 
-        
         result.debug['damage'] = damage
+        result.debug['curhp'] = curhp
+        result.debug['hp_percent'] = curhp/target.getStat("hp")
         effectivePhrase = ""
 
         if typetotal > 1:
@@ -151,14 +152,22 @@ def damage_calc(attacker:Pokemon, target:Pokemon, move: Moves) -> Result:
             effectivePhrase = "they are immune..."
         elif typetotal < 1:
             effectivePhrase = "it's not very effective..."
-            if typetotal  < 0.5:
+            if typetotal < 0.5:
                 effectivePhrase += " x2"
+        critphrase = ""
+        if crit > 1:
+            critphrase = " CRITICAL"  # mind the space
 
-        result.text = ""
+        result.text = \
+            "{attname} uses {movename} against {tarname}, {effective}and deals {damphrase}{crit} damage!".format(
+                attname="{}.{}".format(attacker.position, attacker.getName()),
+                tarname="{}.{}".format(target.position, target.getName()), effective=effectivePhrase,
+                movename=move.name, damphrase=phrase, crit=critphrase
+            )
 
     else:
         # TODO: return something for when fails
-        result.text = "{attname} uses {movename} on {tarname} but it missed!".format(attname="{}.{}".format(
-            attacker.position, attacker.name), movename=move.name, tarname="{}.{}".format(target.position, target.name))
+        result.text = "{attname} uses {movename} against {tarname} but it missed!".format(attname="{}.{}".format(
+            attacker.position, attacker.getName()), movename=move.name, tarname="{}.{}".format(target.position, target.getName))
 
     return result
