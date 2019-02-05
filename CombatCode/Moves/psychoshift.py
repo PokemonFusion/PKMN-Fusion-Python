@@ -1,4 +1,4 @@
-def onPrepareHit (target, source, move):
+def onPrepareHit(datadic : dict):
 	"""function (target, source, move) {
 			if (!source.status) return false;
 			move.status = source.status;
@@ -6,7 +6,7 @@ def onPrepareHit (target, source, move):
 	""" 
 	pass
 
-def onHit (pokemon):
+def onHit(datadic : dict):
 	"""function (pokemon) {
 				pokemon.cureStatus();
 			}

@@ -1,4 +1,4 @@
-def effect (pokemon):
+def effect(datadic : dict):
 	"""function (pokemon) {
 				let conditions = ['attract', 'taunt', 'encore', 'torment', 'disable', 'healblock'];
 				for (const firstCondition of conditions) {
@@ -16,7 +16,7 @@ def effect (pokemon):
 	""" 
 	pass
 
-def onUpdate (pokemon):
+def onUpdate(datadic : dict):
 	"""function (pokemon) {
 			let conditions = ['attract', 'taunt', 'encore', 'torment', 'disable', 'healblock'];
 			for (const firstCondition of conditions) {

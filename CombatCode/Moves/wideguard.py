@@ -1,25 +1,25 @@
-def onTryHitSide (side, source):
+def onTryHitSide(datadic : dict):
 	"""function (side, source) {
 			return this.willAct();
 		}
 	""" 
 	pass
 
-def onHitSide (side, source):
+def onHitSide(datadic : dict):
 	"""function (side, source) {
 			source.addVolatile('stall');
 		}
 	""" 
 	pass
 
-def onStart (target, source):
+def onStart(datadic : dict):
 	"""function (target, source) {
 				this.add('-singleturn', source, 'Wide Guard');
 			}
 	""" 
 	pass
 
-def onTryHit (target, source, move):
+def onTryHit(datadic : dict):
 	"""function (target, source, move) {
 				// Wide Guard blocks all spread moves
 				if (move && move.target !== 'allAdjacent' && move.target !== 'allAdjacentFoes') {

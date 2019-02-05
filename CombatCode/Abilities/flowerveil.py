@@ -1,4 +1,4 @@
-def onAllyBoost (boost, target, source, effect):
+def onAllyBoost(datadic : dict):
 	"""function (boost, target, source, effect) {
 			if ((source && target === source) || !target.hasType('Grass')) return;
 			let showMsg = false;
@@ -15,7 +15,7 @@ def onAllyBoost (boost, target, source, effect):
 	""" 
 	pass
 
-def onAllySetStatus (status, target, source, effect):
+def onAllySetStatus(datadic : dict):
 	"""function (status, target, source, effect) {
 			if (target.hasType('Grass') && source && target !== source && effect) {
 				this.debug('interrupting setStatus with Flower Veil');
@@ -28,7 +28,7 @@ def onAllySetStatus (status, target, source, effect):
 	""" 
 	pass
 
-def onAllyTryAddVolatile (status, target):
+def onAllyTryAddVolatile(datadic : dict):
 	"""function (status, target) {
 			if (target.hasType('Grass') && status.id === 'yawn') {
 				this.debug('Flower Veil blocking yawn');

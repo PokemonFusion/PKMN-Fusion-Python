@@ -1,4 +1,4 @@
-def onTryHit (target):
+def onTryHit(datadic : dict):
 	"""function (target) {
 			if (target.volatiles['substitute']) {
 				this.add('-fail', target, 'move: Substitute');
@@ -12,14 +12,14 @@ def onTryHit (target):
 	""" 
 	pass
 
-def onHit (target):
+def onHit(datadic : dict):
 	"""function (target) {
 			this.directDamage(target.maxhp / 4);
 		}
 	""" 
 	pass
 
-def onStart (target):
+def onStart(datadic : dict):
 	"""function (target) {
 				this.add('-start', target, 'Substitute');
 				this.effectData.hp = Math.floor(target.maxhp / 4);
@@ -28,7 +28,7 @@ def onStart (target):
 	""" 
 	pass
 
-def onTryPrimaryHit (target, source, move):
+def onTryPrimaryHit(datadic : dict):
 	"""function (target, source, move) {
 				if (target === source || move.flags['authentic'] || move.infiltrates) {
 					return;
@@ -66,7 +66,7 @@ def onTryPrimaryHit (target, source, move):
 	""" 
 	pass
 
-def onEnd (target):
+def onEnd(datadic : dict):
 	"""function (target) {
 				this.add('-end', target, 'Substitute');
 			}

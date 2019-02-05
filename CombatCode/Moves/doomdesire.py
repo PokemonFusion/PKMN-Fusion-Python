@@ -1,4 +1,4 @@
-def onTry (source, target):
+def onTry(datadic : dict):
 	"""function (source, target) {
 			target.side.addSideCondition('futuremove');
 			if (target.side.sideConditions['futuremove'].positions[target.position]) {

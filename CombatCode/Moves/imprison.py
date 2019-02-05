@@ -1,11 +1,11 @@
-def onStart (target):
+def onStart(datadic : dict):
 	"""function (target) {
 				this.add('-start', target, 'move: Imprison');
 			}
 	""" 
 	pass
 
-def onFoeDisableMove (pokemon):
+def onFoeDisableMove(datadic : dict):
 	"""function (pokemon) {
 				for (const moveSlot of this.effectData.source.moveSlots) {
 					if (moveSlot.id === 'struggle') continue;
@@ -16,7 +16,7 @@ def onFoeDisableMove (pokemon):
 	""" 
 	pass
 
-def onFoeBeforeMove (attacker, defender, move):
+def onFoeBeforeMove(datadic : dict):
 	"""function (attacker, defender, move) {
 				if (move.id !== 'struggle' && this.effectData.source.hasMove(move.id) && !move.isZ) {
 					this.add('cant', attacker, 'move: Imprison', move);

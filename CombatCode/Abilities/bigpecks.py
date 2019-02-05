@@ -1,4 +1,4 @@
-def onBoost (boost, target, source, effect):
+def onBoost(datadic : dict):
 	"""function (boost, target, source, effect) {
 			if (source && target === source) return;
 			if (boost.def && boost.def < 0) {

@@ -1,4 +1,4 @@
-def onModifyAccuracy (accuracy, target, source, move):
+def onModifyAccuracy(datadic : dict):
 	"""function (accuracy, target, source, move) {
 			if (move.category === 'Status' && typeof move.accuracy === 'number') {
 				this.debug('Wonder Skin - setting accuracy to 50');

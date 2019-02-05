@@ -1,4 +1,4 @@
-def onUpdate (pokemon):
+def onUpdate(datadic : dict):
 	"""function (pokemon) {
 			if (pokemon.hp <= pokemon.maxhp / 4 || (pokemon.hp <= pokemon.maxhp / 2 && pokemon.hasAbility('gluttony'))) {
 				pokemon.eatItem();
@@ -7,7 +7,7 @@ def onUpdate (pokemon):
 	""" 
 	pass
 
-def onEat (pokemon):
+def onEat(datadic : dict):
 	"""function (pokemon) {
 			let stats = [];
 			for (let stat in pokemon.boosts) {

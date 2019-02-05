@@ -1,4 +1,4 @@
-def onResidual (pokemon):
+def onResidual(datadic : dict):
 	"""function (pokemon) {
 			if (pokemon.side.active.length === 1) {
 				return;

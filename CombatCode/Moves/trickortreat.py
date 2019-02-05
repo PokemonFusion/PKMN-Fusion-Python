@@ -1,4 +1,4 @@
-def onHit (target):
+def onHit(datadic : dict):
 	"""function (target) {
 			if (target.hasType('Ghost')) return false;
 			if (!target.addType('Ghost')) return false;

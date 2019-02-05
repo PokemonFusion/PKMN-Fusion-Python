@@ -1,4 +1,4 @@
-def onStart (pokemon):
+def onStart(datadic : dict):
 	"""function (pokemon) {
 			let totaldef = 0;
 			let totalspd = 0;

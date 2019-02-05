@@ -1,4 +1,4 @@
-def onStart (target):
+def onStart(datadic : dict):
 	"""function (target) {
 				let noEncore = ['assist', 'copycat', 'encore', 'mefirst', 'metronome', 'mimic', 'mirrormove', 'naturepower', 'sketch', 'sleeptalk', 'struggle', 'transform'];
 				let moveIndex = target.lastMove ? target.moves.indexOf(target.lastMove.id) : -1;
@@ -16,14 +16,14 @@ def onStart (target):
 	""" 
 	pass
 
-def onOverrideAction (pokemon, target, move):
+def onOverrideAction(datadic : dict):
 	"""function (pokemon, target, move) {
 				if (move.id !== this.effectData.move) return this.effectData.move;
 			}
 	""" 
 	pass
 
-def onResidual (target):
+def onResidual(datadic : dict):
 	"""function (target) {
 				if (target.moves.includes(this.effectData.move) && target.moveSlots[target.moves.indexOf(this.effectData.move)].pp <= 0) { // early termination if you run out of PP
 					delete target.volatiles.encore;
@@ -33,14 +33,14 @@ def onResidual (target):
 	""" 
 	pass
 
-def onEnd (target):
+def onEnd(datadic : dict):
 	"""function (target) {
 				this.add('-end', target, 'Encore');
 			}
 	""" 
 	pass
 
-def onDisableMove (pokemon):
+def onDisableMove(datadic : dict):
 	"""function (pokemon) {
 				if (!this.effectData.move || !pokemon.hasMove(this.effectData.move)) {
 					return;

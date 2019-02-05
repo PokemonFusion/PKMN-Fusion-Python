@@ -1,4 +1,4 @@
-def onHit (target, source, effect):
+def onHit(datadic : dict):
 	"""function (target, source, effect) {
 			let moves = [];
 			for (let i in exports.BattleMovedex) {

@@ -1,4 +1,4 @@
-def onFoeTrapPokemon (pokemon):
+def onFoeTrapPokemon(datadic : dict):
 	"""function (pokemon) {
 			if (!this.isAdjacent(pokemon, this.effectData.target)) return;
 			if (pokemon.isGrounded()) {
@@ -8,7 +8,7 @@ def onFoeTrapPokemon (pokemon):
 	""" 
 	pass
 
-def onFoeMaybeTrapPokemon (pokemon, source):
+def onFoeMaybeTrapPokemon(datadic : dict):
 	"""function (pokemon, source) {
 			if (!source) source = this.effectData.target;
 			if (!this.isAdjacent(pokemon, source)) return;

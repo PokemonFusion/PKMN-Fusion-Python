@@ -1,4 +1,4 @@
-def onSourceModifyDamage (damage, source, target, move):
+def onSourceModifyDamage(datadic : dict):
 	"""function (damage, source, target, move) {
 				if (['stomp', 'steamroller', 'bodyslam', 'flyingpress', 'dragonrush', 'heatcrash', 'heavyslam', 'maliciousmoonsault'].includes(move.id)) {
 					return this.chainModify(2);
@@ -7,7 +7,7 @@ def onSourceModifyDamage (damage, source, target, move):
 	""" 
 	pass
 
-def onAccuracy (accuracy, target, source, move):
+def onAccuracy(datadic : dict):
 	"""function (accuracy, target, source, move) {
 				if (['stomp', 'steamroller', 'bodyslam', 'flyingpress', 'dragonrush', 'heatcrash', 'heavyslam', 'maliciousmoonsault'].includes(move.id)) {
 					return true;

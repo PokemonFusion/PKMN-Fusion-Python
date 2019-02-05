@@ -1,4 +1,4 @@
-def onModifyPriority (priority, pokemon):
+def onModifyPriority(datadic : dict):
 	"""function (priority, pokemon) {
 			return Math.round(priority) - 0.1;
 		}

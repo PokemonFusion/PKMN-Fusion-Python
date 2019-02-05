@@ -1,4 +1,4 @@
-def onStart (source):
+def onStart(datadic : dict):
 	"""function (source) {
 			this.setTerrain('electricterrain');
 		}

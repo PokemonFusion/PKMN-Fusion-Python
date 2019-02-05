@@ -1,4 +1,4 @@
-def onAfterMoveSecondary (target, source, move):
+def onAfterMoveSecondary(datadic : dict):
 	"""function (target, source, move) {
 			if (source && source !== target && source.hp && target.hp && move && move.category !== 'Status') {
 				if (!source.isActive || !this.canSwitch(source.side) || source.forceSwitchFlag || target.forceSwitchFlag) return;

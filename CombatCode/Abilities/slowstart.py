@@ -1,11 +1,11 @@
-def onStart (pokemon):
+def onStart(datadic : dict):
 	"""function (pokemon) {
 			pokemon.addVolatile('slowstart');
 		}
 	""" 
 	pass
 
-def onEnd (pokemon):
+def onEnd(datadic : dict):
 	"""function (pokemon) {
 			delete pokemon.volatiles['slowstart'];
 			this.add('-end', pokemon, 'Slow Start', '[silent]');
@@ -13,28 +13,28 @@ def onEnd (pokemon):
 	""" 
 	pass
 
-def onStart (target):
+def onStart(datadic : dict):
 	"""function (target) {
 				this.add('-start', target, 'ability: Slow Start');
 			}
 	""" 
 	pass
 
-def onModifyAtk (atk, pokemon):
+def onModifyAtk(datadic : dict):
 	"""function (atk, pokemon) {
 				return this.chainModify(0.5);
 			}
 	""" 
 	pass
 
-def onModifySpe (spe, pokemon):
+def onModifySpe(datadic : dict):
 	"""function (spe, pokemon) {
 				return this.chainModify(0.5);
 			}
 	""" 
 	pass
 
-def onEnd (target):
+def onEnd(datadic : dict):
 	"""function (target) {
 				this.add('-end', target, 'Slow Start');
 			}

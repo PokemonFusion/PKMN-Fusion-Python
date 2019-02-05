@@ -1,4 +1,4 @@
-def onTryHit (pokemon, target, move):
+def onTryHit(datadic : dict):
 	"""function (pokemon, target, move) {
 			if (!this.canSwitch(pokemon.side)) {
 				delete move.selfdestruct;
@@ -8,7 +8,7 @@ def onTryHit (pokemon, target, move):
 	""" 
 	pass
 
-def onStart (side, source):
+def onStart(datadic : dict):
 	"""function (side, source) {
 				this.debug('Lunar Dance started on ' + side.name);
 				this.effectData.positions = [];
@@ -20,14 +20,14 @@ def onStart (side, source):
 	""" 
 	pass
 
-def onRestart (side, source):
+def onRestart(datadic : dict):
 	"""function (side, source) {
 				this.effectData.positions[source.position] = true;
 			}
 	""" 
 	pass
 
-def onSwitchIn (target):
+def onSwitchIn(datadic : dict):
 	"""function (target) {
 				const positions = /**@type {boolean[]} */ (this.effectData.positions);
 				if (target.position !== this.effectData.sourcePosition) {

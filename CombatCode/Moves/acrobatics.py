@@ -1,4 +1,4 @@
-def basePowerCallback (pokemon, target, move):
+def basePowerCallback(datadic : dict):
 	"""function (pokemon, target, move) {
 			if (!pokemon.item) {
 				this.debug("Power doubled for no item");

@@ -1,4 +1,4 @@
-def onSourceTryPrimaryHit (target, source, move):
+def onSourceTryPrimaryHit(datadic : dict):
 	"""function (target, source, move) {
 			if (target === source || move.category === 'Status') return;
 			if (move.type === 'Psychic') {

@@ -1,4 +1,4 @@
-def onModifyMove (move):
+def onModifyMove(datadic : dict):
 	"""function (move) {
 			move.stab = 2;
 		}

@@ -1,11 +1,11 @@
-def beforeTurnCallback (pokemon):
+def beforeTurnCallback(datadic : dict):
 	"""function (pokemon) {
 			pokemon.addVolatile('shelltrap');
 		}
 	""" 
 	pass
 
-def beforeMoveCallback (pokemon):
+def beforeMoveCallback(datadic : dict):
 	"""function (pokemon) {
 			if (pokemon.volatiles['shelltrap'] && !pokemon.volatiles['shelltrap'].gotHit) {
 				this.add('cant', pokemon, 'Shell Trap', 'Shell Trap');
@@ -15,14 +15,14 @@ def beforeMoveCallback (pokemon):
 	""" 
 	pass
 
-def onStart (pokemon):
+def onStart(datadic : dict):
 	"""function (pokemon) {
 				this.add('-singleturn', pokemon, 'move: Shell Trap');
 			}
 	""" 
 	pass
 
-def onHit (pokemon, source, move):
+def onHit(datadic : dict):
 	"""function (pokemon, source, move) {
 				if (pokemon.side !== source.side && move.category === 'Physical') {
 					pokemon.volatiles['shelltrap'].gotHit = true;

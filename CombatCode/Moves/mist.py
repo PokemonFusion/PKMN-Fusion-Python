@@ -1,4 +1,4 @@
-def onBoost (boost, target, source, effect):
+def onBoost(datadic : dict):
 	"""function (boost, target, source, effect) {
 				if (source && target !== source && (!effect.infiltrates || target.side === source.side)) {
 					let showMsg = false;
@@ -16,14 +16,14 @@ def onBoost (boost, target, source, effect):
 	""" 
 	pass
 
-def onStart (side):
+def onStart(datadic : dict):
 	"""function (side) {
 				this.add('-sidestart', side, 'Mist');
 			}
 	""" 
 	pass
 
-def onEnd (side):
+def onEnd(datadic : dict):
 	"""function (side) {
 				this.add('-sideend', side, 'Mist');
 			}

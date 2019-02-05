@@ -1,11 +1,11 @@
-def onTryHit (pokemon):
+def onTryHit(datadic : dict):
 	"""function (pokemon) {
 			if (pokemon.volatiles['stockpile'] && pokemon.volatiles['stockpile'].layers >= 3) return false;
 		}
 	""" 
 	pass
 
-def onStart (target):
+def onStart(datadic : dict):
 	"""function (target) {
 				this.effectData.layers = 1;
 				this.add('-start', target, 'stockpile' + this.effectData.layers);
@@ -14,7 +14,7 @@ def onStart (target):
 	""" 
 	pass
 
-def onRestart (target):
+def onRestart(datadic : dict):
 	"""function (target) {
 				if (this.effectData.layers >= 3) return false;
 				this.effectData.layers++;
@@ -24,7 +24,7 @@ def onRestart (target):
 	""" 
 	pass
 
-def onEnd (target):
+def onEnd(datadic : dict):
 	"""function (target) {
 				let layers = this.effectData.layers * -1;
 				this.effectData.layers = 0;

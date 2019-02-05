@@ -1,4 +1,4 @@
-def onPrepareHit (source, target, move):
+def onPrepareHit(datadic : dict):
 	"""function (source, target, move) {
 			if (['iceball', 'rollout'].includes(move.id)) return;
 			if (move.category !== 'Status' && !move.selfdestruct && !move.multihit && !move.flags['charge'] && !move.spreadHit && !move.isZ) {
@@ -9,14 +9,14 @@ def onPrepareHit (source, target, move):
 	""" 
 	pass
 
-def onBasePower (basePower, pokemon, target, move):
+def onBasePower(datadic : dict):
 	"""function (basePower, pokemon, target, move) {
 			if (move.multihitType === 'parentalbond' && move.hit > 1) return this.chainModify(0.25);
 		}
 	""" 
 	pass
 
-def onSourceModifySecondaries (secondaries, target, source, move):
+def onSourceModifySecondaries(datadic : dict):
 	"""function (secondaries, target, source, move) {
 			if (move.multihitType === 'parentalbond' && move.id === 'secretpower' && move.hit < 2) {
 				// hack to prevent accidentally suppressing King's Rock/Razor Fang

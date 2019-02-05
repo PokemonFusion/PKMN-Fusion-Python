@@ -1,4 +1,4 @@
-def onBasePower (basePower, user, target, move):
+def onBasePower(datadic : dict):
 	"""function (basePower, user, target, move) {
 			if (move.type === 'Ghost') {
 				return this.chainModify([0x1333, 0x1000]);
@@ -7,7 +7,7 @@ def onBasePower (basePower, user, target, move):
 	""" 
 	pass
 
-def onTakeItem (item, pokemon, source):
+def onTakeItem(datadic : dict):
 	"""function (item, pokemon, source) {
 			if ((source && source.baseTemplate.num === 493) || pokemon.baseTemplate.num === 493) {
 				return False;

@@ -1,4 +1,4 @@
-def basePowerCallback (source, target, move):
+def basePowerCallback(datadic : dict):
 	"""function (source, target, move) {
 			const callerMoveId = move.sourceEffect || move.id;
 			const moveSlot = callerMoveId === 'instruct' ? source.getMoveData(move.id) : source.getMoveData(callerMoveId);

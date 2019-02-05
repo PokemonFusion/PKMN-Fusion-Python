@@ -1,4 +1,4 @@
-def onAllyAfterUseItem (item, pokemon):
+def onAllyAfterUseItem(datadic : dict):
 	"""function (item, pokemon) {
 			let source = this.effectData.target;
 			let myItem = source.takeItem();

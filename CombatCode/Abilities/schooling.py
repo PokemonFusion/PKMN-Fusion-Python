@@ -1,4 +1,4 @@
-def onStart (pokemon):
+def onStart(datadic : dict):
 	"""function (pokemon) {
 			if (pokemon.baseTemplate.baseSpecies !== 'Wishiwashi' || pokemon.level < 20 || pokemon.transformed) return;
 			if (pokemon.hp > pokemon.maxhp / 4) {
@@ -14,7 +14,7 @@ def onStart (pokemon):
 	""" 
 	pass
 
-def onResidual (pokemon):
+def onResidual(datadic : dict):
 	"""function (pokemon) {
 			if (pokemon.baseTemplate.baseSpecies !== 'Wishiwashi' || pokemon.level < 20 || pokemon.transformed || !pokemon.hp) return;
 			if (pokemon.hp > pokemon.maxhp / 4) {

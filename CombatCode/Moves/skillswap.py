@@ -1,4 +1,4 @@
-def onTryHit (target, source):
+def onTryHit(datadic : dict):
 	"""function (target, source) {
 			let bannedAbilities = ['battlebond', 'comatose', 'disguise', 'illusion', 'multitype', 'powerconstruct', 'rkssystem', 'schooling', 'shieldsdown', 'stancechange', 'wonderguard'];
 			if (bannedAbilities.includes(target.ability) || bannedAbilities.includes(source.ability)) {
@@ -8,7 +8,7 @@ def onTryHit (target, source):
 	""" 
 	pass
 
-def onHit (target, source, move):
+def onHit(datadic : dict):
 	"""function (target, source, move) {
 			let targetAbility = this.getAbility(target.ability);
 			let sourceAbility = this.getAbility(source.ability);

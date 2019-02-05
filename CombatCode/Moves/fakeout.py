@@ -1,4 +1,4 @@
-def onTry (pokemon, target):
+def onTry(datadic : dict):
 	"""function (pokemon, target) {
 			if (pokemon.activeTurns > 1) {
 				this.attrLastMove('[still]');

@@ -1,4 +1,4 @@
-def onResidual (pokemon):
+def onResidual(datadic : dict):
 	"""function (pokemon) {
 			if (this.isTerrain('grassyterrain')) return;
 			if (pokemon.hasType('Poison')) {
@@ -10,7 +10,7 @@ def onResidual (pokemon):
 	""" 
 	pass
 
-def onTerrain (pokemon):
+def onTerrain(datadic : dict):
 	"""function (pokemon) {
 			if (!this.isTerrain('grassyterrain')) return;
 			if (pokemon.hasType('Poison')) {

@@ -1,4 +1,4 @@
-def onModifySpe (spe, pokemon):
+def onModifySpe(datadic : dict):
 	"""function (spe, pokemon) {
 			if (this.isWeather('sandstorm')) {
 				return this.chainModify(2);
@@ -7,7 +7,7 @@ def onModifySpe (spe, pokemon):
 	""" 
 	pass
 
-def onImmunity (type, pokemon):
+def onImmunity(datadic : dict):
 	"""function (type, pokemon) {
 			if (type === 'sandstorm') return false;
 		}

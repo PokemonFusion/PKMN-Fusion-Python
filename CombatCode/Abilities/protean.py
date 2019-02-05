@@ -1,4 +1,4 @@
-def onPrepareHit (source, target, move):
+def onPrepareHit(datadic : dict):
 	"""function (source, target, move) {
 			if (move.hasBounced) return;
 			let type = move.type;

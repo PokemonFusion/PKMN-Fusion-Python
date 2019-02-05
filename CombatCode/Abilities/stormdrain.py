@@ -1,4 +1,4 @@
-def onTryHit (target, source, move):
+def onTryHit(datadic : dict):
 	"""function (target, source, move) {
 			if (target !== source && move.type === 'Water') {
 				if (!this.boost({spa: 1})) {
@@ -10,7 +10,7 @@ def onTryHit (target, source, move):
 	""" 
 	pass
 
-def onAnyRedirectTarget (target, source, source2, move):
+def onAnyRedirectTarget(datadic : dict):
 	"""function (target, source, source2, move) {
 			if (move.type !== 'Water' || ['firepledge', 'grasspledge', 'waterpledge'].includes(move.id)) return;
 			if (this.validTarget(this.effectData.target, source, move.target)) {

@@ -1,4 +1,4 @@
-def onTryHit (target, pokemon):
+def onTryHit(datadic : dict):
 	"""function (target, pokemon) {
 			let action = this.willMove(target);
 			if (action) {
@@ -17,7 +17,7 @@ def onTryHit (target, pokemon):
 	""" 
 	pass
 
-def onBasePower (basePower):
+def onBasePower(datadic : dict):
 	"""function (basePower) {
 				return this.chainModify(1.5);
 			}

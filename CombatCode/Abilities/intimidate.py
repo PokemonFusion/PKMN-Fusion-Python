@@ -1,4 +1,4 @@
-def onStart (pokemon):
+def onStart(datadic : dict):
 	"""function (pokemon) {
 			let activated = false;
 			for (const target of pokemon.side.foe.active) {

@@ -1,4 +1,4 @@
-def onTryMove (attacker, defender, move):
+def onTryMove(datadic : dict):
 	"""function (attacker, defender, move) {
 			if (attacker.removeVolatile(move.id)) {
 				return;

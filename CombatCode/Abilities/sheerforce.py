@@ -1,4 +1,4 @@
-def onModifyMove (move, pokemon):
+def onModifyMove(datadic : dict):
 	"""function (move, pokemon) {
 			if (move.secondaries) {
 				delete move.secondaries;
@@ -11,7 +11,7 @@ def onModifyMove (move, pokemon):
 	""" 
 	pass
 
-def onBasePower (basePower, pokemon, target, move):
+def onBasePower(datadic : dict):
 	"""function (basePower, pokemon, target, move) {
 			if (move.hasSheerForce) return this.chainModify([0x14CD, 0x1000]);
 		}

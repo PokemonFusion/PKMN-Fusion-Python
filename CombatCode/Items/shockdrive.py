@@ -1,4 +1,4 @@
-def onTakeItem (item, pokemon, source):
+def onTakeItem(datadic : dict):
 	"""function (item, pokemon, source) {
 			if ((source && source.baseTemplate.num === 649) || pokemon.baseTemplate.num === 649) {
 				return False;

@@ -1,4 +1,4 @@
-def onStart (pokemon):
+def onStart(datadic : dict):
 	"""function (pokemon) {
 			if (pokemon.baseTemplate.baseSpecies !== 'Minior' || pokemon.transformed) return;
 			if (pokemon.hp > pokemon.maxhp / 2) {
@@ -14,7 +14,7 @@ def onStart (pokemon):
 	""" 
 	pass
 
-def onResidual (pokemon):
+def onResidual(datadic : dict):
 	"""function (pokemon) {
 			if (pokemon.baseTemplate.baseSpecies !== 'Minior' || pokemon.transformed || !pokemon.hp) return;
 			if (pokemon.hp > pokemon.maxhp / 2) {
@@ -30,7 +30,7 @@ def onResidual (pokemon):
 	""" 
 	pass
 
-def onSetStatus (status, target, source, effect):
+def onSetStatus(datadic : dict):
 	"""function (status, target, source, effect) {
 			if (target.template.speciesid !== 'miniormeteor' || target.transformed) return;
 			if (!effect || !effect.status) return false;
@@ -40,7 +40,7 @@ def onSetStatus (status, target, source, effect):
 	""" 
 	pass
 
-def onTryAddVolatile (status, target):
+def onTryAddVolatile(datadic : dict):
 	"""function (status, target) {
 			if (target.template.speciesid !== 'miniormeteor' || target.transformed) return;
 			if (status.id !== 'yawn') return;

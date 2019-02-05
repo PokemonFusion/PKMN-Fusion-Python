@@ -1,4 +1,4 @@
-def onStart (target):
+def onStart(datadic : dict):
 	"""function (target) {
 				if (target.activeTurns && !this.willMove(target)) {
 					this.effectData.duration++;
@@ -8,14 +8,14 @@ def onStart (target):
 	""" 
 	pass
 
-def onEnd (target):
+def onEnd(datadic : dict):
 	"""function (target) {
 				this.add('-end', target, 'move: Taunt');
 			}
 	""" 
 	pass
 
-def onDisableMove (pokemon):
+def onDisableMove(datadic : dict):
 	"""function (pokemon) {
 				for (const moveSlot of pokemon.moveSlots) {
 					if (this.getMove(moveSlot.id).category === 'Status') {
@@ -26,7 +26,7 @@ def onDisableMove (pokemon):
 	""" 
 	pass
 
-def onBeforeMove (attacker, defender, move):
+def onBeforeMove(datadic : dict):
 	"""function (attacker, defender, move) {
 				if (!move.isZ && move.category === 'Status') {
 					this.add('cant', attacker, 'move: Taunt', move);

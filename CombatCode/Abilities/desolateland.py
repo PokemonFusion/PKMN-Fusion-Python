@@ -1,18 +1,18 @@
-def onStart (source):
+def onStart(datadic : dict):
 	"""function (source) {
 			this.setWeather('desolateland');
 		}
 	""" 
 	pass
 
-def onAnySetWeather (target, source, weather):
+def onAnySetWeather(datadic : dict):
 	"""function (target, source, weather) {
 			if (this.getWeather().id === 'desolateland' && !['desolateland', 'primordialsea', 'deltastream'].includes(weather.id)) return false;
 		}
 	""" 
 	pass
 
-def onEnd (pokemon):
+def onEnd(datadic : dict):
 	"""function (pokemon) {
 			if (this.weatherData.source !== pokemon) return;
 			for (const side of this.sides) {

@@ -1,4 +1,4 @@
-def onAllySetStatus (status, target, source, effect):
+def onAllySetStatus(datadic : dict):
 	"""function (status, target, source, effect) {
 			if (status.id === 'slp') {
 				this.debug('Sweet Veil interrupts sleep');
@@ -9,7 +9,7 @@ def onAllySetStatus (status, target, source, effect):
 	""" 
 	pass
 
-def onAllyTryAddVolatile (status, target):
+def onAllyTryAddVolatile(datadic : dict):
 	"""function (status, target) {
 			if (status.id === 'yawn') {
 				this.debug('Sweet Veil blocking yawn');

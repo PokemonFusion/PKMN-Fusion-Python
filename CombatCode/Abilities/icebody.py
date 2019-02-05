@@ -1,4 +1,4 @@
-def onWeather (target, source, effect):
+def onWeather(datadic : dict):
 	"""function (target, source, effect) {
 			if (effect.id === 'hail') {
 				this.heal(target.maxhp / 16);
@@ -7,7 +7,7 @@ def onWeather (target, source, effect):
 	""" 
 	pass
 
-def onImmunity (type, pokemon):
+def onImmunity(datadic : dict):
 	"""function (type, pokemon) {
 			if (type === 'hail') return false;
 		}

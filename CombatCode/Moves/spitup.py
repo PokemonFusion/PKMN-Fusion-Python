@@ -1,4 +1,4 @@
-def basePowerCallback (pokemon):
+def basePowerCallback(datadic : dict):
 	"""function (pokemon) {
 			if (!pokemon.volatiles['stockpile'] || !pokemon.volatiles['stockpile'].layers) return false;
 			return pokemon.volatiles['stockpile'].layers * 100;
@@ -6,7 +6,7 @@ def basePowerCallback (pokemon):
 	""" 
 	pass
 
-def onTry (pokemon):
+def onTry(datadic : dict):
 	"""function (pokemon) {
 			if (!pokemon.volatiles['stockpile']) {
 				return false;
@@ -15,7 +15,7 @@ def onTry (pokemon):
 	""" 
 	pass
 
-def onAfterMove (pokemon):
+def onAfterMove(datadic : dict):
 	"""function (pokemon) {
 			pokemon.removeVolatile('stockpile');
 		}

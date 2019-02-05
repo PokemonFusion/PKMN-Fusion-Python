@@ -1,4 +1,4 @@
-def durationCallback (source, effect):
+def durationCallback(datadic : dict):
 	"""function (source, effect) {
 				if (source && source.hasItem('terrainextender')) {
 					return 8;
@@ -8,7 +8,7 @@ def durationCallback (source, effect):
 	""" 
 	pass
 
-def onTryHit (target, source, effect):
+def onTryHit(datadic : dict):
 	"""function (target, source, effect) {
 				if (!target.isGrounded() || target.isSemiInvulnerable() || target.side === source.side) return;
 				if (effect && (effect.priority <= 0.1 || effect.target === 'self')) {
@@ -20,7 +20,7 @@ def onTryHit (target, source, effect):
 	""" 
 	pass
 
-def onBasePower (basePower, attacker, defender, move):
+def onBasePower(datadic : dict):
 	"""function (basePower, attacker, defender, move) {
 				if (move.type === 'Psychic' && attacker.isGrounded() && !attacker.isSemiInvulnerable()) {
 					this.debug('psychic terrain boost');
@@ -30,7 +30,7 @@ def onBasePower (basePower, attacker, defender, move):
 	""" 
 	pass
 
-def onStart (battle, source, effect):
+def onStart(datadic : dict):
 	"""function (battle, source, effect) {
 				if (effect && effect.effectType === 'Ability') {
 					this.add('-fieldstart', 'move: Psychic Terrain', '[from] ability: ' + effect, '[of] ' + source);
@@ -41,7 +41,7 @@ def onStart (battle, source, effect):
 	""" 
 	pass
 
-def onEnd ():
+def onEnd(datadic : dict):
 	"""function () {
 				this.add('-fieldend', 'move: Psychic Terrain');
 			}

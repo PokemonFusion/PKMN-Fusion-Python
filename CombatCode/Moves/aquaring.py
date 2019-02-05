@@ -1,11 +1,11 @@
-def onStart (pokemon):
+def onStart(datadic : dict):
 	"""function (pokemon) {
 				this.add('-start', pokemon, 'Aqua Ring');
 			}
 	""" 
 	pass
 
-def onResidual (pokemon):
+def onResidual(datadic : dict):
 	"""function (pokemon) {
 				this.heal(pokemon.maxhp / 16);
 			}

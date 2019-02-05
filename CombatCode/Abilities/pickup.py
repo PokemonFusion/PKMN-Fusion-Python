@@ -1,4 +1,4 @@
-def onResidual (pokemon):
+def onResidual(datadic : dict):
 	"""function (pokemon) {
 			if (pokemon.item) return;
 			let pickupTargets = [];

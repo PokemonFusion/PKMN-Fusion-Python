@@ -1,4 +1,4 @@
-def onSourceModifyAccuracy (accuracy, target):
+def onSourceModifyAccuracy(datadic : dict):
 	"""function (accuracy, target) {
 			if (typeof accuracy === 'number' && !this.willMove(target)) {
 				this.debug('Zoom Lens boosting accuracy');

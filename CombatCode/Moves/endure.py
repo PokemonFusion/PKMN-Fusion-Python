@@ -1,25 +1,25 @@
-def onTryHit (pokemon):
+def onTryHit(datadic : dict):
 	"""function (pokemon) {
 			return this.willAct() && this.runEvent('StallMove', pokemon);
 		}
 	""" 
 	pass
 
-def onHit (pokemon):
+def onHit(datadic : dict):
 	"""function (pokemon) {
 			pokemon.addVolatile('stall');
 		}
 	""" 
 	pass
 
-def onStart (target):
+def onStart(datadic : dict):
 	"""function (target) {
 				this.add('-singleturn', target, 'move: Endure');
 			}
 	""" 
 	pass
 
-def onDamage (damage, target, source, effect):
+def onDamage(datadic : dict):
 	"""function (damage, target, source, effect) {
 				if (effect && effect.effectType === 'Move' && damage >= target.hp) {
 					this.add('-activate', target, 'move: Endure');

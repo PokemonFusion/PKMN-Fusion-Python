@@ -1,11 +1,11 @@
-def damageCallback (pokemon, target):
+def damageCallback(datadic : dict):
 	"""function (pokemon, target) {
 			return target.hp - pokemon.hp;
 		}
 	""" 
 	pass
 
-def onTry (pokemon, target):
+def onTry(datadic : dict):
 	"""function (pokemon, target) {
 			if (pokemon.hp >= target.hp) {
 				this.add('-immune', target);

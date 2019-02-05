@@ -1,18 +1,18 @@
-def onHit (pokemon):
+def onHit(datadic : dict):
 	"""function (pokemon) {
 			this.add('-activate', pokemon, 'move: Charge');
 		}
 	""" 
 	pass
 
-def onRestart (pokemon):
+def onRestart(datadic : dict):
 	"""function (pokemon) {
 				this.effectData.duration = 2;
 			}
 	""" 
 	pass
 
-def onBasePower (basePower, attacker, defender, move):
+def onBasePower(datadic : dict):
 	"""function (basePower, attacker, defender, move) {
 				if (move.type === 'Electric') {
 					this.debug('charge boost');

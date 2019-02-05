@@ -1,25 +1,25 @@
-def onTryHit (pokemon):
+def onTryHit(datadic : dict):
 	"""function (pokemon) {
 			return !!this.willAct() && this.runEvent('StallMove', pokemon);
 		}
 	""" 
 	pass
 
-def onHit (pokemon):
+def onHit(datadic : dict):
 	"""function (pokemon) {
 			pokemon.addVolatile('stall');
 		}
 	""" 
 	pass
 
-def onStart (target):
+def onStart(datadic : dict):
 	"""function (target) {
 				this.add('-singleturn', target, 'Protect');
 			}
 	""" 
 	pass
 
-def onTryHit (target, source, move):
+def onTryHit(datadic : dict):
 	"""function (target, source, move) {
 				if (!move.flags['protect'] || move.category === 'Status') {
 					if (move.isZ) move.zBrokeProtect = true;
@@ -42,7 +42,7 @@ def onTryHit (target, source, move):
 	""" 
 	pass
 
-def onHit (target, source, move):
+def onHit(datadic : dict):
 	"""function (target, source, move) {
 				if (move.isZPowered && move.flags['contact']) {
 					this.boost({atk: -2}, source, target, this.getMove("King's Shield"));

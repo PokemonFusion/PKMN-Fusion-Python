@@ -1,4 +1,4 @@
-def onModifySpD (spd, pokemon):
+def onModifySpD(datadic : dict):
 	"""function (spd, pokemon) {
 			if (pokemon.baseTemplate.species === 'Clamperl') {
 				return this.chainModify(2);

@@ -1,18 +1,18 @@
-def onStart (pokemon):
+def onStart(datadic : dict):
 	"""function (pokemon) {
 				this.add('-start', pokemon, 'Torment');
 			}
 	""" 
 	pass
 
-def onEnd (pokemon):
+def onEnd(datadic : dict):
 	"""function (pokemon) {
 				this.add('-end', pokemon, 'Torment');
 			}
 	""" 
 	pass
 
-def onDisableMove (pokemon):
+def onDisableMove(datadic : dict):
 	"""function (pokemon) {
 				if (pokemon.lastMove && pokemon.lastMove.id !== 'struggle') pokemon.disableMove(pokemon.lastMove.id);
 			}

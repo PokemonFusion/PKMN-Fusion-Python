@@ -1,4 +1,4 @@
-def onHit (target, source, move):
+def onHit(datadic : dict):
 	"""function (target, source, move) {
 			if (!target.hp) return;
 			if (move && move.effectType === 'Move' && move.crit) {

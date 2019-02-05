@@ -1,4 +1,4 @@
-def durationCallback (source, effect):
+def durationCallback(datadic : dict):
 	"""function (source, effect) {
 				if (source && source.hasItem('terrainextender')) {
 					return 8;
@@ -8,7 +8,7 @@ def durationCallback (source, effect):
 	""" 
 	pass
 
-def onSetStatus (status, target, source, effect):
+def onSetStatus(datadic : dict):
 	"""function (status, target, source, effect) {
 				if (!target.isGrounded() || target.isSemiInvulnerable()) return;
 				if (effect && effect.status) {
@@ -19,7 +19,7 @@ def onSetStatus (status, target, source, effect):
 	""" 
 	pass
 
-def onTryAddVolatile (status, target, source, effect):
+def onTryAddVolatile(datadic : dict):
 	"""function (status, target, source, effect) {
 				if (!target.isGrounded() || target.isSemiInvulnerable()) return;
 				if (status.id === 'confusion') {
@@ -30,7 +30,7 @@ def onTryAddVolatile (status, target, source, effect):
 	""" 
 	pass
 
-def onBasePower (basePower, attacker, defender, move):
+def onBasePower(datadic : dict):
 	"""function (basePower, attacker, defender, move) {
 				if (move.type === 'Dragon' && defender.isGrounded() && !defender.isSemiInvulnerable()) {
 					this.debug('misty terrain weaken');
@@ -40,7 +40,7 @@ def onBasePower (basePower, attacker, defender, move):
 	""" 
 	pass
 
-def onStart (battle, source, effect):
+def onStart(datadic : dict):
 	"""function (battle, source, effect) {
 				if (effect && effect.effectType === 'Ability') {
 					this.add('-fieldstart', 'move: Misty Terrain', '[from] ability: ' + effect, '[of] ' + source);
@@ -51,7 +51,7 @@ def onStart (battle, source, effect):
 	""" 
 	pass
 
-def onEnd (side):
+def onEnd(datadic : dict):
 	"""function (side) {
 				this.add('-fieldend', 'Misty Terrain');
 			}

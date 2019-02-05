@@ -1,4 +1,4 @@
-def basePowerCallback (pokemon, target, move):
+def basePowerCallback(datadic : dict):
 	"""function (pokemon, target, move) {
 			return 10 * move.hit;
 		}

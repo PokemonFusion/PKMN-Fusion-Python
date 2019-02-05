@@ -1,4 +1,4 @@
-def onHit (target, source):
+def onHit(datadic : dict):
 	"""function (target, source) {
 			let disallowedMoves = ['chatter', 'sketch', 'struggle'];
 			if (source.transformed || !target.lastMove || disallowedMoves.includes(target.lastMove.id) || source.moves.indexOf(target.lastMove.id) >= 0 || target.lastMove.isZ) return false;

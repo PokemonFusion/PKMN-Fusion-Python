@@ -1,4 +1,4 @@
-def onSwitchIn (pokemon):
+def onSwitchIn(datadic : dict):
 	"""function (pokemon) {
 			if (pokemon.isActive && pokemon.baseTemplate.species === 'Kyogre') {
 				this.insertQueue({pokemon: pokemon, choice: 'runPrimal'});
@@ -7,14 +7,14 @@ def onSwitchIn (pokemon):
 	""" 
 	pass
 
-def onPrimal (pokemon):
+def onPrimal(datadic : dict):
 	"""function (pokemon) {
 			pokemon.formeChange('Kyogre-Primal', this.effect, True);
 		}
 	""" 
 	pass
 
-def onTakeItem (item, source):
+def onTakeItem(datadic : dict):
 	"""function (item, source) {
 			if (source.baseTemplate.baseSpecies === 'Kyogre') return False;
 			return True;

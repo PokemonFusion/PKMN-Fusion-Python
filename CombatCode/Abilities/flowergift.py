@@ -1,11 +1,11 @@
-def onStart (pokemon):
+def onStart(datadic : dict):
 	"""function (pokemon) {
 			delete this.effectData.forme;
 		}
 	""" 
 	pass
 
-def onUpdate (pokemon):
+def onUpdate(datadic : dict):
 	"""function (pokemon) {
 			if (!pokemon.isActive || pokemon.baseTemplate.baseSpecies !== 'Cherrim' || pokemon.transformed) return;
 			if (this.isWeather(['sunnyday', 'desolateland'])) {
@@ -21,7 +21,7 @@ def onUpdate (pokemon):
 	""" 
 	pass
 
-def onAllyModifyAtk (atk):
+def onAllyModifyAtk(datadic : dict):
 	"""function (atk) {
 			if (this.effectData.target.baseTemplate.baseSpecies !== 'Cherrim') return;
 			if (this.isWeather(['sunnyday', 'desolateland'])) {
@@ -31,7 +31,7 @@ def onAllyModifyAtk (atk):
 	""" 
 	pass
 
-def onAllyModifySpD (spd):
+def onAllyModifySpD(datadic : dict):
 	"""function (spd) {
 			if (this.effectData.target.baseTemplate.baseSpecies !== 'Cherrim') return;
 			if (this.isWeather(['sunnyday', 'desolateland'])) {

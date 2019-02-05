@@ -1,4 +1,4 @@
-def onTryMove (attacker, defender, move):
+def onTryMove(datadic : dict):
 	"""function (attacker, defender, move) {
 			if (attacker.removeVolatile(move.id)) {
 				return;
@@ -13,14 +13,14 @@ def onTryMove (attacker, defender, move):
 	""" 
 	pass
 
-def onImmunity (type, pokemon):
+def onImmunity(datadic : dict):
 	"""function (type, pokemon) {
 				if (type === 'sandstorm' || type === 'hail') return false;
 			}
 	""" 
 	pass
 
-def onTryImmunity (target, source, move):
+def onTryImmunity(datadic : dict):
 	"""function (target, source, move) {
 				if (move.id === 'earthquake' || move.id === 'magnitude' || move.id === 'helpinghand') {
 					return;
@@ -34,7 +34,7 @@ def onTryImmunity (target, source, move):
 	""" 
 	pass
 
-def onSourceModifyDamage (damage, source, target, move):
+def onSourceModifyDamage(datadic : dict):
 	"""function (damage, source, target, move) {
 				if (move.id === 'earthquake' || move.id === 'magnitude') {
 					return this.chainModify(2);

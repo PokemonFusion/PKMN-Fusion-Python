@@ -1,4 +1,4 @@
-def basePowerCallback (pokemon, target):
+def basePowerCallback(datadic : dict):
 	"""function (pokemon, target) {
 			let power = 60 + 20 * target.positiveBoosts();
 			if (power > 200) power = 200;

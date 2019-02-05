@@ -1,4 +1,4 @@
-def onModifyDef (def, pokemon):
+def onModifyDef(datadic : dict):
 	"""function (def, pokemon) {
 			if (pokemon.baseTemplate.nfe) {
 				return this.chainModify(1.5);
@@ -7,7 +7,7 @@ def onModifyDef (def, pokemon):
 	""" 
 	pass
 
-def onModifySpD (spd, pokemon):
+def onModifySpD(datadic : dict):
 	"""function (spd, pokemon) {
 			if (pokemon.baseTemplate.nfe) {
 				return this.chainModify(1.5);

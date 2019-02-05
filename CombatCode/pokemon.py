@@ -287,7 +287,6 @@ class Pokemon:
         if species is None or species not in dex:
             species = self.species
         # sdic is the dictionary entry for the species.
-        sdic = None
         try:
             sdic = dex[
                 species.lower()]

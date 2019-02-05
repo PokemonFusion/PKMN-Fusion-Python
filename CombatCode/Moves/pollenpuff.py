@@ -1,4 +1,4 @@
-def onTryHit (target, source, move):
+def onTryHit(datadic : dict):
 	"""function (target, source, move) {
 			if (source.side === target.side) {
 				move.basePower = 0;

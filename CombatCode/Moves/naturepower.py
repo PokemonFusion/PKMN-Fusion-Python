@@ -1,4 +1,4 @@
-def onTryHit (target, pokemon):
+def onTryHit(datadic : dict):
 	"""function (target, pokemon) {
 			let move = 'triattack';
 			if (this.isTerrain('electricterrain')) {

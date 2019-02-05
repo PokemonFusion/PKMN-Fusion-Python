@@ -1,4 +1,4 @@
-def onHit (target, source):
+def onHit(datadic : dict):
 	"""function (target, source) {
 			if (source.template && (source.template.num === 493 || source.template.num === 773)) return false;
 			this.add('-start', source, 'typechange', '[from] move: Reflect Type', '[of] ' + target);

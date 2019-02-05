@@ -1,4 +1,4 @@
-def onAfterEachBoost (boost, target, source):
+def onAfterEachBoost(datadic : dict):
 	"""function (boost, target, source) {
 			if (!source || target.side === source.side) {
 				return;

@@ -1,4 +1,4 @@
-def onHitField (target, source):
+def onHitField(datadic : dict):
 	"""function (target, source) {
 			let targets = [];
 			for (const side of this.sides) {

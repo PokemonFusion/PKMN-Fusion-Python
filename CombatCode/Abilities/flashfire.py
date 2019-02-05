@@ -1,4 +1,4 @@
-def onTryHit (target, source, move):
+def onTryHit(datadic : dict):
 	"""function (target, source, move) {
 			if (target !== source && move.type === 'Fire') {
 				move.accuracy = true;
@@ -11,21 +11,21 @@ def onTryHit (target, source, move):
 	""" 
 	pass
 
-def onEnd (pokemon):
+def onEnd(datadic : dict):
 	"""function (pokemon) {
 			pokemon.removeVolatile('flashfire');
 		}
 	""" 
 	pass
 
-def onStart (target):
+def onStart(datadic : dict):
 	"""function (target) {
 				this.add('-start', target, 'ability: Flash Fire');
 			}
 	""" 
 	pass
 
-def onModifyAtk (atk, attacker, defender, move):
+def onModifyAtk(datadic : dict):
 	"""function (atk, attacker, defender, move) {
 				if (move.type === 'Fire') {
 					this.debug('Flash Fire boost');
@@ -35,7 +35,7 @@ def onModifyAtk (atk, attacker, defender, move):
 	""" 
 	pass
 
-def onModifySpA (atk, attacker, defender, move):
+def onModifySpA(datadic : dict):
 	"""function (atk, attacker, defender, move) {
 				if (move.type === 'Fire') {
 					this.debug('Flash Fire boost');
@@ -45,7 +45,7 @@ def onModifySpA (atk, attacker, defender, move):
 	""" 
 	pass
 
-def onEnd (target):
+def onEnd(datadic : dict):
 	"""function (target) {
 				this.add('-end', target, 'ability: Flash Fire', '[silent]');
 			}

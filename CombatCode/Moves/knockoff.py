@@ -1,4 +1,4 @@
-def onBasePower (basePower, source, target, move):
+def onBasePower(datadic : dict):
 	"""function (basePower, source, target, move) {
 			let item = target.getItem();
 			if (!this.singleEvent('TakeItem', item, target.itemData, target, source, move, item)) return;
@@ -9,7 +9,7 @@ def onBasePower (basePower, source, target, move):
 	""" 
 	pass
 
-def onAfterHit (target, source):
+def onAfterHit(datadic : dict):
 	"""function (target, source) {
 			if (source.hp) {
 				let item = target.takeItem();

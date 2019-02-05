@@ -1,4 +1,4 @@
-def onHit (target, source):
+def onHit(datadic : dict):
 	"""function (target, source) {
 			for (let i in target.boosts) {
 				// @ts-ignore

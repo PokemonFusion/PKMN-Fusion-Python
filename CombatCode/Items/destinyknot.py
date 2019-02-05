@@ -1,4 +1,4 @@
-def onAttract (target, source):
+def onAttract(datadic : dict):
 	"""function (target, source) {
 			this.debug('attract intercepted: ' + target + ' from ' + source);
 			if (!source || source === target) return;

@@ -1,11 +1,11 @@
-def onStart (pokemon):
+def onStart(datadic : dict):
 	"""function (pokemon) {
 			this.add('-ability', pokemon, 'Turboblaze');
 		}
 	""" 
 	pass
 
-def onModifyMove (move):
+def onModifyMove(datadic : dict):
 	"""function (move) {
 			move.ignoreAbility = true;
 		}

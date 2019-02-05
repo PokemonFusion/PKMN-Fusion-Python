@@ -1,4 +1,4 @@
-def onBeforeSwitchIn (pokemon):
+def onBeforeSwitchIn(datadic : dict):
 	"""function (pokemon) {
 			pokemon.illusion = null;
 			let i;
@@ -13,7 +13,7 @@ def onBeforeSwitchIn (pokemon):
 	""" 
 	pass
 
-def onAfterDamage (damage, target, source, effect):
+def onAfterDamage(datadic : dict):
 	"""function (damage, target, source, effect) {
 			if (target.illusion && effect && effect.effectType === 'Move' && effect.id !== 'confused') {
 				this.singleEvent('End', this.getAbility('Illusion'), target.abilityData, target, source, effect);
@@ -22,7 +22,7 @@ def onAfterDamage (damage, target, source, effect):
 	""" 
 	pass
 
-def onEnd (pokemon):
+def onEnd(datadic : dict):
 	"""function (pokemon) {
 			if (pokemon.illusion) {
 				this.debug('illusion cleared');
@@ -35,7 +35,7 @@ def onEnd (pokemon):
 	""" 
 	pass
 
-def onFaint (pokemon):
+def onFaint(datadic : dict):
 	"""function (pokemon) {
 			pokemon.illusion = null;
 		}
