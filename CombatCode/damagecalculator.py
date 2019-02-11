@@ -27,10 +27,7 @@ def percent_check(check) -> bool:
     """Enter a number between 0.0 and 1.0.
     A random float will be generated 0.0 <= x < 1.0.
     If the number being checked is larger return True, else False"""
-    if check > random.random():
-        return True
-    else:
-        return False
+    return check > random.random()
 
 
 def accuracy_check(attacker, target, move) -> bool:

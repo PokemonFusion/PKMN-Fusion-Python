@@ -278,8 +278,8 @@ class Pokemon:
             # TODO: Make sure that isCrit is checked for the temp stat boosts, and debuffs as appropriate.
             #  don't let burn effect it
             natureMod = NATURES[self.nature].get(statType, 1)
-            return (int(
-                (2 * baseStat + self.iv[statType] + int(self.ev[statType] / 4)) * self.level / 100) + 5) * natureMod
+            return int((int(
+                (2 * baseStat + self.iv[statType] + int(self.ev[statType] / 4)) * self.level / 100) + 5) * natureMod)
 
     # Get the name of the active ability.
     # As with getStat, the species parameter is to account for megas.
