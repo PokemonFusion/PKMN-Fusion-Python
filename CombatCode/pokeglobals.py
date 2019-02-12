@@ -4,14 +4,20 @@ sys.path.append(os.path.abspath(""))
 import copy
 from CombatCode.battlemovedex import BattleMovedex
 
+
 def keycheck(dictionary, subdictionary, key) -> object:
     if key in dictionary[subdictionary]:
         return dictionary[subdictionary][key]
     else:
         return None
 
+
 class Result:
-    pass
+    def __init__(self):
+        self.debug = dict()
+        self.fainted = list()
+        self.text = ""
+
 
 class Moves:
 

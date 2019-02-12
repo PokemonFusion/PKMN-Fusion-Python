@@ -2,12 +2,13 @@ import random
 from CombatCode.battledata import TurnInit
 
 
-"""Assumptions: recieving a battleround object consisting of the positions involved and what they are doing."""
+"""Assumptions: receiving a battle-round object consisting of the positions involved and what they are doing."""
 
 
 def calculateTurnorder(battleround) -> list:
     class Priority:
         priorities = list()
+
         def __init__(self, turndata: TurnInit, pokemon):
             self.priority = 0
             self.speed = 0
@@ -50,7 +51,6 @@ def calculateTurnorder(battleround) -> list:
     
     turnorder = []
     # This may be more complicated than it needs to be, but it will be accurate.
-    # TODO: Consider changing this to find the max and minimum - 1 priorities within the list instead of doing all
 
     for pri in range(Priority.max(), Priority.min() - 1, -1):
         if len(turnorder) == len(priorities):

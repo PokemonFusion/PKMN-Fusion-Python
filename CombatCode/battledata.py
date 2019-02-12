@@ -43,6 +43,9 @@ class TurnInit:
         self.recharge = recharge  # if pokemon has to recharge, make True
 
 
+
+
+
 # may remove this because of it being made somewhere else.
 class Pokemon(pokemon.Pokemon):
 
@@ -50,4 +53,8 @@ class Pokemon(pokemon.Pokemon):
                  ability=random.choice(['0', '1'])):
         super().__init__(ot, species=species, nickname=nickname,
                          gender=gender, isEgg=isEgg, level=level, ability=ability)
-        self.position = team + str(slot)
+        self.team = team
+        self.slot = slot
+
+    def getPosition(self):
+        return self.team + str(self.slot)

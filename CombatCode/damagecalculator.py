@@ -36,7 +36,7 @@ def accuracy_check(attacker, target, move) -> bool:
     attacc = attacker.checkAcc()
     tareva = target.checkEvade()
     moveacc = move.accuracy
-    if move.accuracy == True:
+    if move.accuracy is True:
         return True
     tohit = (moveacc * (attacc/tareva)) / 100
     return percent_check(tohit)
@@ -105,7 +105,7 @@ def damage_calc(attacker:Pokemon, target:Pokemon, move: Moves) -> Result:
     """Use this for calculating damage fully"""
     # Initial version of this will heavily reference the way I (Yang/Koden) had coded it in MUF
     result = Result()
-    result.debug = {}
+
     # around here I think is where we would be calling any 'onModifyMove' flags for the ability or move involved
 
     # begin by checking accuracy
@@ -115,7 +115,8 @@ def damage_calc(attacker:Pokemon, target:Pokemon, move: Moves) -> Result:
         if critical_hit_check(attacker, move):
             crit = 1.5 #TODO: Criticals ignore def boots and atk drops, except for burn
             isCrit = True
-
+        attackStat = 0
+        defenseStat = 0
         if move.category == 'Physical':
             attackStat = attacker.getStat("atk", isCrit)
             defenseStat = target.getStat("def", isCrit)
@@ -135,10 +136,13 @@ def damage_calc(attacker:Pokemon, target:Pokemon, move: Moves) -> Result:
 
         # TODO: Substitute would go somewhere around here I think
         curhp = target.takeDamage(damage)
+        if curhp == 0:
+            result.fainted.append(target.getPosition())
 
         result.debug['damage'] = damage
         result.debug['curhp'] = curhp
         result.debug['hp_percent'] = curhp/target.getStat("hp")
+
         effectivePhrase = ""
 
         if typetotal > 1:
@@ -157,14 +161,13 @@ def damage_calc(attacker:Pokemon, target:Pokemon, move: Moves) -> Result:
 
         result.text = \
             "{attname} uses {movename} against {tarname}, {effective}and deals {damphrase}{crit} damage!".format(
-                attname="{}.{}".format(attacker.position, attacker.getName()),
-                tarname="{}.{}".format(target.position, target.getName()), effective=effectivePhrase,
+                attname="{}.{}".format(attacker.getPosition(), attacker.getName()),
+                tarname="{}.{}".format(target.getPosition(), target.getName()), effective=effectivePhrase,
                 movename=move.name, damphrase=phrase, crit=critphrase
             )
 
     else:
-        # TODO: return something for when fails
         result.text = "{attname} uses {movename} against {tarname} but it missed!".format(attname="{}.{}".format(
-            attacker.position, attacker.getName()), movename=move.name, tarname="{}.{}".format(target.position, target.getName))
+            attacker.getPosition(), attacker.getName()), movename=move.name, tarname="{}.{}".format(target.position, target.getName))
 
     return result
