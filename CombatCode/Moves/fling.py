@@ -1,4 +1,4 @@
-def onPrepareHit (target, source, move):
+def onPrepareHit(datadic : dict):
 	"""function (target, source, move) {
 			if (source.ignoringItem()) return false;
 			let item = source.getItem();

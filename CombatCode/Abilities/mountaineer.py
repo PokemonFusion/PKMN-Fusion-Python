@@ -1,4 +1,4 @@
-def onDamage (damage, target, source, effect):
+def onDamage(datadic : dict):
 	"""function (damage, target, source, effect) {
 			if (effect && effect.id === 'stealthrock') {
 				return false;
@@ -7,7 +7,7 @@ def onDamage (damage, target, source, effect):
 	""" 
 	pass
 
-def onTryHit (target, source, move):
+def onTryHit(datadic : dict):
 	"""function (target, source, move) {
 			if (move.type === 'Rock' && !target.activeTurns) {
 				this.add('-immune', target, '[from] ability: Mountaineer');

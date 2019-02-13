@@ -1,4 +1,4 @@
-def onSourceModifyDamage (damage, source, target, move):
+def onSourceModifyDamage(datadic : dict):
 	"""function (damage, source, target, move) {
 			if (target.hp >= target.maxhp) {
 				this.debug('Shadow Shield weaken');

@@ -2,13 +2,21 @@ import sys, os
 sys.path.append(os.path.abspath(""))
 
 import copy
-from battlemovedex import BattleMovedex
+from CombatCode.battlemovedex import BattleMovedex
+
 
 def keycheck(dictionary, subdictionary, key) -> object:
     if key in dictionary[subdictionary]:
         return dictionary[subdictionary][key]
     else:
         return None
+
+
+class Result:
+    def __init__(self):
+        self.debug = dict()
+        self.fainted = list()
+        self.text = ""
 
 
 class Moves:
@@ -41,3 +49,11 @@ class Moves:
         self.onHit = movecheck("onHit")
         self.onModifyMove = movecheck("onModifyMove")
         self.critRatio = movecheck("critRatio")
+
+    def calculateBasePower(self) -> int:
+        """
+        you'll need to check basePowerCallback and onBasePower
+        """
+        #for now, just pass the basepower
+        return self.basePower
+

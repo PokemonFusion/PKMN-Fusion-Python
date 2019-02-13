@@ -1,4 +1,4 @@
-def onBasePower (basePower, user, target, move):
+def onBasePower(datadic : dict):
 	"""function (basePower, user, target, move) {
 			if (move.type === 'Normal') {
 				return basePower * 1.1;

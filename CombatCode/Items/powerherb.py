@@ -1,4 +1,4 @@
-def onChargeMove (pokemon, target, move):
+def onChargeMove(datadic : dict):
 	"""function (pokemon, target, move) {
 			if (pokemon.useItem()) {
 				this.debug('power herb - remove charge turn for ' + move.id);

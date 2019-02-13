@@ -1,4 +1,4 @@
-def onEffectiveness (typeMod, type, move):
+def onEffectiveness(datadic : dict):
 	"""function (typeMod, type, move) {
 			if (move.type !== 'Ground') return;
 			let target = this.activeTarget;

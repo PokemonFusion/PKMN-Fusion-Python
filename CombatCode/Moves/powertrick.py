@@ -1,4 +1,4 @@
-def onStart (pokemon):
+def onStart(datadic : dict):
 	"""function (pokemon) {
 				this.add('-start', pokemon, 'Power Trick');
 				let newatk = pokemon.stats.def;
@@ -9,7 +9,7 @@ def onStart (pokemon):
 	""" 
 	pass
 
-def onCopy (pokemon):
+def onCopy(datadic : dict):
 	"""function (pokemon) {
 				let newatk = pokemon.stats.def;
 				let newdef = pokemon.stats.atk;
@@ -19,7 +19,7 @@ def onCopy (pokemon):
 	""" 
 	pass
 
-def onEnd (pokemon):
+def onEnd(datadic : dict):
 	"""function (pokemon) {
 				this.add('-end', pokemon, 'Power Trick');
 				let newatk = pokemon.stats.def;
@@ -30,7 +30,7 @@ def onEnd (pokemon):
 	""" 
 	pass
 
-def onRestart (pokemon):
+def onRestart(datadic : dict):
 	"""function (pokemon) {
 				pokemon.removeVolatile('Power Trick');
 			}

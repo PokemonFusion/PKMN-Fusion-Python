@@ -1,4 +1,4 @@
-def basePowerCallback (pokemon, target, move):
+def basePowerCallback(datadic : dict):
 	"""function (pokemon, target, move) {
 			if (!pokemon.volatiles.furycutter) {
 				pokemon.addVolatile('furycutter');
@@ -8,21 +8,21 @@ def basePowerCallback (pokemon, target, move):
 	""" 
 	pass
 
-def onHit (target, source):
+def onHit(datadic : dict):
 	"""function (target, source) {
 			source.addVolatile('furycutter');
 		}
 	""" 
 	pass
 
-def onStart ():
+def onStart(datadic : dict):
 	"""function () {
 				this.effectData.multiplier = 1;
 			}
 	""" 
 	pass
 
-def onRestart ():
+def onRestart(datadic : dict):
 	"""function () {
 				if (this.effectData.multiplier < 4) {
 					this.effectData.multiplier <<= 1;

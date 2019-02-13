@@ -1,4 +1,4 @@
-def onUpdate (pokemon):
+def onUpdate(datadic : dict):
 	"""function (pokemon) {
 			if (!pokemon.hp) return;
 			let moveSlot = pokemon.lastMove && pokemon.getMoveData(pokemon.lastMove.id);
@@ -11,7 +11,7 @@ def onUpdate (pokemon):
 	""" 
 	pass
 
-def onEat (pokemon):
+def onEat(datadic : dict):
 	"""function (pokemon) {
 			let moveSlot;
 			if (pokemon.volatiles['leppaberry']) {

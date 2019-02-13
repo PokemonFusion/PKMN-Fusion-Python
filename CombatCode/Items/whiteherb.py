@@ -1,4 +1,4 @@
-def effect (pokemon):
+def effect(datadic : dict):
 	"""function (pokemon) {
 				let activate = False;
 				/**@type {{[k: string]: number}} */
@@ -18,7 +18,7 @@ def effect (pokemon):
 	""" 
 	pass
 
-def onUpdate (pokemon):
+def onUpdate(datadic : dict):
 	"""function (pokemon) {
 			let activate = False;
 			/**@type {{[k: string]: number}} */

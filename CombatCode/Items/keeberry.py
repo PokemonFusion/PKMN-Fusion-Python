@@ -1,4 +1,4 @@
-def onAfterMoveSecondary (target, source, move):
+def onAfterMoveSecondary(datadic : dict):
 	"""function (target, source, move) {
 			if (move.category === 'Physical') {
 				target.eatItem();
@@ -7,7 +7,7 @@ def onAfterMoveSecondary (target, source, move):
 	""" 
 	pass
 
-def onEat (pokemon):
+def onEat(datadic : dict):
 	"""function (pokemon) {
 			this.boost({def: 1});
 		}

@@ -108,3 +108,6 @@ venv.bak/
 
 # Helper Outputs
 HelperCode/FunctionFiles/
+
+# PyCharm
+.idea/

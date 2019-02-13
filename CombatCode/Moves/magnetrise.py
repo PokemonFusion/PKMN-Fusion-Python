@@ -1,4 +1,4 @@
-def onStart (target):
+def onStart(datadic : dict):
 	"""function (target) {
 				if (target.volatiles['smackdown'] || target.volatiles['ingrain']) return false;
 				this.add('-start', target, 'Magnet Rise');
@@ -6,14 +6,14 @@ def onStart (target):
 	""" 
 	pass
 
-def onImmunity (type):
+def onImmunity(datadic : dict):
 	"""function (type) {
 				if (type === 'Ground') return false;
 			}
 	""" 
 	pass
 
-def onEnd (target):
+def onEnd(datadic : dict):
 	"""function (target) {
 				this.add('-end', target, 'Magnet Rise');
 			}

@@ -1,25 +1,25 @@
-def onStart (pokemon):
+def onStart(datadic : dict):
 	"""function (pokemon) {
 				this.add('-start', pokemon, 'move: Ingrain');
 			}
 	""" 
 	pass
 
-def onResidual (pokemon):
+def onResidual(datadic : dict):
 	"""function (pokemon) {
 				this.heal(pokemon.maxhp / 16);
 			}
 	""" 
 	pass
 
-def onTrapPokemon (pokemon):
+def onTrapPokemon(datadic : dict):
 	"""function (pokemon) {
 				pokemon.tryTrap();
 			}
 	""" 
 	pass
 
-def onDragOut (pokemon):
+def onDragOut(datadic : dict):
 	"""function (pokemon) {
 				this.add('-activate', pokemon, 'move: Ingrain');
 				return null;

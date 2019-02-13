@@ -1,4 +1,4 @@
-def onHit (target):
+def onHit(datadic : dict):
 	"""function (target) {
 			let moves = [];
 			for (const pokemon of target.side.pokemon) {

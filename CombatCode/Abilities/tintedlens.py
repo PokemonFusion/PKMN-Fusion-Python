@@ -1,4 +1,4 @@
-def onModifyDamage (damage, source, target, move):
+def onModifyDamage(datadic : dict):
 	"""function (damage, source, target, move) {
 			if (move.typeMod < 0) {
 				this.debug('Tinted Lens boost');

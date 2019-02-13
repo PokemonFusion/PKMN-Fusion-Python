@@ -1,4 +1,4 @@
-def onDamage (damage, target, source, effect):
+def onDamage(datadic : dict):
 	"""function (damage, target, source, effect) {
 			if (effect && effect.effectType === 'Move' && ['mimikyu', 'mimikyutotem'].includes(target.template.speciesid) && !target.transformed) {
 				this.add('-activate', target, 'ability: Disguise');
@@ -9,7 +9,7 @@ def onDamage (damage, target, source, effect):
 	""" 
 	pass
 
-def onEffectiveness (typeMod, target, type, move):
+def onEffectiveness(datadic : dict):
 	"""function (typeMod, target, type, move) {
 			if (!this.activeTarget) return;
 			let pokemon = this.activeTarget;
@@ -20,7 +20,7 @@ def onEffectiveness (typeMod, target, type, move):
 	""" 
 	pass
 
-def onUpdate (pokemon):
+def onUpdate(datadic : dict):
 	"""function (pokemon) {
 			if (['mimikyu', 'mimikyutotem'].includes(pokemon.template.speciesid) && this.effectData.busted) {
 				let templateid = pokemon.template.speciesid === 'mimikyutotem' ? 'Mimikyu-Busted-Totem' : 'Mimikyu-Busted';

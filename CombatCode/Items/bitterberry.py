@@ -1,4 +1,4 @@
-def onUpdate (pokemon):
+def onUpdate(datadic : dict):
 	"""function (pokemon) {
 			if (pokemon.volatiles['confusion']) {
 				pokemon.eatItem();
@@ -7,7 +7,7 @@ def onUpdate (pokemon):
 	""" 
 	pass
 
-def onEat (pokemon):
+def onEat(datadic : dict):
 	"""function (pokemon) {
 			pokemon.removeVolatile('confusion');
 		}

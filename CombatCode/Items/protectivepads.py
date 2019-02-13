@@ -1,11 +1,11 @@
-def onAttract (target, source, effect):
+def onAttract(datadic : dict):
 	"""function (target, source, effect) {
 			if (target !== source && target === this.activePokemon && this.activeMove && this.activeMove.flags['contact']) return False;
 		}
 	""" 
 	pass
 
-def onBoost (boost, target, source, effect):
+def onBoost(datadic : dict):
 	"""function (boost, target, source, effect) {
 			if (target !== source && target === this.activePokemon && this.activeMove && this.activeMove.flags['contact']) {
 				if (effect && effect.effectType === 'Ability') {
@@ -18,7 +18,7 @@ def onBoost (boost, target, source, effect):
 	""" 
 	pass
 
-def onDamage (damage, target, source, effect):
+def onDamage(datadic : dict):
 	"""function (damage, target, source, effect) {
 			if (target !== source && target === this.activePokemon && this.activeMove && this.activeMove.flags['contact']) {
 				if (effect && effect.effectType === 'Ability') {
@@ -31,7 +31,7 @@ def onDamage (damage, target, source, effect):
 	""" 
 	pass
 
-def onSetAbility (ability, target, source, effect):
+def onSetAbility(datadic : dict):
 	"""function (ability, target, source, effect) {
 			if (target !== source && target === this.activePokemon && this.activeMove && this.activeMove.flags['contact']) {
 				if (effect && effect.effectType === 'Ability') {
@@ -44,7 +44,7 @@ def onSetAbility (ability, target, source, effect):
 	""" 
 	pass
 
-def onSetStatus (status, target, source, effect):
+def onSetStatus(datadic : dict):
 	"""function (status, target, source, effect) {
 			if (target !== source && target === this.activePokemon && this.activeMove && this.activeMove.flags['contact']) return False;
 		}

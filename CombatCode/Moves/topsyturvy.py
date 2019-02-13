@@ -1,4 +1,4 @@
-def onHit (target):
+def onHit(datadic : dict):
 	"""function (target) {
 			let success = false;
 			for (let i in target.boosts) {

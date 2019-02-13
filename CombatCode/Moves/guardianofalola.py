@@ -1,4 +1,4 @@
-def damageCallback (pokemon, target):
+def damageCallback(datadic : dict):
 	"""function (pokemon, target) {
 			if (target.volatiles['banefulbunker'] || target.volatiles['kingsshield'] || target.side.sideConditions['matblock'] || target.volatiles['protect'] || target.volatiles['spikyshield']) {
 				this.add('-zbroken', target);

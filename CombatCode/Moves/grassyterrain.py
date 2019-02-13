@@ -1,4 +1,4 @@
-def durationCallback (source, effect):
+def durationCallback(datadic : dict):
 	"""function (source, effect) {
 				if (source && source.hasItem('terrainextender')) {
 					return 8;
@@ -8,7 +8,7 @@ def durationCallback (source, effect):
 	""" 
 	pass
 
-def onBasePower (basePower, attacker, defender, move):
+def onBasePower(datadic : dict):
 	"""function (basePower, attacker, defender, move) {
 				let weakenedMoves = ['earthquake', 'bulldoze', 'magnitude'];
 				if (weakenedMoves.includes(move.id)) {
@@ -23,7 +23,7 @@ def onBasePower (basePower, attacker, defender, move):
 	""" 
 	pass
 
-def onStart (battle, source, effect):
+def onStart(datadic : dict):
 	"""function (battle, source, effect) {
 				if (effect && effect.effectType === 'Ability') {
 					this.add('-fieldstart', 'move: Grassy Terrain', '[from] ability: ' + effect, '[of] ' + source);
@@ -34,14 +34,14 @@ def onStart (battle, source, effect):
 	""" 
 	pass
 
-def onResidual ():
+def onResidual(datadic : dict):
 	"""function () {
 				this.eachEvent('Terrain');
 			}
 	""" 
 	pass
 
-def onTerrain (pokemon):
+def onTerrain(datadic : dict):
 	"""function (pokemon) {
 				if (pokemon.isGrounded() && !pokemon.isSemiInvulnerable()) {
 					this.debug('Pokemon is grounded, healing through Grassy Terrain.');
@@ -51,7 +51,7 @@ def onTerrain (pokemon):
 	""" 
 	pass
 
-def onEnd ():
+def onEnd(datadic : dict):
 	"""function () {
 				if (!this.effectData.duration) this.eachEvent('Terrain');
 				this.add('-fieldend', 'move: Grassy Terrain');

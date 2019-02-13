@@ -1,4 +1,4 @@
-def onHit (pokemon):
+def onHit(datadic : dict):
 	"""function (pokemon) {
 				if (pokemon.hp && pokemon.removeVolatile('leechseed')) {
 					this.add('-end', pokemon, 'Leech Seed', '[from] move: Rapid Spin', '[of] ' + pokemon);

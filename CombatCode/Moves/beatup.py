@@ -1,4 +1,4 @@
-def basePowerCallback (pokemon, target, move):
+def basePowerCallback(datadic : dict):
 	"""function (pokemon, target, move) {
 			// @ts-ignore
 			return 5 + Math.floor(move.allies.shift().template.baseStats.atk / 10);
@@ -6,7 +6,7 @@ def basePowerCallback (pokemon, target, move):
 	""" 
 	pass
 
-def onModifyMove (move, pokemon):
+def onModifyMove(datadic : dict):
 	"""function (move, pokemon) {
 			move.allies = pokemon.side.pokemon.filter(ally => ally === pokemon || !ally.fainted && !ally.status);
 			move.multihit = move.allies.length;

@@ -1,4 +1,4 @@
-def onPrepareHit (target, pokemon, move):
+def onPrepareHit(datadic : dict):
 	"""function (target, pokemon, move) {
 			if (pokemon.ignoringItem()) return false;
 			let item = pokemon.getItem();

@@ -1,4 +1,4 @@
-def onTryMove (pokemon):
+def onTryMove(datadic : dict):
 	"""function (pokemon) {
 			if (pokemon.hp < pokemon.maxhp && pokemon.status !== 'slp' && !pokemon.hasAbility('comatose')) return;
 			this.add('-fail', pokemon);
@@ -7,7 +7,7 @@ def onTryMove (pokemon):
 	""" 
 	pass
 
-def onHit (target):
+def onHit(datadic : dict):
 	"""function (target) {
 			if (!target.setStatus('slp')) return false;
 			target.statusData.time = 3;

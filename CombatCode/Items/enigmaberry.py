@@ -1,4 +1,4 @@
-def onHit (target, source, move):
+def onHit(datadic : dict):
 	"""function (target, source, move) {
 			if (move && move.typeMod > 0) {
 				if (target.eatItem()) {
@@ -9,7 +9,7 @@ def onHit (target, source, move):
 	""" 
 	pass
 
-def onTryEatItem (item, pokemon):
+def onTryEatItem(datadic : dict):
 	"""function (item, pokemon) {
 			if (!this.runEvent('TryHeal', pokemon)) return False;
 		}

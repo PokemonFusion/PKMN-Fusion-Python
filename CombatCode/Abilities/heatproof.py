@@ -1,4 +1,4 @@
-def onSourceBasePower (basePower, attacker, defender, move):
+def onSourceBasePower(datadic : dict):
 	"""function (basePower, attacker, defender, move) {
 			if (move.type === 'Fire') {
 				return this.chainModify(0.5);
@@ -7,7 +7,7 @@ def onSourceBasePower (basePower, attacker, defender, move):
 	""" 
 	pass
 
-def onDamage (damage, target, source, effect):
+def onDamage(datadic : dict):
 	"""function (damage, target, source, effect) {
 			if (effect && effect.id === 'brn') {
 				return damage / 2;

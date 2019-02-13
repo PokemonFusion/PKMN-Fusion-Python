@@ -1,11 +1,11 @@
-def onStart (target):
+def onStart(datadic : dict):
 	"""function (target) {
 				this.add('-start', target, 'move: Leech Seed');
 			}
 	""" 
 	pass
 
-def onResidual (pokemon):
+def onResidual(datadic : dict):
 	"""function (pokemon) {
 				let target = this.effectData.source.side.active[pokemon.volatiles['leechseed'].sourcePosition];
 				if (!target || target.fainted || target.hp <= 0) {
@@ -20,7 +20,7 @@ def onResidual (pokemon):
 	""" 
 	pass
 
-def onTryHit (target):
+def onTryHit(datadic : dict):
 	"""function (target) {
 			if (target.hasType('Grass')) {
 				this.add('-immune', target);

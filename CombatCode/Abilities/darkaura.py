@@ -1,11 +1,11 @@
-def onStart (pokemon):
+def onStart(datadic : dict):
 	"""function (pokemon) {
 			this.add('-ability', pokemon, 'Dark Aura');
 		}
 	""" 
 	pass
 
-def onAnyBasePower (basePower, source, target, move):
+def onAnyBasePower(datadic : dict):
 	"""function (basePower, source, target, move) {
 			if (target === source || move.category === 'Status' || move.type !== 'Dark') return;
 			if (!move.auraBooster) move.auraBooster = this.effectData.target;

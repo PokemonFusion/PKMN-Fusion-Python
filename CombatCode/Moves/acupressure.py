@@ -1,4 +1,4 @@
-def onHit (target):
+def onHit(datadic : dict):
 	"""function (target) {
 			let stats = [];
 			for (let stat in target.boosts) {

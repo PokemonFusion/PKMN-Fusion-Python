@@ -1,4 +1,4 @@
-def onTryHitSide (side, source):
+def onTryHitSide(datadic : dict):
 	"""function (side, source) {
 			if (source.activeTurns > 1) {
 				this.add('-hint', "Mat Block only works on your first turn out.");
@@ -8,14 +8,14 @@ def onTryHitSide (side, source):
 	""" 
 	pass
 
-def onStart (target, source):
+def onStart(datadic : dict):
 	"""function (target, source) {
 				this.add('-singleturn', source, 'Mat Block');
 			}
 	""" 
 	pass
 
-def onTryHit (target, source, move):
+def onTryHit(datadic : dict):
 	"""function (target, source, move) {
 				if (!move.flags['protect']) {
 					if (move.isZ) move.zBrokeProtect = true;

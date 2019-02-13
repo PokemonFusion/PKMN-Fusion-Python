@@ -1,4 +1,4 @@
-def onStart (side):
+def onStart(datadic : dict):
 	"""function (side) {
 				this.add('-sidestart', side, 'Spikes');
 				this.effectData.layers = 1;
@@ -6,7 +6,7 @@ def onStart (side):
 	""" 
 	pass
 
-def onRestart (side):
+def onRestart(datadic : dict):
 	"""function (side) {
 				if (this.effectData.layers >= 3) return false;
 				this.add('-sidestart', side, 'Spikes');
@@ -15,7 +15,7 @@ def onRestart (side):
 	""" 
 	pass
 
-def onSwitchIn (pokemon):
+def onSwitchIn(datadic : dict):
 	"""function (pokemon) {
 				if (!pokemon.isGrounded()) return;
 				let damageAmounts = [0, 3, 4, 6]; // 1/8, 1/6, 1/4

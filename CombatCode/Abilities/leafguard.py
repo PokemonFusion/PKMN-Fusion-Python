@@ -1,4 +1,4 @@
-def onSetStatus (status, target, source, effect):
+def onSetStatus(datadic : dict):
 	"""function (status, target, source, effect) {
 			if (this.isWeather(['sunnyday', 'desolateland'])) {
 				if (effect && effect.status) this.add('-immune', target, '[from] ability: Leaf Guard');
@@ -8,7 +8,7 @@ def onSetStatus (status, target, source, effect):
 	""" 
 	pass
 
-def onTryAddVolatile (status, target):
+def onTryAddVolatile(datadic : dict):
 	"""function (status, target) {
 			if (status.id === 'yawn' && this.isWeather(['sunnyday', 'desolateland'])) {
 				this.add('-immune', target, '[from] ability: Leaf Guard');

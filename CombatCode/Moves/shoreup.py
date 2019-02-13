@@ -1,4 +1,4 @@
-def onHit (pokemon):
+def onHit(datadic : dict):
 	"""function (pokemon) {
 			if (this.isWeather('sandstorm')) {
 				return this.heal(this.modify(pokemon.maxhp, 0.667));

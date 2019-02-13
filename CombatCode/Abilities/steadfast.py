@@ -1,4 +1,4 @@
-def onFlinch (pokemon):
+def onFlinch(datadic : dict):
 	"""function (pokemon) {
 			this.boost({spe: 1});
 		}

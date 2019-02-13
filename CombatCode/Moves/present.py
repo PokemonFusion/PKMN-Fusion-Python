@@ -1,4 +1,4 @@
-def onModifyMove (move, pokemon, target):
+def onModifyMove(datadic : dict):
 	"""function (move, pokemon, target) {
 			let rand = this.random(10);
 			if (rand < 2) {

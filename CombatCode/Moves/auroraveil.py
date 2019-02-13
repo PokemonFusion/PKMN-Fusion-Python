@@ -1,11 +1,11 @@
-def onTryHitSide ():
+def onTryHitSide(datadic : dict):
 	"""function () {
 			if (!this.isWeather('hail')) return false;
 		}
 	""" 
 	pass
 
-def durationCallback (target, source, effect):
+def durationCallback(datadic : dict):
 	"""function (target, source, effect) {
 				if (source && source.hasItem('lightclay')) {
 					return 8;
@@ -15,7 +15,7 @@ def durationCallback (target, source, effect):
 	""" 
 	pass
 
-def onAnyModifyDamage (damage, source, target, move):
+def onAnyModifyDamage(datadic : dict):
 	"""function (damage, source, target, move) {
 				if (target !== source && target.side === this.effectData.target) {
 					if ((target.side.sideConditions['reflect'] && this.getCategory(move) === 'Physical') ||
@@ -32,14 +32,14 @@ def onAnyModifyDamage (damage, source, target, move):
 	""" 
 	pass
 
-def onStart (side):
+def onStart(datadic : dict):
 	"""function (side) {
 				this.add('-sidestart', side, 'move: Aurora Veil');
 			}
 	""" 
 	pass
 
-def onEnd (side):
+def onEnd(datadic : dict):
 	"""function (side) {
 				this.add('-sideend', side, 'move: Aurora Veil');
 			}

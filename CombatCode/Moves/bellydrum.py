@@ -1,4 +1,4 @@
-def onHit (target):
+def onHit(datadic : dict):
 	"""function (target) {
 			if (target.hp <= target.maxhp / 2 || target.boosts.atk >= 6 || target.maxhp === 1) { // Shedinja clause
 				return false;

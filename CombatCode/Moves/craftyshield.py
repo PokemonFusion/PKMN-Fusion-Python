@@ -1,18 +1,18 @@
-def onTryHitSide (side, source):
+def onTryHitSide(datadic : dict):
 	"""function (side, source) {
 			return !!this.willAct();
 		}
 	""" 
 	pass
 
-def onStart (target, source):
+def onStart(datadic : dict):
 	"""function (target, source) {
 				this.add('-singleturn', source, 'Crafty Shield');
 			}
 	""" 
 	pass
 
-def onTryHit (target, source, move):
+def onTryHit(datadic : dict):
 	"""function (target, source, move) {
 				if (move && (move.target === 'self' || move.category !== 'Status')) return;
 				this.add('-activate', target, 'move: Crafty Shield');

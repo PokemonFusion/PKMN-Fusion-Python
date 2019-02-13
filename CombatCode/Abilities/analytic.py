@@ -1,4 +1,4 @@
-def onBasePower (basePower, pokemon):
+def onBasePower(datadic : dict):
 	"""function (basePower, pokemon) {
 			let boosted = true;
 			let allActives = pokemon.side.active.concat(pokemon.side.foe.active);

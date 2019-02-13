@@ -1,11 +1,11 @@
-def onStart (pokemon):
+def onStart(datadic : dict):
 	"""function (pokemon) {
 			pokemon.addVolatile('metronome');
 		}
 	""" 
 	pass
 
-def onStart (pokemon):
+def onStart(datadic : dict):
 	"""function (pokemon) {
 				this.effectData.numConsecutive = 0;
 				this.effectData.lastMove = '';
@@ -13,7 +13,7 @@ def onStart (pokemon):
 	""" 
 	pass
 
-def onTryMove (pokemon, target, move):
+def onTryMove(datadic : dict):
 	"""function (pokemon, target, move) {
 				if (!pokemon.hasItem('metronome')) {
 					pokemon.removeVolatile('metronome');
@@ -29,7 +29,7 @@ def onTryMove (pokemon, target, move):
 	""" 
 	pass
 
-def onModifyDamage (damage, source, target, move):
+def onModifyDamage(datadic : dict):
 	"""function (damage, source, target, move) {
 				let numConsecutive = this.effectData.numConsecutive > 5 ? 5 : this.effectData.numConsecutive;
 				let dmgMod = [0x1000, 0x1333, 0x1666, 0x1999, 0x1CCC, 0x2000];

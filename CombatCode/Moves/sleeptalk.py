@@ -1,11 +1,11 @@
-def onTryHit (pokemon):
+def onTryHit(datadic : dict):
 	"""function (pokemon) {
 			if (pokemon.status !== 'slp' && !pokemon.hasAbility('comatose')) return false;
 		}
 	""" 
 	pass
 
-def onHit (pokemon):
+def onHit(datadic : dict):
 	"""function (pokemon) {
 			let moves = [];
 			for (const moveSlot of pokemon.moveSlots) {

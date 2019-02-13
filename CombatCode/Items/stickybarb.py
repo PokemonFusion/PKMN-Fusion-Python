@@ -1,11 +1,11 @@
-def onResidual (pokemon):
+def onResidual(datadic : dict):
 	"""function (pokemon) {
 			this.damage(pokemon.maxhp / 8);
 		}
 	""" 
 	pass
 
-def onHit (target, source, move):
+def onHit(datadic : dict):
 	"""function (target, source, move) {
 			if (source && source !== target && !source.item && move && move.flags['contact']) {
 				let barb = target.takeItem();

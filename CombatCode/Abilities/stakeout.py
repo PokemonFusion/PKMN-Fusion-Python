@@ -1,4 +1,4 @@
-def onModifyAtk (atk, attacker, defender):
+def onModifyAtk(datadic : dict):
 	"""function (atk, attacker, defender) {
 			if (!defender.activeTurns) {
 				this.debug('Stakeout boost');
@@ -8,7 +8,7 @@ def onModifyAtk (atk, attacker, defender):
 	""" 
 	pass
 
-def onModifySpA (atk, attacker, defender):
+def onModifySpA(datadic : dict):
 	"""function (atk, attacker, defender) {
 			if (!defender.activeTurns) {
 				this.debug('Stakeout boost');

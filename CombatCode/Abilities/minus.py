@@ -1,4 +1,4 @@
-def onModifySpA (spa, pokemon):
+def onModifySpA(datadic : dict):
 	"""function (spa, pokemon) {
 			if (pokemon.side.active.length === 1) {
 				return;

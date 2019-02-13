@@ -1,4 +1,4 @@
-def onHit (pokemon, source):
+def onHit(datadic : dict):
 	"""function (pokemon, source) {
 			let item = pokemon.getItem();
 			if ((item.isBerry || item.isGem) && pokemon.takeItem(source)) {

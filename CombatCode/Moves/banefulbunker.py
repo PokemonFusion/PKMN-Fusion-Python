@@ -1,25 +1,25 @@
-def onTryHit (target, source, move):
+def onTryHit(datadic : dict):
 	"""function (target, source, move) {
 			return !!this.willAct() && this.runEvent('StallMove', target);
 		}
 	""" 
 	pass
 
-def onHit (pokemon):
+def onHit(datadic : dict):
 	"""function (pokemon) {
 			pokemon.addVolatile('stall');
 		}
 	""" 
 	pass
 
-def onStart (target):
+def onStart(datadic : dict):
 	"""function (target) {
 				this.add('-singleturn', target, 'move: Protect');
 			}
 	""" 
 	pass
 
-def onTryHit (target, source, move):
+def onTryHit(datadic : dict):
 	"""function (target, source, move) {
 				if (!move.flags['protect']) {
 					if (move.isZ) move.zBrokeProtect = true;
@@ -42,7 +42,7 @@ def onTryHit (target, source, move):
 	""" 
 	pass
 
-def onHit (target, source, move):
+def onHit(datadic : dict):
 	"""function (target, source, move) {
 				if (move.isZPowered && move.flags['contact']) {
 					source.trySetStatus('psn', target);

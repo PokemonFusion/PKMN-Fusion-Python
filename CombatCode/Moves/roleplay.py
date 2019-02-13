@@ -1,4 +1,4 @@
-def onTryHit (target, source):
+def onTryHit(datadic : dict):
 	"""function (target, source) {
 			let bannedTargetAbilities = ['battlebond', 'comatose', 'disguise', 'flowergift', 'forecast', 'illusion', 'imposter', 'multitype', 'powerconstruct', 'powerofalchemy', 'receiver', 'rkssystem', 'schooling', 'shieldsdown', 'stancechange', 'trace', 'wonderguard', 'zenmode'];
 			let bannedSourceAbilities = ['battlebond', 'comatose', 'disguise', 'multitype', 'powerconstruct', 'rkssystem', 'schooling', 'shieldsdown', 'stancechange'];
@@ -9,7 +9,7 @@ def onTryHit (target, source):
 	""" 
 	pass
 
-def onHit (target, source):
+def onHit(datadic : dict):
 	"""function (target, source) {
 			let oldAbility = source.setAbility(target.ability);
 			if (oldAbility) {

@@ -1,4 +1,4 @@
-def onModifyAtk (atk, attacker, defender, move):
+def onModifyAtk(datadic : dict):
 	"""function (atk, attacker, defender, move) {
 			if (move.type === 'Water' && attacker.hp <= attacker.maxhp / 3) {
 				this.debug('Torrent boost');
@@ -8,7 +8,7 @@ def onModifyAtk (atk, attacker, defender, move):
 	""" 
 	pass
 
-def onModifySpA (atk, attacker, defender, move):
+def onModifySpA(datadic : dict):
 	"""function (atk, attacker, defender, move) {
 			if (move.type === 'Water' && attacker.hp <= attacker.maxhp / 3) {
 				this.debug('Torrent boost');

@@ -1,18 +1,18 @@
-def onPrepareHit (pokemon):
+def onPrepareHit(datadic : dict):
 	"""function (pokemon) {
 			return !pokemon.removeVolatile('destinybond');
 		}
 	""" 
 	pass
 
-def onStart (pokemon):
+def onStart(datadic : dict):
 	"""function (pokemon) {
 				this.add('-singlemove', pokemon, 'Destiny Bond');
 			}
 	""" 
 	pass
 
-def onFaint (target, source, effect):
+def onFaint(datadic : dict):
 	"""function (target, source, effect) {
 				if (!source || !effect || target.side === source.side) return;
 				if (effect.effectType === 'Move' && !effect.isFutureMove) {
@@ -23,7 +23,7 @@ def onFaint (target, source, effect):
 	""" 
 	pass
 
-def onBeforeMove (pokemon, target, move):
+def onBeforeMove(datadic : dict):
 	"""function (pokemon, target, move) {
 				if (move.id === 'destinybond') return;
 				this.debug('removing Destiny Bond before attack');
@@ -32,14 +32,14 @@ def onBeforeMove (pokemon, target, move):
 	""" 
 	pass
 
-def onMoveAborted (pokemon, target, move):
+def onMoveAborted(datadic : dict):
 	"""function (pokemon, target, move) {
 				pokemon.removeVolatile('destinybond');
 			}
 	""" 
 	pass
 
-def onBeforeSwitchOut (pokemon):
+def onBeforeSwitchOut(datadic : dict):
 	"""function (pokemon) {
 				pokemon.removeVolatile('destinybond');
 			}

@@ -1,4 +1,4 @@
-def onTryHit (target, source):
+def onTryHit(datadic : dict):
 	"""function (target, source) {
 			this.add('-nothing');
 		}

@@ -1,11 +1,11 @@
-def onStart (pokemon):
+def onStart(datadic : dict):
 	"""function (pokemon) {
 				this.add('-singlemove', pokemon, 'Grudge');
 			}
 	""" 
 	pass
 
-def onFaint (target, source, effect):
+def onFaint(datadic : dict):
 	"""function (target, source, effect) {
 				if (!source || source.fainted || !effect) return;
 				if (effect.effectType === 'Move' && !effect.isFutureMove && source.lastMove) {
@@ -20,7 +20,7 @@ def onFaint (target, source, effect):
 	""" 
 	pass
 
-def onBeforeMove (pokemon):
+def onBeforeMove(datadic : dict):
 	"""function (pokemon) {
 				this.debug('removing Grudge before attack');
 				pokemon.removeVolatile('grudge');

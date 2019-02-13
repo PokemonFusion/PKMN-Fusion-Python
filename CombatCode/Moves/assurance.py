@@ -1,4 +1,4 @@
-def basePowerCallback (pokemon, target, move):
+def basePowerCallback(datadic : dict):
 	"""function (pokemon, target, move) {
 			if (target.hurtThisTurn) {
 				this.debug('Boosted for being damaged this turn');

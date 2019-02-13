@@ -1,11 +1,11 @@
-def beforeMoveCallback (pokemon):
+def beforeMoveCallback(datadic : dict):
 	"""function (pokemon) {
 			if (pokemon.volatiles['bide']) return true;
 		}
 	""" 
 	pass
 
-def onStart (pokemon):
+def onStart(datadic : dict):
 	"""function (pokemon) {
 				this.effectData.totalDamage = 0;
 				this.add('-start', pokemon, 'move: Bide');
@@ -13,7 +13,7 @@ def onStart (pokemon):
 	""" 
 	pass
 
-def onDamage (damage, target, source, move):
+def onDamage(datadic : dict):
 	"""function (damage, target, source, move) {
 				if (!move || move.effectType !== 'Move' || !source) return;
 				this.effectData.totalDamage += damage;
@@ -22,7 +22,7 @@ def onDamage (damage, target, source, move):
 	""" 
 	pass
 
-def onBeforeMove (pokemon, target, move):
+def onBeforeMove(datadic : dict):
 	"""function (pokemon, target, move) {
 				if (this.effectData.duration === 1) {
 					this.add('-end', pokemon, 'move: Bide');
@@ -57,14 +57,14 @@ def onBeforeMove (pokemon, target, move):
 	""" 
 	pass
 
-def onMoveAborted (pokemon):
+def onMoveAborted(datadic : dict):
 	"""function (pokemon) {
 				pokemon.removeVolatile('bide');
 			}
 	""" 
 	pass
 
-def onEnd (pokemon):
+def onEnd(datadic : dict):
 	"""function (pokemon) {
 				this.add('-end', pokemon, 'move: Bide', '[silent]');
 			}

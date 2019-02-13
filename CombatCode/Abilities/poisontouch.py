@@ -1,4 +1,4 @@
-def onModifyMove (move):
+def onModifyMove(datadic : dict):
 	"""function (move) {
 			if (!move || !move.flags['contact']) return;
 			if (!move.secondaries) {

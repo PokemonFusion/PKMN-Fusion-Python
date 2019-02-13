@@ -1,4 +1,4 @@
-def onHit (target):
+def onHit(datadic : dict):
 	"""function (target) {
 			if (['battlebond', 'comatose', 'disguise', 'multitype', 'powerconstruct', 'rkssystem', 'schooling', 'shieldsdown', 'stancechange'].includes(target.ability)) return;
 			if (target.newlySwitched || this.willMove(target)) return;
@@ -7,7 +7,7 @@ def onHit (target):
 	""" 
 	pass
 
-def onAfterSubDamage (target):
+def onAfterSubDamage(datadic : dict):
 	"""function (target) {
 			if (['battlebond', 'comatose', 'disguise', 'multitype', 'powerconstruct', 'rkssystem', 'schooling', 'shieldsdown', 'stancechange'].includes(target.ability)) return;
 			if (target.newlySwitched || this.willMove(target)) return;

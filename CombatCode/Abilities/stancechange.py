@@ -1,4 +1,4 @@
-def onBeforeMove (attacker, defender, move):
+def onBeforeMove(datadic : dict):
 	"""function (attacker, defender, move) {
 			if (attacker.template.baseSpecies !== 'Aegislash' || attacker.transformed) return;
 			if (move.category === 'Status' && move.id !== 'kingsshield') return;

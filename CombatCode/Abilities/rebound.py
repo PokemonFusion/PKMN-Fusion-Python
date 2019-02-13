@@ -1,4 +1,4 @@
-def onTryHit (target, source, move):
+def onTryHit(datadic : dict):
 	"""function (target, source, move) {
 			if (this.effectData.target.activeTurns) return;
 
@@ -13,7 +13,7 @@ def onTryHit (target, source, move):
 	""" 
 	pass
 
-def onAllyTryHitSide (target, source, move):
+def onAllyTryHitSide(datadic : dict):
 	"""function (target, source, move) {
 			if (this.effectData.target.activeTurns) return;
 

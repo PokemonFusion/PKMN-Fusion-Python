@@ -1,4 +1,4 @@
-def onSourceHit (target, source, move):
+def onSourceHit(datadic : dict):
 	"""function (target, source, move) {
 			if (!move || !target) return;
 			if (target !== source && move.category !== 'Status') {

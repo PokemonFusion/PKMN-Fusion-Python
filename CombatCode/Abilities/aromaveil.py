@@ -1,4 +1,4 @@
-def onAllyTryAddVolatile (status, target, source, effect):
+def onAllyTryAddVolatile(datadic : dict):
 	"""function (status, target, source, effect) {
 			if (['attract', 'disable', 'encore', 'healblock', 'taunt', 'torment'].includes(status.id)) {
 				if (effect.effectType === 'Move') {

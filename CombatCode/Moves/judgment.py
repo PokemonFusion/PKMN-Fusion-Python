@@ -1,4 +1,4 @@
-def onModifyMove (move, pokemon):
+def onModifyMove(datadic : dict):
 	"""function (move, pokemon) {
 			const item = pokemon.getItem();
 			if (item.id && item.onPlate && !item.zMove) {

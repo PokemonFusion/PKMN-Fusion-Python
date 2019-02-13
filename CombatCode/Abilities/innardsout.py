@@ -1,4 +1,4 @@
-def onAfterDamage (damage, target, source, move):
+def onAfterDamage(datadic : dict):
 	"""function (damage, target, source, move) {
 			if (source && source !== target && move && move.effectType === 'Move' && !target.hp) {
 				this.damage(damage, source, target);

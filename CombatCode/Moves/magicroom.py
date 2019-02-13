@@ -1,4 +1,4 @@
-def durationCallback (source, effect):
+def durationCallback(datadic : dict):
 	"""function (source, effect) {
 				if (source && source.hasAbility('persistent')) {
 					this.add('-activate', source, 'ability: Persistent', effect);
@@ -9,21 +9,21 @@ def durationCallback (source, effect):
 	""" 
 	pass
 
-def onStart (target, source):
+def onStart(datadic : dict):
 	"""function (target, source) {
 				this.add('-fieldstart', 'move: Magic Room', '[of] ' + source);
 			}
 	""" 
 	pass
 
-def onRestart (target, source):
+def onRestart(datadic : dict):
 	"""function (target, source) {
 				this.removePseudoWeather('magicroom');
 			}
 	""" 
 	pass
 
-def onEnd ():
+def onEnd(datadic : dict):
 	"""function () {
 				this.add('-fieldend', 'move: Magic Room', '[of] ' + this.effectData.source);
 			}

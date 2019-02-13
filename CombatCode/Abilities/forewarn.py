@@ -1,4 +1,4 @@
-def onStart (pokemon):
+def onStart(datadic : dict):
 	"""function (pokemon) {
 			/**@type {(Move|Pokemon)[][]} */
 			let warnMoves = [];

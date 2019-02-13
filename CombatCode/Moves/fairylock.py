@@ -1,11 +1,11 @@
-def onStart (target):
+def onStart(datadic : dict):
 	"""function (target) {
 				this.add('-activate', target, 'move: Fairy Lock');
 			}
 	""" 
 	pass
 
-def onTrapPokemon (pokemon):
+def onTrapPokemon(datadic : dict):
 	"""function (pokemon) {
 				pokemon.tryTrap();
 			}

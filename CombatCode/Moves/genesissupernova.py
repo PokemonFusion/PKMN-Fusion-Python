@@ -1,4 +1,4 @@
-def onHit ():
+def onHit(datadic : dict):
 	"""function () {
 					this.setTerrain('psychicterrain');
 				}

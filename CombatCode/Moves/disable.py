@@ -1,4 +1,4 @@
-def onTryHit (target):
+def onTryHit(datadic : dict):
 	"""function (target) {
 			if (!target.lastMove || target.lastMove.isZ) {
 				return false;
@@ -7,7 +7,7 @@ def onTryHit (target):
 	""" 
 	pass
 
-def onStart (pokemon, source, effect):
+def onStart(datadic : dict):
 	"""function (pokemon, source, effect) {
 				if (!this.willMove(pokemon)) {
 					this.effectData.duration++;
@@ -38,14 +38,14 @@ def onStart (pokemon, source, effect):
 	""" 
 	pass
 
-def onEnd (pokemon):
+def onEnd(datadic : dict):
 	"""function (pokemon) {
 				this.add('-end', pokemon, 'Disable');
 			}
 	""" 
 	pass
 
-def onBeforeMove (attacker, defender, move):
+def onBeforeMove(datadic : dict):
 	"""function (attacker, defender, move) {
 				if (move.id === this.effectData.move) {
 					this.add('cant', attacker, 'Disable', move);
@@ -55,7 +55,7 @@ def onBeforeMove (attacker, defender, move):
 	""" 
 	pass
 
-def onDisableMove (pokemon):
+def onDisableMove(datadic : dict):
 	"""function (pokemon) {
 				for (const moveSlot of pokemon.moveSlots) {
 					if (moveSlot.id === this.effectData.move) {

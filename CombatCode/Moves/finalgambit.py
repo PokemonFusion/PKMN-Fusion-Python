@@ -1,4 +1,4 @@
-def damageCallback (pokemon):
+def damageCallback(datadic : dict):
 	"""function (pokemon) {
 			let damage = pokemon.hp;
 			pokemon.faint();

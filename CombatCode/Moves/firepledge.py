@@ -1,4 +1,4 @@
-def basePowerCallback (target, source, move):
+def basePowerCallback(datadic : dict):
 	"""function (target, source, move) {
 			if (['grasspledge', 'waterpledge'].includes(move.sourceEffect)) {
 				this.add('-combine');
@@ -9,7 +9,7 @@ def basePowerCallback (target, source, move):
 	""" 
 	pass
 
-def onPrepareHit (target, source, move):
+def onPrepareHit(datadic : dict):
 	"""function (target, source, move) {
 			for (const action of this.queue) {
 				// @ts-ignore
@@ -26,7 +26,7 @@ def onPrepareHit (target, source, move):
 	""" 
 	pass
 
-def onModifyMove (move):
+def onModifyMove(datadic : dict):
 	"""function (move) {
 			if (move.sourceEffect === 'waterpledge') {
 				move.type = 'Water';
@@ -40,7 +40,7 @@ def onModifyMove (move):
 	""" 
 	pass
 
-def onHit (target, source, move):
+def onHit(datadic : dict):
 	"""function (target, source, move) {
 			if (move.sourceEffect === 'grasspledge') {
 				target.side.addSideCondition('firepledge');
@@ -52,21 +52,21 @@ def onHit (target, source, move):
 	""" 
 	pass
 
-def onStart (targetSide):
+def onStart(datadic : dict):
 	"""function (targetSide) {
 				this.add('-sidestart', targetSide, 'Fire Pledge');
 			}
 	""" 
 	pass
 
-def onEnd (targetSide):
+def onEnd(datadic : dict):
 	"""function (targetSide) {
 				this.add('-sideend', targetSide, 'Fire Pledge');
 			}
 	""" 
 	pass
 
-def onResidual (side):
+def onResidual(datadic : dict):
 	"""function (side) {
 				for (const pokemon of side.active) {
 					if (pokemon && !pokemon.hasType('Fire')) {

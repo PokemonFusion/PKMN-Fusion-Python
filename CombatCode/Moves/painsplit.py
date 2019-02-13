@@ -1,4 +1,4 @@
-def onHit (target, pokemon):
+def onHit(datadic : dict):
 	"""function (target, pokemon) {
 			let averagehp = Math.floor((target.hp + pokemon.hp) / 2) || 1;
 			target.sethp(averagehp);

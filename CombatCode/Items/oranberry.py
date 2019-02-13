@@ -1,4 +1,4 @@
-def onUpdate (pokemon):
+def onUpdate(datadic : dict):
 	"""function (pokemon) {
 			if (pokemon.hp <= pokemon.maxhp / 2) {
 				pokemon.eatItem();
@@ -7,14 +7,14 @@ def onUpdate (pokemon):
 	""" 
 	pass
 
-def onTryEatItem (item, pokemon):
+def onTryEatItem(datadic : dict):
 	"""function (item, pokemon) {
 			if (!this.runEvent('TryHeal', pokemon)) return False;
 		}
 	""" 
 	pass
 
-def onEat (pokemon):
+def onEat(datadic : dict):
 	"""function (pokemon) {
 			this.heal(10);
 		}

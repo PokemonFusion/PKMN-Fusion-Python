@@ -1,4 +1,4 @@
-def onHit (target, source):
+def onHit(datadic : dict):
 	"""function (target, source) {
 			if (!target.lastMove) return false;
 			let lastMove = target.lastMove;

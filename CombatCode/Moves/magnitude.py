@@ -1,4 +1,4 @@
-def onModifyMove (move, pokemon):
+def onModifyMove(datadic : dict):
 	"""function (move, pokemon) {
 			let i = this.random(100);
 			if (i < 5) {
@@ -27,7 +27,7 @@ def onModifyMove (move, pokemon):
 	""" 
 	pass
 
-def onUseMoveMessage (pokemon, target, move):
+def onUseMoveMessage(datadic : dict):
 	"""function (pokemon, target, move) {
 			this.add('-activate', pokemon, 'move: Magnitude', move.magnitude);
 		}

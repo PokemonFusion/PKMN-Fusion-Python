@@ -1,4 +1,4 @@
-def onBasePower (basePower, attacker, defender, move):
+def onBasePower(datadic : dict):
 	"""function (basePower, attacker, defender, move) {
 			if (basePower <= 60) {
 				this.debug('Technician boost');

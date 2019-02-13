@@ -1,4 +1,4 @@
-def onTryHit (target, source, move):
+def onTryHit(datadic : dict):
 	"""function (target, source, move) {
 			if (target !== source && move.type === 'Water') {
 				if (!this.heal(target.maxhp / 4)) {
@@ -10,7 +10,7 @@ def onTryHit (target, source, move):
 	""" 
 	pass
 
-def onFoeBasePower (basePower, attacker, defender, move):
+def onFoeBasePower(datadic : dict):
 	"""function (basePower, attacker, defender, move) {
 			if (this.effectData.target !== defender) return;
 			if (move.type === 'Fire') {
@@ -20,7 +20,7 @@ def onFoeBasePower (basePower, attacker, defender, move):
 	""" 
 	pass
 
-def onWeather (target, source, effect):
+def onWeather(datadic : dict):
 	"""function (target, source, effect) {
 			if (effect.id === 'raindance' || effect.id === 'primordialsea') {
 				this.heal(target.maxhp / 8);
