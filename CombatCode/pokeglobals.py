@@ -1,6 +1,3 @@
-import sys, os
-sys.path.append(os.path.abspath(""))
-
 import copy
 from CombatCode.battlemovedex import BattleMovedex
 
@@ -57,3 +54,5 @@ class Moves:
         #for now, just pass the basepower
         return self.basePower
 
+    def __repr__(self):
+        return "{}. {}".format(self.num,self.name)

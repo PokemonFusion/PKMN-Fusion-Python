@@ -1,6 +1,3 @@
-import sys
-import os
-sys.path.append(os.path.abspath(os.path.join('')))
 import CombatCode.pokemon as pokemon
 import CombatCode.pokeglobals as pglobals
 import random
@@ -22,9 +19,9 @@ class Teams:
 class Battle:
     pass
 
-
 class TurnData:
-    pass
+    def __init__(self, positions=None):
+        self.positions = positions
 
 
 class DeclareAttack:
@@ -43,9 +40,6 @@ class TurnInit:
         self.recharge = recharge  # if pokemon has to recharge, make True
 
 
-
-
-
 # may remove this because of it being made somewhere else.
 class Pokemon(pokemon.Pokemon):
 
@@ -58,3 +52,8 @@ class Pokemon(pokemon.Pokemon):
 
     def getPosition(self):
         return self.team + str(self.slot)
+
+
+class PositionData:
+    def __init__(self, pokedata: Pokemon = None):
+        self.pokemon = pokedata

@@ -121,11 +121,13 @@ class Pokemon:
         self.xp = self.getXPtoLv(self.level)  # Give just enough to reach that level.
 
         # Whether the Pokémon starts as an egg.
-        self.isEgg = isEgg  # This doesn't check if it has previous evolutions or anything. So, if for some insane reason, you want a Charizard egg...
+        self.isEgg = isEgg  # This doesn't check if it has previous evolutions or anything. So, if for some insane
+        # reason, you want a Charizard egg...
 
         # friendship, as an int
         if self.isEgg:
-            self.friendship = 120  # Eggs are decently friendly. This is true to real life, where eggs sometimes dress up in polka-dots.
+            self.friendship = 120  # Eggs are decently friendly. This is true to real life, where eggs sometimes
+            # dress up in polka-dots.
         else:
             self.friendship = self.getDicEntry('baseHappiness')
 
@@ -207,7 +209,9 @@ class Pokemon:
         # sdic is the dictionary entry for the species.
         try:
             sdic = dex[
-                species.lower()]  # Retrieve the dictionary for the species. lower() is used as a safeguard against programmer error, since uppercase keys do not exist in this dictionary (if they do, they should be corrected).
+                species.lower()]  # Retrieve the dictionary for the species. lower() is used as a safeguard against
+            # programmer error, since uppercase keys do not exist in this dictionary (if they do, they should be
+            # corrected).
         except KeyError:
             sdic = dex["missingno"]  # If the key is not found, default to missingno.
         return sdic
@@ -268,7 +272,9 @@ class Pokemon:
         isCrit - if a critical happened
         species - force a species name"""
         statType = statType.lower()  # force the name to lower to make sure it doesn't blow up.
-        # Retrieve the base stat. If the stat does not exist, return 2 as a failsafe. 2 is a stat that couldn't happen normally (outside of combat), so this should set off a red flag if seen in a status screen or the like.
+        # Retrieve the base stat. If the stat does not exist, return 2 as a failsafe. 2 is a stat that couldn't
+        # happen normally (outside of combat), so this should set off a red flag if seen in a status screen or the
+        # like.
         baseStat = self.getDicEntry("baseStats", species=species).get(statType, 2)
 
         # Return calculated stat.
@@ -345,3 +351,6 @@ class Pokemon:
         """Take damage and return current hp"""
         self.modifyHP(damage * -1, species=species)
         return self.hp
+
+    def __repr__(self):
+        return self.getName()

@@ -6,7 +6,7 @@ from CombatCode.damagecalculator import damage_calc
 
 testbattle = CombatCode.battledata.TurnData()
 testbattle.positions = dict()
-testbattle.positions["A1"] = CombatCode.battledata.TurnData()
+testbattle.positions["A1"] = CombatCode.battledata.PositionData()
 A1 = testbattle.positions["A1"]
 A1.pokemon = CombatCode.battledata.Pokemon(1,"A",1,"pikachu", level=50)
 
@@ -22,6 +22,7 @@ while battle:
     turnorder = calculateTurnorder(testbattle)
     for att in turnorder:
         curpoke = testbattle.positions[att]
+        result = pglobals.Result()
         if curpoke.turninit.attack is not None:
             result = damage_calc(curpoke.pokemon, testbattle.positions[curpoke.turninit.attack.target].pokemon, curpoke.turninit.attack.move)
             print(result.text)
