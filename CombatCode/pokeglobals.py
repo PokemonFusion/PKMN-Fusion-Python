@@ -55,4 +55,4 @@ class Moves:
         return self.basePower
 
     def __repr__(self):
-        return "{}. {}".format(self.num,self.name)
+        return "{}. {}".format(self.num, self.name)

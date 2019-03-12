@@ -19,6 +19,7 @@ class Teams:
 class Battle:
     pass
 
+
 class TurnData:
     def __init__(self, positions=None):
         self.positions = positions
@@ -29,6 +30,8 @@ class DeclareAttack:
         self.target = target  # target is the position value
         self.move = move
 
+    def __repr__(self):
+        return "{} -> {}".format(self.move.name, self.target)
 
 class TurnInit:
     def __init__(self, switch=None, attack: DeclareAttack = None, item=None, run=None, recharge=None):
