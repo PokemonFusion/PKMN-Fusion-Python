@@ -21,30 +21,38 @@ class Battle:
 
 
 class TurnData:
-    def __init__(self, positions=None):
-        self.positions = positions
+    def __init__(self, positions: dict = None):
+        self.positions = positions  # PositionData class
 
 
 class DeclareAttack:
-    def __init__(self, target, move: pglobals.Moves):
+    def __init__(self, target: str, move: pglobals.Moves):
         self.target = target  # target is the position value
         self.move = move
 
     def __repr__(self):
         return "{} -> {}".format(self.move.name, self.target)
 
+
 class TurnInit:
-    def __init__(self, switch=None, attack: DeclareAttack = None, item=None, run=None, recharge=None):
+    def __init__(self, position: str, switch=None, attack: DeclareAttack = None, item=None, run=None, recharge=None):
         # if switching a pokemon, put in the team position of the pokemon switching to
         self.switch = switch
         self.attack = attack  # if attacking, use a DeclareAttack here
         self.item = item  # if using an item, put the key here
         self.run = run  # if trying to run away, make True
         self.recharge = recharge  # if pokemon has to recharge, make True
+        self.position = position
+
+    def getTarget(self):
+        if self.attack is None:
+            return self.position
+        else:
+            return self.attack.target
 
 
-# may remove this because of it being made somewhere else.
 class Pokemon(pokemon.Pokemon):
+    # may remove this because of it being made somewhere else.
 
     def __init__(self, ot, team, slot, species='missingno', nickname=None, gender=None, isEgg=False, level=1,
                  ability=random.choice(['0', '1'])):
@@ -52,6 +60,7 @@ class Pokemon(pokemon.Pokemon):
                          gender=gender, isEgg=isEgg, level=level, ability=ability)
         self.team = team
         self.slot = slot
+        self.turninit = None  # TurnInit Class
 
     def getPosition(self):
         return self.team + str(self.slot)
@@ -59,4 +68,13 @@ class Pokemon(pokemon.Pokemon):
 
 class PositionData:
     def __init__(self, pokedata: Pokemon = None):
-        self.pokemon = pokedata
+        self.pokemon = pokedata  # pokemon class
+
+    def getTarget(self):
+        return self.pokemon.turninit.getTarget()
+
+    def getAction(self):
+        if self.pokemon.turninit.attack:
+            return self.pokemon.turninit.attack.move
+        # TODO: Add the other actions here later
+        return None

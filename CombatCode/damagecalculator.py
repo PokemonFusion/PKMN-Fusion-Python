@@ -69,18 +69,19 @@ def STAB(attacker, move: Moves) -> float:
     else:
         return 1.0
 
-def elementTypeTotal(target, move:Moves) -> float:
-    types = target.getTypes() #make/use a method in case there are abilities that would change this
+
+def elementTypeTotal(target, move: Moves) -> float:
+    types = target.getTypes() # make/use a method in case there are abilities that would change this
     effect = 1.0
     for ptype in types:
         effect = effect * (TypeEff[move.type.lower()][ptype.lower()] / 100.0)
 
     return effect
 
+
 def damagephrase(target, damage) -> str:
     maxhp = target.getStat("hp")
-    damper = (damage * 100) / maxhp
-    
+
     def dam_name(damper) -> str:
         if damper >= 100:
             return "EPIC"
@@ -98,10 +99,10 @@ def damagephrase(target, damage) -> str:
             return "puny"
         else:
             return "no"
-    return dam_name(damper)
+    return dam_name((damage * 100) / maxhp)
 
 
-def damage_calc(attacker:Pokemon, target:Pokemon, move: Moves) -> Result:
+def damage_calc(attacker: Pokemon, target: Pokemon, move: Moves) -> Result:
     """Use this for calculating damage fully"""
     # Initial version of this will heavily reference the way I (Yang/Koden) had coded it in MUF
     result = Result()
@@ -113,7 +114,7 @@ def damage_calc(attacker:Pokemon, target:Pokemon, move: Moves) -> Result:
         crit = 1
         isCrit = False
         if critical_hit_check(attacker, move):
-            crit = 1.5 #TODO: Criticals ignore def boots and atk drops, except for burn
+            crit = 1.5  # TODO: Criticals ignore def boots and atk drops, except for burn
             isCrit = True
         attackStat = 0
         defenseStat = 0
