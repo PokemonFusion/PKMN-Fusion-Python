@@ -63,6 +63,7 @@ class Pokemon(pokemon.Pokemon):
         self.team = team
         self.slot = slot
         # self.turninit = None  # TurnInit Class
+        self.tempvals = {}
 
     def getPosition(self):
         return self.team + str(self.slot)

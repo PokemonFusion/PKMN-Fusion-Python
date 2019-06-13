@@ -166,6 +166,9 @@ def damage_calc(attacker: Pokemon, target: Pokemon, move: Moves) -> Result:
         if crit > 1:
             critphrase = " CRITICAL"  # mind the space
 
+        if damage > 0:
+            target.tempvals['hurtThisTurn'] = True
+
         result.text = \
             "{attname} uses {movename} against {tarname}, {effective} and deals {damphrase}{crit} damage!".format(
                 attname="{}.{}".format(attacker.getPosition(), attacker.getName()),

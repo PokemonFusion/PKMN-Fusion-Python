@@ -10,6 +10,8 @@ def calculateTurnorder(battleround) -> list:
         priorities = list()
 
         def __init__(self, turndata: TurnInit, pokemon):
+            # clear off the temporary variable
+            pokemon.tempvals.clear()
             self.priority = 0
             self.speed = 0
 
