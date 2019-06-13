@@ -62,7 +62,7 @@ class Pokemon(pokemon.Pokemon):
                          gender=gender, isEgg=isEgg, level=level, ability=ability)
         self.team = team
         self.slot = slot
-        self.turninit = None  # TurnInit Class
+        # self.turninit = None  # TurnInit Class
 
     def getPosition(self):
         return self.team + str(self.slot)
@@ -73,10 +73,10 @@ class PositionData:
         self.pokemon = pokedata  # pokemon class
 
     def getTarget(self):
-        return self.pokemon.turninit.getTarget()
+        return self.turninit.getTarget() #different getTarget method
 
     def getAction(self):
-        if self.pokemon.turninit.attack:
-            return self.pokemon.turninit.attack.move
+        if self.turninit.attack:
+            return self.turninit.attack.move
         # TODO: Add the other actions here later
         return None

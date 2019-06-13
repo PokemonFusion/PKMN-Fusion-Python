@@ -10,9 +10,7 @@ def basePowerCallback(datadic: dict):
 			return move.basePower;
 		}
 	"""
-	#pokemon = Pokemon
 	pokemon = datadic['pokemon']
-	#move = Moves
 	move = datadic['move']
 
 	if pokemon.hold_item is None:

@@ -21,6 +21,7 @@ from CombatCode.battledata import Pokemon
 
 
 """
+datadic = {}
 
 
 def percent_check(check) -> bool:
@@ -108,6 +109,10 @@ def damage_calc(attacker: Pokemon, target: Pokemon, move: Moves) -> Result:
     # Initial version of this will heavily reference the way I (Yang/Koden) had coded it in MUF
     result = Result()
 
+    datadic['pokemon'] = attacker
+    datadic['target'] = target
+    datadic['move'] = move
+
     # around here I think is where we would be calling any 'onModifyMove' flags for the ability or move involved
 
     # begin by checking accuracy
@@ -128,7 +133,7 @@ def damage_calc(attacker: Pokemon, target: Pokemon, move: Moves) -> Result:
             defenseStat = target.getStat("spd", isCrit)
 
         basedamage = base_damage(
-            attacker.level, move.calculateBasePower(), attackStat, defenseStat)
+            attacker.level, move.calculateBasePower(datadic), attackStat, defenseStat)
         
         # TODO: figure out where to put 'onUseMoveMessage' functions.
         damage = basedamage * STAB(attacker, move)
@@ -162,7 +167,7 @@ def damage_calc(attacker: Pokemon, target: Pokemon, move: Moves) -> Result:
             critphrase = " CRITICAL"  # mind the space
 
         result.text = \
-            "{attname} uses {movename} against {tarname}, {effective}and deals {damphrase}{crit} damage!".format(
+            "{attname} uses {movename} against {tarname}, {effective} and deals {damphrase}{crit} damage!".format(
                 attname="{}.{}".format(attacker.getPosition(), attacker.getName()),
                 tarname="{}.{}".format(target.getPosition(), target.getName()), effective=effectivePhrase,
                 movename=move.name, damphrase=phrase, crit=critphrase

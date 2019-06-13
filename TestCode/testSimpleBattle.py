@@ -10,7 +10,7 @@ A1 = testbattle.positions["A1"]
 A1.pokemon = CombatCode.battledata.Pokemon(1, "A", 1, "pikachu", level=50)
 
 A1.turninit = TurnInit(A1.pokemon.getPosition(),
-                       attack=CombatCode.battledata.DeclareAttack('B1', pglobals.Moves("tackle")))
+                       attack=CombatCode.battledata.DeclareAttack('B1', pglobals.Moves("acrobatics")))
 testbattle.positions["B1"] = CombatCode.battledata.PositionData()
 B1 = testbattle.positions["B1"]
 B1.pokemon = CombatCode.battledata.Pokemon(1, "B", 1, "hitmonchan", level=50)

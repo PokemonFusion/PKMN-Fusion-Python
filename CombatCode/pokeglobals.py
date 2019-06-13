@@ -51,9 +51,9 @@ class Moves:
         """
         you'll need to check basePowerCallback and onBasePower
         """
-        calc = BattleMovedex[self.name].get('basePowerCallback', None)
+        calc = BattleMovedex[self.name.lower()].get('basePowerCallback', None)
         if calc is None:
-            calc = BattleMovedex[self.name].get('onBasePower', None)
+            calc = BattleMovedex[self.name.lower()].get('onBasePower', None)
 
         if calc is None:
             return self.basePower
