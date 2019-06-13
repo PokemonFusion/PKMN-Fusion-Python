@@ -9,13 +9,6 @@ def keycheck(dictionary, subdictionary, key) -> object:
         return None
 
 
-def addlog(dictionary: dict, log: str):
-    if 'log' not in dictionary:
-        dictionary['log'] = list()
-
-    dictionary['log'].append(log)
-
-
 class Result:
     def __init__(self):
         self.debug = dict()

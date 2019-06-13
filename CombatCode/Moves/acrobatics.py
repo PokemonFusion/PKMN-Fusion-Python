@@ -1,7 +1,4 @@
-import sys, os
-sys.path.append(os.path.abspath(os.path.join('')))
-from CombatCode.battledata import Pokemon
-from CombatCode.pokeglobals import addlog, Moves
+from CombatCode.diclogging import addlog
 
 
 def basePowerCallback(datadic: dict):
@@ -13,9 +10,9 @@ def basePowerCallback(datadic: dict):
 			return move.basePower;
 		}
 	"""
-	pokemon = Pokemon
+	#pokemon = Pokemon
 	pokemon = datadic['pokemon']
-	move = Moves
+	#move = Moves
 	move = datadic['move']
 
 	if pokemon.hold_item is None:
