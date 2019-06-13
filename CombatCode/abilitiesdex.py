@@ -1,4 +1,4 @@
-from Abilities import * 
+from CombatCode.Abilities import *
 
 BattleAbilities = {'adaptability': {'desc': "This Pokemon's moves that match one of its types "
                           'have a same-type attack bonus (STAB) of 2 instead '

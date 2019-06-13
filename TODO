@@ -331,7 +331,7 @@ Abilities:
   ☐ rebound.onAllyTryHitSide
 
 Moves:
-  ☐ acrobatics.basePowerCallback
+  ☑ acrobatics.basePowerCallback
   ☐ acupressure.onHit
   ☐ afteryou.onHit
   ☐ allyswitch.onTryHit

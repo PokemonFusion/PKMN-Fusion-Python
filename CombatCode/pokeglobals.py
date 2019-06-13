@@ -1,5 +1,5 @@
 import copy
-from CombatCode.battlemovedex import BattleMovedex
+from CombatCode.movesdex import BattleMovedex
 
 
 def keycheck(dictionary, subdictionary, key) -> object:
@@ -7,6 +7,13 @@ def keycheck(dictionary, subdictionary, key) -> object:
         return dictionary[subdictionary][key]
     else:
         return None
+
+
+def addlog(dictionary: dict, log: str):
+    if 'log' not in dictionary:
+        dictionary['log'] = list()
+
+    dictionary['log'].append(log)
 
 
 class Result:
@@ -47,12 +54,18 @@ class Moves:
         self.onModifyMove = movecheck("onModifyMove")
         self.critRatio = movecheck("critRatio")
 
-    def calculateBasePower(self) -> int:
+    def calculateBasePower(self, datadic: dict) -> int:
         """
         you'll need to check basePowerCallback and onBasePower
         """
-        #for now, just pass the basepower
-        return self.basePower
+        calc = BattleMovedex[self.name].get('basePowerCallback', None)
+        if calc is None:
+            calc = BattleMovedex[self.name].get('onBasePower', None)
+
+        if calc is None:
+            return self.basePower
+        else:
+            return calc(datadic)
 
     def __repr__(self):
         return "{}. {}".format(self.num, self.name)

@@ -1,7 +1,7 @@
 """This function is to be run on it's own.  This is used to remove the weirdness of function calls from importing
 a javascript dictionary to python.
 for the move return, you will have to fix the capitalization of the function, because return is a special function
-This will need to be fixed in moves.py, the file name of Return.py, and __init__.py
+This will need to be fixed in movesdex.py, the file name of Return.py, and __init__.py
 """
 
 import sys, os
@@ -82,9 +82,9 @@ def fixdict(dicfile):
 makedir(basefolder)
 with open(os.path.join(basefolder, "TODO"), "w+", encoding='utf-8') as todofile:
     pass
-tasks = {#"Abilities" : { "dictionary" : BattleAbilities, "file" : "abilities.py", "dicname" : "BattleAbilities"} , 
-         #"Moves": {"dictionary" : BattleMovedex, "file" : "moves.py", "dicname" : "BattleMovedex"} 
-         "Items": {"dictionary" : BattleItems, "file": "items.py", "dicname" : "BattleItems"}
+tasks = {#"Abilities" : { "dictionary" : BattleAbilities, "file" : "abilitiesdex.py", "dicname" : "BattleAbilities"} ,
+         #"Moves": {"dictionary" : BattleMovedex, "file" : "movesdex.py", "dicname" : "BattleMovedex"}
+         "Items": {"dictionary" : BattleItems, "file": "itemsdex.py", "dicname" : "BattleItems"}
          }
 
 for task in tasks:
