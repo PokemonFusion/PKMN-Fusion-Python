@@ -61,10 +61,11 @@ def base_damage(level, basePower, attackStat, defenseStat) -> int:
     randMod = random.randint(85, 100)/100.0
     return floor(damage * randMod)
 
+
 def STAB(attacker, move: Moves) -> float:
     atypes = attacker.getTypes()
     if move.type in atypes:
-        #TODO: adaptibility goes here, maybe?
+        # TODO: adaptibility goes here, maybe?
         return 1.5
     else:
         return 1.0
@@ -82,20 +83,20 @@ def elementTypeTotal(target, move: Moves) -> float:
 def damagephrase(target, damage) -> str:
     maxhp = target.getStat("hp")
 
-    def dam_name(damper) -> str:
-        if damper >= 100:
+    def dam_name(damage_percent) -> str:
+        if damage_percent >= 100:
             return "EPIC"
-        elif damper > 75:
+        elif damage_percent > 75:
             return "extreme"
-        elif damper > 50:
+        elif damage_percent > 50:
             return "heavy"
-        elif damper > 25:
+        elif damage_percent > 25:
             return "considerable"
-        elif damper > 15:
+        elif damage_percent > 15:
             return "moderate"
-        elif damper > 5:
+        elif damage_percent > 5:
             return "light"
-        elif damper > 0:
+        elif damage_percent > 0:
             return "puny"
         else:
             return "no"

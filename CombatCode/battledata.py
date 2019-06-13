@@ -34,6 +34,8 @@ class DeclareAttack:
         return "{} -> {}".format(self.move.name, self.target)
 
 
+# This class is what will store the turn initialization data, letting you know what the pokemon in that position is
+# doing in that turn.
 class TurnInit:
     def __init__(self, position: str, switch=None, attack: DeclareAttack = None, item=None, run=None, recharge=None):
         # if switching a pokemon, put in the team position of the pokemon switching to
