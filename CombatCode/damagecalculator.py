@@ -168,6 +168,7 @@ def damage_calc(attacker: Pokemon, target: Pokemon, move: Moves) -> Result:
 
         if damage > 0:
             target.tempvals['hurtThisTurn'] = True
+            target.tempvals.setdefault('attackers', []).append(attacker.getPosition())
 
         result.text = \
             "{attname} uses {movename} against {tarname}, {effective} and deals {damphrase}{crit} damage!".format(
