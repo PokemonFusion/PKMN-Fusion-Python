@@ -181,6 +181,16 @@ class Pokemon:
             'spd': 0,
             'spe': 0
         }
+        # This is where we will be storing stat mods, we will need to make sure that they don't go outside of +-6
+        self.statMods = {
+            'atk': 0,
+            'def': 0,
+            'spa': 0,
+            'spd': 0,
+            'spe': 0,
+            'acc': 0,
+            'eva': 0
+        }
 
         # hold item, as a ???
         # as of writing, items don't exist nor have a planned way of handling them
@@ -286,6 +296,60 @@ class Pokemon:
             natureMod = NATURES[self.nature].get(statType, 1)
             return int((int(
                 (2 * baseStat + self.iv[statType] + int(self.ev[statType] / 4)) * self.level / 100) + 5) * natureMod)
+
+    def getStatMod(self, stat: str) -> float:
+        """This will return the stat mod of the multiplier involved.
+        The calculations for eva and acc are going to be different
+        """
+
+        statmult = {
+            -6: 2 / 8,
+            -5: 2 / 7,
+            -4: 2 / 6,
+            -3: 2 / 5,
+            -2: 2 / 4,
+            -1: 2 / 3,
+            0: 2 / 2,
+            1: 3 / 2,
+            2: 4 / 2,
+            3: 5 / 2,
+            4: 6 / 2,
+            5: 7 / 2,
+            6: 8 / 2
+        }
+        evaaccmult = {
+            -6: 3 / 9,
+            -5: 3 / 8,
+            -4: 3 / 7,
+            -3: 3 / 6,
+            -2: 3 / 5,
+            -1: 3 / 4,
+            0: 3 / 3,
+            1: 4 / 3,
+            2: 5 / 3,
+            3: 6 / 3,
+            4: 7 / 3,
+            5: 8 / 3,
+            6: 9 / 3
+        }
+
+        if stat is not None and stat in self.statMods:
+            # Make sure the value is between -6 and 6
+            if self.statMods[stat] > 6:
+                self.statMods[stat] = 6
+            if self.statMods[stat] < -6:
+                self.statMods[stat] = -6
+
+            if stat == 'acc':
+                return evaaccmult[self.statMods[stat]]
+            elif stat == 'eva':
+                # eva is the inverse stat value of acc
+                return evaaccmult[self.statMods[stat * -1]]
+            else:
+                return statmult[self.statMods[stat]]
+
+        else:
+            return 1
 
     # Get the name of the active ability.
     # As with getStat, the species parameter is to account for megas.
