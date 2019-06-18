@@ -292,10 +292,23 @@ class Pokemon:
             return int((2 * baseStat + self.iv["hp"] + int(self.ev["hp"] / 4)) * self.level / 100) + self.level + 10
         else:
             # TODO: Make sure that isCrit is checked for the temp stat boosts, and debuffs as appropriate.
-            #  don't let burn effect it
+            #  Burn halving attack should still happen
+
+            if isCrit:
+                critbonus = 1.5
+            else:
+                critbonus = 1
+
+            if isCrit and ((self.statmods[statType] < 0 and statType in ['atk', 'spa']) or
+                           (self.statmods[statType] > 0 and statType in ['def', 'spd'])):
+                statmod = 1
+            else:
+                statmod = self.getstatmod(statType)
+
             natureMod = NATURES[self.nature].get(statType, 1)
             return int((int(
-                (2 * baseStat + self.iv[statType] + int(self.ev[statType] / 4)) * self.level / 100) + 5) * natureMod)
+                (2 * baseStat + self.iv[statType] + int(self.ev[statType] / 4)) * self.level / 100) + 5) * natureMod
+                       * statmod * critbonus)
 
     def getStatMod(self, stat: str) -> float:
         """This will return the stat mod of the multiplier involved.
