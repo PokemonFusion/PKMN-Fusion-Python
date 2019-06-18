@@ -299,11 +299,11 @@ class Pokemon:
             else:
                 critbonus = 1
 
-            if isCrit and ((self.statmods[statType] < 0 and statType in ['atk', 'spa']) or
-                           (self.statmods[statType] > 0 and statType in ['def', 'spd'])):
+            if isCrit and ((self.statMods[statType] < 0 and statType in ['atk', 'spa']) or
+                           (self.statMods[statType] > 0 and statType in ['def', 'spd'])):
                 statmod = 1
             else:
-                statmod = self.getstatmod(statType)
+                statmod = self.getStatMod(statType)
 
             natureMod = NATURES[self.nature].get(statType, 1)
             return int((int(

@@ -171,7 +171,7 @@ def damage_calc(attacker: Pokemon, target: Pokemon, move: Moves) -> Result:
             target.tempvals.setdefault('attackers', []).append(attacker.getPosition())
 
         result.text = \
-            "{attname} uses {movename} against {tarname}, {effective} and deals {damphrase}{crit} damage!".format(
+            "{attname} uses {movename} against {tarname}, {effective}and deals {damphrase}{crit} damage!".format(
                 attname="{}.{}".format(attacker.getPosition(), attacker.getName()),
                 tarname="{}.{}".format(target.getPosition(), target.getName()), effective=effectivePhrase,
                 movename=move.name, damphrase=phrase, crit=critphrase
