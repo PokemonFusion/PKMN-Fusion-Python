@@ -3,6 +3,7 @@ from math import floor
 from CombatCode.pokeglobals import Moves, Result
 from CombatCode.elements import ElementEffectiveness as TypeEff
 from CombatCode.battledata import Pokemon
+from CombatCode.movesdex import BattleMovedex
 
 """
  Assumptions:
@@ -117,65 +118,72 @@ def damage_calc(attacker: Pokemon, target: Pokemon, move: Moves) -> Result:
 
     # begin by checking accuracy
     if accuracy_check(attacker, target, move):
+        onHit = BattleMovedex[move.name.lower()].get('onHit', None)
+
         crit = 1
-        isCrit = False
-        if critical_hit_check(attacker, move):
-            crit = 1.5  # TODO: Criticals ignore def boots and atk drops, except for burn
-            isCrit = True
-        attackStat = 0
-        defenseStat = 0
-        if move.category == 'Physical':
-            attackStat = attacker.getStat("atk", isCrit)
-            defenseStat = target.getStat("def", isCrit)
+        if move.category != 'Status':
 
-        elif move.category == 'Special':
-            attackStat = attacker.getStat("spa", isCrit)
-            defenseStat = target.getStat("spd", isCrit)
+            isCrit = False
+            if critical_hit_check(attacker, move):
+                crit = 1.5  # TODO: Criticals ignore def boots and atk drops, except for burn
+                isCrit = True
+            attackStat = 0
+            defenseStat = 0
+            if move.category == 'Physical':
+                attackStat = attacker.getStat("atk", isCrit)
+                defenseStat = target.getStat("def", isCrit)
 
-        basedamage = base_damage(
-            attacker.level, move.calculateBasePower(datadic), attackStat, defenseStat)
-        
-        # TODO: figure out where to put 'onUseMoveMessage' functions.
-        damage = basedamage * STAB(attacker, move)
-        typetotal = elementTypeTotal(target, move) # hold on to typetotal for the super effective print
-        damage = floor(damage * typetotal * crit)
-        phrase = damagephrase(target, damage)
+            elif move.category == 'Special':
+                attackStat = attacker.getStat("spa", isCrit)
+                defenseStat = target.getStat("spd", isCrit)
 
-        # TODO: Substitute would go somewhere around here I think
-        curhp = target.takeDamage(damage)
-        if curhp == 0:
-            result.fainted.append(target.getPosition())
+            basedamage = base_damage(
+                attacker.level, move.calculateBasePower(datadic), attackStat, defenseStat)
 
-        result.debug['damage'] = damage
-        result.debug['curhp'] = curhp
-        result.debug['hp_percent'] = curhp/target.getStat("hp")
+            # TODO: figure out where to put 'onUseMoveMessage' functions.
+            damage = basedamage * STAB(attacker, move)
+            typetotal = elementTypeTotal(target, move) # hold on to typetotal for the super effective print
+            damage = floor(damage * typetotal * crit)
+            phrase = damagephrase(target, damage)
 
-        effectivePhrase = ""
+            # TODO: Substitute would go somewhere around here I think
+            curhp = target.takeDamage(damage)
+            if curhp == 0:
+                result.fainted.append(target.getPosition())
 
-        if typetotal > 1:
-            effectivePhrase = "it's SUPER EFFECTIVE"
-            if typetotal > 2:
-                effectivePhrase += " x2"
-        elif typetotal == 0:
-            effectivePhrase = "they are immune..."
-        elif typetotal < 1:
-            effectivePhrase = "it's not very effective..."
-            if typetotal < 0.5:
-                effectivePhrase += " x2"
-        critphrase = ""
-        if crit > 1:
-            critphrase = " CRITICAL"  # mind the space
+            result.debug['damage'] = damage
+            result.debug['curhp'] = curhp
+            result.debug['hp_percent'] = curhp/target.getStat("hp")
 
-        if damage > 0:
-            target.tempvals['hurtThisTurn'] = True
-            target.tempvals.setdefault('attackers', []).append(attacker.getPosition())
+            effectivePhrase = ""
 
-        result.text = \
-            "{attname} uses {movename} against {tarname}, {effective}and deals {damphrase}{crit} damage!".format(
-                attname="{}.{}".format(attacker.getPosition(), attacker.getName()),
-                tarname="{}.{}".format(target.getPosition(), target.getName()), effective=effectivePhrase,
-                movename=move.name, damphrase=phrase, crit=critphrase
-            )
+            if typetotal > 1:
+                effectivePhrase = "it's SUPER EFFECTIVE"
+                if typetotal > 2:
+                    effectivePhrase += " x2"
+            elif typetotal == 0:
+                effectivePhrase = "they are immune..."
+            elif typetotal < 1:
+                effectivePhrase = "it's not very effective..."
+                if typetotal < 0.5:
+                    effectivePhrase += " x2"
+            critphrase = ""
+            if crit > 1:
+                critphrase = " CRITICAL"  # mind the space
+
+            if damage > 0:
+                target.tempvals['hurtThisTurn'] = True
+                target.tempvals.setdefault('attackers', []).append(attacker.getPosition())
+
+            if onHit is not None:
+                onHit(datadic)
+
+            result.text = \
+                "{attname} uses {movename} against {tarname}, {effective}and deals {damphrase}{crit} damage!".format(
+                    attname="{}.{}".format(attacker.getPosition(), attacker.getName()),
+                    tarname="{}.{}".format(target.getPosition(), target.getName()), effective=effectivePhrase,
+                    movename=move.name, damphrase=phrase, crit=critphrase
+                )
 
     else:
         result.text = "{attname} uses {movename} against {tarname} but it missed!".format(attname="{}.{}".format(

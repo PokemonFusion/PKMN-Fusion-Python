@@ -388,11 +388,11 @@ class Pokemon:
 
     def checkAcc(self):
         # For now return 1, we will need to decide how to store this variable properly.
-        return 1
+        return self.getStatMod('acc')
 
     def checkEvade(self):
         # For now return 1, we will need to decide how to store this variable properly.
-        return 1
+        return self.getStatMod('eva')
 
     def checkCrit(self, moveCritRatio=0):
         """ 
@@ -428,6 +428,10 @@ class Pokemon:
         """Take damage and return current hp"""
         self.modifyHP(damage * -1, species=species)
         return self.hp
+
+    def getItem(self) -> str:
+        """In case we have other ways to handle holding items, like temp items"""
+        return self.hold_item
 
     def __repr__(self):
         return self.getName()
