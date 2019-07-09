@@ -1,5 +1,6 @@
 import copy
 from CombatCode.movesdex import BattleMovedex
+from CombatCode.itemsdex import BattleItems
 
 
 def keycheck(dictionary, subdictionary, key) -> object:
@@ -14,6 +15,25 @@ class Result:
         self.debug = dict()
         self.fainted = list()
         self.text = ""
+
+
+class Items:
+
+    def __init__(self, item: str):
+        def itemcheck(key):
+            return keycheck(BattleItems, item, key)
+
+        self.desc = itemcheck("desc")
+        self.gen = itemcheck("gen")
+        self.id = itemcheck("id")
+        self.megaEvolves = itemcheck("megaEvolves")
+        self.megaStone = itemcheck("megaStone")
+        self.name = itemcheck("name")
+        self.num = itemcheck('num')
+        self.onTakeItem = itemcheck('onTakeItem')
+        self.spritenum = itemcheck('spritenum')
+        self.forcedForme = itemcheck('forcedForme')
+        self.rawData = BattleItems[item]
 
 
 class Moves:
@@ -46,6 +66,7 @@ class Moves:
         self.onHit = movecheck("onHit")
         self.onModifyMove = movecheck("onModifyMove")
         self.critRatio = movecheck("critRatio")
+        self.rawData = BattleMovedex[move]
 
     def calculateBasePower(self, datadic: dict) -> int:
         """

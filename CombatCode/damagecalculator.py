@@ -119,6 +119,10 @@ def damage_calc(attacker: Pokemon, target: Pokemon, move: Moves) -> Result:
     # begin by checking accuracy
     if accuracy_check(attacker, target, move):
         onHit = BattleMovedex[move.name.lower()].get('onHit', None)
+        if onHit is not None:
+            if not onHit(datadic):
+                # say something about how the move failed and return the result of that.
+                return result
 
         crit = 1
         if move.category != 'Status':
@@ -142,7 +146,7 @@ def damage_calc(attacker: Pokemon, target: Pokemon, move: Moves) -> Result:
 
             # TODO: figure out where to put 'onUseMoveMessage' functions.
             damage = basedamage * STAB(attacker, move)
-            typetotal = elementTypeTotal(target, move) # hold on to typetotal for the super effective print
+            typetotal = elementTypeTotal(target, move)  # hold on to typetotal for the super effective print
             damage = floor(damage * typetotal * crit)
             phrase = damagephrase(target, damage)
 
@@ -175,8 +179,7 @@ def damage_calc(attacker: Pokemon, target: Pokemon, move: Moves) -> Result:
                 target.tempvals['hurtThisTurn'] = True
                 target.tempvals.setdefault('attackers', []).append(attacker.getPosition())
 
-            if onHit is not None:
-                onHit(datadic)
+
 
             result.text = \
                 "{attname} uses {movename} against {tarname}, {effective}and deals {damphrase}{crit} damage!".format(

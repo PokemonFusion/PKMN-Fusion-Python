@@ -357,7 +357,7 @@ class Pokemon:
                 return evaaccmult[self.statMods[stat]]
             elif stat == 'eva':
                 # eva is the inverse stat value of acc
-                return evaaccmult[self.statMods[stat * -1]]
+                return evaaccmult[self.statMods[stat] * -1]
             else:
                 return statmult[self.statMods[stat]]
 
