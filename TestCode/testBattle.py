@@ -1,8 +1,11 @@
-import sys, os
+import sys
+import os
+
 sys.path.append(os.path.abspath(os.path.join('')))
-from CombatCode.battledata import Pokemon
-from CombatCode.pokeglobals import Moves, Result
-from CombatCode.damagecalculator import damage_calc
+sys.path.append(os.path.abspath('../CombatCode'))
+from battledata import Pokemon
+from pokeglobals import Moves, Result
+from damagecalculator import damage_calc
 
 t1 = Pokemon(1, "A", 1, "geodude", level=50)
 t2 = Pokemon(1, "B", 1, "pikachu", level=50)

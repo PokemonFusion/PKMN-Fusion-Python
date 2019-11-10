@@ -1,8 +1,10 @@
 import random
 import sys, os
+from learnset_code import level_moves as lm
 
 sys.path.append(os.path.abspath(os.path.join('')))
-from CombatCode.pokemonCombinedDex import BattlePokedex as dex
+sys.path.append(os.path.abspath('../CombatCode'))
+from pokemonCombinedDex import BattlePokedex as dex
 
 # dict of all the natures and their stat bonuses
 # there's nothing preventing the addition of natures that modify hp,
@@ -345,3 +347,36 @@ class Pokemon:
         """Take damage and return current hp"""
         self.modifyHP(damage * -1, species=species)
         return self.hp
+
+
+def teamGeneration(specify=False, team=None):
+    # specify   - If the moves and abilities should be specified or not
+    # team      - List of lists for the team: [['name', lvl], ... ]
+    fullTeam = []
+    if team is None:
+        return
+    if len(team) > 0:
+        count = len(team) + 1
+        i = 0
+        while i < count - 1:
+            moveIndex = 0
+            teamPoke = Pokemon(0, team[i][0], None, None, False, team[i][1])
+            pokeMoves = lm(team[i][0], team[i][1])
+            for m in range(0, team[i][1]):
+                if moveIndex == 4:
+                    break
+                try:
+                    n = 0
+                    while n < len(pokeMoves[team[i][1] - m]):
+                        teamPoke.move_sets[0][0][moveIndex] = pokeMoves[team[i][1] - m][n]
+                        moveIndex += 1
+                        n += 1
+                        if moveIndex == 4:
+                            break
+                except KeyError as e:
+                    continue
+                except IndexError as e:
+                    continue
+            fullTeam.append(teamPoke)
+            i += 1
+    return fullTeam
