@@ -5,31 +5,80 @@ import random
 
 class BattleData:
 
-	def __init__(self, trainerA, teamAlist, trainerB, teamBlist ):
+	def __init__(self, TeamA, TeamB):
 		# These will eventually be classes
-		self.teams = {"A": Team(trainerA, teamAlist), "B": Team(trainerB, teamBlist)}
+		self.teams = {"A": TeamA, "B": TeamB}
 		self.battle = Battle()
-		self.turndata = TurnData()
+		self.turndata = TurnData(self.teams)
 
 
 class Team:
 
 	def __init__(self, trainer, pokemon_list: list = []):
 		self.trainer = trainer
-		self.pokedict = {}
-		count = 0
+		self.slot1 = None
+		self.slot2 = None
+		self.slot3 = None
+		self.slot4 = None
+		self.slot5 = None
+		self.slot6 = None
 
-		while pokemon_list.count() > 0:
-			count += 1
-			self.pokedict["slot" + str(count)] = pokemon_list.pop(0)
-			if count == 6:
+		pokelist = [None, None, None, None, None, None]
+		for x in range(len(pokemon_list)):
+			if x == 6:
 				break
+			pokelist[x] = pokemon_list[x]
+
+		self.slot1, self.slot2, self.slot3, self.slot4, self.slot5, self.slot6 = \
+			pokelist[0], pokelist[1], pokelist[2], pokelist[3], pokelist[4], pokelist[5]
+
+	def swapslots(self, pos1: int, pos2: int) -> str:
+		if pos1 < 1:
+			pos1 = 1
+		if pos1 > 6:
+			pos1 = 6
+		if pos2 < 1:
+			pos2 = 1
+		if pos2 > 6:
+			pos2 = 6
+
+		slotdic = {1: self.slot1,
+		           2: self.slot2,
+		           3: self.slot3,
+		           4: self.slot4,
+		           5: self.slot5,
+		           6: self.slot6}
+
+		result = f"Switching positions {pos1}. {slotdic[pos1].getName()} with {pos2}. {slotdic[pos2].getName()}."
+
+		slotdic[pos1], slotdic[pos2] = slotdic[pos2], slotdic[pos1]
+
+		self.slot1, self.slot2, self.slot3, self.slot4, self.slot5, self.slot6 = \
+			slotdic[1], slotdic[2], slotdic[3], slotdic[4], slotdic[5], slotdic[6]
+
+		return result
+
+	def callslot(self, pos : int) -> pokemon:
+
+		if pos < 1:
+			pos = 1
+		if pos > 6:
+			pos = 6
+
+		slotdic = {1: self.slot1,
+		           2: self.slot2,
+		           3: self.slot3,
+		           4: self.slot4,
+		           5: self.slot5,
+		           6: self.slot6}
+
+		return slotdic[pos]
 
 
 class Battle:
-	def __init__(self, battletype):
+	def __init__(self, battletype=1):
 		self.turn = 0  # start at 0, but at the start of the turn increment by one.
-		self.battletype = battletype  # current valid input, 1, 2, 3, as in how many poekmon out per team
+		self.battletype = battletype  # current valid input, 1, 2, 3, as in how many pokemon out per team
 
 
 class TurnData:
