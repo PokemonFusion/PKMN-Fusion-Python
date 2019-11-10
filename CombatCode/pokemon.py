@@ -350,7 +350,7 @@ class Pokemon:
 
 def teamGeneration(specify=False, team=None):
     # specify   - If the moves and abilities should be specified or not
-    # team      - List of dicts for the team: [{'name': name, 'level': lvl}, ... ]
+    # team      - List of lists for the team: [['name', lvl], ... ]
     fullTeam = []
     if team is None:
         return
