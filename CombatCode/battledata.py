@@ -32,6 +32,14 @@ class Team:
 		self.slot1, self.slot2, self.slot3, self.slot4, self.slot5, self.slot6 = \
 			pokelist[0], pokelist[1], pokelist[2], pokelist[3], pokelist[4], pokelist[5]
 
+	def returnlist(self) -> list:
+		pokelist = [None, None, None, None, None, None]
+
+		pokelist[0], pokelist[1], pokelist[2], pokelist[3], pokelist[4], pokelist[5] =\
+			self.slot1, self.slot2, self.slot3, self.slot4, self.slot5, self.slot6
+
+		return pokelist
+
 	def swapslots(self, pos1: int, pos2: int) -> str:
 		def fixposnum(pos: int) -> int:
 			if pos < 1:
@@ -83,8 +91,28 @@ class Battle:
 
 
 class TurnData:
-	def __init__(self, positions: dict = None):
-		self.positions = positions  # PositionData class
+	def __init__(self, teams: dict = None, teamslots: int = 1):
+		self.positions = {}  # PositionData class as dictionary
+
+		def populateslots(teamname, teamclass):
+			count = 0
+			for poke in teamclass.returnlist():
+				if count >= teamslots:
+					return
+				posname = teamname + str(count + 1)
+				if poke is not None:
+					if poke.hp > 0:
+						self.positions[posname] = PositionData(poke)
+						count += 1
+						continue
+			if count < teamslots:
+				while count < teamslots:
+					posname = teamname + str(count + 1)
+					self.positions[posname] = PositionData()
+					count += 1
+
+		for team, members in teams.items():
+			populateslots(team, members)
 
 
 class DeclareAttack:
@@ -99,18 +127,19 @@ class DeclareAttack:
 # This class is what will store the turn initialization data, letting you know what the pokemon in that position is
 # doing in that turn.
 class TurnInit:
-	def __init__(self, position: str, switch=None, attack: DeclareAttack = None, item=None, run=None, recharge=None):
+	def __init__(self, position: str = None, switch=None, attack: DeclareAttack = None, item=None, run=None, recharge=None):
 		# if switching a pokemon, put in the team position of the pokemon switching to
 		self.switch = switch
 		self.attack = attack  # if attacking, use a DeclareAttack here
 		self.item = item  # if using an item, put the key here
 		self.run = run  # if trying to run away, make True
 		self.recharge = recharge  # if pokemon has to recharge, make True
-		self.position = position
+		# self.position = position
 
 	def getTarget(self):
 		if self.attack is None:
-			return self.position
+			#return self.position
+			return None
 		else:
 			return self.attack.target
 
@@ -134,6 +163,7 @@ class Pokemon(pokemon.Pokemon):
 class PositionData:
 	def __init__(self, pokedata: Pokemon = None):
 		self.pokemon = pokedata  # pokemon class
+		self.turninit = TurnInit()
 
 	def getTarget(self):
 		return self.turninit.getTarget()  # different getTarget method
@@ -143,3 +173,6 @@ class PositionData:
 			return self.turninit.attack.move
 		# TODO: Add the other actions here later
 		return None
+
+	def declareAttack(self, target, move):
+		self.turninit = TurnInit(attack=DeclareAttack(target, pglobals.Moves(move)))
