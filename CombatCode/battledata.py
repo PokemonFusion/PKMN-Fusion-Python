@@ -33,14 +33,15 @@ class Team:
 			pokelist[0], pokelist[1], pokelist[2], pokelist[3], pokelist[4], pokelist[5]
 
 	def swapslots(self, pos1: int, pos2: int) -> str:
-		if pos1 < 1:
-			pos1 = 1
-		if pos1 > 6:
-			pos1 = 6
-		if pos2 < 1:
-			pos2 = 1
-		if pos2 > 6:
-			pos2 = 6
+		def fixposnum(pos: int) -> int:
+			if pos < 1:
+				return 1
+			elif pos > 6:
+				return 6
+			else:
+				return pos
+		pos1 = fixposnum(pos1)
+		pos2 = fixposnum(pos2)
 
 		slotdic = {1: self.slot1,
 		           2: self.slot2,
@@ -58,7 +59,7 @@ class Team:
 
 		return result
 
-	def callslot(self, pos : int) -> pokemon:
+	def callslot(self, pos: int) -> pokemon:
 
 		if pos < 1:
 			pos = 1
