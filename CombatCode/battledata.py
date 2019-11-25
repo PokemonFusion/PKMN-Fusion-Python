@@ -147,17 +147,12 @@ class TurnInit:
 class Pokemon(pokemon.Pokemon):
 	# may remove this because of it being made somewhere else.
 
-	def __init__(self, ot, team, slot, species='missingno', nickname=None, gender=None, isEgg=False, level=1,
+	def __init__(self, ot, species='missingno', nickname=None, gender=None, isEgg=False, level=1,
 	             ability=random.choice(['0', '1'])):
 		super().__init__(ot, species=species, nickname=nickname,
 		                 gender=gender, isEgg=isEgg, level=level, ability=ability)
-		self.team = team
-		self.slot = slot
 		# self.turninit = None  # TurnInit Class
 		self.tempvals = {}
-
-	def getPosition(self):
-		return self.team + str(self.slot)
 
 
 class PositionData:
@@ -175,4 +170,13 @@ class PositionData:
 		return None
 
 	def declareAttack(self, target, move):
+		# This method assumes the target and the move are valid
 		self.turninit = TurnInit(attack=DeclareAttack(target, pglobals.Moves(move)))
+
+	def declareSwitch(self, slotswitch):
+		# This method assumes the slotswitch is valid
+		self.turninit = TurnInit(switch=slotswitch)
+
+	def removeDeclare(self):
+		# This method removes all declare values.
+		self.turninit = TurnInit()

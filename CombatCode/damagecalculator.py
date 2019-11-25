@@ -105,7 +105,7 @@ def damagephrase(target, damage) -> str:
 	return dam_name((damage * 100) / maxhp)
 
 
-def damage_calc(attacker: Pokemon, target: Pokemon, move: Moves) -> Result:
+def damage_calc(attacker: Pokemon, target: Pokemon, attackerpos, targetpos, move: Moves) -> Result:
 	"""Use this for calculating damage fully"""
 	# Initial version of this will heavily reference the way I (Yang/Koden) had coded it in MUF
 	result = Result()
@@ -161,7 +161,7 @@ def damage_calc(attacker: Pokemon, target: Pokemon, move: Moves) -> Result:
 			# TODO: Substitute would go somewhere around here I think
 			curhp = target.takeDamage(damage)
 			if curhp == 0:
-				result.fainted.append(target.getPosition())
+				result.fainted.append(targetpos)
 
 			result.debug['damage'] = damage
 			result.debug['curhp'] = curhp
@@ -185,19 +185,19 @@ def damage_calc(attacker: Pokemon, target: Pokemon, move: Moves) -> Result:
 
 			if damage > 0:
 				target.tempvals['hurtThisTurn'] = True
-				target.tempvals.setdefault('attackers', []).append(attacker.getPosition())
+				target.tempvals.setdefault('attackers', []).append(attackerpos)
 
 
 
 			result.text = \
 				"{attname} uses {movename} against {tarname}, {effective}and deals {damphrase}{crit} damage!".format(
-					attname="{}.{}".format(attacker.getPosition(), attacker.getName()),
-					tarname="{}.{}".format(target.getPosition(), target.getName()), effective=effectivePhrase,
+					attname="{}.{}".format(attackerpos, attacker.getName()),
+					tarname="{}.{}".format(targetpos, target.getName()), effective=effectivePhrase,
 					movename=move.name, damphrase=phrase, crit=critphrase
 				)
 
 	else:
 		result.text = "{attname} uses {movename} against {tarname} but it missed!".format(attname="{}.{}".format(
-			attacker.getPosition(), attacker.getName()), movename=move.name, tarname="{}.{}".format(target.position, target.getName))
+			attackerpos, attacker.getName()), movename=move.name, tarname="{}.{}".format(targetpos, target.getName))
 
 	return result
