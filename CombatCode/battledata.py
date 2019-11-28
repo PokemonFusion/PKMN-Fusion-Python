@@ -6,11 +6,46 @@ import random
 class BattleData:
 
 	def __init__(self, TeamA, TeamB):
-		# These will eventually be classes
+
 		self.teams = {"A": TeamA, "B": TeamB}
 		self.battle = Battle()
 		self.turndata = TurnData(self.teams)
 
+	def pokemonswitchstatus(self, team):
+		fieldpokemon = self.turndata.teamPositions(team)
+		switchpokedata = {}
+
+		def checkposition(poke):
+			for key, p in fieldpokemon.items():
+				if p.pokemon == poke:
+					return key
+			return ''
+
+		for key, poke in self.teams[team].returndict().items():
+			switchpokedata[key] = {
+				"pokedata": poke,
+				"pos": checkposition(poke)
+			}
+
+		return switchpokedata
+
+	def validtoswitch(self, team):
+		switchlist = self.pokemonswitchstatus(team)
+		validlist = []
+		for key, value in switchlist.items():
+			if value["pokedata"] is None:
+				continue
+			if value["pokedata"].hp > 0 and value["pos"] == '':
+				validlist.append(key)
+		return validlist
+
+	def faintswitch(self, pos, slot) -> str:
+		"Use this only if a faint happened, since it happens outside of the combat loop. Returns string of result."
+		team = pos[0]
+		newpoke = self.teams[team].returndict()[slot]
+		oldpoke = self.turndata.positions[pos].pokemon
+		self.turndata.positions[pos].pokemon = newpoke
+		return f"{pos}.{newpoke.getName()} is changing places with {pos}.{oldpoke.getName()} due to fainting!"
 
 class Team:
 
@@ -33,12 +68,18 @@ class Team:
 			pokelist[0], pokelist[1], pokelist[2], pokelist[3], pokelist[4], pokelist[5]
 
 	def returnlist(self) -> list:
-		pokelist = [None, None, None, None, None, None]
+		"Returns the pokemon in the party as a list."
+		return [self.slot1, self.slot2, self.slot3, self.slot4, self.slot5, self.slot6]
 
-		pokelist[0], pokelist[1], pokelist[2], pokelist[3], pokelist[4], pokelist[5] =\
-			self.slot1, self.slot2, self.slot3, self.slot4, self.slot5, self.slot6
-
-		return pokelist
+	def returndict(self) -> dict:
+		"Returns the pokemon in the party as a dictionary."
+		return {1: self.slot1,
+		           2: self.slot2,
+		           3: self.slot3,
+		           4: self.slot4,
+		           5: self.slot5,
+		           6: self.slot6
+		           }
 
 	def swapslots(self, pos1: int, pos2: int) -> str:
 		def fixposnum(pos: int) -> int:
@@ -114,6 +155,14 @@ class TurnData:
 		for team, members in teams.items():
 			populateslots(team, members)
 
+	def teamPositions(self, team):
+		"Returns a dictionary of the pokemon in each position for requested team."
+		teampokemon = {}
+		for key, poke in self.positions.items():
+			if key.startswith(team):
+				teampokemon[key] = poke
+
+		return teampokemon
 
 class DeclareAttack:
 	def __init__(self, target: str, move: pglobals.Moves):

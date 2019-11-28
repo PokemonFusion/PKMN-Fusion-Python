@@ -15,6 +15,7 @@ testbattle.turndata.positions["A1"].declareAttack("B1", "tackle")
 testbattle.turndata.positions["B1"].declareAttack("A1", "tackle")
 
 faint = []
+print(testbattle.validtoswitch('A'))
 testbattle.turndata.positions["A1"].declareSwitch(2)
 faint = combatloop(testbattle)
 testbattle.turndata.positions["A1"].declareAttack("B1", "tackle")
@@ -23,4 +24,9 @@ while len(faint) < 1:
     faint = combatloop(testbattle)
 
 print(faint)
+for x in faint:
+    switchables = testbattle.validtoswitch(x[0])
+    print(switchables)
+    print(testbattle.faintswitch(x, switchables[0]))
+
 

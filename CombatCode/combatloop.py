@@ -26,7 +26,7 @@ def combatloop(battledata: BattleData):
             # Run this if the position is going to be switched
             slot = curpoke.turninit.switch
             team = att[0]
-            newpoke = battledata.teams[team].returnlist()[slot - 1]
+            newpoke = battledata.teams[team].returndict()[slot]
             oldpoke = curpoke.pokemon
             turndata.positions[att].pokemon = newpoke
             result.text = f"{att}.{newpoke.getName()} is changing places with {att}.{oldpoke.getName()}!"

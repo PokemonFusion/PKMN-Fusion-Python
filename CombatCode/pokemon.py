@@ -434,4 +434,4 @@ class Pokemon:
         return self.hold_item
 
     def __repr__(self):
-        return self.getName()
+        return f"{self.getName()} - {hex(id(self))}"

@@ -187,14 +187,14 @@ def damage_calc(attacker: Pokemon, target: Pokemon, attackerpos, targetpos, move
 				target.tempvals['hurtThisTurn'] = True
 				target.tempvals.setdefault('attackers', []).append(attackerpos)
 
-
-
 			result.text = \
 				"{attname} uses {movename} against {tarname}, {effective}and deals {damphrase}{crit} damage!".format(
 					attname="{}.{}".format(attackerpos, attacker.getName()),
 					tarname="{}.{}".format(targetpos, target.getName()), effective=effectivePhrase,
 					movename=move.name, damphrase=phrase, crit=critphrase
 				)
+			if curhp == 0:
+				result.text += "\n{tarname} fainted!".format(tarname="{}.{}".format(targetpos, target.getName()))
 
 	else:
 		result.text = "{attname} uses {movename} against {tarname} but it missed!".format(attname="{}.{}".format(
