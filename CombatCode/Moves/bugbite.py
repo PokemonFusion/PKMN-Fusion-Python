@@ -9,5 +9,9 @@ def onHit(datadic : dict):
 				if (item.onEat) source.ateBerry = true;
 			}
 		}
-	""" 
+	"""
+	target = datadic['target']
+	item = target.getItem()
+
+
 	pass

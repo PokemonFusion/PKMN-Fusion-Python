@@ -123,11 +123,13 @@ class Pokemon:
         self.xp = self.getXPtoLv(self.level)  # Give just enough to reach that level.
 
         # Whether the Pokémon starts as an egg.
-        self.isEgg = isEgg  # This doesn't check if it has previous evolutions or anything. So, if for some insane reason, you want a Charizard egg...
+        self.isEgg = isEgg  # This doesn't check if it has previous evolutions or anything. So, if for some insane
+        # reason, you want a Charizard egg...
 
         # friendship, as an int
         if self.isEgg:
-            self.friendship = 120  # Eggs are decently friendly. This is true to real life, where eggs sometimes dress up in polka-dots.
+            self.friendship = 120  # Eggs are decently friendly. This is true to real life, where eggs sometimes
+            # dress up in polka-dots.
         else:
             self.friendship = self.getDicEntry('baseHappiness')
 
@@ -181,6 +183,16 @@ class Pokemon:
             'spd': 0,
             'spe': 0
         }
+        # This is where we will be storing stat mods, we will need to make sure that they don't go outside of +-6
+        self.statMods = {
+            'atk': 0,
+            'def': 0,
+            'spa': 0,
+            'spd': 0,
+            'spe': 0,
+            'acc': 0,
+            'eva': 0
+        }
 
         # hold item, as a ???
         # as of writing, items don't exist nor have a planned way of handling them
@@ -209,7 +221,9 @@ class Pokemon:
         # sdic is the dictionary entry for the species.
         try:
             sdic = dex[
-                species.lower()]  # Retrieve the dictionary for the species. lower() is used as a safeguard against programmer error, since uppercase keys do not exist in this dictionary (if they do, they should be corrected).
+                species.lower()]  # Retrieve the dictionary for the species. lower() is used as a safeguard against
+            # programmer error, since uppercase keys do not exist in this dictionary (if they do, they should be
+            # corrected).
         except KeyError:
             sdic = dex["missingno"]  # If the key is not found, default to missingno.
         return sdic
@@ -270,7 +284,9 @@ class Pokemon:
         isCrit - if a critical happened
         species - force a species name"""
         statType = statType.lower()  # force the name to lower to make sure it doesn't blow up.
-        # Retrieve the base stat. If the stat does not exist, return 2 as a failsafe. 2 is a stat that couldn't happen normally (outside of combat), so this should set off a red flag if seen in a status screen or the like.
+        # Retrieve the base stat. If the stat does not exist, return 2 as a failsafe. 2 is a stat that couldn't
+        # happen normally (outside of combat), so this should set off a red flag if seen in a status screen or the
+        # like.
         baseStat = self.getDicEntry("baseStats", species=species).get(statType, 2)
 
         # Return calculated stat.
@@ -278,10 +294,77 @@ class Pokemon:
             return int((2 * baseStat + self.iv["hp"] + int(self.ev["hp"] / 4)) * self.level / 100) + self.level + 10
         else:
             # TODO: Make sure that isCrit is checked for the temp stat boosts, and debuffs as appropriate.
-            #  don't let burn effect it
+            #  Burn halving attack should still happen
+
+            if isCrit:
+                critbonus = 1.5
+            else:
+                critbonus = 1
+
+            if isCrit and ((self.statMods[statType] < 0 and statType in ['atk', 'spa']) or
+                           (self.statMods[statType] > 0 and statType in ['def', 'spd'])):
+                statmod = 1
+            else:
+                statmod = self.getStatMod(statType)
+
             natureMod = NATURES[self.nature].get(statType, 1)
             return int((int(
-                (2 * baseStat + self.iv[statType] + int(self.ev[statType] / 4)) * self.level / 100) + 5) * natureMod)
+                (2 * baseStat + self.iv[statType] + int(self.ev[statType] / 4)) * self.level / 100) + 5) * natureMod
+                       * statmod * critbonus)
+
+    def getStatMod(self, stat: str) -> float:
+        """This will return the stat mod of the multiplier involved.
+        The calculations for eva and acc are going to be different
+        """
+
+        statmult = {
+            -6: 2 / 8,
+            -5: 2 / 7,
+            -4: 2 / 6,
+            -3: 2 / 5,
+            -2: 2 / 4,
+            -1: 2 / 3,
+            0: 2 / 2,
+            1: 3 / 2,
+            2: 4 / 2,
+            3: 5 / 2,
+            4: 6 / 2,
+            5: 7 / 2,
+            6: 8 / 2
+        }
+        evaaccmult = {
+            -6: 3 / 9,
+            -5: 3 / 8,
+            -4: 3 / 7,
+            -3: 3 / 6,
+            -2: 3 / 5,
+            -1: 3 / 4,
+            0: 3 / 3,
+            1: 4 / 3,
+            2: 5 / 3,
+            3: 6 / 3,
+            4: 7 / 3,
+            5: 8 / 3,
+            6: 9 / 3
+        }
+
+        if stat is not None and stat in self.statMods:
+            # Make sure the value is between -6 and 6
+            if self.statMods[stat] > 6:
+                self.statMods[stat] = 6
+            if self.statMods[stat] < -6:
+                self.statMods[stat] = -6
+
+            if stat == 'acc':
+                return evaaccmult[self.statMods[stat]]
+            elif stat == 'eva':
+                # eva is the inverse stat value of acc
+                return evaaccmult[self.statMods[stat] * -1]
+            else:
+                return statmult[self.statMods[stat]]
+
+        else:
+            return 1
 
     # Get the name of the active ability.
     # As with getStat, the species parameter is to account for megas.
@@ -307,11 +390,11 @@ class Pokemon:
 
     def checkAcc(self):
         # For now return 1, we will need to decide how to store this variable properly.
-        return 1
+        return self.getStatMod('acc')
 
     def checkEvade(self):
         # For now return 1, we will need to decide how to store this variable properly.
-        return 1
+        return self.getStatMod('eva')
 
     def checkCrit(self, moveCritRatio=0):
         """ 
@@ -348,6 +431,12 @@ class Pokemon:
         self.modifyHP(damage * -1, species=species)
         return self.hp
 
+    def getItem(self) -> str:
+        """In case we have other ways to handle holding items, like temp items"""
+        return self.hold_item
+
+    def __repr__(self):
+        return f"{self.getName()} - {hex(id(self))}"
 
 def teamGeneration(specify=False, team=None):
     # specify   - If the moves and abilities should be specified or not

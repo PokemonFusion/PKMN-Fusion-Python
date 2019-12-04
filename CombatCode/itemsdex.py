@@ -1,4 +1,4 @@
-from Items import * 
+from CombatCode.Items import *
 
 BattleItems = {'abomasite': {'desc': 'If held by an Abomasnow, this item allows it to Mega '
                        'Evolve in battle.',

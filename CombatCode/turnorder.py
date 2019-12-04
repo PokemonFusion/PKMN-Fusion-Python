@@ -10,6 +10,8 @@ def calculateTurnorder(battleround) -> list:
         priorities = list()
 
         def __init__(self, turndata: TurnInit, pokemon):
+            # clear off the temporary variable
+            pokemon.tempvals.clear()
             self.priority = 0
             self.speed = 0
 
@@ -39,7 +41,6 @@ def calculateTurnorder(battleround) -> list:
         def min(cls) -> int:
             return min(cls.priorities)
 
-
     priorities = {}
     for key, pos in battleround.positions.items():
         priorities[key] = Priority(pos.turninit, pos.pokemon)
@@ -62,7 +63,7 @@ def calculateTurnorder(battleround) -> list:
 
         if len(curpri) == 0:
             continue
-        curpri.sort(key=lambda x: priorities[x].speed, reverse= True)
+        curpri.sort(key=lambda x: priorities[x].speed, reverse=True)
         turnorder.extend(curpri)
 
     return turnorder
