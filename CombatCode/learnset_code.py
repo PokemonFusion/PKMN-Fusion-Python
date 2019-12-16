@@ -1,7 +1,7 @@
 import json
 import string
-import parsed_learnset as pl
-import learnsets
+import CombatCode.parsed_learnset as pl
+import CombatCode.learnsets as learnsets
 
 
 # Each move is defined as follows, with the first character being the generation number:

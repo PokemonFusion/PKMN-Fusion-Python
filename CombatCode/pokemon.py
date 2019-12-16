@@ -1,10 +1,10 @@
 import random
 import sys, os
-from learnset_code import level_moves as lm
+from CombatCode.learnset_code import level_moves as lm
 
 sys.path.append(os.path.abspath(os.path.join('')))
 sys.path.append(os.path.abspath('../CombatCode'))
-from pokemonCombinedDex import BattlePokedex as dex
+from CombatCode.pokemonCombinedDex import BattlePokedex as dex
 
 # dict of all the natures and their stat bonuses
 # there's nothing preventing the addition of natures that modify hp,
