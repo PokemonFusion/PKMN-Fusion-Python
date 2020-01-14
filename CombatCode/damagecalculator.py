@@ -4,6 +4,7 @@ from CombatCode.pokeglobals import Moves, Result
 from CombatCode.elements import ElementEffectiveness as TypeEff
 from CombatCode.battledata import Pokemon
 from CombatCode.movesdex import BattleMovedex
+from CombatCode.pokemon import STATUSES_REVERSE_SHORT
 
 """
  Assumptions:
@@ -195,6 +196,17 @@ def damage_calc(attacker: Pokemon, target: Pokemon, attackerpos, targetpos, move
 				)
 			if curhp == 0:
 				result.text += "\n{tarname} fainted!".format(tarname="{}.{}".format(targetpos, target.getName()))
+
+			# Put secondary effects here
+		if move.secondary:
+			if move.secondary.get('status') and target.status["name"] != 0: # can't change status if there is one
+				status = move.secondary.get('status').capitalize()
+				chance = move.secondary.get('chance', 100)
+				if percent_check(chance/100):
+					target.setStatus(STATUSES_REVERSE_SHORT[status])
+
+
+
 
 	else:
 		result.text = "{attname} uses {movename} against {tarname} but it missed!".format(attname="{}.{}".format(
