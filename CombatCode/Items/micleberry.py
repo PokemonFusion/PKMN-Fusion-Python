@@ -1,4 +1,4 @@
-def onResidual(datadic : dict):
+def onResidual(**bvalues):
 	"""function (pokemon) {
 			if (pokemon.hp <= pokemon.maxhp / 4 || (pokemon.hp <= pokemon.maxhp / 2 && pokemon.hasAbility('gluttony'))) {
 				pokemon.eatItem();
@@ -7,14 +7,14 @@ def onResidual(datadic : dict):
 	""" 
 	pass
 
-def onEat(datadic : dict):
+def onEat(**bvalues):
 	"""function (pokemon) {
 			pokemon.addVolatile('micleberry');
 		}
 	""" 
 	pass
 
-def onSourceModifyAccuracy(datadic : dict):
+def onSourceModifyAccuracy(**bvalues):
 	"""function (accuracy, target, source) {
 				this.add('-enditem', source, 'Micle Berry');
 				source.removeVolatile('micleberry');

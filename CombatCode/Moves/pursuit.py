@@ -1,4 +1,4 @@
-def basePowerCallback(datadic : dict):
+def basePowerCallback(**bvalues):
 	"""function (pokemon, target, move) {
 			// You can't get here unless the pursuit succeeds
 			if (target.beingCalledBack) {
@@ -10,7 +10,7 @@ def basePowerCallback(datadic : dict):
 	""" 
 	pass
 
-def beforeTurnCallback(datadic : dict):
+def beforeTurnCallback(**bvalues):
 	"""function (pokemon) {
 			for (const side of this.sides) {
 				if (side === pokemon.side) continue;
@@ -24,21 +24,21 @@ def beforeTurnCallback(datadic : dict):
 	""" 
 	pass
 
-def onModifyMove(datadic : dict):
+def onModifyMove(**bvalues):
 	"""function (move, source, target) {
 			if (target && target.beingCalledBack) move.accuracy = true;
 		}
 	""" 
 	pass
 
-def onTryHit(datadic : dict):
+def onTryHit(**bvalues):
 	"""function (target, pokemon) {
 			target.side.removeSideCondition('pursuit');
 		}
 	""" 
 	pass
 
-def onBeforeSwitchOut(datadic : dict):
+def onBeforeSwitchOut(**bvalues):
 	"""function (pokemon) {
 				this.debug('Pursuit start');
 				let alreadyAdded = false;

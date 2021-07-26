@@ -1,4 +1,4 @@
-def onModifyAtk(datadic : dict):
+def onModifyAtk(**bvalues):
 	"""function (atk, attacker, defender, move) {
 			if (move.type === 'Fire' && attacker.hp <= attacker.maxhp / 3) {
 				this.debug('Blaze boost');
@@ -8,7 +8,7 @@ def onModifyAtk(datadic : dict):
 	""" 
 	pass
 
-def onModifySpA(datadic : dict):
+def onModifySpA(**bvalues):
 	"""function (atk, attacker, defender, move) {
 			if (move.type === 'Fire' && attacker.hp <= attacker.maxhp / 3) {
 				this.debug('Blaze boost');

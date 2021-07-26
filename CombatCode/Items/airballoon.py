@@ -1,4 +1,4 @@
-def onStart(datadic : dict):
+def onStart(**bvalues):
 	"""function (target) {
 			if (!target.ignoringItem() && !this.getPseudoWeather('gravity')) {
 				this.add('-item', target, 'Air Balloon');
@@ -7,7 +7,7 @@ def onStart(datadic : dict):
 	""" 
 	pass
 
-def onAfterDamage(datadic : dict):
+def onAfterDamage(**bvalues):
 	"""function (damage, target, source, effect) {
 			this.debug('effect: ' + effect.id);
 			if (effect.effectType === 'Move' && effect.id !== 'confused') {
@@ -20,7 +20,7 @@ def onAfterDamage(datadic : dict):
 	""" 
 	pass
 
-def onAfterSubDamage(datadic : dict):
+def onAfterSubDamage(**bvalues):
 	"""function (damage, target, source, effect) {
 			this.debug('effect: ' + effect.id);
 			if (effect.effectType === 'Move' && effect.id !== 'confused') {

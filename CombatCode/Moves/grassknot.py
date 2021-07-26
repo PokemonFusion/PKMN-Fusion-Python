@@ -1,4 +1,4 @@
-def basePowerCallback(datadic : dict):
+def basePowerCallback(**bvalues):
 	"""function (pokemon, target) {
 			let targetWeight = target.getWeight();
 			if (targetWeight >= 200) {

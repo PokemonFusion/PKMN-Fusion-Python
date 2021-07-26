@@ -1,4 +1,4 @@
-def onStart(datadic : dict):
+def onStart(**bvalues):
 	"""function (source) {
 			this.setTerrain('grassyterrain');
 		}

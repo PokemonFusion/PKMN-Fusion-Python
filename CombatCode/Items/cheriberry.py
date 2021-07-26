@@ -1,4 +1,4 @@
-def onUpdate(datadic : dict):
+def onUpdate(**bvalues):
 	"""function (pokemon) {
 			if (pokemon.status === 'par') {
 				pokemon.eatItem();
@@ -7,7 +7,7 @@ def onUpdate(datadic : dict):
 	""" 
 	pass
 
-def onEat(datadic : dict):
+def onEat(**bvalues):
 	"""function (pokemon) {
 			if (pokemon.status === 'par') {
 				pokemon.cureStatus();

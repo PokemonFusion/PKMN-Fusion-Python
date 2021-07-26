@@ -1,4 +1,4 @@
-def onHit(datadic : dict):
+def onHit(**bvalues):
 	"""function (target, pokemon, move) {
 			if (pokemon.baseTemplate.baseSpecies === 'Meloetta' && !pokemon.transformed) {
 				move.willChangeForme = true;
@@ -7,7 +7,7 @@ def onHit(datadic : dict):
 	""" 
 	pass
 
-def onAfterMoveSecondarySelf(datadic : dict):
+def onAfterMoveSecondarySelf(**bvalues):
 	"""function (pokemon, target, move) {
 			if (move.willChangeForme) {
 				pokemon.formeChange(pokemon.template.speciesid === 'meloettapirouette' ? 'Meloetta' : 'Meloetta-Pirouette', this.effect, false, '[msg]');

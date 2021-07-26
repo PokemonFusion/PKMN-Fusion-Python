@@ -1,4 +1,4 @@
-def onTakeItem(datadic : dict):
+def onTakeItem(**bvalues):
 	"""function (item, pokemon, source) {
 			if (this.suppressingAttackEvents() && pokemon !== this.activePokemon || !pokemon.hp || pokemon.item === 'stickybarb') return;
 			if (!this.activeMove) throw new Error("Battle.activeMove is null");

@@ -1,4 +1,4 @@
-def onModifyMove(datadic : dict):
+def onModifyMove(**bvalues):
 	"""function (move, pokemon) {
 			if (this.isTerrain('')) return;
 			move.secondaries = [];

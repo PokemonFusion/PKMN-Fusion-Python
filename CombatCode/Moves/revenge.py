@@ -1,4 +1,4 @@
-def basePowerCallback(datadic : dict):
+def basePowerCallback(**bvalues):
 	"""function (pokemon, target, move) {
 			let damagedByTarget = pokemon.attackedBy.some(p =>
 				p.source === target && p.damage > 0 && p.thisTurn

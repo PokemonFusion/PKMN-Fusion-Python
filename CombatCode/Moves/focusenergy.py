@@ -1,4 +1,4 @@
-def onStart(datadic : dict):
+def onStart(**bvalues):
 	"""function (target, source, effect) {
 				if (effect && effect.id === 'zpower') {
 					this.add('-start', target, 'move: Focus Energy', '[zeffect]');
@@ -11,7 +11,7 @@ def onStart(datadic : dict):
 	""" 
 	pass
 
-def onModifyCritRatio(datadic : dict):
+def onModifyCritRatio(**bvalues):
 	"""function (critRatio) {
 				return critRatio + 2;
 			}

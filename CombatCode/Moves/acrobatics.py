@@ -1,7 +1,7 @@
 from CombatCode.diclogging import addlog
 
 
-def basePowerCallback(datadic: dict):
+def basePowerCallback(**bvalues):
 	"""function (pokemon, target, move) {
 			if (!pokemon.item) {
 				this.debug("Power doubled for no item");
@@ -10,11 +10,11 @@ def basePowerCallback(datadic: dict):
 			return move.basePower;
 		}
 	"""
-	pokemon = datadic['pokemon']
-	move = datadic['move']
+	pokemon = bvalues['pokemon']
+	move = bvalues['move']
 
 	if pokemon.hold_item is None:
-		addlog(datadic, "Power doubled for no item, Acrobatics")
+		addlog(bvalues, "Power doubled for holding no item, Acrobatics")
 		return move.basePower * 2
 
 	else:

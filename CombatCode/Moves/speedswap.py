@@ -1,4 +1,4 @@
-def onHit(datadic : dict):
+def onHit(**bvalues):
 	"""function (target, source) {
 			const targetSpe = target.stats.spe;
 			target.stats.spe = source.stats.spe;

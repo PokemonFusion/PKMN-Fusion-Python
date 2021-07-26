@@ -1,4 +1,4 @@
-def onStart(datadic : dict):
+def onStart(**bvalues):
 	"""function (target) {
 				if (['Diglett', 'Dugtrio', 'Palossand', 'Sandygast'].includes(target.baseTemplate.baseSpecies) ||
 						target.baseTemplate.species === 'Gengar-Mega') {
@@ -11,21 +11,21 @@ def onStart(datadic : dict):
 	""" 
 	pass
 
-def onAccuracy(datadic : dict):
+def onAccuracy(**bvalues):
 	"""function (accuracy, target, source, move) {
 				if (move && !move.ohko) return true;
 			}
 	""" 
 	pass
 
-def onImmunity(datadic : dict):
+def onImmunity(**bvalues):
 	"""function (type) {
 				if (type === 'Ground') return false;
 			}
 	""" 
 	pass
 
-def onUpdate(datadic : dict):
+def onUpdate(**bvalues):
 	"""function (pokemon) {
 				if (pokemon.baseTemplate.species === 'Gengar-Mega') {
 					delete pokemon.volatiles['telekinesis'];
@@ -35,7 +35,7 @@ def onUpdate(datadic : dict):
 	""" 
 	pass
 
-def onEnd(datadic : dict):
+def onEnd(**bvalues):
 	"""function (target) {
 				this.add('-end', target, 'Telekinesis');
 			}

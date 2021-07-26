@@ -1,4 +1,4 @@
-def onResidual(datadic : dict):
+def onResidual(**bvalues):
 	"""function (pokemon) {
 			if (pokemon.hp <= pokemon.maxhp / 2) {
 				pokemon.eatItem();
@@ -7,14 +7,14 @@ def onResidual(datadic : dict):
 	""" 
 	pass
 
-def onTryEatItem(datadic : dict):
+def onTryEatItem(**bvalues):
 	"""function (item, pokemon) {
 			if (!this.runEvent('TryHeal', pokemon)) return False;
 		}
 	""" 
 	pass
 
-def onEat(datadic : dict):
+def onEat(**bvalues):
 	"""function (pokemon) {
 			this.heal(10);
 		}

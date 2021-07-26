@@ -1,11 +1,11 @@
-def onStart(datadic : dict):
+def onStart(**bvalues):
 	"""function (pokemon) {
 				this.add('-singlemove', pokemon, 'Rage');
 			}
 	""" 
 	pass
 
-def onHit(datadic : dict):
+def onHit(**bvalues):
 	"""function (target, source, move) {
 				if (target !== source && move.category !== 'Status') {
 					this.boost({atk: 1});
@@ -14,7 +14,7 @@ def onHit(datadic : dict):
 	""" 
 	pass
 
-def onBeforeMove(datadic : dict):
+def onBeforeMove(**bvalues):
 	"""function (pokemon) {
 				this.debug('removing Rage before attack');
 				pokemon.removeVolatile('rage');

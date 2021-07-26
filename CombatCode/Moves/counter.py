@@ -1,4 +1,4 @@
-def damageCallback(datadic : dict):
+def damageCallback(**bvalues):
 	"""function (pokemon) {
 			if (!pokemon.volatiles['counter']) return 0;
 			return pokemon.volatiles['counter'].damage || 1;
@@ -6,14 +6,14 @@ def damageCallback(datadic : dict):
 	""" 
 	pass
 
-def beforeTurnCallback(datadic : dict):
+def beforeTurnCallback(**bvalues):
 	"""function (pokemon) {
 			pokemon.addVolatile('counter');
 		}
 	""" 
 	pass
 
-def onTryHit(datadic : dict):
+def onTryHit(**bvalues):
 	"""function (target, source, move) {
 			if (!source.volatiles['counter']) return false;
 			if (source.volatiles['counter'].position === null) return false;
@@ -21,7 +21,7 @@ def onTryHit(datadic : dict):
 	""" 
 	pass
 
-def onStart(datadic : dict):
+def onStart(**bvalues):
 	"""function (target, source, source2, move) {
 				this.effectData.position = null;
 				this.effectData.damage = 0;
@@ -29,7 +29,7 @@ def onStart(datadic : dict):
 	""" 
 	pass
 
-def onRedirectTarget(datadic : dict):
+def onRedirectTarget(**bvalues):
 	"""function (target, source, source2) {
 				if (source !== this.effectData.target) return;
 				return source.side.foe.active[this.effectData.position];
@@ -37,7 +37,7 @@ def onRedirectTarget(datadic : dict):
 	""" 
 	pass
 
-def onAfterDamage(datadic : dict):
+def onAfterDamage(**bvalues):
 	"""function (damage, target, source, effect) {
 				if (effect && effect.effectType === 'Move' && source.side !== target.side && this.getCategory(effect) === 'Physical') {
 					this.effectData.position = source.position;

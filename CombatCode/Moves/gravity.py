@@ -1,4 +1,4 @@
-def durationCallback(datadic : dict):
+def durationCallback(**bvalues):
 	"""function (source, effect) {
 				if (source && source.hasAbility('persistent')) {
 					this.add('-activate', source, 'ability: Persistent', effect);
@@ -9,7 +9,7 @@ def durationCallback(datadic : dict):
 	""" 
 	pass
 
-def onStart(datadic : dict):
+def onStart(**bvalues):
 	"""function () {
 				this.add('-fieldstart', 'move: Gravity');
 				for (const pokemon of this.sides[0].active.concat(this.sides[1].active)) {
@@ -43,7 +43,7 @@ def onStart(datadic : dict):
 	""" 
 	pass
 
-def onModifyAccuracy(datadic : dict):
+def onModifyAccuracy(**bvalues):
 	"""function (accuracy) {
 				if (typeof accuracy !== 'number') return;
 				return accuracy * 5 / 3;
@@ -51,7 +51,7 @@ def onModifyAccuracy(datadic : dict):
 	""" 
 	pass
 
-def onDisableMove(datadic : dict):
+def onDisableMove(**bvalues):
 	"""function (pokemon) {
 				for (const moveSlot of pokemon.moveSlots) {
 					if (this.getMove(moveSlot.id).flags['gravity']) {
@@ -62,7 +62,7 @@ def onDisableMove(datadic : dict):
 	""" 
 	pass
 
-def onBeforeMove(datadic : dict):
+def onBeforeMove(**bvalues):
 	"""function (pokemon, target, move) {
 				if (move.flags['gravity']) {
 					this.add('cant', pokemon, 'move: Gravity', move);
@@ -72,7 +72,7 @@ def onBeforeMove(datadic : dict):
 	""" 
 	pass
 
-def onEnd(datadic : dict):
+def onEnd(**bvalues):
 	"""function () {
 				this.add('-fieldend', 'move: Gravity');
 			}

@@ -1,4 +1,4 @@
-def onTryMove(datadic : dict):
+def onTryMove(**bvalues):
 	"""function (pokemon, target, move) {
 			if (pokemon.template.species === 'Darkrai' || move.hasBounced) {
 				return;

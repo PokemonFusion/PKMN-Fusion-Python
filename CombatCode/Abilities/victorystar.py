@@ -1,4 +1,4 @@
-def onAllyModifyMove(datadic : dict):
+def onAllyModifyMove(**bvalues):
 	"""function (move) {
 			if (typeof move.accuracy === 'number') {
 				move.accuracy *= 1.1;

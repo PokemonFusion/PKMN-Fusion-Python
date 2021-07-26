@@ -1,4 +1,4 @@
-def onAllyBasePower(datadic : dict):
+def onAllyBasePower(**bvalues):
 	"""function (basePower, attacker, defender, move) {
 			if (attacker !== this.effectData.target && move.category === 'Special') {
 				this.debug('Battery boost');

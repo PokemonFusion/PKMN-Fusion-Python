@@ -1,11 +1,11 @@
-def onStart(datadic : dict):
+def onStart(**bvalues):
 	"""function (pokemon) {
 			pokemon.addVolatile('slowstart');
 		}
 	""" 
 	pass
 
-def onEnd(datadic : dict):
+def onEnd(**bvalues):
 	"""function (pokemon) {
 			delete pokemon.volatiles['slowstart'];
 			this.add('-end', pokemon, 'Slow Start', '[silent]');
@@ -13,28 +13,28 @@ def onEnd(datadic : dict):
 	""" 
 	pass
 
-def onStart(datadic : dict):
+def onStart(**bvalues):
 	"""function (target) {
 				this.add('-start', target, 'ability: Slow Start');
 			}
 	""" 
 	pass
 
-def onModifyAtk(datadic : dict):
+def onModifyAtk(**bvalues):
 	"""function (atk, pokemon) {
 				return this.chainModify(0.5);
 			}
 	""" 
 	pass
 
-def onModifySpe(datadic : dict):
+def onModifySpe(**bvalues):
 	"""function (spe, pokemon) {
 				return this.chainModify(0.5);
 			}
 	""" 
 	pass
 
-def onEnd(datadic : dict):
+def onEnd(**bvalues):
 	"""function (target) {
 				this.add('-end', target, 'Slow Start');
 			}

@@ -1,4 +1,4 @@
-def onModifyMove(datadic : dict):
+def onModifyMove(**bvalues):
 	"""function (move) {
 			if (move.category !== "Status") {
 				if (!move.secondaries) move.secondaries = [];

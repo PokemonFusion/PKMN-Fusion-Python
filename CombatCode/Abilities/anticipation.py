@@ -1,4 +1,4 @@
-def onStart(datadic : dict):
+def onStart(**bvalues):
 	"""function (pokemon) {
 			for (const target of pokemon.side.foe.active) {
 				if (target.fainted) continue;

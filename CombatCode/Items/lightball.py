@@ -1,4 +1,4 @@
-def onModifyAtk(datadic : dict):
+def onModifyAtk(**bvalues):
 	"""function (atk, pokemon) {
 			if (pokemon.baseTemplate.baseSpecies === 'Pikachu') {
 				return this.chainModify(2);
@@ -7,7 +7,7 @@ def onModifyAtk(datadic : dict):
 	""" 
 	pass
 
-def onModifySpA(datadic : dict):
+def onModifySpA(**bvalues):
 	"""function (spa, pokemon) {
 			if (pokemon.baseTemplate.baseSpecies === 'Pikachu') {
 				return this.chainModify(2);

@@ -1,4 +1,4 @@
-def onAfterMoveSecondary(datadic : dict):
+def onAfterMoveSecondary(**bvalues):
 	"""function (target, source, move) {
 			if (source && source !== target && move && move.flags['contact']) {
 				if (target.item) {

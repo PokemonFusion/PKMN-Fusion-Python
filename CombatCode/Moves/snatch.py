@@ -1,11 +1,11 @@
-def onStart(datadic : dict):
+def onStart(**bvalues):
 	"""function (pokemon) {
 				this.add('-singleturn', pokemon, 'Snatch');
 			}
 	""" 
 	pass
 
-def onAnyTryMove(datadic : dict):
+def onAnyTryMove(**bvalues):
 	"""function (source, target, move) {
 				let snatchUser = this.effectData.source;
 				if (snatchUser.isSkyDropped()) return;

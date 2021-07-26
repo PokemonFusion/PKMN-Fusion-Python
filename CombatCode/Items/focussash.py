@@ -1,4 +1,4 @@
-def onDamage(datadic : dict):
+def onDamage(**bvalues):
 	"""function (damage, target, source, effect) {
 			if (target.hp === target.maxhp && damage >= target.hp && effect && effect.effectType === 'Move') {
 				if (target.useItem()) {

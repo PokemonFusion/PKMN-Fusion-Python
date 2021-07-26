@@ -1,4 +1,4 @@
-def onTry(datadic : dict):
+def onTry(**bvalues):
 	"""function (pokemon) {
 			if (pokemon.template.species === 'Hoopa-Unbound') {
 				return;

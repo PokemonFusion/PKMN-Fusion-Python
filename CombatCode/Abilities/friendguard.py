@@ -1,4 +1,4 @@
-def onAnyModifyDamage(datadic : dict):
+def onAnyModifyDamage(**bvalues):
 	"""function (damage, source, target, move) {
 			if (target !== this.effectData.target && target.side === this.effectData.target.side) {
 				this.debug('Friend Guard weaken');

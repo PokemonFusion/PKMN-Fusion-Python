@@ -1,4 +1,4 @@
-def onModifyWeight(datadic : dict):
+def onModifyWeight(**bvalues):
 	"""function (weight) {
 			return weight / 2;
 		}

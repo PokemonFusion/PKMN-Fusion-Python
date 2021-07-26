@@ -1,4 +1,4 @@
-def durationCallback(datadic : dict):
+def durationCallback(**bvalues):
 	"""function (target, source, effect) {
 				if (source && source.hasItem('lightclay')) {
 					return 8;
@@ -8,7 +8,7 @@ def durationCallback(datadic : dict):
 	""" 
 	pass
 
-def onAnyModifyDamage(datadic : dict):
+def onAnyModifyDamage(**bvalues):
 	"""function (damage, source, target, move) {
 				if (target !== source && target.side === this.effectData.target && this.getCategory(move) === 'Physical') {
 					if (!move.crit && !move.infiltrates) {
@@ -21,14 +21,14 @@ def onAnyModifyDamage(datadic : dict):
 	""" 
 	pass
 
-def onStart(datadic : dict):
+def onStart(**bvalues):
 	"""function (side) {
 				this.add('-sidestart', side, 'Reflect');
 			}
 	""" 
 	pass
 
-def onEnd(datadic : dict):
+def onEnd(**bvalues):
 	"""function (side) {
 				this.add('-sideend', side, 'Reflect');
 			}

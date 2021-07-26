@@ -1,4 +1,4 @@
-def onTryHit(datadic : dict):
+def onTryHit(**bvalues):
 	"""function (target, source, move) {
 			if (target !== source && move.type === 'Grass') {
 				if (!this.boost({atk: 1})) {
@@ -10,7 +10,7 @@ def onTryHit(datadic : dict):
 	""" 
 	pass
 
-def onAllyTryHitSide(datadic : dict):
+def onAllyTryHitSide(**bvalues):
 	"""function (target, source, move) {
 			if (target === this.effectData.target || target.side !== source.side) return;
 			if (move.type === 'Grass') {

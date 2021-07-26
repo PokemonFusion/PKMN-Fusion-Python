@@ -1,4 +1,4 @@
-def onHit(datadic : dict):
+def onHit(**bvalues):
 	"""function (target, source) {
 			if (source.hasAbility('megalauncher')) {
 				return this.heal(this.modify(target.maxhp, 0.75));

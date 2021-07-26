@@ -1,4 +1,4 @@
-def onTry(datadic : dict):
+def onTry(**bvalues):
 	"""function (pokemon) {
 			if (pokemon.template.name !== 'Magikarp') {
 				this.add('-fail', pokemon, 'move: Magikarp's Revenge');
@@ -8,7 +8,7 @@ def onTry(datadic : dict):
 	""" 
 	pass
 
-def onHit(datadic : dict):
+def onHit(**bvalues):
 	"""function (source) {
 				this.setWeather('raindance');
 				source.addVolatile('magiccoat');

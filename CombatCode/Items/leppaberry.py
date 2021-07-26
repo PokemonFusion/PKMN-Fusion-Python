@@ -1,4 +1,4 @@
-def onUpdate(datadic : dict):
+def onUpdate(**bvalues):
 	"""function (pokemon) {
 			if (!pokemon.hp) return;
 			if (pokemon.moveSlots.some(move => move.pp === 0)) {
@@ -8,7 +8,7 @@ def onUpdate(datadic : dict):
 	""" 
 	pass
 
-def onEat(datadic : dict):
+def onEat(**bvalues):
 	"""function (pokemon) {
 			let moveSlot = pokemon.moveSlots.find(move => move.pp === 0) ||
 				pokemon.moveSlots.find(move => move.pp < move.maxpp);

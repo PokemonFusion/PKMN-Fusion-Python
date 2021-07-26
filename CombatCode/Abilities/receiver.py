@@ -1,4 +1,4 @@
-def onAllyFaint(datadic : dict):
+def onAllyFaint(**bvalues):
 	"""function (target) {
 			if (!this.effectData.target.hp) return;
 			let ability = this.getAbility(target.ability);

@@ -1,4 +1,4 @@
-def onHitField(datadic : dict):
+def onHitField(**bvalues):
 	"""function (target, source, move) {
 			let result = false;
 			let message = false;
@@ -25,7 +25,7 @@ def onHitField(datadic : dict):
 	""" 
 	pass
 
-def onEnd(datadic : dict):
+def onEnd(**bvalues):
 	"""function (target) {
 				this.add('-start', target, 'perish0');
 				target.faint();
@@ -33,7 +33,7 @@ def onEnd(datadic : dict):
 	""" 
 	pass
 
-def onResidual(datadic : dict):
+def onResidual(**bvalues):
 	"""function (pokemon) {
 				let duration = pokemon.volatiles['perishsong'].duration;
 				this.add('-start', pokemon, 'perish' + duration);

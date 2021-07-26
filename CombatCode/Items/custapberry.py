@@ -1,4 +1,4 @@
-def onModifyPriority(datadic : dict):
+def onModifyPriority(**bvalues):
 	"""function (priority, pokemon) {
 			if (pokemon.hp <= pokemon.maxhp / 4 || (pokemon.hp <= pokemon.maxhp / 2 && pokemon.hasAbility('gluttony'))) {
 				if (pokemon.eatItem()) {

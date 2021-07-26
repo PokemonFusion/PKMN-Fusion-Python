@@ -1,4 +1,4 @@
-def onTryHit(datadic : dict):
+def onTryHit(**bvalues):
 	"""function (target) {
 			for (const [i, allyActive] of target.side.active.entries()) {
 				if (allyActive && allyActive.status === 'slp') allyActive.cureStatus();
@@ -9,14 +9,14 @@ def onTryHit(datadic : dict):
 	""" 
 	pass
 
-def onStart(datadic : dict):
+def onStart(**bvalues):
 	"""function (target) {
 				this.add('-start', target, 'Uproar');
 			}
 	""" 
 	pass
 
-def onResidual(datadic : dict):
+def onResidual(**bvalues):
 	"""function (target) {
 				if (target.lastMove && target.lastMove.id === 'struggle') {
 					// don't lock
@@ -27,14 +27,14 @@ def onResidual(datadic : dict):
 	""" 
 	pass
 
-def onEnd(datadic : dict):
+def onEnd(**bvalues):
 	"""function (target) {
 				this.add('-end', target, 'Uproar');
 			}
 	""" 
 	pass
 
-def onAnySetStatus(datadic : dict):
+def onAnySetStatus(**bvalues):
 	"""function (status, pokemon) {
 				if (status.id === 'slp') {
 					if (pokemon === this.effectData.target) {

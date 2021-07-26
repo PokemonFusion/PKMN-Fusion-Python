@@ -1,11 +1,11 @@
-def onPrepareHit(datadic : dict):
+def onPrepareHit(**bvalues):
 	"""function (pokemon) {
 			return !!this.willAct() && this.runEvent('StallMove', pokemon);
 		}
 	""" 
 	pass
 
-def onHit(datadic : dict):
+def onHit(**bvalues):
 	"""function (pokemon) {
 			pokemon.addVolatile('stall');
 		}

@@ -1,4 +1,4 @@
-def durationCallback(datadic : dict):
+def durationCallback(**bvalues):
 	"""function (target, source, effect) {
 				if (source && source.hasAbility('persistent')) {
 					this.add('-activate', source, 'ability: Persistent', effect);
@@ -9,21 +9,21 @@ def durationCallback(datadic : dict):
 	""" 
 	pass
 
-def onStart(datadic : dict):
+def onStart(**bvalues):
 	"""function (side) {
 				this.add('-sidestart', side, 'move: Tailwind');
 			}
 	""" 
 	pass
 
-def onModifySpe(datadic : dict):
+def onModifySpe(**bvalues):
 	"""function (spe, pokemon) {
 				return this.chainModify(2);
 			}
 	""" 
 	pass
 
-def onEnd(datadic : dict):
+def onEnd(**bvalues):
 	"""function (side) {
 				this.add('-sideend', side, 'move: Tailwind');
 			}

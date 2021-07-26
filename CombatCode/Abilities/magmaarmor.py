@@ -1,4 +1,4 @@
-def onUpdate(datadic : dict):
+def onUpdate(**bvalues):
 	"""function (pokemon) {
 			if (pokemon.status === 'frz') {
 				this.add('-activate', pokemon, 'ability: Magma Armor');
@@ -8,7 +8,7 @@ def onUpdate(datadic : dict):
 	""" 
 	pass
 
-def onImmunity(datadic : dict):
+def onImmunity(**bvalues):
 	"""function (type, pokemon) {
 			if (type === 'frz') return false;
 		}

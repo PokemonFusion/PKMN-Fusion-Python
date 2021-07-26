@@ -1,4 +1,4 @@
-def onTryMove(datadic : dict):
+def onTryMove(**bvalues):
 	"""function (attacker, defender, move) {
 			if (attacker.removeVolatile(move.id)) {
 				return;
@@ -13,7 +13,7 @@ def onTryMove(datadic : dict):
 	""" 
 	pass
 
-def onTryImmunity(datadic : dict):
+def onTryImmunity(**bvalues):
 	"""function (target, source, move) {
 				if (move.id === 'gust' || move.id === 'twister') {
 					return;
@@ -30,7 +30,7 @@ def onTryImmunity(datadic : dict):
 	""" 
 	pass
 
-def onSourceBasePower(datadic : dict):
+def onSourceBasePower(**bvalues):
 	"""function (basePower, target, source, move) {
 				if (move.id === 'gust' || move.id === 'twister') {
 					return this.chainModify(2);

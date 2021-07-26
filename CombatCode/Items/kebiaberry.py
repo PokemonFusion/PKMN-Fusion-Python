@@ -1,4 +1,4 @@
-def onSourceModifyDamage(datadic : dict):
+def onSourceModifyDamage(**bvalues):
 	"""function (damage, source, target, move) {
 			if (move.type === 'Poison' && move.typeMod > 0 && (!target.volatiles['substitute'] || move.flags['authentic'] || (move.infiltrates && this.gen >= 6))) {
 				if (target.eatItem()) {

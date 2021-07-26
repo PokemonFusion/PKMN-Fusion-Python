@@ -1,4 +1,4 @@
-def onAfterUseItem(datadic : dict):
+def onAfterUseItem(**bvalues):
 	"""function (item, pokemon) {
 			if (pokemon !== this.effectData.target) return;
 			pokemon.addVolatile('unburden');
@@ -6,21 +6,21 @@ def onAfterUseItem(datadic : dict):
 	""" 
 	pass
 
-def onTakeItem(datadic : dict):
+def onTakeItem(**bvalues):
 	"""function (item, pokemon) {
 			pokemon.addVolatile('unburden');
 		}
 	""" 
 	pass
 
-def onEnd(datadic : dict):
+def onEnd(**bvalues):
 	"""function (pokemon) {
 			pokemon.removeVolatile('unburden');
 		}
 	""" 
 	pass
 
-def onModifySpe(datadic : dict):
+def onModifySpe(**bvalues):
 	"""function (spe, pokemon) {
 				if (!pokemon.item) {
 					return this.chainModify(2);

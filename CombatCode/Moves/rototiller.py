@@ -1,4 +1,4 @@
-def onHitField(datadic : dict):
+def onHitField(**bvalues):
 	"""function (target, source) {
 			let targets = [];
 			let anyAirborne = false;

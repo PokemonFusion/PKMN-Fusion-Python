@@ -1,11 +1,11 @@
-def onTryHit(datadic : dict):
+def onTryHit(**bvalues):
 	"""function (target) {
 			if (!target.newlySwitched && !this.willMove(target)) return false;
 		}
 	""" 
 	pass
 
-def onStart(datadic : dict):
+def onStart(**bvalues):
 	"""function (target, source) {
 				this.effectData.multiplier = 1.5;
 				this.add('-singleturn', target, 'Helping Hand', '[of] ' + source);
@@ -13,7 +13,7 @@ def onStart(datadic : dict):
 	""" 
 	pass
 
-def onRestart(datadic : dict):
+def onRestart(**bvalues):
 	"""function (target, source) {
 				this.effectData.multiplier *= 1.5;
 				this.add('-singleturn', target, 'Helping Hand', '[of] ' + source);
@@ -21,7 +21,7 @@ def onRestart(datadic : dict):
 	""" 
 	pass
 
-def onBasePower(datadic : dict):
+def onBasePower(**bvalues):
 	"""function (basePower) {
 				this.debug('Boosting from Helping Hand: ' + this.effectData.multiplier);
 				return this.chainModify(this.effectData.multiplier);

@@ -1,4 +1,4 @@
-def onUpdate(datadic : dict):
+def onUpdate(**bvalues):
 	"""function (pokemon) {
 			this.boost({atk: 2});
 			pokemon.addVolatile('confusion');

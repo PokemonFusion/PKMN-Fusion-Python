@@ -1,4 +1,4 @@
-def onTryHit(datadic : dict):
+def onTryHit(**bvalues):
 	"""function (pokemon) {
 			let hasContrary = pokemon.hasAbility('contrary');
 			if ((!hasContrary && pokemon.boosts.spe === 6) || (hasContrary && pokemon.boosts.spe === -6)) {
@@ -8,7 +8,7 @@ def onTryHit(datadic : dict):
 	""" 
 	pass
 
-def onStart(datadic : dict):
+def onStart(**bvalues):
 	"""function (pokemon) {
 				if (pokemon.template.weightkg > 0.1) {
 					this.effectData.multiplier = 1;
@@ -18,7 +18,7 @@ def onStart(datadic : dict):
 	""" 
 	pass
 
-def onRestart(datadic : dict):
+def onRestart(**bvalues):
 	"""function (pokemon) {
 				if (pokemon.template.weightkg - (this.effectData.multiplier * 100) > 0.1) {
 					this.effectData.multiplier++;
@@ -28,7 +28,7 @@ def onRestart(datadic : dict):
 	""" 
 	pass
 
-def onModifyWeight(datadic : dict):
+def onModifyWeight(**bvalues):
 	"""function (weight, pokemon) {
 				if (this.effectData.multiplier) {
 					weight -= this.effectData.multiplier * 100;

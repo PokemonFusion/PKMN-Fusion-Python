@@ -1,4 +1,4 @@
-def durationCallback(datadic : dict):
+def durationCallback(**bvalues):
 	"""function (target, source, effect) {
 				if (source && source.hasAbility('persistent')) {
 					this.add('-activate', source, 'ability: Persistent', effect);
@@ -9,14 +9,14 @@ def durationCallback(datadic : dict):
 	""" 
 	pass
 
-def onStart(datadic : dict):
+def onStart(**bvalues):
 	"""function (pokemon) {
 				this.add('-start', pokemon, 'move: Heal Block');
 			}
 	""" 
 	pass
 
-def onDisableMove(datadic : dict):
+def onDisableMove(**bvalues):
 	"""function (pokemon) {
 				for (const moveSlot of pokemon.moveSlots) {
 					if (this.getMove(moveSlot.id).flags['heal']) {
@@ -27,7 +27,7 @@ def onDisableMove(datadic : dict):
 	""" 
 	pass
 
-def onBeforeMove(datadic : dict):
+def onBeforeMove(**bvalues):
 	"""function (pokemon, target, move) {
 				if (move.flags['heal'] && !move.isZ) {
 					this.add('cant', pokemon, 'move: Heal Block', move);
@@ -37,14 +37,14 @@ def onBeforeMove(datadic : dict):
 	""" 
 	pass
 
-def onEnd(datadic : dict):
+def onEnd(**bvalues):
 	"""function (pokemon) {
 				this.add('-end', pokemon, 'move: Heal Block');
 			}
 	""" 
 	pass
 
-def onTryHeal(datadic : dict):
+def onTryHeal(**bvalues):
 	"""function (damage, target, source, effect) {
 				if ((effect && effect.id === 'zpower') || this.effectData.isZ) return damage;
 				return false;

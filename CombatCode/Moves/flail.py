@@ -1,4 +1,4 @@
-def basePowerCallback(datadic : dict):
+def basePowerCallback(**bvalues):
 	"""function (pokemon, target) {
 			let ratio = pokemon.hp * 48 / pokemon.maxhp;
 			if (ratio < 2) {

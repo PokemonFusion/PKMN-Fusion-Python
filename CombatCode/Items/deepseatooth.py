@@ -1,4 +1,4 @@
-def onModifySpA(datadic : dict):
+def onModifySpA(**bvalues):
 	"""function (spa, pokemon) {
 			if (pokemon.baseTemplate.species === 'Clamperl') {
 				return this.chainModify(2);

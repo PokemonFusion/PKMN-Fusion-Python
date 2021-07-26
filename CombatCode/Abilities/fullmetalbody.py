@@ -1,4 +1,4 @@
-def onBoost(datadic : dict):
+def onBoost(**bvalues):
 	"""function (boost, target, source, effect) {
 			if (source && target === source) return;
 			let showMsg = false;

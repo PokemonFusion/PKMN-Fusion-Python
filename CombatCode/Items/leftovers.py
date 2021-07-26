@@ -1,4 +1,4 @@
-def onResidual(datadic : dict):
+def onResidual(**bvalues):
 	"""function (pokemon) {
 			if (this.isTerrain('grassyterrain')) return;
 			this.heal(pokemon.maxhp / 16);
@@ -6,7 +6,7 @@ def onResidual(datadic : dict):
 	""" 
 	pass
 
-def onTerrain(datadic : dict):
+def onTerrain(**bvalues):
 	"""function (pokemon) {
 			if (!this.isTerrain('grassyterrain')) return;
 			this.heal(pokemon.maxhp / 16);

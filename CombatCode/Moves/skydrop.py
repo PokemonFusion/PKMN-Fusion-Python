@@ -1,4 +1,4 @@
-def onModifyMove(datadic : dict):
+def onModifyMove(**bvalues):
 	"""function (move, source) {
 			if (!source.volatiles['skydrop']) {
 				move.accuracy = true;
@@ -8,7 +8,7 @@ def onModifyMove(datadic : dict):
 	""" 
 	pass
 
-def onMoveFail(datadic : dict):
+def onMoveFail(**bvalues):
 	"""function (target, source) {
 			if (source.volatiles['twoturnmove'] && source.volatiles['twoturnmove'].duration === 1) {
 				source.removeVolatile('skydrop');
@@ -19,7 +19,7 @@ def onMoveFail(datadic : dict):
 	""" 
 	pass
 
-def onTryHit(datadic : dict):
+def onTryHit(**bvalues):
 	"""function (target, source, move) {
 			if (target.fainted) return false;
 			if (source.removeVolatile(move.id)) {
@@ -46,21 +46,21 @@ def onTryHit(datadic : dict):
 	""" 
 	pass
 
-def onHit(datadic : dict):
+def onHit(**bvalues):
 	"""function (target, source) {
 			this.add('-end', target, 'Sky Drop');
 		}
 	""" 
 	pass
 
-def onAnyDragOut(datadic : dict):
+def onAnyDragOut(**bvalues):
 	"""function (pokemon) {
 				if (pokemon === this.effectData.target || pokemon === this.effectData.source) return false;
 			}
 	""" 
 	pass
 
-def onFoeTrapPokemon(datadic : dict):
+def onFoeTrapPokemon(**bvalues):
 	"""function (defender) {
 				if (defender !== this.effectData.source) return;
 				defender.trapped = true;
@@ -68,7 +68,7 @@ def onFoeTrapPokemon(datadic : dict):
 	""" 
 	pass
 
-def onFoeBeforeMove(datadic : dict):
+def onFoeBeforeMove(**bvalues):
 	"""function (attacker, defender, move) {
 				if (attacker === this.effectData.source) {
 					this.effectData.source.activeTurns--;
@@ -79,7 +79,7 @@ def onFoeBeforeMove(datadic : dict):
 	""" 
 	pass
 
-def onRedirectTarget(datadic : dict):
+def onRedirectTarget(**bvalues):
 	"""function (target, source, source2) {
 				if (source !== this.effectData.target) return;
 				if (this.effectData.source.fainted) return;
@@ -88,7 +88,7 @@ def onRedirectTarget(datadic : dict):
 	""" 
 	pass
 
-def onAnyTryImmunity(datadic : dict):
+def onAnyTryImmunity(**bvalues):
 	"""function (target, source, move) {
 				if (target !== this.effectData.target && target !== this.effectData.source) {
 					return;
@@ -111,7 +111,7 @@ def onAnyTryImmunity(datadic : dict):
 	""" 
 	pass
 
-def onAnyBasePower(datadic : dict):
+def onAnyBasePower(**bvalues):
 	"""function (basePower, target, source, move) {
 				if (target !== this.effectData.target && target !== this.effectData.source) {
 					return;
@@ -126,7 +126,7 @@ def onAnyBasePower(datadic : dict):
 	""" 
 	pass
 
-def onFaint(datadic : dict):
+def onFaint(**bvalues):
 	"""function (target) {
 				if (target.volatiles['skydrop'] && target.volatiles['twoturnmove'].source) {
 					this.add('-end', target.volatiles['twoturnmove'].source, 'Sky Drop', '[interrupt]');

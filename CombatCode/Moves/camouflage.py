@@ -1,4 +1,4 @@
-def onHit(datadic : dict):
+def onHit(**bvalues):
 	"""function (target) {
 			let newType = 'Normal';
 			if (this.isTerrain('electricterrain')) {

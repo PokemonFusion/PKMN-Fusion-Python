@@ -1,11 +1,11 @@
-def onStart(datadic : dict):
+def onStart(**bvalues):
 	"""function (side, source) {
 				this.add('-fieldstart', 'move: Mud Sport', '[of] ' + source);
 			}
 	""" 
 	pass
 
-def onBasePower(datadic : dict):
+def onBasePower(**bvalues):
 	"""function (basePower, attacker, defender, move) {
 				if (move.type === 'Electric') {
 					this.debug('mud sport weaken');
@@ -15,7 +15,7 @@ def onBasePower(datadic : dict):
 	""" 
 	pass
 
-def onEnd(datadic : dict):
+def onEnd(**bvalues):
 	"""function () {
 				this.add('-fieldend', 'move: Mud Sport');
 			}

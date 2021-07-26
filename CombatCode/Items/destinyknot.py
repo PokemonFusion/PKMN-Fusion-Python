@@ -1,4 +1,4 @@
-def onAttract(datadic : dict):
+def onAttract(**bvalues):
 	"""function (target, source) {
 			this.debug('attract intercepted: ' + target + ' from ' + source);
 			if (!source || source === target) return;

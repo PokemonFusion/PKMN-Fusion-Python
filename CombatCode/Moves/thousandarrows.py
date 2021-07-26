@@ -1,4 +1,4 @@
-def onEffectiveness(datadic : dict):
+def onEffectiveness(**bvalues):
 	"""function (typeMod, type, move) {
 			if (move.type !== 'Ground') return;
 			let target = this.activeTarget;

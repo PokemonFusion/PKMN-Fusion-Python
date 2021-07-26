@@ -1,4 +1,4 @@
-def onUpdate(datadic : dict):
+def onUpdate(**bvalues):
 	"""function (pokemon) {
 			if (pokemon.status === 'slp') {
 				this.add('-activate', pokemon, 'ability: Insomnia');
@@ -8,7 +8,7 @@ def onUpdate(datadic : dict):
 	""" 
 	pass
 
-def onSetStatus(datadic : dict):
+def onSetStatus(**bvalues):
 	"""function (status, target, source, effect) {
 			if (status.id !== 'slp') return;
 			if (!effect || !effect.status) return false;

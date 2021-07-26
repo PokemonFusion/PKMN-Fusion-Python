@@ -1,4 +1,4 @@
-def durationCallback(datadic : dict):
+def durationCallback(**bvalues):
 	"""function (target, source, effect) {
 				if (source && source.hasAbility('persistent')) {
 					this.add('-activate', source, 'ability: Persistent', effect);
@@ -9,7 +9,7 @@ def durationCallback(datadic : dict):
 	""" 
 	pass
 
-def onSetStatus(datadic : dict):
+def onSetStatus(**bvalues):
 	"""function (status, target, source, effect) {
 				if (source && target !== source && effect && (!effect.infiltrates || target.side === source.side)) {
 					this.debug('interrupting setStatus');
@@ -22,7 +22,7 @@ def onSetStatus(datadic : dict):
 	""" 
 	pass
 
-def onTryAddVolatile(datadic : dict):
+def onTryAddVolatile(**bvalues):
 	"""function (status, target, source, effect) {
 				if ((status.id === 'confusion' || status.id === 'yawn') && source && target !== source && effect && (!effect.infiltrates || target.side === source.side)) {
 					if (effect.effectType === 'Move' && !effect.secondaries) this.add('-activate', target, 'move: Safeguard');
@@ -32,14 +32,14 @@ def onTryAddVolatile(datadic : dict):
 	""" 
 	pass
 
-def onStart(datadic : dict):
+def onStart(**bvalues):
 	"""function (side) {
 				this.add('-sidestart', side, 'Safeguard');
 			}
 	""" 
 	pass
 
-def onEnd(datadic : dict):
+def onEnd(**bvalues):
 	"""function (side) {
 				this.add('-sideend', side, 'Safeguard');
 			}

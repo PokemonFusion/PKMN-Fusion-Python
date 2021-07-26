@@ -1,4 +1,4 @@
-def basePowerCallback(datadic : dict):
+def basePowerCallback(**bvalues):
 	"""function (pokemon, target, move) {
 			if (target.newlySwitched || this.willMove(target)) {
 				this.debug('Payback NOT boosted');

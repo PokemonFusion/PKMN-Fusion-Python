@@ -1,4 +1,4 @@
-def onAfterMoveSecondary(datadic : dict):
+def onAfterMoveSecondary(**bvalues):
 	"""function (target, source, move) {
 			if (!target.hp) return;
 			let type = move.type;

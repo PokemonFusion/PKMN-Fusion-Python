@@ -1,4 +1,4 @@
-def onAfterHit(datadic : dict):
+def onAfterHit(**bvalues):
 	"""function (target, source, move) {
 			if (source.item || source.volatiles['gem']) {
 				return;

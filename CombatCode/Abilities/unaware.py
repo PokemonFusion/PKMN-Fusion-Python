@@ -1,4 +1,4 @@
-def onAnyModifyBoost(datadic : dict):
+def onAnyModifyBoost(**bvalues):
 	"""function (boosts, target) {
 			let source = this.effectData.target;
 			if (source === target) return;

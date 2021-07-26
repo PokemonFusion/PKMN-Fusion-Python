@@ -1,4 +1,4 @@
-def onSourceModifyAccuracy(datadic : dict):
+def onSourceModifyAccuracy(**bvalues):
 	"""function (accuracy) {
 			if (typeof accuracy !== 'number') return;
 			this.debug('compoundeyes - enhancing accuracy');

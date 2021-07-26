@@ -1,4 +1,4 @@
-def basePowerCallback(datadic : dict):
+def basePowerCallback(**bvalues):
 	"""function (pokemon, target, move) {
 			if (target.status === 'par') return move.basePower * 2;
 			return move.basePower;
@@ -6,7 +6,7 @@ def basePowerCallback(datadic : dict):
 	""" 
 	pass
 
-def onHit(datadic : dict):
+def onHit(**bvalues):
 	"""function (target) {
 			if (target.status === 'par') target.cureStatus();
 		}

@@ -1,7 +1,7 @@
 from CombatCode.diclogging import addlog
 
 
-def basePowerCallback(datadic: dict):
+def basePowerCallback(**bvalues):
 	"""function (pokemon, target, move) {
 			if (target.hurtThisTurn) {
 				this.debug('Boosted for being damaged this turn');
@@ -10,10 +10,10 @@ def basePowerCallback(datadic: dict):
 			return move.basePower;
 		}
 	"""
-	target = datadic['target']
-	move = datadic['move']
+	target = bvalues['target']
+	move = bvalues['move']
 	if target.tempvals.get('hurtThisTurn', False):
-		addlog(datadic, "Boosted for target being damaged this turn, Assurance")
+		addlog(bvalues, "Boosted for target being damaged this turn, Assurance")
 		return move.basepower * 2
 	else:
 		return move.basepower

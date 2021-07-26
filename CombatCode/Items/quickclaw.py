@@ -1,4 +1,4 @@
-def onModifyPriority(datadic : dict):
+def onModifyPriority(**bvalues):
 	"""function (priority, pokemon) {
 			if (this.randomChance(1, 5)) {
 				this.add('-activate', pokemon, 'item: Quick Claw');

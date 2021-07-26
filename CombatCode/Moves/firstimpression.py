@@ -1,4 +1,4 @@
-def onTry(datadic : dict):
+def onTry(**bvalues):
 	"""function (pokemon, target) {
 			if (pokemon.activeTurns > 1) {
 				this.add('-fail', pokemon);

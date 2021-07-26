@@ -1,4 +1,4 @@
-def onSourceModifyAtk(datadic : dict):
+def onSourceModifyAtk(**bvalues):
 	"""function (atk, attacker, defender, move) {
 			if (move.type === 'Ice' || move.type === 'Fire') {
 				this.debug('Thick Fat weaken');
@@ -8,7 +8,7 @@ def onSourceModifyAtk(datadic : dict):
 	""" 
 	pass
 
-def onSourceModifySpA(datadic : dict):
+def onSourceModifySpA(**bvalues):
 	"""function (atk, attacker, defender, move) {
 			if (move.type === 'Ice' || move.type === 'Fire') {
 				this.debug('Thick Fat weaken');
