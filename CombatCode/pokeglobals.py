@@ -68,7 +68,7 @@ class Moves:
 		self.critRatio = movecheck("critRatio")
 		self.rawData = BattleMovedex[move]
 
-	def calculateBasePower(self, datadic: dict) -> int:
+	def calculateBasePower(self, **bvalues) -> int:
 		"""
 		you'll need to check basePowerCallback and onBasePower
 		"""
@@ -79,7 +79,7 @@ class Moves:
 		if calc is None:
 			return self.basePower
 		else:
-			return calc(datadic)
+			return calc(**bvalues, basepower=self.basePower)
 
 	def __repr__(self):
 		return "{}. {}".format(self.num, self.name)
