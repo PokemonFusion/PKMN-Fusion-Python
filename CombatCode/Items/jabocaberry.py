@@ -1,4 +1,4 @@
-def onAfterDamage(datadic : dict):
+def onAfterDamage(**bvalues):
 	"""function (damage, target, source, move) {
 			if (source && source.hp && source !== target && move && move.category === 'Physical') {
 				if (target.eatItem()) {

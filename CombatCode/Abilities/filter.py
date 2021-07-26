@@ -1,4 +1,4 @@
-def onSourceModifyDamage(datadic : dict):
+def onSourceModifyDamage(**bvalues):
 	"""function (damage, source, target, move) {
 			if (move.typeMod > 0) {
 				this.debug('Filter neutralize');

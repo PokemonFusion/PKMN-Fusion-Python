@@ -1,4 +1,4 @@
-def onStart(datadic : dict):
+def onStart(**bvalues):
 	"""function (pokemon) {
 			if (this.activeMove && this.activeMove.id === 'skillswap') return;
 			let target = pokemon.side.foe.active[pokemon.side.foe.active.length - 1 - pokemon.position];

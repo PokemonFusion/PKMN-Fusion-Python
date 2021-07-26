@@ -1,4 +1,4 @@
-def onTryHit(datadic : dict):
+def onTryHit(**bvalues):
 	"""function (target, source, move) {
 			if (target === source || move.hasBounced || !move.flags['reflectable']) {
 				return;
@@ -12,7 +12,7 @@ def onTryHit(datadic : dict):
 	""" 
 	pass
 
-def onAllyTryHitSide(datadic : dict):
+def onAllyTryHitSide(**bvalues):
 	"""function (target, source, move) {
 			if (target.side === source.side || move.hasBounced || !move.flags['reflectable']) {
 				return;

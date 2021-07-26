@@ -1,4 +1,4 @@
-def onHit(datadic : dict):
+def onHit(**bvalues):
 	"""function (pokemon) {
 			if (pokemon.item || !pokemon.lastItem) return false;
 			pokemon.setItem(pokemon.lastItem);

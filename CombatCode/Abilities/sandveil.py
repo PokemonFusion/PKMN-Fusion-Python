@@ -1,11 +1,11 @@
-def onImmunity(datadic : dict):
+def onImmunity(**bvalues):
 	"""function (type, pokemon) {
 			if (type === 'sandstorm') return false;
 		}
 	""" 
 	pass
 
-def onModifyAccuracy(datadic : dict):
+def onModifyAccuracy(**bvalues):
 	"""function (accuracy) {
 			if (typeof accuracy !== 'number') return;
 			if (this.isWeather('sandstorm')) {

@@ -1,4 +1,4 @@
-def onAnyTryMove(datadic : dict):
+def onAnyTryMove(**bvalues):
 	"""function (target, source, effect) {
 			if (['explosion', 'mindblown', 'selfdestruct'].includes(effect.id)) {
 				this.attrLastMove('[still]');
@@ -9,7 +9,7 @@ def onAnyTryMove(datadic : dict):
 	""" 
 	pass
 
-def onAnyDamage(datadic : dict):
+def onAnyDamage(**bvalues):
 	"""function (damage, target, source, effect) {
 			if (effect && effect.id === 'aftermath') {
 				return false;

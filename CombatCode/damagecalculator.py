@@ -4,6 +4,7 @@ from CombatCode.pokeglobals import Moves, Result
 from CombatCode.elements import ElementEffectiveness as TypeEff
 from CombatCode.battledata import Pokemon
 from CombatCode.movesdex import BattleMovedex
+from CombatCode.pokemon import STATUSES_REVERSE_SHORT
 
 """
  Assumptions:
@@ -22,7 +23,6 @@ from CombatCode.movesdex import BattleMovedex
 
 
 """
-datadic = {}
 
 
 def percent_check(check) -> bool:
@@ -110,22 +110,20 @@ def damage_calc(attacker: Pokemon, target: Pokemon, attackerpos, targetpos, move
 	# Initial version of this will heavily reference the way I (Yang/Koden) had coded it in MUF
 	result = Result()
 
-	datadic['pokemon'] = attacker
-	datadic['target'] = target
-	datadic['move'] = move
-
 	# around here I think is where we would be calling any 'onModifyMove' flags for the ability or move involved
 
 	# begin by checking accuracy
 	if accuracy_check(attacker, target, move):
 		onHit = BattleMovedex[move.name.lower()].get('onHit', None)
 		if onHit is not None:
-			if not onHit(datadic):
+			if not onHit(pokemon=attacker, target=target, move=move):
 				# say something about how the move failed and return the result of that.
 				return result
-			else:
+			# else:
+			# 	pass
 				# In case the move is changed, change it from the dictionary.
-				move = datadic['move']
+				# old code, find different way to change the move if the move is changed
+				# move = datadic['move']
 				
 
 
@@ -150,7 +148,7 @@ def damage_calc(attacker: Pokemon, target: Pokemon, attackerpos, targetpos, move
 				defenseStat = target.getStat("spd", isCrit)
 
 			basedamage = base_damage(
-				attacker.level, move.calculateBasePower(datadic), attackStat, defenseStat)
+				attacker.level, move.calculateBasePower(pokemon=attacker, target=target, move=move), attackStat, defenseStat)
 
 			# TODO: figure out where to put 'onUseMoveMessage' functions.
 			damage = basedamage * STAB(attacker, move)
@@ -195,6 +193,17 @@ def damage_calc(attacker: Pokemon, target: Pokemon, attackerpos, targetpos, move
 				)
 			if curhp == 0:
 				result.text += "\n{tarname} fainted!".format(tarname="{}.{}".format(targetpos, target.getName()))
+
+			# Put secondary effects here
+		if move.secondary:
+			if move.secondary.get('status') and target.status["name"] != 0: # can't change status if there is one
+				status = move.secondary.get('status').capitalize()
+				chance = move.secondary.get('chance', 100)
+				if percent_check(chance/100):
+					target.setStatus(STATUSES_REVERSE_SHORT[status])
+
+
+
 
 	else:
 		result.text = "{attname} uses {movename} against {tarname} but it missed!".format(attname="{}.{}".format(

@@ -1,4 +1,4 @@
-def onBasePower(datadic : dict):
+def onBasePower(**bvalues):
 	"""function (basePower, attacker, defender, move) {
 			if (this.isWeather('sandstorm')) {
 				if (move.type === 'Rock' || move.type === 'Ground' || move.type === 'Steel') {
@@ -10,7 +10,7 @@ def onBasePower(datadic : dict):
 	""" 
 	pass
 
-def onImmunity(datadic : dict):
+def onImmunity(**bvalues):
 	"""function (type, pokemon) {
 			if (type === 'sandstorm') return false;
 		}

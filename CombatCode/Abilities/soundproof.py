@@ -1,4 +1,4 @@
-def onTryHit(datadic : dict):
+def onTryHit(**bvalues):
 	"""function (target, source, move) {
 			if (move.flags['sound']) {
 				this.add('-immune', target, '[from] ability: Soundproof');
@@ -8,7 +8,7 @@ def onTryHit(datadic : dict):
 	""" 
 	pass
 
-def onAllyTryHitSide(datadic : dict):
+def onAllyTryHitSide(**bvalues):
 	"""function (target, source, move) {
 			if (move.flags['sound']) {
 				this.add('-immune', this.effectData.target, '[from] ability: Soundproof');

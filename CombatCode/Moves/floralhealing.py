@@ -1,4 +1,4 @@
-def onHit(datadic : dict):
+def onHit(**bvalues):
 	"""function (target) {
 			if (this.isTerrain('grassyterrain')) {
 				return this.heal(this.modify(target.maxhp, 0.667)); // TODO: find out the real value

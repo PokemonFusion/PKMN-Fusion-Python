@@ -1,4 +1,4 @@
-def onModifyMove(datadic : dict):
+def onModifyMove(**bvalues):
 	"""function (move) {
 			switch (this.effectiveWeather()) {
 			case 'sunnyday':

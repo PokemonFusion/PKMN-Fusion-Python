@@ -1,4 +1,4 @@
-def basePowerCallback(datadic : dict):
+def basePowerCallback(**bvalues):
 	"""function (target, source, move) {
 			if (move.sourceEffect === 'round') {
 				return move.basePower * 2;
@@ -8,7 +8,7 @@ def basePowerCallback(datadic : dict):
 	""" 
 	pass
 
-def onTry(datadic : dict):
+def onTry(**bvalues):
 	"""function () {
 			for (const action of this.queue) {
 				// @ts-ignore

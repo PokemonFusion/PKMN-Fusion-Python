@@ -1,4 +1,4 @@
-def onAfterDamage(datadic : dict):
+def onAfterDamage(**bvalues):
 	"""function (damage, target, source, move) {
 			if (move && move.flags['contact'] && !source.status && source.runStatusImmunity('powder')) {
 				let r = this.random(100);

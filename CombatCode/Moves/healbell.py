@@ -1,4 +1,4 @@
-def onHit(datadic : dict):
+def onHit(**bvalues):
 	"""function (pokemon, source) {
 			this.add('-activate', source, 'move: Heal Bell');
 			let side = pokemon.side;

@@ -1,4 +1,4 @@
-def onStart(datadic : dict):
+def onStart(**bvalues):
 	"""function (pokemon) {
 			pokemon.removeVolatile('truant');
 			if (pokemon.activeTurns && (pokemon.moveThisTurnResult !== undefined || !this.willMove(pokemon))) {
@@ -8,7 +8,7 @@ def onStart(datadic : dict):
 	""" 
 	pass
 
-def onBeforeMove(datadic : dict):
+def onBeforeMove(**bvalues):
 	"""function (pokemon) {
 			if (pokemon.removeVolatile('truant')) {
 				this.add('cant', pokemon, 'ability: Truant');

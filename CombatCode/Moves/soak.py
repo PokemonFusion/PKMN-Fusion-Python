@@ -1,4 +1,4 @@
-def onHit(datadic : dict):
+def onHit(**bvalues):
 	"""function (target) {
 			if (!target.setType('Water')) {
 				this.add('-fail', target);

@@ -1,4 +1,4 @@
-def onHit(datadic : dict):
+def onHit(**bvalues):
 	"""function (target, source) {
 			let newdef = Math.floor((target.stats.def + source.stats.def) / 2);
 			target.stats.def = newdef;

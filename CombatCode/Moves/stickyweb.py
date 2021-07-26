@@ -1,11 +1,11 @@
-def onStart(datadic : dict):
+def onStart(**bvalues):
 	"""function (side) {
 				this.add('-sidestart', side, 'move: Sticky Web');
 			}
 	""" 
 	pass
 
-def onSwitchIn(datadic : dict):
+def onSwitchIn(**bvalues):
 	"""function (pokemon) {
 				if (!pokemon.isGrounded()) return;
 				this.add('-activate', pokemon, 'move: Sticky Web');

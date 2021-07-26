@@ -1,4 +1,4 @@
-def onTryHit(datadic : dict):
+def onTryHit(**bvalues):
 	"""function (pokemon, target, move) {
 			if (!this.canSwitch(pokemon.side)) {
 				delete move.selfdestruct;
@@ -8,7 +8,7 @@ def onTryHit(datadic : dict):
 	""" 
 	pass
 
-def onStart(datadic : dict):
+def onStart(**bvalues):
 	"""function (side, source) {
 				this.debug('Healing Wish started on ' + side.name);
 				this.effectData.positions = [];
@@ -20,14 +20,14 @@ def onStart(datadic : dict):
 	""" 
 	pass
 
-def onRestart(datadic : dict):
+def onRestart(**bvalues):
 	"""function (side, source) {
 				this.effectData.positions[source.position] = true;
 			}
 	""" 
 	pass
 
-def onSwitchIn(datadic : dict):
+def onSwitchIn(**bvalues):
 	"""function (target) {
 				const positions = /**@type {boolean[]} */ (this.effectData.positions);
 				if (!positions[target.position]) {

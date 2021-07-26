@@ -1,4 +1,4 @@
-def onModifySpe(datadic : dict):
+def onModifySpe(**bvalues):
 	"""function (spe) {
 			return this.chainModify(0.5);
 		}

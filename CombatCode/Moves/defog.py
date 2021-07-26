@@ -1,4 +1,4 @@
-def onHit(datadic : dict):
+def onHit(**bvalues):
 	"""function (target, source, move) {
 			/**@type {?boolean | number} */
 			let success = false;

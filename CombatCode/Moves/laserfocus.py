@@ -1,11 +1,11 @@
-def onStart(datadic : dict):
+def onStart(**bvalues):
 	"""function (pokemon) {
 				this.add('-start', pokemon, 'move: Laser Focus');
 			}
 	""" 
 	pass
 
-def onRestart(datadic : dict):
+def onRestart(**bvalues):
 	"""function (pokemon) {
 				this.effectData.duration = 2;
 				this.add('-start', pokemon, 'move: Laser Focus');
@@ -13,14 +13,14 @@ def onRestart(datadic : dict):
 	""" 
 	pass
 
-def onModifyCritRatio(datadic : dict):
+def onModifyCritRatio(**bvalues):
 	"""function (critRatio) {
 				return 5;
 			}
 	""" 
 	pass
 
-def onEnd(datadic : dict):
+def onEnd(**bvalues):
 	"""function (pokemon) {
 				this.add('-end', pokemon, 'move: Laser Focus', '[silent]');
 			}

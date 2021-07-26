@@ -1,4 +1,4 @@
-def onResidual(datadic : dict):
+def onResidual(**bvalues):
 	"""function (pokemon) {
 			if (pokemon.activeTurns) {
 				this.boost({spe: 1});

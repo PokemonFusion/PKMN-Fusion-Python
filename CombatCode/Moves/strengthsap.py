@@ -1,4 +1,4 @@
-def onHit(datadic : dict):
+def onHit(**bvalues):
 	"""function (target, source) {
 			if (target.boosts.atk === -6) return false;
 			let atk = target.getStat('atk', false, true);

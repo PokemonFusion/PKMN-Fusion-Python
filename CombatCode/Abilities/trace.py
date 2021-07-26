@@ -1,4 +1,4 @@
-def onStart(datadic : dict):
+def onStart(**bvalues):
 	"""function (pokemon) {
 			if (pokemon.side.foe.active.some(foeActive => foeActive && this.isAdjacent(pokemon, foeActive) && foeActive.ability === 'noability')) {
 				this.effectData.gaveUp = true;
@@ -7,7 +7,7 @@ def onStart(datadic : dict):
 	""" 
 	pass
 
-def onUpdate(datadic : dict):
+def onUpdate(**bvalues):
 	"""function (pokemon) {
 			if (!pokemon.isStarted || this.effectData.gaveUp) return;
 			let possibleTargets = pokemon.side.foe.active.filter(foeActive => foeActive && this.isAdjacent(pokemon, foeActive));

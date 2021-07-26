@@ -1,4 +1,4 @@
-def onBasePower(datadic : dict):
+def onBasePower(**bvalues):
 	"""function (basePower, attacker, defender, move) {
 			if (attacker.gender && defender.gender) {
 				if (attacker.gender === defender.gender) {

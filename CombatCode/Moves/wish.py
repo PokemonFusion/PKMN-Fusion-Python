@@ -1,11 +1,11 @@
-def onStart(datadic : dict):
+def onStart(**bvalues):
 	"""function (side, source) {
 				this.effectData.hp = source.maxhp / 2;
 			}
 	""" 
 	pass
 
-def onEnd(datadic : dict):
+def onEnd(**bvalues):
 	"""function (side) {
 				let target = side.active[this.effectData.sourcePosition];
 				if (target && !target.fainted) {

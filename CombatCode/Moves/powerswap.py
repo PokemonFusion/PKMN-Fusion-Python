@@ -1,4 +1,4 @@
-def onHit(datadic : dict):
+def onHit(**bvalues):
 	"""function (target, source) {
 			let targetBoosts = {};
 			let sourceBoosts = {};

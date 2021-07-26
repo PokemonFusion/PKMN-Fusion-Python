@@ -1,4 +1,4 @@
-def onStart(datadic : dict):
+def onStart(**bvalues):
 	"""function (pokemon) {
 				let applies = false;
 				if (pokemon.hasType('Flying') || pokemon.hasAbility('levitate')) applies = true;
@@ -22,7 +22,7 @@ def onStart(datadic : dict):
 	""" 
 	pass
 
-def onRestart(datadic : dict):
+def onRestart(**bvalues):
 	"""function (pokemon) {
 				if (pokemon.removeVolatile('fly') || pokemon.removeVolatile('bounce')) {
 					this.cancelMove(pokemon);

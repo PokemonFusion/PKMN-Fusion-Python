@@ -1,4 +1,4 @@
-def onTryHit(datadic : dict):
+def onTryHit(**bvalues):
 	"""function (target) {
 			if (target.hasAbility('stickyhold')) {
 				this.add('-immune', target);
@@ -8,7 +8,7 @@ def onTryHit(datadic : dict):
 	""" 
 	pass
 
-def onHit(datadic : dict):
+def onHit(**bvalues):
 	"""function (target, source, move) {
 			let yourItem = target.takeItem(source);
 			let myItem = source.takeItem();

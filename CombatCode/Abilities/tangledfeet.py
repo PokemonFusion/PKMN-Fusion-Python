@@ -1,4 +1,4 @@
-def onModifyAccuracy(datadic : dict):
+def onModifyAccuracy(**bvalues):
 	"""function (accuracy, target) {
 			if (typeof accuracy !== 'number') return;
 			if (target && target.volatiles['confusion']) {

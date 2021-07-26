@@ -1,4 +1,4 @@
-def onTryHit(datadic : dict):
+def onTryHit(**bvalues):
 	"""function (source) {
 			if (source.side.active.length === 1) return false;
 			if (source.side.active.length === 3 && source.position === 1) return false;
@@ -6,7 +6,7 @@ def onTryHit(datadic : dict):
 	""" 
 	pass
 
-def onHit(datadic : dict):
+def onHit(**bvalues):
 	"""function (pokemon) {
 			let newPosition = (pokemon.position === 0 ? pokemon.side.active.length - 1 : 0);
 			if (!pokemon.side.active[newPosition]) return false;

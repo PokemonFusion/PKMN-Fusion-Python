@@ -1,4 +1,4 @@
-def onStart(datadic : dict):
+def onStart(**bvalues):
 	"""function (pokemon) {
 			this.add('-ability', pokemon, 'Cloud Nine');
 		}

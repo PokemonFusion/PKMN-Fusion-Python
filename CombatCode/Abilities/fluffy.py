@@ -1,4 +1,4 @@
-def onSourceModifyDamage(datadic : dict):
+def onSourceModifyDamage(**bvalues):
 	"""function (damage, source, target, move) {
 			let mod = 1;
 			if (move.type === 'Fire') mod *= 2;

@@ -1,4 +1,4 @@
-def onTryHit(datadic : dict):
+def onTryHit(**bvalues):
 	"""function (target, source, move) {
 			if (target === source || move.category === 'Status' || move.type === '???' || move.id === 'struggle') return;
 			this.debug('Wonder Guard immunity: ' + move.id);

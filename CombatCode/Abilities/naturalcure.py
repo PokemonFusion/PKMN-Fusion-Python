@@ -1,4 +1,4 @@
-def onCheckShow(datadic : dict):
+def onCheckShow(**bvalues):
 	"""function (pokemon) {
 			// This is complicated
 			// For the most part, in-game, it's obvious whether or not Natural Cure activated,
@@ -65,7 +65,7 @@ def onCheckShow(datadic : dict):
 	""" 
 	pass
 
-def onSwitchOut(datadic : dict):
+def onSwitchOut(**bvalues):
 	"""function (pokemon) {
 			if (!pokemon.status) return;
 

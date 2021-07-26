@@ -1,4 +1,4 @@
-def onResidual(datadic : dict):
+def onResidual(**bvalues):
 	"""function (pokemon) {
 			if (pokemon.baseTemplate.baseSpecies !== 'Zygarde' || pokemon.transformed || !pokemon.hp) return;
 			if (pokemon.template.speciesid === 'zygardecomplete' || pokemon.hp > pokemon.maxhp / 2) return;

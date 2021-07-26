@@ -1,4 +1,4 @@
-def onHitSide(datadic : dict):
+def onHitSide(**bvalues):
 	"""function (side, source) {
 			let targets = [];
 			for (let p in side.active) {

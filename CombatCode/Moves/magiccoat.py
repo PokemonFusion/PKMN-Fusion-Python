@@ -1,4 +1,4 @@
-def onStart(datadic : dict):
+def onStart(**bvalues):
 	"""function (target, source, effect) {
 				this.add('-singleturn', target, 'move: Magic Coat');
 				if (effect && effect.effectType === 'Move') {
@@ -8,7 +8,7 @@ def onStart(datadic : dict):
 	""" 
 	pass
 
-def onTryHit(datadic : dict):
+def onTryHit(**bvalues):
 	"""function (target, source, move) {
 				if (target === source || move.hasBounced || !move.flags['reflectable']) {
 					return;
@@ -22,7 +22,7 @@ def onTryHit(datadic : dict):
 	""" 
 	pass
 
-def onAllyTryHitSide(datadic : dict):
+def onAllyTryHitSide(**bvalues):
 	"""function (target, source, move) {
 				if (target.side === source.side || move.hasBounced || !move.flags['reflectable']) {
 					return;

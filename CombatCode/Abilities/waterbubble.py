@@ -1,4 +1,4 @@
-def onSourceModifyAtk(datadic : dict):
+def onSourceModifyAtk(**bvalues):
 	"""function (atk, attacker, defender, move) {
 			if (move.type === 'Fire') {
 				return this.chainModify(0.5);
@@ -7,7 +7,7 @@ def onSourceModifyAtk(datadic : dict):
 	""" 
 	pass
 
-def onSourceModifySpA(datadic : dict):
+def onSourceModifySpA(**bvalues):
 	"""function (atk, attacker, defender, move) {
 			if (move.type === 'Fire') {
 				return this.chainModify(0.5);
@@ -16,7 +16,7 @@ def onSourceModifySpA(datadic : dict):
 	""" 
 	pass
 
-def onModifyAtk(datadic : dict):
+def onModifyAtk(**bvalues):
 	"""function (atk, attacker, defender, move) {
 			if (move.type === 'Water') {
 				return this.chainModify(2);
@@ -25,7 +25,7 @@ def onModifyAtk(datadic : dict):
 	""" 
 	pass
 
-def onModifySpA(datadic : dict):
+def onModifySpA(**bvalues):
 	"""function (atk, attacker, defender, move) {
 			if (move.type === 'Water') {
 				return this.chainModify(2);
@@ -34,7 +34,7 @@ def onModifySpA(datadic : dict):
 	""" 
 	pass
 
-def onUpdate(datadic : dict):
+def onUpdate(**bvalues):
 	"""function (pokemon) {
 			if (pokemon.status === 'brn') {
 				this.add('-activate', pokemon, 'ability: Water Bubble');
@@ -44,7 +44,7 @@ def onUpdate(datadic : dict):
 	""" 
 	pass
 
-def onSetStatus(datadic : dict):
+def onSetStatus(**bvalues):
 	"""function (status, target, source, effect) {
 			if (status.id !== 'brn') return;
 			if (!effect || !effect.status) return false;

@@ -1,4 +1,4 @@
-def onTryHit(datadic : dict):
+def onTryHit(**bvalues):
 	"""function (pokemon) {
 			// will shatter screens through sub, before you hit
 			if (pokemon.runImmunity('Psychic')) {

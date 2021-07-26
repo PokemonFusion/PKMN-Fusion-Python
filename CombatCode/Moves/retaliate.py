@@ -1,4 +1,4 @@
-def onBasePower(datadic : dict):
+def onBasePower(**bvalues):
 	"""function (basePower, pokemon) {
 			if (pokemon.side.faintedLastTurn) {
 				this.debug('Boosted for a faint last turn');

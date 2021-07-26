@@ -1,4 +1,4 @@
-def onUpdate(datadic : dict):
+def onUpdate(**bvalues):
 	"""function (pokemon) {
 			if (pokemon.baseTemplate.baseSpecies !== 'Castform' || pokemon.transformed) return;
 			let forme = null;

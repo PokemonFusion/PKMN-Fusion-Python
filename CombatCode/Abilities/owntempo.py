@@ -1,4 +1,4 @@
-def onUpdate(datadic : dict):
+def onUpdate(**bvalues):
 	"""function (pokemon) {
 			if (pokemon.volatiles['confusion']) {
 				this.add('-activate', pokemon, 'ability: Own Tempo');
@@ -8,14 +8,14 @@ def onUpdate(datadic : dict):
 	""" 
 	pass
 
-def onTryAddVolatile(datadic : dict):
+def onTryAddVolatile(**bvalues):
 	"""function (status, pokemon) {
 			if (status.id === 'confusion') return null;
 		}
 	""" 
 	pass
 
-def onHit(datadic : dict):
+def onHit(**bvalues):
 	"""function (target, source, move) {
 			if (move && move.volatileStatus === 'confusion') {
 				this.add('-immune', target, 'confusion', '[from] ability: Own Tempo');

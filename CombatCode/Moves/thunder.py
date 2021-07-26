@@ -1,4 +1,4 @@
-def onModifyMove(datadic : dict):
+def onModifyMove(**bvalues):
 	"""function (move) {
 			if (this.isWeather(['raindance', 'primordialsea'])) {
 				move.accuracy = true;

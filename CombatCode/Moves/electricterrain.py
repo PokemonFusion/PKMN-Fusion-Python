@@ -1,4 +1,4 @@
-def durationCallback(datadic : dict):
+def durationCallback(**bvalues):
 	"""function (source, effect) {
 				if (source && source.hasItem('terrainextender')) {
 					return 8;
@@ -8,7 +8,7 @@ def durationCallback(datadic : dict):
 	""" 
 	pass
 
-def onSetStatus(datadic : dict):
+def onSetStatus(**bvalues):
 	"""function (status, target, source, effect) {
 				if (status.id === 'slp' && target.isGrounded() && !target.isSemiInvulnerable()) {
 					if (effect.effectType === 'Move' && !effect.secondaries) {
@@ -20,7 +20,7 @@ def onSetStatus(datadic : dict):
 	""" 
 	pass
 
-def onTryAddVolatile(datadic : dict):
+def onTryAddVolatile(**bvalues):
 	"""function (status, target) {
 				if (!target.isGrounded() || target.isSemiInvulnerable()) return;
 				if (status.id === 'yawn') {
@@ -31,7 +31,7 @@ def onTryAddVolatile(datadic : dict):
 	""" 
 	pass
 
-def onBasePower(datadic : dict):
+def onBasePower(**bvalues):
 	"""function (basePower, attacker, defender, move) {
 				if (move.type === 'Electric' && attacker.isGrounded() && !attacker.isSemiInvulnerable()) {
 					this.debug('electric terrain boost');
@@ -41,7 +41,7 @@ def onBasePower(datadic : dict):
 	""" 
 	pass
 
-def onStart(datadic : dict):
+def onStart(**bvalues):
 	"""function (battle, source, effect) {
 				if (effect && effect.effectType === 'Ability') {
 					this.add('-fieldstart', 'move: Electric Terrain', '[from] ability: ' + effect, '[of] ' + source);
@@ -52,7 +52,7 @@ def onStart(datadic : dict):
 	""" 
 	pass
 
-def onEnd(datadic : dict):
+def onEnd(**bvalues):
 	"""function () {
 				this.add('-fieldend', 'move: Electric Terrain');
 			}

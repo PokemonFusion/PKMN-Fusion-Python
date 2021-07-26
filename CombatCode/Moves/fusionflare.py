@@ -1,4 +1,4 @@
-def onBasePower(datadic : dict):
+def onBasePower(**bvalues):
 	"""function (basePower, pokemon) {
 			for (const active of pokemon.side.active) {
 				if (active && active.moveThisTurn === 'fusionbolt') {

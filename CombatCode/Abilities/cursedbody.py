@@ -1,4 +1,4 @@
-def onAfterDamage(datadic : dict):
+def onAfterDamage(**bvalues):
 	"""function (damage, target, source, move) {
 			if (!source || source.volatiles['disable']) return;
 			if (source !== target && move && move.effectType === 'Move' && !move.isFutureMove) {

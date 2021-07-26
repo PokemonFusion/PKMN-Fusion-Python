@@ -1,4 +1,4 @@
-def onBasePower(datadic : dict):
+def onBasePower(**bvalues):
 	"""function (basePower, attacker, defender, move) {
 			if (move.recoil || move.hasCustomRecoil) {
 				this.debug('Reckless boost');

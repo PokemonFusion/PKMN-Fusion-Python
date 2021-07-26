@@ -1,4 +1,4 @@
-def basePowerCallback(datadic : dict):
+def basePowerCallback(**bvalues):
 	"""function (target, source, move) {
 			if (['waterpledge', 'firepledge'].includes(move.sourceEffect)) {
 				this.add('-combine');
@@ -9,7 +9,7 @@ def basePowerCallback(datadic : dict):
 	""" 
 	pass
 
-def onPrepareHit(datadic : dict):
+def onPrepareHit(**bvalues):
 	"""function (target, source, move) {
 			for (const action of this.queue) {
 				// @ts-ignore
@@ -26,7 +26,7 @@ def onPrepareHit(datadic : dict):
 	""" 
 	pass
 
-def onModifyMove(datadic : dict):
+def onModifyMove(**bvalues):
 	"""function (move) {
 			if (move.sourceEffect === 'waterpledge') {
 				move.type = 'Grass';
@@ -40,7 +40,7 @@ def onModifyMove(datadic : dict):
 	""" 
 	pass
 
-def onHit(datadic : dict):
+def onHit(**bvalues):
 	"""function (target, source, move) {
 			if (move.sourceEffect === 'waterpledge') {
 				target.side.addSideCondition('grasspledge');
@@ -52,21 +52,21 @@ def onHit(datadic : dict):
 	""" 
 	pass
 
-def onStart(datadic : dict):
+def onStart(**bvalues):
 	"""function (targetSide) {
 				this.add('-sidestart', targetSide, 'Grass Pledge');
 			}
 	""" 
 	pass
 
-def onEnd(datadic : dict):
+def onEnd(**bvalues):
 	"""function (targetSide) {
 				this.add('-sideend', targetSide, 'Grass Pledge');
 			}
 	""" 
 	pass
 
-def onModifySpe(datadic : dict):
+def onModifySpe(**bvalues):
 	"""function (spe, pokemon) {
 				return this.chainModify(0.25);
 			}

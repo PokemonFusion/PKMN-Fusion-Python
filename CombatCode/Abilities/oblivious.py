@@ -1,4 +1,4 @@
-def onUpdate(datadic : dict):
+def onUpdate(**bvalues):
 	"""function (pokemon) {
 			if (pokemon.volatiles['attract']) {
 				this.add('-activate', pokemon, 'ability: Oblivious');
@@ -14,14 +14,14 @@ def onUpdate(datadic : dict):
 	""" 
 	pass
 
-def onImmunity(datadic : dict):
+def onImmunity(**bvalues):
 	"""function (type, pokemon) {
 			if (type === 'attract') return false;
 		}
 	""" 
 	pass
 
-def onTryHit(datadic : dict):
+def onTryHit(**bvalues):
 	"""function (pokemon, target, move) {
 			if (move.id === 'attract' || move.id === 'captivate' || move.id === 'taunt') {
 				this.add('-immune', pokemon, '[from] ability: Oblivious');

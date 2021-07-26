@@ -1,4 +1,4 @@
-def onModifyDamage(datadic : dict):
+def onModifyDamage(**bvalues):
 	"""function (damage, source, target, move) {
 			if (move.crit) {
 				this.debug('Sniper boost');

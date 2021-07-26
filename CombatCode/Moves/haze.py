@@ -1,4 +1,4 @@
-def onHitField(datadic : dict):
+def onHitField(**bvalues):
 	"""function () {
 			this.add('-clearallboost');
 			for (const side of this.sides) {

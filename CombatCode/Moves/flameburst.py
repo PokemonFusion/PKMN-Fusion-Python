@@ -1,4 +1,4 @@
-def onHit(datadic : dict):
+def onHit(**bvalues):
 	"""function (target, source) {
 			if (target.side.active.length === 1) {
 				return;
@@ -12,7 +12,7 @@ def onHit(datadic : dict):
 	""" 
 	pass
 
-def onAfterSubDamage(datadic : dict):
+def onAfterSubDamage(**bvalues):
 	"""function (target, source) {
 			if (target.side.active.length === 1) {
 				return;

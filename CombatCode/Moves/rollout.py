@@ -1,4 +1,4 @@
-def basePowerCallback(datadic : dict):
+def basePowerCallback(**bvalues):
 	"""function (pokemon, target, move) {
 			let bp = move.basePower;
 			if (pokemon.volatiles.rollout && pokemon.volatiles.rollout.hitCount) {
@@ -14,14 +14,14 @@ def basePowerCallback(datadic : dict):
 	""" 
 	pass
 
-def onStart(datadic : dict):
+def onStart(**bvalues):
 	"""function () {
 				this.effectData.hitCount = 1;
 			}
 	""" 
 	pass
 
-def onRestart(datadic : dict):
+def onRestart(**bvalues):
 	"""function () {
 				this.effectData.hitCount++;
 				if (this.effectData.hitCount < 5) {
@@ -31,7 +31,7 @@ def onRestart(datadic : dict):
 	""" 
 	pass
 
-def onResidual(datadic : dict):
+def onResidual(**bvalues):
 	"""function (target) {
 				if (target.lastMove && target.lastMove.id === 'struggle') {
 					// don't lock

@@ -1,4 +1,4 @@
-def onResidual(datadic : dict):
+def onResidual(**bvalues):
 	"""function (pokemon) {
 			if (pokemon.hp && pokemon.status && this.randomChance(1, 3)) {
 				this.debug('shed skin');

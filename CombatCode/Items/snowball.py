@@ -1,4 +1,4 @@
-def onAfterDamage(datadic : dict):
+def onAfterDamage(**bvalues):
 	"""function (damage, target, source, move) {
 			if (move.type === 'Ice' && target.useItem()) {
 				this.boost({atk: 1});

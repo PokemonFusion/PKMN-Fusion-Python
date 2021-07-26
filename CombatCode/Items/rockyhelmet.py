@@ -1,4 +1,4 @@
-def onAfterDamage(datadic : dict):
+def onAfterDamage(**bvalues):
 	"""function (damage, target, source, move) {
 			if (source && source !== target && move && move.flags['contact']) {
 				this.damage(source.maxhp / 6, source, target);

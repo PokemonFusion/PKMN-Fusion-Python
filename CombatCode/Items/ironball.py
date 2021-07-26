@@ -1,4 +1,4 @@
-def onEffectiveness(datadic : dict):
+def onEffectiveness(**bvalues):
 	"""function (typeMod, target, type, move) {
 			if (!target) return;
 			if (target.volatiles['ingrain'] || target.volatiles['smackdown'] || this.getPseudoWeather('gravity')) return;
@@ -7,7 +7,7 @@ def onEffectiveness(datadic : dict):
 	""" 
 	pass
 
-def onModifySpe(datadic : dict):
+def onModifySpe(**bvalues):
 	"""function (spe) {
 			return this.chainModify(0.5);
 		}

@@ -1,4 +1,4 @@
-def onStart(datadic : dict):
+def onStart(**bvalues):
 	"""function (pokemon) {
 				if (pokemon.status !== 'slp' && !pokemon.hasAbility('comatose')) {
 					return false;
@@ -8,7 +8,7 @@ def onStart(datadic : dict):
 	""" 
 	pass
 
-def onResidual(datadic : dict):
+def onResidual(**bvalues):
 	"""function (pokemon) {
 				this.damage(pokemon.maxhp / 4);
 			}

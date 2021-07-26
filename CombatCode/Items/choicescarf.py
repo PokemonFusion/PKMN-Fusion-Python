@@ -1,4 +1,4 @@
-def onStart(datadic : dict):
+def onStart(**bvalues):
 	"""function (pokemon) {
 			if (pokemon.volatiles['choicelock']) {
 				this.debug('removing choicelock: ' + pokemon.volatiles.choicelock);
@@ -8,14 +8,14 @@ def onStart(datadic : dict):
 	""" 
 	pass
 
-def onModifyMove(datadic : dict):
+def onModifyMove(**bvalues):
 	"""function (move, pokemon) {
 			pokemon.addVolatile('choicelock');
 		}
 	""" 
 	pass
 
-def onModifySpe(datadic : dict):
+def onModifySpe(**bvalues):
 	"""function (spe) {
 			return this.chainModify(1.5);
 		}

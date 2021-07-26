@@ -1,4 +1,4 @@
-def basePowerCallback(datadic : dict):
+def basePowerCallback(**bvalues):
 	"""function (pokemon, target) {
 			let power = (Math.floor(25 * target.getStat('spe') / pokemon.getStat('spe')) || 1);
 			if (power > 150) power = 150;

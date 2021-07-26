@@ -1,4 +1,4 @@
-def basePowerCallback(datadic : dict):
+def basePowerCallback(**bvalues):
 	"""function () {
 			if (this.pseudoWeather.echoedvoice) {
 				return 40 * this.pseudoWeather.echoedvoice.multiplier;
@@ -8,21 +8,21 @@ def basePowerCallback(datadic : dict):
 	""" 
 	pass
 
-def onTry(datadic : dict):
+def onTry(**bvalues):
 	"""function () {
 			this.addPseudoWeather('echoedvoice');
 		}
 	""" 
 	pass
 
-def onStart(datadic : dict):
+def onStart(**bvalues):
 	"""function () {
 				this.effectData.multiplier = 1;
 			}
 	""" 
 	pass
 
-def onRestart(datadic : dict):
+def onRestart(**bvalues):
 	"""function () {
 				if (this.effectData.duration !== 2) {
 					this.effectData.duration = 2;

@@ -1,4 +1,4 @@
-def onModifyMove(datadic : dict):
+def onModifyMove(**bvalues):
 	"""function (move, source, target) {
 			if (!source.hasType('Ghost')) {
 				// @ts-ignore
@@ -8,7 +8,7 @@ def onModifyMove(datadic : dict):
 	""" 
 	pass
 
-def onTryHit(datadic : dict):
+def onTryHit(**bvalues):
 	"""function (target, source, move) {
 			if (!source.hasType('Ghost')) {
 				delete move.volatileStatus;
@@ -21,21 +21,21 @@ def onTryHit(datadic : dict):
 	""" 
 	pass
 
-def onHit(datadic : dict):
+def onHit(**bvalues):
 	"""function (target, source) {
 			this.directDamage(source.maxhp / 2, source, source);
 		}
 	""" 
 	pass
 
-def onStart(datadic : dict):
+def onStart(**bvalues):
 	"""function (pokemon, source) {
 				this.add('-start', pokemon, 'Curse', '[of] ' + source);
 			}
 	""" 
 	pass
 
-def onResidual(datadic : dict):
+def onResidual(**bvalues):
 	"""function (pokemon) {
 				this.damage(pokemon.maxhp / 4);
 			}

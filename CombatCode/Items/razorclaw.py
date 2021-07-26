@@ -1,4 +1,4 @@
-def onModifyCritRatio(datadic : dict):
+def onModifyCritRatio(**bvalues):
 	"""function (critRatio) {
 			return critRatio + 1;
 		}

@@ -1,4 +1,4 @@
-def onSwitchOut(datadic : dict):
+def onSwitchOut(**bvalues):
 	"""function (pokemon) {
 			pokemon.heal(pokemon.maxhp / 3);
 		}

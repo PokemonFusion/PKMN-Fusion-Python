@@ -38,6 +38,34 @@ NATURES = {
     "Quirky": {},
 }
 
+STATUSES = {
+    0: "Normal",
+    1: "Burn",
+    2: "Freeze",
+    3: "Paralysis",
+    4: "Poison",
+    5: "Sleep",
+    6: "Toxic"
+}
+STATUSES_SHORT = {
+    0: "NRM",
+    1: "BRN",
+    2: "FRZ",
+    3: "PAR",
+    4: "PSN",
+    5: "SLP",
+    6: "TOX"
+}
+
+STATUSES_REVERSE_SHORT = {
+    "NRM": 0,
+    "BRN": 1,
+    "FRZ": 2,
+    "PAR": 3,
+    "PSN": 4,
+    "SLP": 5,
+    "TOX": 6
+}
 
 class Pokemon:
 
@@ -207,7 +235,7 @@ class Pokemon:
         # only includes statuses that persist out of battle,
         # like sleep, burn, freeze, etc.
         # this and hp may go unused if pokemon automatically heal after battle
-        self.status = None
+        self.status = {"name": 0, "duration": 0}  # these are the default values
 
         # current steps for hatching egg, if applicable.
         self.eggSteps = 0
@@ -295,6 +323,8 @@ class Pokemon:
         else:
             # TODO: Make sure that isCrit is checked for the temp stat boosts, and debuffs as appropriate.
             #  Burn halving attack should still happen
+            #  (Correction: Burn halves /damage/ of physical moves, not attack stat anymore)
+            #  Paralysis should decrease speed by half
 
             if isCrit:
                 critbonus = 1.5
@@ -308,9 +338,15 @@ class Pokemon:
                 statmod = self.getStatMod(statType)
 
             natureMod = NATURES[self.nature].get(statType, 1)
-            return int((int(
+
+            stat = int((int(
                 (2 * baseStat + self.iv[statType] + int(self.ev[statType] / 4)) * self.level / 100) + 5) * natureMod
                        * statmod * critbonus)
+
+            if self.status["name"] == 3 and statType == 'spd' and self.getAbilityName() != "Quick Feet":
+                stat = stat / 2
+
+            return stat
 
     def getStatMod(self, stat: str) -> float:
         """This will return the stat mod of the multiplier involved.
@@ -437,6 +473,16 @@ class Pokemon:
 
     def __repr__(self):
         return f"{self.getName()} - {hex(id(self))}"
+
+    def getStatusName(self, short=False) -> str:
+
+        if short:
+            statdic = STATUSES_SHORT
+        else:
+            statdic = STATUSES
+
+        return statdic[self.status["name"]]
+
 
 def teamGeneration(specify=False, team=None):
     # specify   - If the moves and abilities should be specified or not

@@ -1,4 +1,4 @@
-def onUpdate(datadic : dict):
+def onUpdate(**bvalues):
 	"""function (pokemon) {
 			if (pokemon.hp <= pokemon.maxhp / 2) {
 				if (this.runEvent('TryHeal', pokemon) && pokemon.useItem()) {

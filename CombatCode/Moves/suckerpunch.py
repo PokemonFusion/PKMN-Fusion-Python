@@ -1,4 +1,4 @@
-def onTry(datadic : dict):
+def onTry(**bvalues):
 	"""function (source, target) {
 			let action = this.willMove(target);
 			if (!action || action.choice !== 'move' || (action.move.category === 'Status' && action.move.id !== 'mefirst') || target.volatiles.mustrecharge) {

@@ -1,11 +1,11 @@
-def beforeTurnCallback(datadic : dict):
+def beforeTurnCallback(**bvalues):
 	"""function (pokemon) {
 			pokemon.addVolatile('focuspunch');
 		}
 	""" 
 	pass
 
-def beforeMoveCallback(datadic : dict):
+def beforeMoveCallback(**bvalues):
 	"""function (pokemon) {
 			if (pokemon.volatiles['focuspunch'] && pokemon.volatiles['focuspunch'].lostFocus) {
 				this.add('cant', pokemon, 'Focus Punch', 'Focus Punch');
@@ -15,14 +15,14 @@ def beforeMoveCallback(datadic : dict):
 	""" 
 	pass
 
-def onStart(datadic : dict):
+def onStart(**bvalues):
 	"""function (pokemon) {
 				this.add('-singleturn', pokemon, 'move: Focus Punch');
 			}
 	""" 
 	pass
 
-def onHit(datadic : dict):
+def onHit(**bvalues):
 	"""function (pokemon, source, move) {
 				if (move.category !== 'Status') {
 					pokemon.volatiles['focuspunch'].lostFocus = true;

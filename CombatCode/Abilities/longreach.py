@@ -1,4 +1,4 @@
-def onModifyMove(datadic : dict):
+def onModifyMove(**bvalues):
 	"""function (move) {
 			delete move.flags['contact'];
 		}

@@ -1,4 +1,4 @@
-def onBoost(datadic : dict):
+def onBoost(**bvalues):
 	"""function (boost, target, source, effect) {
 			if (source && target === source) return;
 			if (boost.accuracy && boost.accuracy < 0) {
@@ -9,7 +9,7 @@ def onBoost(datadic : dict):
 	""" 
 	pass
 
-def onModifyMove(datadic : dict):
+def onModifyMove(**bvalues):
 	"""function (move) {
 			move.ignoreEvasion = true;
 		}

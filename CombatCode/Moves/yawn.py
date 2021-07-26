@@ -1,4 +1,4 @@
-def onTryHit(datadic : dict):
+def onTryHit(**bvalues):
 	"""function (target) {
 			if (target.status || !target.runStatusImmunity('slp')) {
 				return false;
@@ -7,14 +7,14 @@ def onTryHit(datadic : dict):
 	""" 
 	pass
 
-def onStart(datadic : dict):
+def onStart(**bvalues):
 	"""function (target, source) {
 				this.add('-start', target, 'move: Yawn', '[of] ' + source);
 			}
 	""" 
 	pass
 
-def onEnd(datadic : dict):
+def onEnd(**bvalues):
 	"""function (target) {
 				this.add('-end', target, 'move: Yawn', '[silent]');
 				target.trySetStatus('slp');

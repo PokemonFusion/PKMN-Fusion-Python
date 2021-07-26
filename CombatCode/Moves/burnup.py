@@ -1,4 +1,4 @@
-def onTryMove(datadic : dict):
+def onTryMove(**bvalues):
 	"""function (pokemon, target, move) {
 			if (pokemon.hasType('Fire')) return;
 			this.add('-fail', pokemon, 'move: Burn Up');
@@ -8,7 +8,7 @@ def onTryMove(datadic : dict):
 	""" 
 	pass
 
-def onHit(datadic : dict):
+def onHit(**bvalues):
 	"""function (pokemon) {
 				pokemon.setType(pokemon.getTypes(true).map(type => type === "Fire" ? "???" : type));
 				this.add('-start', pokemon, 'typechange', pokemon.types.join('/'), '[from] move: Burn Up');

@@ -1,4 +1,4 @@
-def onBasePower(datadic : dict):
+def onBasePower(**bvalues):
 	"""function (basePower, attacker, defender, move) {
 			if (move.flags['punch']) {
 				this.debug('Iron Fist boost');

@@ -1,4 +1,4 @@
-def onModifyMove(datadic : dict):
+def onModifyMove(**bvalues):
 	"""function (move) {
 			if (move.secondaries) {
 				this.debug('doubling secondary chance');

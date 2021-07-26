@@ -1,4 +1,4 @@
-def onHit(datadic : dict):
+def onHit(**bvalues):
 	"""function (pokemon) {
 			if (['', 'slp', 'frz'].includes(pokemon.status)) return false;
 			pokemon.cureStatus();

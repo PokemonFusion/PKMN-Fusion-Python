@@ -1,11 +1,11 @@
-def onStart(datadic : dict):
+def onStart(**bvalues):
 	"""function (target) {
 				this.add('-singleturn', target, 'Powder');
 			}
 	""" 
 	pass
 
-def onTryMove(datadic : dict):
+def onTryMove(**bvalues):
 	"""function (pokemon, target, move) {
 				if (move.type === 'Fire') {
 					this.add('-activate', pokemon, 'move: Powder');

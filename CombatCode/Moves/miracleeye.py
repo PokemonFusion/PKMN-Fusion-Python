@@ -1,25 +1,25 @@
-def onTryHit(datadic : dict):
+def onTryHit(**bvalues):
 	"""function (target) {
 			if (target.volatiles['foresight']) return false;
 		}
 	""" 
 	pass
 
-def onStart(datadic : dict):
+def onStart(**bvalues):
 	"""function (pokemon) {
 				this.add('-start', pokemon, 'Miracle Eye');
 			}
 	""" 
 	pass
 
-def onNegateImmunity(datadic : dict):
+def onNegateImmunity(**bvalues):
 	"""function (pokemon, type) {
 				if (pokemon.hasType('Dark') && type === 'Psychic') return false;
 			}
 	""" 
 	pass
 
-def onModifyBoost(datadic : dict):
+def onModifyBoost(**bvalues):
 	"""function (boosts) {
 				if (boosts.evasion && boosts.evasion > 0) {
 					boosts.evasion = 0;

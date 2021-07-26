@@ -1,4 +1,4 @@
-def onAfterMoveSecondary(datadic : dict):
+def onAfterMoveSecondary(**bvalues):
 	"""function (target, source, move) {
 			if (!source || source === target || !target.hp || !move.totalDamage) return;
 			if (target.hp <= target.maxhp / 2 && target.hp + move.totalDamage > target.maxhp / 2) {
@@ -11,7 +11,7 @@ def onAfterMoveSecondary(datadic : dict):
 	""" 
 	pass
 
-def onAfterDamage(datadic : dict):
+def onAfterDamage(**bvalues):
 	"""function (damage, target, source, effect) {
 			if (!target.hp || effect.effectType === 'Move') return;
 			if (target.hp <= target.maxhp / 2 && target.hp + damage > target.maxhp / 2) {

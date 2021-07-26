@@ -1,4 +1,4 @@
-def onModifyAtk(datadic : dict):
+def onModifyAtk(**bvalues):
 	"""function (atk, pokemon) {
 			if (pokemon.hp <= pokemon.maxhp / 2) {
 				return this.chainModify(0.5);
@@ -7,7 +7,7 @@ def onModifyAtk(datadic : dict):
 	""" 
 	pass
 
-def onModifySpA(datadic : dict):
+def onModifySpA(**bvalues):
 	"""function (atk, pokemon) {
 			if (pokemon.hp <= pokemon.maxhp / 2) {
 				return this.chainModify(0.5);

@@ -1,4 +1,4 @@
-def onHit(datadic : dict):
+def onHit(**bvalues):
 	"""function (target) {
 			let type = this.getMove(target.moveSlots[0].id).type;
 			if (target.hasType(type) || !target.setType(type)) return false;

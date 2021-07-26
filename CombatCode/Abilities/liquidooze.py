@@ -1,4 +1,4 @@
-def onSourceTryHeal(datadic : dict):
+def onSourceTryHeal(**bvalues):
 	"""function (damage, target, source, effect) {
 			this.debug("Heal is occurring: " + target + " <- " + source + " :: " + effect.id);
 			/**@type {{[k: string]: number}} */

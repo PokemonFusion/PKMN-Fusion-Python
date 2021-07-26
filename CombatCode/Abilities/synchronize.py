@@ -1,4 +1,4 @@
-def onAfterSetStatus(datadic : dict):
+def onAfterSetStatus(**bvalues):
 	"""function (status, target, source, effect) {
 			if (!source || source === target) return;
 			if (effect && effect.id === 'toxicspikes') return;

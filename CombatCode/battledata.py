@@ -203,6 +203,21 @@ class Pokemon(pokemon.Pokemon):
 		# self.turninit = None  # TurnInit Class
 		self.tempvals = {}
 
+	def setStatus(self, status: int):
+		"""
+		This sets the status and duration on the pokemon, using normal parameters
+		STATUSES = {
+	    0: "Normal",
+	    1: "Burn",
+	    2: "Freeze",
+	    3: "Paralysis",
+	    4: "Poison",
+	    5: "Sleep",
+	    6: "Toxic"
+		}
+		"""
+		pass
+
 
 class PositionData:
 	def __init__(self, pokedata: Pokemon = None):

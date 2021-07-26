@@ -1,4 +1,4 @@
-def onModifyAccuracy(datadic : dict):
+def onModifyAccuracy(**bvalues):
 	"""function (accuracy) {
 			if (typeof accuracy !== 'number') return;
 			this.debug('lax incense - decreasing accuracy');

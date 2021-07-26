@@ -1,11 +1,11 @@
-def onStart(datadic : dict):
+def onStart(**bvalues):
 	"""function (pokemon) {
 				this.add('-start', pokemon, 'Embargo');
 			}
 	""" 
 	pass
 
-def onEnd(datadic : dict):
+def onEnd(**bvalues):
 	"""function (pokemon) {
 				this.add('-end', pokemon, 'Embargo');
 			}

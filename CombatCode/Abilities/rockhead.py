@@ -1,4 +1,4 @@
-def onDamage(datadic : dict):
+def onDamage(**bvalues):
 	"""function (damage, target, source, effect) {
 			if (effect.id === 'recoil') {
 				if (!this.activeMove) throw new Error("Battle.activeMove is null");

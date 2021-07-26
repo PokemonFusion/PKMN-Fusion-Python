@@ -1,18 +1,18 @@
-def beforeTurnCallback(datadic : dict):
+def beforeTurnCallback(**bvalues):
 	"""function (pokemon) {
 			pokemon.addVolatile('beakblast');
 		}
 	""" 
 	pass
 
-def onStart(datadic : dict):
+def onStart(**bvalues):
 	"""function (pokemon) {
 				this.add('-singleturn', pokemon, 'move: Beak Blast');
 			}
 	""" 
 	pass
 
-def onHit(datadic : dict):
+def onHit(**bvalues):
 	"""function (pokemon, source, move) {
 				if (move.flags['contact']) {
 					source.trySetStatus('brn', pokemon);
@@ -21,14 +21,14 @@ def onHit(datadic : dict):
 	""" 
 	pass
 
-def onMoveAborted(datadic : dict):
+def onMoveAborted(**bvalues):
 	"""function (pokemon) {
 			pokemon.removeVolatile('beakblast');
 		}
 	""" 
 	pass
 
-def onAfterMove(datadic : dict):
+def onAfterMove(**bvalues):
 	"""function (pokemon) {
 			pokemon.removeVolatile('beakblast');
 		}

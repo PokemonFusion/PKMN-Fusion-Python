@@ -1,4 +1,4 @@
-def onTryMove(datadic : dict):
+def onTryMove(**bvalues):
 	"""function (attacker, defender, move) {
 			if (attacker.removeVolatile(move.id)) {
 				return;
@@ -18,7 +18,7 @@ def onTryMove(datadic : dict):
 	""" 
 	pass
 
-def onBasePower(datadic : dict):
+def onBasePower(**bvalues):
 	"""function (basePower, pokemon, target) {
 			if (this.isWeather(['raindance', 'primordialsea', 'sandstorm', 'hail'])) {
 				this.debug('weakened by weather');

@@ -1,4 +1,4 @@
-def onStart(datadic : dict):
+def onStart(**bvalues):
 	"""function (pokemon, source, effect) {
 				if (!(pokemon.gender === 'M' && source.gender === 'F') && !(pokemon.gender === 'F' && source.gender === 'M')) {
 					this.debug('incompatible gender');
@@ -20,7 +20,7 @@ def onStart(datadic : dict):
 	""" 
 	pass
 
-def onUpdate(datadic : dict):
+def onUpdate(**bvalues):
 	"""function (pokemon) {
 				if (this.effectData.source && !this.effectData.source.isActive && pokemon.volatiles['attract']) {
 					this.debug('Removing Attract volatile on ' + pokemon);
@@ -30,7 +30,7 @@ def onUpdate(datadic : dict):
 	""" 
 	pass
 
-def onBeforeMove(datadic : dict):
+def onBeforeMove(**bvalues):
 	"""function (pokemon, target, move) {
 				this.add('-activate', pokemon, 'move: Attract', '[of] ' + this.effectData.source);
 				if (this.randomChance(1, 2)) {
@@ -41,7 +41,7 @@ def onBeforeMove(datadic : dict):
 	""" 
 	pass
 
-def onEnd(datadic : dict):
+def onEnd(**bvalues):
 	"""function (pokemon) {
 				this.add('-end', pokemon, 'Attract', '[silent]');
 			}

@@ -1,4 +1,4 @@
-def onEatItem(datadic : dict):
+def onEatItem(**bvalues):
 	"""function (item, pokemon) {
 			this.heal(pokemon.maxhp / 3);
 		}

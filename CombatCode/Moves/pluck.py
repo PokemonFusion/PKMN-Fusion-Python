@@ -1,4 +1,4 @@
-def onHit(datadic : dict):
+def onHit(**bvalues):
 	"""function (target, source) {
 			let item = target.getItem();
 			if (source.hp && item.isBerry && target.takeItem(source)) {

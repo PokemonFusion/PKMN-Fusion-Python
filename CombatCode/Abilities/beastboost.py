@@ -1,4 +1,4 @@
-def onSourceFaint(datadic : dict):
+def onSourceFaint(**bvalues):
 	"""function (target, source, effect) {
 			if (effect && effect.effectType === 'Move') {
 				let stat = 'atk';
