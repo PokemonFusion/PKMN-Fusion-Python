@@ -6,7 +6,7 @@ This will need to be fixed in movesdex.py, the file name of Return.py, and __ini
 
 import sys, os
 sys.path.append(os.path.abspath(os.path.join('')))
-#from CombatCode.moves import BattleMovedex
+from HelperCode.moves import BattleMovedex
 #from CombatCode.abilities import BattleAbilities
 from HelperCode.itemsdict import BattleItems
 from pprint import pprint
@@ -83,8 +83,8 @@ makedir(basefolder)
 with open(os.path.join(basefolder, "TODO"), "w+", encoding='utf-8') as todofile:
     pass
 tasks = {#"Abilities" : { "dictionary" : BattleAbilities, "file" : "abilitiesdex.py", "dicname" : "BattleAbilities"} ,
-         #"Moves": {"dictionary" : BattleMovedex, "file" : "movesdex.py", "dicname" : "BattleMovedex"}
-         "Items": {"dictionary" : BattleItems, "file": "itemsdex.py", "dicname" : "BattleItems"}
+         "Moves": {"dictionary" : BattleMovedex, "file" : "movesdex.py", "dicname" : "BattleMovedex"}
+         #"Items": {"dictionary" : BattleItems, "file": "itemsdex.py", "dicname" : "BattleItems"}
          }
 
 for task in tasks:
