@@ -15,6 +15,9 @@ regix replace:
 Find
 Replace
 
+: function
+: `function
+
 ;\n\t\t},
 ;\n\t\t}`,
 
