@@ -6,8 +6,8 @@ This will need to be fixed in movesdex.py, the file name of Return.py, and __ini
 
 import sys, os
 sys.path.append(os.path.abspath(os.path.join('')))
-from HelperCode.moves import BattleMovedex
-#from CombatCode.abilities import BattleAbilities
+from HelperCode.movesdict import BattleMovedex
+from HelperCode.abilitiesdict import BattleAbilities
 from HelperCode.itemsdict import BattleItems
 from pprint import pprint
 
@@ -32,10 +32,10 @@ def dicscan(dictionary : dict, masterkey : str = None):
     global tododata
     global modulelist
     for key, val in dictionary.items():
-        if masterkey == None:
+        if masterkey is None:
             data = ""
         if isinstance(val,dict):
-            if masterkey == None:
+            if masterkey is None:
                 dicscan(dictionary[key], key)
             else:
                 dicscan(dictionary[key], masterkey)
@@ -82,9 +82,9 @@ def fixdict(dicfile):
 makedir(basefolder)
 with open(os.path.join(basefolder, "TODO"), "w+", encoding='utf-8') as todofile:
     pass
-tasks = {#"Abilities" : { "dictionary" : BattleAbilities, "file" : "abilitiesdex.py", "dicname" : "BattleAbilities"} ,
+tasks = {"Abilities" : { "dictionary" : BattleAbilities, "file" : "abilitiesdex.py", "dicname" : "BattleAbilities"} ,
          "Moves": {"dictionary" : BattleMovedex, "file" : "movesdex.py", "dicname" : "BattleMovedex"}
-         #"Items": {"dictionary" : BattleItems, "file": "itemsdex.py", "dicname" : "BattleItems"}
+         "Items": {"dictionary" : BattleItems, "file": "itemsdex.py", "dicname" : "BattleItems"}
          }
 
 for task in tasks:

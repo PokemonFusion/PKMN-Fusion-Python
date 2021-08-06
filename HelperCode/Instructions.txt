@@ -1,5 +1,7 @@
 This is to make someone's life easier.
 
+There may be some missing instructions here that I forgot to write down, but this should at least help you get started.
+
 You will find the data for converting using the Pokemon Showdown source code.  If you can't find that via google, then
 good luck.  Read all before you begin so you don't waste time.
 
@@ -8,7 +10,7 @@ you will need to convert them into json objects.  The main complication with thi
 javascript objects.  You will need to comment them out into strings using ` on both sides.  Visual Studio Code will
 be helpful with finding anything that is broken. You will want to do a replace for any ': function' with ': `function'
 and then find all of the matching closing brackets.  Some are easy and paired with a ; before, but some aren't and will
-be difficult to build a regix to auto fix.
+be difficult to build a regix to auto fix.  You may need to convert the spacing to tabs for this to work.
 
 regix replace:
 
