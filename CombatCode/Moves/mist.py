@@ -1,31 +1,34 @@
 def onBoost(**bvalues):
 	"""function (boost, target, source, effect) {
-				if (source && target !== source && (!effect.infiltrates || target.side === source.side)) {
-					let showMsg = false;
-					for (let i in boost) {
-						// @ts-ignore
+				if (effect.effectType === 'Move' && effect.infiltrates && !target.isAlly(source))
+					return;
+				if (source && target !== source) {
+					var showMsg = false;
+					var i = void 0;
+					for (i in boost) {
 						if (boost[i] < 0) {
-							// @ts-ignore
 							delete boost[i];
 							showMsg = true;
 						}
 					}
-					if (showMsg && !effect.secondaries) this.add('-activate', target, 'move: Mist');
+					if (showMsg && !effect.secondaries) {
+						this.add('-activate', target, 'move: Mist');
+					}
 				}
 			}
 	""" 
 	pass
 
-def onStart(**bvalues):
+def onSideEnd(**bvalues):
 	"""function (side) {
-				this.add('-sidestart', side, 'Mist');
+				this.add('-sideend', side, 'Mist');
 			}
 	""" 
 	pass
 
-def onEnd(**bvalues):
+def onSideStart(**bvalues):
 	"""function (side) {
-				this.add('-sideend', side, 'Mist');
+				this.add('-sidestart', side, 'Mist');
 			}
 	""" 
 	pass

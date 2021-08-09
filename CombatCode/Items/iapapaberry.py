@@ -1,7 +1,8 @@
-def onUpdate(**bvalues):
+def onEat(**bvalues):
 	"""function (pokemon) {
-			if (pokemon.hp <= pokemon.maxhp / 4 || (pokemon.hp <= pokemon.maxhp / 2 && pokemon.hasAbility('gluttony'))) {
-				pokemon.eatItem();
+			this.heal(pokemon.baseMaxhp * 0.33);
+			if (pokemon.getNature().minus === 'def') {
+				pokemon.addVolatile('confusion');
 			}
 		}
 	""" 
@@ -9,16 +10,16 @@ def onUpdate(**bvalues):
 
 def onTryEatItem(**bvalues):
 	"""function (item, pokemon) {
-			if (!this.runEvent('TryHeal', pokemon)) return False;
+			if (!this.runEvent('TryHeal', pokemon))
+				return false;
 		}
 	""" 
 	pass
 
-def onEat(**bvalues):
+def onUpdate(**bvalues):
 	"""function (pokemon) {
-			this.heal(pokemon.maxhp / 2);
-			if (pokemon.getNature().minus === 'def') {
-				pokemon.addVolatile('confusion');
+			if (pokemon.hp <= pokemon.maxhp / 4 || (pokemon.hp <= pokemon.maxhp / 2 && pokemon.hasAbility('gluttony'))) {
+				pokemon.eatItem();
 			}
 		}
 	""" 

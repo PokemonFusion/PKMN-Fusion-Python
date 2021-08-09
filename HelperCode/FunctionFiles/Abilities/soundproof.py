@@ -1,6 +1,6 @@
 def onTryHit (target, source, move):
 	"""function (target, source, move) {
-			if (move.flags['sound']) {
+			if (target !== source && move.flags['sound']) {
 				this.add('-immune', target, '[from] ability: Soundproof');
 				return null;
 			}
@@ -11,7 +11,7 @@ def onTryHit (target, source, move):
 def onAllyTryHitSide (target, source, move):
 	"""function (target, source, move) {
 			if (move.flags['sound']) {
-				this.add('-immune', this.effectData.target, '[from] ability: Soundproof');
+				this.add('-immune', this.effectState.target, '[from] ability: Soundproof');
 			}
 		}
 	""" 

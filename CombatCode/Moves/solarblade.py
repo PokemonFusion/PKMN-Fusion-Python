@@ -1,10 +1,20 @@
+def onBasePower(**bvalues):
+	"""function (basePower, pokemon, target) {
+			if (['raindance', 'primordialsea', 'sandstorm', 'hail'].includes(pokemon.effectiveWeather())) {
+				this.debug('weakened by weather');
+				return this.chainModify(0.5);
+			}
+		}
+	""" 
+	pass
+
 def onTryMove(**bvalues):
 	"""function (attacker, defender, move) {
 			if (attacker.removeVolatile(move.id)) {
 				return;
 			}
-			this.add('-prepare', attacker, move.name, defender);
-			if (this.isWeather(['sunnyday', 'desolateland'])) {
+			this.add('-prepare', attacker, move.name);
+			if (['sunnyday', 'desolateland'].includes(attacker.effectiveWeather())) {
 				this.attrLastMove('[still]');
 				this.addMove('-anim', attacker, move.name, defender);
 				return;
@@ -14,16 +24,6 @@ def onTryMove(**bvalues):
 			}
 			attacker.addVolatile('twoturnmove', defender);
 			return null;
-		}
-	""" 
-	pass
-
-def onBasePower(**bvalues):
-	"""function (basePower, pokemon, target) {
-			if (this.isWeather(['raindance', 'primordialsea', 'sandstorm', 'hail'])) {
-				this.debug('weakened by weather');
-				return this.chainModify(0.5);
-			}
 		}
 	""" 
 	pass

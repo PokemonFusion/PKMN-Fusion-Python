@@ -1,7 +1,7 @@
 def onModifyDamage(**bvalues):
 	"""function (damage, source, target, move) {
-			if (move && move.typeMod > 0) {
-				return this.chainModify([0x1333, 0x1000]);
+			if (move && target.getMoveHitData(move).typeMod > 0) {
+				return this.chainModify([4915, 4096]);
 			}
 		}
 	""" 

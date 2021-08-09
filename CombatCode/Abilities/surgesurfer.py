@@ -1,6 +1,6 @@
 def onModifySpe(**bvalues):
 	"""function (spe) {
-			if (this.isTerrain('electricterrain')) {
+			if (this.field.isTerrain('electricterrain')) {
 				return this.chainModify(2);
 			}
 		}

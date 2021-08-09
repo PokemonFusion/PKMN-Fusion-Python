@@ -10,10 +10,13 @@ def onUpdate(**bvalues):
 
 def onSetStatus(**bvalues):
 	"""function (status, target, source, effect) {
-			if (status.id !== 'slp') return;
-			if (!effect || !effect.status) return false;
-			this.add('-immune', target, '[from] ability: Vital Spirit');
-			return false;
+			var _a;
+			if (status.id !== 'slp')
+				return;
+			if ((_a = effect) === null || _a === void 0 ? void 0 : _a.status) {
+				this.add('-immune', target, '[from] ability: Vital Spirit');
+			}
+			return False;
 		}
 	""" 
 	pass

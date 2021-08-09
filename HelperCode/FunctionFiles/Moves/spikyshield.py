@@ -1,14 +1,9 @@
-def onTryHit (target, source, move):
+def onHit (target, source, move):
 	"""function (target, source, move) {
-			return !!this.willAct() && this.runEvent('StallMove', target);
-		}
-	""" 
-	pass
-
-def onHit (pokemon):
-	"""function (pokemon) {
-			pokemon.addVolatile('stall');
-		}
+				if (move.isZOrMaxPowered && this.checkMoveMakesContact(move, source, target)) {
+					this.damage(source.baseMaxhp / 8, source, target);
+				}
+			}
 	""" 
 	pass
 
@@ -22,31 +17,43 @@ def onStart (target):
 def onTryHit (target, source, move):
 	"""function (target, source, move) {
 				if (!move.flags['protect']) {
-					if (move.isZ) move.zBrokeProtect = true;
+					if (['gmaxoneblow', 'gmaxrapidflow'].includes(move.id))
+						return;
+					if (move.isZ || move.isMax)
+						target.getMoveHitData(move).zBrokeProtect = true;
 					return;
 				}
-				this.add('-activate', target, 'move: Protect');
-				source.moveThisTurnResult = true;
-				let lockedmove = source.getVolatile('lockedmove');
+				if (move.smartTarget) {
+					move.smartTarget = false;
+				}
+				else {
+					this.add('-activate', target, 'move: Protect');
+				}
+				var lockedmove = source.getVolatile('lockedmove');
 				if (lockedmove) {
 					// Outrage counter is reset
 					if (source.volatiles['lockedmove'].duration === 2) {
 						delete source.volatiles['lockedmove'];
 					}
 				}
-				if (move.flags['contact']) {
-					this.damage(source.maxhp / 8, source, target);
+				if (this.checkMoveMakesContact(move, source, target)) {
+					this.damage(source.baseMaxhp / 8, source, target);
 				}
-				return null;
+				return this.NOT_FAIL;
 			}
 	""" 
 	pass
 
-def onHit (target, source, move):
-	"""function (target, source, move) {
-				if (move.isZPowered && move.flags['contact']) {
-					this.damage(source.maxhp / 8, source, target);
-				}
-			}
+def onHit (pokemon):
+	"""function (pokemon) {
+			pokemon.addVolatile('stall');
+		}
+	""" 
+	pass
+
+def onPrepareHit (pokemon):
+	"""function (pokemon) {
+			return !!this.queue.willAct() && this.runEvent('StallMove', pokemon);
+		}
 	""" 
 	pass

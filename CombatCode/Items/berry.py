@@ -1,3 +1,10 @@
+def onEat(**bvalues):
+	"""function (pokemon) {
+			this.heal(10);
+		}
+	""" 
+	pass
+
 def onResidual(**bvalues):
 	"""function (pokemon) {
 			if (pokemon.hp <= pokemon.maxhp / 2) {
@@ -9,14 +16,8 @@ def onResidual(**bvalues):
 
 def onTryEatItem(**bvalues):
 	"""function (item, pokemon) {
-			if (!this.runEvent('TryHeal', pokemon)) return False;
-		}
-	""" 
-	pass
-
-def onEat(**bvalues):
-	"""function (pokemon) {
-			this.heal(10);
+			if (!this.runEvent('TryHeal', pokemon))
+				return false;
 		}
 	""" 
 	pass

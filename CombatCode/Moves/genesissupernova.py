@@ -1,6 +1,6 @@
 def onHit(**bvalues):
 	"""function () {
-					this.setTerrain('psychicterrain');
+					this.field.setTerrain('psychicterrain');
 				}
 	""" 
 	pass

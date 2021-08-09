@@ -1,8 +1,6 @@
-def onAfterDamage(**bvalues):
+def onDamagingHit(**bvalues):
 	"""function (damage, target, source, effect) {
-			if (effect && effect.effectType === 'Move' && effect.id !== 'confused') {
-				this.boost({def: 1});
-			}
+			this.boost({ def: 1 });
 		}
 	""" 
 	pass

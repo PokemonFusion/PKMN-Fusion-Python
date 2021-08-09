@@ -1,7 +1,7 @@
-def onAfterDamage(**bvalues):
+def onDamagingHit(**bvalues):
 	"""function (damage, target, source, move) {
-			if (source && source !== target && move && move.effectType === 'Move' && !target.hp) {
-				this.damage(damage, source, target);
+			if (!target.hp) {
+				this.damage(target.getUndynamaxedHP(damage), source, target);
 			}
 		}
 	""" 

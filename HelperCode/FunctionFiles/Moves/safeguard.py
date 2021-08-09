@@ -1,6 +1,6 @@
 def durationCallback (target, source, effect):
 	"""function (target, source, effect) {
-				if (source && source.hasAbility('persistent')) {
+				if (source === null || source === void 0 ? void 0 : source.hasAbility('persistent')) {
 					this.add('-activate', source, 'ability: Persistent', effect);
 					return 7;
 				}
@@ -11,7 +11,13 @@ def durationCallback (target, source, effect):
 
 def onSetStatus (status, target, source, effect):
 	"""function (status, target, source, effect) {
-				if (source && target !== source && effect && (!effect.infiltrates || target.side === source.side)) {
+				if (!effect || !source)
+					return;
+				if (effect.id === 'yawn')
+					return;
+				if (effect.effectType === 'Move' && effect.infiltrates && !target.isAlly(source))
+					return;
+				if (target !== source) {
 					this.debug('interrupting setStatus');
 					if (effect.id === 'synchronize' || (effect.effectType === 'Move' && !effect.secondaries)) {
 						this.add('-activate', target, 'move: Safeguard');
@@ -22,26 +28,31 @@ def onSetStatus (status, target, source, effect):
 	""" 
 	pass
 
-def onTryAddVolatile (status, target, source, effect):
-	"""function (status, target, source, effect) {
-				if ((status.id === 'confusion' || status.id === 'yawn') && source && target !== source && effect && (!effect.infiltrates || target.side === source.side)) {
-					if (effect.effectType === 'Move' && !effect.secondaries) this.add('-activate', target, 'move: Safeguard');
-					return null;
-				}
+def onSideEnd (side):
+	"""function (side) {
+				this.add('-sideend', side, 'Safeguard');
 			}
 	""" 
 	pass
 
-def onStart (side):
+def onSideStart (side):
 	"""function (side) {
 				this.add('-sidestart', side, 'Safeguard');
 			}
 	""" 
 	pass
 
-def onEnd (side):
-	"""function (side) {
-				this.add('-sideend', side, 'Safeguard');
+def onTryAddVolatile (status, target, source, effect):
+	"""function (status, target, source, effect) {
+				if (!effect || !source)
+					return;
+				if (effect.effectType === 'Move' && effect.infiltrates && !target.isAlly(source))
+					return;
+				if ((status.id === 'confusion' || status.id === 'yawn') && target !== source) {
+					if (effect.effectType === 'Move' && !effect.secondaries)
+						this.add('-activate', target, 'move: Safeguard');
+					return null;
+				}
 			}
 	""" 
 	pass

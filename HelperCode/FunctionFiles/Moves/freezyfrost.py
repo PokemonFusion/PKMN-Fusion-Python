@@ -1,10 +1,9 @@
 def onHit ():
 	"""function () {
 			this.add('-clearallboost');
-			for (const side of this.sides) {
-				for (const pokemon of side.active) {
-					if (pokemon && pokemon.isActive) pokemon.clearBoosts();
-				}
+			for (var _i = 0, _a = this.getAllActive(); _i < _a.length; _i++) {
+				var pokemon = _a[_i];
+				pokemon.clearBoosts();
 			}
 		}
 	""" 

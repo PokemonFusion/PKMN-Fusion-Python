@@ -1,8 +1,11 @@
-def onModifyMove(**bvalues):
+def onModifyType(**bvalues):
 	"""function (move, pokemon) {
-			if (move.type === 'Normal' && !['judgment', 'multiattack', 'naturalgift', 'revelationdance', 'technoblast', 'weatherball'].includes(move.id) && !(move.isZ && move.category !== 'Status')) {
+			var noModifyType = [
+				'judgment', 'multiattack', 'naturalgift', 'revelationdance', 'technoblast', 'terrainpulse', 'weatherball',
+			];
+			if (move.type === 'Normal' && !noModifyType.includes(move.id) && !(move.isZ && move.category !== 'Status')) {
 				move.type = 'Fairy';
-				move.pixilateBoosted = true;
+				move.pixilateBoosted = True;
 			}
 		}
 	""" 
@@ -10,7 +13,8 @@ def onModifyMove(**bvalues):
 
 def onBasePower(**bvalues):
 	"""function (basePower, pokemon, target, move) {
-			if (move.pixilateBoosted) return this.chainModify([0x1333, 0x1000]);
+			if (move.pixilateBoosted)
+				return this.chainModify([4915, 4096]);
 		}
 	""" 
 	pass

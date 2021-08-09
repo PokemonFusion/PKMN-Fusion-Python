@@ -1,6 +1,6 @@
 def onStart (target):
 	"""function (target) {
-				this.add('-activate', target, 'move: Fairy Lock');
+				this.add('-fieldactivate', 'move: Fairy Lock');
 			}
 	""" 
 	pass

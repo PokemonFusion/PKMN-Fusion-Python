@@ -1,6 +1,6 @@
 def durationCallback(**bvalues):
 	"""function (source, effect) {
-				if (source && source.hasItem('terrainextender')) {
+				if (source === null || source === void 0 ? void 0 : source.hasItem('terrainextender')) {
 					return 8;
 				}
 				return 5;
@@ -8,10 +8,39 @@ def durationCallback(**bvalues):
 	""" 
 	pass
 
+def onBasePower(**bvalues):
+	"""function (basePower, attacker, defender, move) {
+				if (move.type === 'Electric' && attacker.isGrounded() && !attacker.isSemiInvulnerable()) {
+					this.debug('electric terrain boost');
+					return this.chainModify([5325, 4096]);
+				}
+			}
+	""" 
+	pass
+
+def onFieldEnd(**bvalues):
+	"""function () {
+				this.add('-fieldend', 'move: Electric Terrain');
+			}
+	""" 
+	pass
+
+def onFieldStart(**bvalues):
+	"""function (field, source, effect) {
+				if ((effect === null || effect === void 0 ? void 0 : effect.effectType) === 'Ability') {
+					this.add('-fieldstart', 'move: Electric Terrain', '[from] ability: ' + effect, '[of] ' + source);
+				}
+				else {
+					this.add('-fieldstart', 'move: Electric Terrain');
+				}
+			}
+	""" 
+	pass
+
 def onSetStatus(**bvalues):
 	"""function (status, target, source, effect) {
 				if (status.id === 'slp' && target.isGrounded() && !target.isSemiInvulnerable()) {
-					if (effect.effectType === 'Move' && !effect.secondaries) {
+					if (effect.id === 'yawn' || (effect.effectType === 'Move' && !effect.secondaries)) {
 						this.add('-activate', target, 'move: Electric Terrain');
 					}
 					return false;
@@ -22,39 +51,12 @@ def onSetStatus(**bvalues):
 
 def onTryAddVolatile(**bvalues):
 	"""function (status, target) {
-				if (!target.isGrounded() || target.isSemiInvulnerable()) return;
+				if (!target.isGrounded() || target.isSemiInvulnerable())
+					return;
 				if (status.id === 'yawn') {
 					this.add('-activate', target, 'move: Electric Terrain');
 					return null;
 				}
-			}
-	""" 
-	pass
-
-def onBasePower(**bvalues):
-	"""function (basePower, attacker, defender, move) {
-				if (move.type === 'Electric' && attacker.isGrounded() && !attacker.isSemiInvulnerable()) {
-					this.debug('electric terrain boost');
-					return this.chainModify(1.5);
-				}
-			}
-	""" 
-	pass
-
-def onStart(**bvalues):
-	"""function (battle, source, effect) {
-				if (effect && effect.effectType === 'Ability') {
-					this.add('-fieldstart', 'move: Electric Terrain', '[from] ability: ' + effect, '[of] ' + source);
-				} else {
-					this.add('-fieldstart', 'move: Electric Terrain');
-				}
-			}
-	""" 
-	pass
-
-def onEnd(**bvalues):
-	"""function () {
-				this.add('-fieldend', 'move: Electric Terrain');
 			}
 	""" 
 	pass

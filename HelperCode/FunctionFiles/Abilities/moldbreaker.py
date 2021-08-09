@@ -7,7 +7,7 @@ def onStart (pokemon):
 
 def onModifyMove (move):
 	"""function (move) {
-			move.ignoreAbility = true;
+			move.ignoreAbility = True;
 		}
 	""" 
 	pass

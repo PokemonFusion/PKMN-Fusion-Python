@@ -7,9 +7,11 @@ def onStart(**bvalues):
 
 def onSetStatus(**bvalues):
 	"""function (status, target, source, effect) {
-			if (!effect || !effect.status) return false;
-			this.add('-immune', target, '[from] ability: Comatose');
-			return false;
+			var _a;
+			if ((_a = effect) === null || _a === void 0 ? void 0 : _a.status) {
+				this.add('-immune', target, '[from] ability: Comatose');
+			}
+			return False;
 		}
 	""" 
 	pass

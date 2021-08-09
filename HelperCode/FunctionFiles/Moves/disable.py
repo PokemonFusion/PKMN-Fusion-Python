@@ -1,39 +1,21 @@
-def onTryHit (target):
-	"""function (target) {
-			if (!target.lastMove || target.lastMove.isZ) {
-				return false;
+def onBeforeMove (attacker, defender, move):
+	"""function (attacker, defender, move) {
+				if (!move.isZ && move.id === this.effectState.move) {
+					this.add('cant', attacker, 'Disable', move);
+					return false;
+				}
 			}
-		}
 	""" 
 	pass
 
-def onStart (pokemon, source, effect):
-	"""function (pokemon, source, effect) {
-				if (!this.willMove(pokemon)) {
-					this.effectData.duration++;
-				}
-				if (!pokemon.lastMove) {
-					this.debug('pokemon hasn't moved yet');
-					return false;
-				}
-				for (const moveSlot of pokemon.moveSlots) {
-					if (moveSlot.id === pokemon.lastMove.id) {
-						if (!moveSlot.pp) {
-							this.debug('Move out of PP');
-							return false;
-						} else {
-							if (effect.id === 'cursedbody') {
-								this.add('-start', pokemon, 'Disable', moveSlot.move, '[from] ability: Cursed Body', '[of] ' + source);
-							} else {
-								this.add('-start', pokemon, 'Disable', moveSlot.move);
-							}
-							this.effectData.move = pokemon.lastMove.id;
-							return;
-						}
+def onDisableMove (pokemon):
+	"""function (pokemon) {
+				for (var _i = 0, _a = pokemon.moveSlots; _i < _a.length; _i++) {
+					var moveSlot = _a[_i];
+					if (moveSlot.id === this.effectState.move) {
+						pokemon.disableMove(moveSlot.id);
 					}
 				}
-				// this can happen if Disable works on a Z-move
-				return false;
 			}
 	""" 
 	pass
@@ -45,23 +27,42 @@ def onEnd (pokemon):
 	""" 
 	pass
 
-def onBeforeMove (attacker, defender, move):
-	"""function (attacker, defender, move) {
-				if (move.id === this.effectData.move) {
-					this.add('cant', attacker, 'Disable', move);
+def onStart (pokemon, source, effect):
+	"""function (pokemon, source, effect) {
+				// The target hasn't taken its turn, or Cursed Body activated and the move was not used through Dancer or Instruct
+				if (this.queue.willMove(pokemon) ||
+					(pokemon === this.activePokemon && this.activeMove && !this.activeMove.isExternal)) {
+					this.effectState.duration--;
+				}
+				if (!pokemon.lastMove) {
+					this.debug("Pokemon hasn't moved yet");
 					return false;
 				}
+				for (var _i = 0, _a = pokemon.moveSlots; _i < _a.length; _i++) {
+					var moveSlot = _a[_i];
+					if (moveSlot.id === pokemon.lastMove.id) {
+						if (!moveSlot.pp) {
+							this.debug('Move out of PP');
+							return false;
+						}
+					}
+				}
+				if (effect.effectType === 'Ability') {
+					this.add('-start', pokemon, 'Disable', pokemon.lastMove.name, '[from] ability: Cursed Body', '[of] ' + source);
+				}
+				else {
+					this.add('-start', pokemon, 'Disable', pokemon.lastMove.name);
+				}
+				this.effectState.move = pokemon.lastMove.id;
 			}
 	""" 
 	pass
 
-def onDisableMove (pokemon):
-	"""function (pokemon) {
-				for (const moveSlot of pokemon.moveSlots) {
-					if (moveSlot.id === this.effectData.move) {
-						pokemon.disableMove(moveSlot.id);
-					}
-				}
+def onTryHit (target):
+	"""function (target) {
+			if (!target.lastMove || target.lastMove.isZ || target.lastMove.isMax || target.lastMove.id === 'struggle') {
+				return false;
 			}
+		}
 	""" 
 	pass

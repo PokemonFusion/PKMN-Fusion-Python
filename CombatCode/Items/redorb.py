@@ -1,23 +1,24 @@
-def onSwitchIn(**bvalues):
+def onPrimal(**bvalues):
 	"""function (pokemon) {
-			if (pokemon.isActive && pokemon.baseTemplate.species === 'Groudon') {
-				this.insertQueue({pokemon: pokemon, choice: 'runPrimal'});
-			}
+			pokemon.formeChange('Groudon-Primal', this.effect, true);
 		}
 	""" 
 	pass
 
-def onPrimal(**bvalues):
+def onSwitchIn(**bvalues):
 	"""function (pokemon) {
-			pokemon.formeChange('Groudon-Primal', this.effect, True);
+			if (pokemon.isActive && pokemon.baseSpecies.name === 'Groudon') {
+				this.queue.insertChoice({ choice: 'runPrimal', pokemon: pokemon });
+			}
 		}
 	""" 
 	pass
 
 def onTakeItem(**bvalues):
 	"""function (item, source) {
-			if (source.baseTemplate.baseSpecies === 'Groudon') return False;
-			return True;
+			if (source.baseSpecies.baseSpecies === 'Groudon')
+				return false;
+			return true;
 		}
 	""" 
 	pass

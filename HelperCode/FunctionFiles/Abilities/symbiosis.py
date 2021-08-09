@@ -1,10 +1,13 @@
 def onAllyAfterUseItem (item, pokemon):
 	"""function (item, pokemon) {
-			let source = this.effectData.target;
-			let myItem = source.takeItem();
-			if (!myItem) return;
-			// @ts-ignore
-			if (!this.singleEvent('TakeItem', myItem, source.itemData, pokemon, source, this.effectData, myItem) || !pokemon.setItem(myItem)) {
+			if (pokemon.switchFlag)
+				return;
+			var source = this.effectState.target;
+			var myItem = source.takeItem();
+			if (!myItem)
+				return;
+			if (!this.singleEvent('TakeItem', myItem, source.itemState, pokemon, source, this.effect, myItem) ||
+				!pokemon.setItem(myItem)) {
 				source.item = myItem.id;
 				return;
 			}

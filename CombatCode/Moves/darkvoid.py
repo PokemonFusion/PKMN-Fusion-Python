@@ -1,10 +1,10 @@
-def onTryMove(**bvalues):
-	"""function (pokemon, target, move) {
-			if (pokemon.template.species === 'Darkrai' || move.hasBounced) {
+def onTry(**bvalues):
+	"""function (source, target, move) {
+			if (source.species.name === 'Darkrai' || move.hasBounced) {
 				return;
 			}
-			this.add('-fail', pokemon, 'move: Dark Void');
-			this.add('-hint', "Only a Pokemon whose form is Darkrai can use this move.");
+			this.add('-fail', source, 'move: Dark Void');
+			this.hint("Only a Pokemon whose form is Darkrai can use this move.");
 			return null;
 		}
 	""" 

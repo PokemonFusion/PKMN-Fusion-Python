@@ -1,40 +1,46 @@
 def onStart (pokemon):
 	"""function (pokemon) {
-			delete this.effectData.forme;
+			delete this.effectState.forme;
 		}
 	""" 
 	pass
 
 def onUpdate (pokemon):
 	"""function (pokemon) {
-			if (!pokemon.isActive || pokemon.baseTemplate.baseSpecies !== 'Cherrim' || pokemon.transformed) return;
-			if (this.isWeather(['sunnyday', 'desolateland'])) {
-				if (pokemon.template.speciesid !== 'cherrimsunshine') {
-					pokemon.formeChange('Cherrim-Sunshine', this.effect, false, '[msg]');
+			if (!pokemon.isActive || pokemon.baseSpecies.baseSpecies !== 'Cherrim' || pokemon.transformed)
+				return;
+			if (!pokemon.hp)
+				return;
+			if (['sunnyday', 'desolateland'].includes(pokemon.effectiveWeather())) {
+				if (pokemon.species.id !== 'cherrimsunshine') {
+					pokemon.formeChange('Cherrim-Sunshine', this.effect, False, '[msg]');
 				}
-			} else {
-				if (pokemon.template.speciesid === 'cherrimsunshine') {
-					pokemon.formeChange('Cherrim', this.effect, false, '[msg]');
+			}
+			else {
+				if (pokemon.species.id === 'cherrimsunshine') {
+					pokemon.formeChange('Cherrim', this.effect, False, '[msg]');
 				}
 			}
 		}
 	""" 
 	pass
 
-def onAllyModifyAtk (atk):
-	"""function (atk) {
-			if (this.effectData.target.baseTemplate.baseSpecies !== 'Cherrim') return;
-			if (this.isWeather(['sunnyday', 'desolateland'])) {
+def onAllyModifyAtk (atk, pokemon):
+	"""function (atk, pokemon) {
+			if (this.effectState.target.baseSpecies.baseSpecies !== 'Cherrim')
+				return;
+			if (['sunnyday', 'desolateland'].includes(pokemon.effectiveWeather())) {
 				return this.chainModify(1.5);
 			}
 		}
 	""" 
 	pass
 
-def onAllyModifySpD (spd):
-	"""function (spd) {
-			if (this.effectData.target.baseTemplate.baseSpecies !== 'Cherrim') return;
-			if (this.isWeather(['sunnyday', 'desolateland'])) {
+def onAllyModifySpD (spd, pokemon):
+	"""function (spd, pokemon) {
+			if (this.effectState.target.baseSpecies.baseSpecies !== 'Cherrim')
+				return;
+			if (['sunnyday', 'desolateland'].includes(pokemon.effectiveWeather())) {
 				return this.chainModify(1.5);
 			}
 		}

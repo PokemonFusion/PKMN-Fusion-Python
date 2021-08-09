@@ -1,23 +1,24 @@
-def onSwitchIn(**bvalues):
+def onPrimal(**bvalues):
 	"""function (pokemon) {
-			if (pokemon.isActive && pokemon.baseTemplate.species === 'Kyogre') {
-				this.insertQueue({pokemon: pokemon, choice: 'runPrimal'});
-			}
+			pokemon.formeChange('Kyogre-Primal', this.effect, true);
 		}
 	""" 
 	pass
 
-def onPrimal(**bvalues):
+def onSwitchIn(**bvalues):
 	"""function (pokemon) {
-			pokemon.formeChange('Kyogre-Primal', this.effect, True);
+			if (pokemon.isActive && pokemon.baseSpecies.name === 'Kyogre') {
+				this.queue.insertChoice({ choice: 'runPrimal', pokemon: pokemon });
+			}
 		}
 	""" 
 	pass
 
 def onTakeItem(**bvalues):
 	"""function (item, source) {
-			if (source.baseTemplate.baseSpecies === 'Kyogre') return False;
-			return True;
+			if (source.baseSpecies.baseSpecies === 'Kyogre')
+				return false;
+			return true;
 		}
 	""" 
 	pass

@@ -1,6 +1,6 @@
 def onStart (source):
 	"""function (source) {
-			this.setWeather('hail');
+			this.field.setWeather('hail');
 		}
 	""" 
 	pass

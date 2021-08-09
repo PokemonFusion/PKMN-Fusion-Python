@@ -1,8 +1,8 @@
 def onHit(**bvalues):
 	"""function (target, source) {
-			const targetSpe = target.stats.spe;
-			target.stats.spe = source.stats.spe;
-			source.stats.spe = targetSpe;
+			var targetSpe = target.storedStats.spe;
+			target.storedStats.spe = source.storedStats.spe;
+			source.storedStats.spe = targetSpe;
 			this.add('-activate', source, 'move: Speed Swap', '[of] ' + target);
 		}
 	""" 

@@ -1,6 +1,6 @@
 def onModifySpe(**bvalues):
 	"""function (spe, pokemon) {
-			if (this.isWeather('sandstorm')) {
+			if (this.field.isWeather('sandstorm')) {
 				return this.chainModify(2);
 			}
 		}
@@ -9,7 +9,8 @@ def onModifySpe(**bvalues):
 
 def onImmunity(**bvalues):
 	"""function (type, pokemon) {
-			if (type === 'sandstorm') return false;
+			if (type === 'sandstorm')
+				return False;
 		}
 	""" 
 	pass

@@ -1,11 +1,12 @@
 def onResidual(**bvalues):
 	"""function (pokemon) {
-			if (pokemon.baseTemplate.baseSpecies !== 'Darmanitan' || pokemon.transformed) {
+			if (pokemon.baseSpecies.baseSpecies !== 'Darmanitan' || pokemon.transformed) {
 				return;
 			}
-			if (pokemon.hp <= pokemon.maxhp / 2 && pokemon.template.speciesid === 'darmanitan') {
+			if (pokemon.hp <= pokemon.maxhp / 2 && !['Zen', 'Galar-Zen'].includes(pokemon.species.forme)) {
 				pokemon.addVolatile('zenmode');
-			} else if (pokemon.hp > pokemon.maxhp / 2 && pokemon.template.speciesid === 'darmanitanzen') {
+			}
+			else if (pokemon.hp > pokemon.maxhp / 2 && ['Zen', 'Galar-Zen'].includes(pokemon.species.forme)) {
 				pokemon.addVolatile('zenmode'); // in case of base Darmanitan-Zen
 				pokemon.removeVolatile('zenmode');
 			}
@@ -15,24 +16,36 @@ def onResidual(**bvalues):
 
 def onEnd(**bvalues):
 	"""function (pokemon) {
-			if (!pokemon.volatiles['zenmode'] || !pokemon.hp) return;
-			pokemon.transformed = false;
+			if (!pokemon.volatiles['zenmode'] || !pokemon.hp)
+				return;
+			pokemon.transformed = False;
 			delete pokemon.volatiles['zenmode'];
-			pokemon.formeChange('Darmanitan', this.effect, false, '[silent]');
+			if (pokemon.species.baseSpecies === 'Darmanitan' && pokemon.species.battleOnly) {
+				pokemon.formeChange(pokemon.species.battleOnly, this.effect, False, '[silent]');
+			}
 		}
 	""" 
 	pass
 
 def onStart(**bvalues):
 	"""function (pokemon) {
-				if (pokemon.template.speciesid !== 'darmanitanzen') pokemon.formeChange('Darmanitan-Zen');
+				if (!pokemon.species.name.includes('Galar')) {
+					if (pokemon.species.id !== 'darmanitanzen')
+						pokemon.formeChange('Darmanitan-Zen');
+				}
+				else {
+					if (pokemon.species.id !== 'darmanitangalarzen')
+						pokemon.formeChange('Darmanitan-Galar-Zen');
+				}
 			}
 	""" 
 	pass
 
 def onEnd(**bvalues):
 	"""function (pokemon) {
-				pokemon.formeChange('Darmanitan');
+				if (['Zen', 'Galar-Zen'].includes(pokemon.species.forme)) {
+					pokemon.formeChange(pokemon.species.battleOnly);
+				}
 			}
 	""" 
 	pass

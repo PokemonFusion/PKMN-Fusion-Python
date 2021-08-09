@@ -1,6 +1,6 @@
 def onModifyMove (move):
 	"""function (move) {
-			move.infiltrates = true;
+			move.infiltrates = True;
 		}
 	""" 
 	pass

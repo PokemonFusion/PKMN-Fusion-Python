@@ -1,10 +1,16 @@
 def onHit(**bvalues):
 	"""function (target, source) {
+			var success = false;
 			if (source.hasAbility('megalauncher')) {
-				return this.heal(this.modify(target.maxhp, 0.75));
-			} else {
-				return this.heal(Math.ceil(target.maxhp * 0.5));
+				success = !!this.heal(this.modify(target.baseMaxhp, 0.75));
 			}
+			else {
+				success = !!this.heal(Math.ceil(target.baseMaxhp * 0.5));
+			}
+			if (success && !target.isAlly(source)) {
+				target.staleness = 'external';
+			}
+			return success;
 		}
 	""" 
 	pass

@@ -1,20 +1,11 @@
 def basePowerCallback (pokemon, target):
 	"""function (pokemon, target) {
-			let ratio = (pokemon.getStat('spe') / target.getStat('spe'));
-			this.debug([40, 60, 80, 120, 150][(Math.floor(ratio) > 4 ? 4 : Math.floor(ratio))] + ' bp');
-			if (ratio >= 4) {
-				return 150;
-			}
-			if (ratio >= 3) {
-				return 120;
-			}
-			if (ratio >= 2) {
-				return 80;
-			}
-			if (ratio >= 1) {
-				return 60;
-			}
-			return 40;
+			var ratio = Math.floor(pokemon.getStat('spe') / target.getStat('spe'));
+			if (!isFinite(ratio))
+				ratio = 0;
+			var bp = [40, 60, 80, 120, 150][Math.min(ratio, 4)];
+			this.debug(bp + " bp");
+			return bp;
 		}
 	""" 
 	pass

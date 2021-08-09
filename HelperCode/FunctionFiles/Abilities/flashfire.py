@@ -1,7 +1,7 @@
 def onTryHit (target, source, move):
 	"""function (target, source, move) {
 			if (target !== source && move.type === 'Fire') {
-				move.accuracy = true;
+				move.accuracy = True;
 				if (!target.addVolatile('flashfire')) {
 					this.add('-immune', target, '[from] ability: Flash Fire');
 				}
@@ -27,7 +27,7 @@ def onStart (target):
 
 def onModifyAtk (atk, attacker, defender, move):
 	"""function (atk, attacker, defender, move) {
-				if (move.type === 'Fire') {
+				if (move.type === 'Fire' && attacker.hasAbility('flashfire')) {
 					this.debug('Flash Fire boost');
 					return this.chainModify(1.5);
 				}
@@ -37,7 +37,7 @@ def onModifyAtk (atk, attacker, defender, move):
 
 def onModifySpA (atk, attacker, defender, move):
 	"""function (atk, attacker, defender, move) {
-				if (move.type === 'Fire') {
+				if (move.type === 'Fire' && attacker.hasAbility('flashfire')) {
 					this.debug('Flash Fire boost');
 					return this.chainModify(1.5);
 				}

@@ -1,7 +1,7 @@
-def onAfterDamage(**bvalues):
+def onDamagingHit(**bvalues):
 	"""function (damage, target, source, move) {
-			if (source && source !== target && move && move.flags['contact']) {
-				this.damage(source.maxhp / 6, source, target);
+			if (this.checkMoveMakesContact(move, source, target)) {
+				this.damage(source.baseMaxhp / 6, source, target);
 			}
 		}
 	""" 

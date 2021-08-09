@@ -1,6 +1,6 @@
 def onEatItem (item, pokemon):
 	"""function (item, pokemon) {
-			this.heal(pokemon.maxhp / 3);
+			this.heal(pokemon.baseMaxhp / 3);
 		}
 	""" 
 	pass

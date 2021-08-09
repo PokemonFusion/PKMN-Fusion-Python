@@ -1,35 +1,35 @@
 def basePowerCallback(**bvalues):
 	"""function () {
-			if (this.pseudoWeather.echoedvoice) {
-				return 40 * this.pseudoWeather.echoedvoice.multiplier;
+			if (this.field.pseudoWeather.echoedvoice) {
+				return 40 * this.field.pseudoWeather.echoedvoice.multiplier;
 			}
 			return 40;
 		}
 	""" 
 	pass
 
-def onTry(**bvalues):
+def onFieldRestart(**bvalues):
 	"""function () {
-			this.addPseudoWeather('echoedvoice');
-		}
-	""" 
-	pass
-
-def onStart(**bvalues):
-	"""function () {
-				this.effectData.multiplier = 1;
-			}
-	""" 
-	pass
-
-def onRestart(**bvalues):
-	"""function () {
-				if (this.effectData.duration !== 2) {
-					this.effectData.duration = 2;
-					if (this.effectData.multiplier < 5) {
-						this.effectData.multiplier++;
+				if (this.effectState.duration !== 2) {
+					this.effectState.duration = 2;
+					if (this.effectState.multiplier < 5) {
+						this.effectState.multiplier++;
 					}
 				}
 			}
+	""" 
+	pass
+
+def onFieldStart(**bvalues):
+	"""function () {
+				this.effectState.multiplier = 1;
+			}
+	""" 
+	pass
+
+def onTry(**bvalues):
+	"""function () {
+			this.field.addPseudoWeather('echoedvoice');
+		}
 	""" 
 	pass

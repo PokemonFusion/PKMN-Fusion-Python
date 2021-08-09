@@ -1,18 +1,18 @@
-def onStart (side, source):
-	"""function (side, source) {
-				this.effectData.hp = source.maxhp / 2;
+def onEnd (target):
+	"""function (target) {
+				if (target && !target.fainted) {
+					var damage = this.heal(this.effectState.hp, target, target);
+					if (damage) {
+						this.add('-heal', target, target.getHealth, '[from] move: Wish', '[wisher] ' + this.effectState.source.name);
+					}
+				}
 			}
 	""" 
 	pass
 
-def onEnd (side):
-	"""function (side) {
-				let target = side.active[this.effectData.sourcePosition];
-				if (target && !target.fainted) {
-					let source = this.effectData.source;
-					let damage = this.heal(this.effectData.hp, target, target);
-					if (damage) this.add('-heal', target, target.getHealth, '[from] move: Wish', '[wisher] ' + source.name);
-				}
+def onStart (pokemon, source):
+	"""function (pokemon, source) {
+				this.effectState.hp = source.maxhp / 2;
 			}
 	""" 
 	pass

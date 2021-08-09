@@ -1,7 +1,7 @@
 def onBasePower(**bvalues):
 	"""function (basePower, user, target, move) {
 			if (move && move.type === 'Fighting') {
-				return this.chainModify([0x1333, 0x1000]);
+				return this.chainModify([4915, 4096]);
 			}
 		}
 	""" 
@@ -9,10 +9,10 @@ def onBasePower(**bvalues):
 
 def onTakeItem(**bvalues):
 	"""function (item, pokemon, source) {
-			if ((source && source.baseTemplate.num === 493) || pokemon.baseTemplate.num === 493) {
-				return False;
+			if ((source && source.baseSpecies.num === 493) || pokemon.baseSpecies.num === 493) {
+				return false;
 			}
-			return True;
+			return true;
 		}
 	""" 
 	pass

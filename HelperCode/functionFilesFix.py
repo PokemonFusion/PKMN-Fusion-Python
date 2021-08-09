@@ -26,7 +26,7 @@ for root, subdirs, files in os.walk(basefolder):
             for line in filename:
                 if line.startswith('def'):
                     words = line.split()
-                    newfunction = "{} {}(datadic : dict):\n".format(words[0], words[1])
+                    newfunction = "{} {}(**bvalues):\n".format(words[0], words[1])
                     data += newfunction
                 else:
                     data += line

@@ -1,7 +1,9 @@
 def onStart (pokemon):
 	"""function (pokemon) {
-			if (pokemon.side.foe.active.some(foeActive => foeActive && this.isAdjacent(pokemon, foeActive) && foeActive.ability === 'noability')) {
-				this.effectData.gaveUp = true;
+			// n.b. only affects Hackmons
+			// interaction with No Ability is complicated: https://www.smogon.com/forums/threads/pokemon-sun-moon-battle-mechanics-research.3586701/page-76#post-7790209
+			if (pokemon.adjacentFoes().some(function (foeActive) { return foeActive.ability === 'noability'; })) {
+				this.effectState.gaveUp = True;
 			}
 		}
 	""" 
@@ -9,22 +11,19 @@ def onStart (pokemon):
 
 def onUpdate (pokemon):
 	"""function (pokemon) {
-			if (!pokemon.isStarted || this.effectData.gaveUp) return;
-			let possibleTargets = pokemon.side.foe.active.filter(foeActive => foeActive && this.isAdjacent(pokemon, foeActive));
-			while (possibleTargets.length) {
-				let rand = 0;
-				if (possibleTargets.length > 1) rand = this.random(possibleTargets.length);
-				let target = possibleTargets[rand];
-				let ability = this.getAbility(target.ability);
-				let bannedAbilities = ['noability', 'battlebond', 'comatose', 'disguise', 'flowergift', 'forecast', 'illusion', 'imposter', 'multitype', 'powerconstruct', 'powerofalchemy', 'receiver', 'rkssystem', 'schooling', 'shieldsdown', 'stancechange', 'trace', 'zenmode'];
-				if (bannedAbilities.includes(target.ability)) {
-					possibleTargets.splice(rand, 1);
-					continue;
-				}
-				this.add('-ability', pokemon, ability, '[from] ability: Trace', '[of] ' + target);
-				pokemon.setAbility(ability);
+			if (!pokemon.isStarted || this.effectState.gaveUp)
 				return;
-			}
+			var additionalBannedAbilities = [
+				// Zen Mode included here for compatability with Gen 5-6
+				'noability', 'flowergift', 'forecast', 'hungerswitch', 'illusion', 'imposter', 'neutralizinggas', 'powerofalchemy', 'receiver', 'trace', 'zenmode',
+			];
+			var possibleTargets = pokemon.adjacentFoes().filter(function (target) { return (!target.getAbility().isPermanent && !additionalBannedAbilities.includes(target.ability)); });
+			if (!possibleTargets.length)
+				return;
+			var target = this.sample(possibleTargets);
+			var ability = target.getAbility();
+			this.add('-ability', pokemon, ability, '[from] ability: Trace', '[of] ' + target);
+			pokemon.setAbility(ability);
 		}
 	""" 
 	pass

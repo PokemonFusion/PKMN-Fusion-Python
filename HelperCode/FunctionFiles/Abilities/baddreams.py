@@ -1,10 +1,11 @@
 def onResidual (pokemon):
 	"""function (pokemon) {
-			if (!pokemon.hp) return;
-			for (const target of pokemon.side.foe.active) {
-				if (!target || !target.hp) continue;
+			if (!pokemon.hp)
+				return;
+			for (var _i = 0, _a = pokemon.foes(); _i < _a.length; _i++) {
+				var target = _a[_i];
 				if (target.status === 'slp' || target.hasAbility('comatose')) {
-					this.damage(target.maxhp / 8, target, pokemon);
+					this.damage(target.baseMaxhp / 8, target, pokemon);
 				}
 			}
 		}

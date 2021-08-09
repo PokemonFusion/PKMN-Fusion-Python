@@ -1,6 +1,8 @@
-def onModifyMove (move, pokemon):
+def onModifyType (move, pokemon):
 	"""function (move, pokemon) {
-			const item = pokemon.getItem();
+			if (pokemon.ignoringItem())
+				return;
+			var item = pokemon.getItem();
 			if (item.id && item.onPlate && !item.zMove) {
 				move.type = item.onPlate;
 			}

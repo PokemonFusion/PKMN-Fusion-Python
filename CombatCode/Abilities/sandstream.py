@@ -1,6 +1,6 @@
 def onStart(**bvalues):
 	"""function (source) {
-			this.setWeather('sandstorm');
+			this.field.setWeather('sandstorm');
 		}
 	""" 
 	pass

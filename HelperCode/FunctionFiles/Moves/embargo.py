@@ -1,13 +1,13 @@
-def onStart (pokemon):
+def onEnd (pokemon):
 	"""function (pokemon) {
-				this.add('-start', pokemon, 'Embargo');
+				this.add('-end', pokemon, 'Embargo');
 			}
 	""" 
 	pass
 
-def onEnd (pokemon):
+def onStart (pokemon):
 	"""function (pokemon) {
-				this.add('-end', pokemon, 'Embargo');
+				this.add('-start', pokemon, 'Embargo');
 			}
 	""" 
 	pass

@@ -1,11 +1,8 @@
 def onTry (source, target):
 	"""function (source, target) {
-			target.side.addSideCondition('futuremove');
-			if (target.side.sideConditions['futuremove'].positions[target.position]) {
+			if (!target.side.addSlotCondition(target, 'futuremove'))
 				return false;
-			}
-			target.side.sideConditions['futuremove'].positions[target.position] = {
-				duration: 3,
+			Object.assign(target.side.slotConditions[target.position]['futuremove'], {
 				move: 'doomdesire',
 				source: source,
 				moveData: {
@@ -20,9 +17,9 @@ def onTry (source, target):
 					isFutureMove: true,
 					type: 'Steel',
 				},
-			};
+			});
 			this.add('-start', source, 'Doom Desire');
-			return null;
+			return this.NOT_FAIL;
 		}
 	""" 
 	pass

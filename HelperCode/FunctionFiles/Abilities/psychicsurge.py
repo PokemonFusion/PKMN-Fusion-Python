@@ -1,6 +1,6 @@
 def onStart (source):
 	"""function (source) {
-			this.setTerrain('psychicterrain');
+			this.field.setTerrain('psychicterrain');
 		}
 	""" 
 	pass

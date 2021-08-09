@@ -1,9 +1,8 @@
 def onTryHeal(**bvalues):
 	"""function (damage, target, source, effect) {
-			/**@type {{[k: string]: number}} */
-			let heals = {drain: 1, leechseed: 1, ingrain: 1, aquaring: 1, strengthsap: 1};
-			if (heals[effect.id]) {
-				return Math.ceil((damage * 1.3) - 0.5); // Big Root rounds half down
+			var heals = ['drain', 'leechseed', 'ingrain', 'aquaring', 'strengthsap'];
+			if (heals.includes(effect.id)) {
+				return this.chainModify([5324, 4096]);
 			}
 		}
 	""" 

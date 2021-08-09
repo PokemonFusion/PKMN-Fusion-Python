@@ -1,7 +1,7 @@
 def onBasePower(**bvalues):
 	"""function (basePower, user, target, move) {
-			if (move && user.baseTemplate.species === 'Palkia' && (move.type === 'Water' || move.type === 'Dragon')) {
-				return this.chainModify([0x1333, 0x1000]);
+			if (move && user.baseSpecies.name === 'Palkia' && (move.type === 'Water' || move.type === 'Dragon')) {
+				return this.chainModify([4915, 4096]);
 			}
 		}
 	""" 

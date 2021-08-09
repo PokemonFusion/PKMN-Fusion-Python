@@ -1,9 +1,10 @@
 def onTryHit (target, pokemon):
 	"""function (target, pokemon) {
-			if (!target.lastMove || !target.lastMove.flags['mirror'] || target.lastMove.isZ) {
+			var move = target.lastMove;
+			if (!(move === null || move === void 0 ? void 0 : move.flags['mirror']) || move.isZ || move.isMax) {
 				return false;
 			}
-			this.useMove(target.lastMove.id, pokemon, target);
+			this.actions.useMove(move.id, pokemon, target);
 			return null;
 		}
 	""" 

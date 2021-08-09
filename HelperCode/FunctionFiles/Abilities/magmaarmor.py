@@ -10,7 +10,8 @@ def onUpdate (pokemon):
 
 def onImmunity (type, pokemon):
 	"""function (type, pokemon) {
-			if (type === 'frz') return false;
+			if (type === 'frz')
+				return False;
 		}
 	""" 
 	pass

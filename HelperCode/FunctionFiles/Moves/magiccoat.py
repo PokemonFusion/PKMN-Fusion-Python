@@ -1,8 +1,22 @@
+def onAllyTryHitSide (target, source, move):
+	"""function (target, source, move) {
+				if (target.isAlly(source) || move.hasBounced || !move.flags['reflectable']) {
+					return;
+				}
+				var newMove = this.dex.getActiveMove(move.id);
+				newMove.hasBounced = true;
+				newMove.pranksterBoosted = false;
+				this.actions.useMove(newMove, this.effectState.target, source);
+				return null;
+			}
+	""" 
+	pass
+
 def onStart (target, source, effect):
 	"""function (target, source, effect) {
 				this.add('-singleturn', target, 'move: Magic Coat');
-				if (effect && effect.effectType === 'Move') {
-					this.effectData.pranksterBoosted = effect.pranksterBoosted;
+				if ((effect === null || effect === void 0 ? void 0 : effect.effectType) === 'Move') {
+					this.effectState.pranksterBoosted = effect.pranksterBoosted;
 				}
 			}
 	""" 
@@ -13,24 +27,10 @@ def onTryHit (target, source, move):
 				if (target === source || move.hasBounced || !move.flags['reflectable']) {
 					return;
 				}
-				let newMove = this.getActiveMove(move.id);
+				var newMove = this.dex.getActiveMove(move.id);
 				newMove.hasBounced = true;
-				newMove.pranksterBoosted = this.effectData.pranksterBoosted;
-				this.useMove(newMove, target, source);
-				return null;
-			}
-	""" 
-	pass
-
-def onAllyTryHitSide (target, source, move):
-	"""function (target, source, move) {
-				if (target.side === source.side || move.hasBounced || !move.flags['reflectable']) {
-					return;
-				}
-				let newMove = this.getActiveMove(move.id);
-				newMove.hasBounced = true;
-				newMove.pranksterBoosted = false;
-				this.useMove(newMove, this.effectData.target, source);
+				newMove.pranksterBoosted = this.effectState.pranksterBoosted;
+				this.actions.useMove(newMove, target, source);
 				return null;
 			}
 	""" 

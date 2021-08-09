@@ -16,7 +16,8 @@ def onUpdate (pokemon):
 
 def onImmunity (type, pokemon):
 	"""function (type, pokemon) {
-			if (type === 'attract') return false;
+			if (type === 'attract')
+				return False;
 		}
 	""" 
 	pass
@@ -26,6 +27,16 @@ def onTryHit (pokemon, target, move):
 			if (move.id === 'attract' || move.id === 'captivate' || move.id === 'taunt') {
 				this.add('-immune', pokemon, '[from] ability: Oblivious');
 				return null;
+			}
+		}
+	""" 
+	pass
+
+def onBoost (boost, target, source, effect):
+	"""function (boost, target, source, effect) {
+			if (effect.id === 'intimidate') {
+				delete boost.atk;
+				this.add('-fail', target, 'unboost', 'Attack', '[from] ability: Oblivious', '[of] ' + target);
 			}
 		}
 	""" 

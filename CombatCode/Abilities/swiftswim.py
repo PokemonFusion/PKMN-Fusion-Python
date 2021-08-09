@@ -1,6 +1,6 @@
 def onModifySpe(**bvalues):
 	"""function (spe, pokemon) {
-			if (this.isWeather(['raindance', 'primordialsea'])) {
+			if (['raindance', 'primordialsea'].includes(pokemon.effectiveWeather())) {
 				return this.chainModify(2);
 			}
 		}

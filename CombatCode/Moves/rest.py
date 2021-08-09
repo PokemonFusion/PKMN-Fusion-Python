@@ -1,19 +1,26 @@
-def onTryMove(**bvalues):
-	"""function (pokemon) {
-			if (pokemon.hp < pokemon.maxhp && pokemon.status !== 'slp' && !pokemon.hasAbility('comatose')) return;
-			this.add('-fail', pokemon);
-			return null;
+def onHit(**bvalues):
+	"""function (target, source, move) {
+			if (!target.setStatus('slp', source, move))
+				return false;
+			target.statusState.time = 3;
+			target.statusState.startTime = 3;
+			this.heal(target.maxhp); // Aesthetic only as the healing happens after you fall asleep in-game
 		}
 	""" 
 	pass
 
-def onHit(**bvalues):
-	"""function (target) {
-			if (!target.setStatus('slp')) return false;
-			target.statusData.time = 3;
-			target.statusData.startTime = 3;
-			this.heal(target.maxhp); //Aeshetic only as the healing happens after you fall asleep in-game
-			this.add('-status', target, 'slp', '[from] move: Rest');
+def onTry(**bvalues):
+	"""function (source) {
+			if (source.status === 'slp' || source.hasAbility('comatose'))
+				return false;
+			if (source.hp === source.maxhp) {
+				this.add('-fail', source, 'heal');
+				return null;
+			}
+			if (source.hasAbility(['insomnia', 'vitalspirit'])) {
+				this.add('-fail', source, '[from] ability: ' + source.getAbility().name, '[of] ' + source);
+				return null;
+			}
 		}
 	""" 
 	pass

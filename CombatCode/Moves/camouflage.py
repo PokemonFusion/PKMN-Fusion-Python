@@ -1,17 +1,20 @@
 def onHit(**bvalues):
 	"""function (target) {
-			let newType = 'Normal';
-			if (this.isTerrain('electricterrain')) {
+			var newType = 'Normal';
+			if (this.field.isTerrain('electricterrain')) {
 				newType = 'Electric';
-			} else if (this.isTerrain('grassyterrain')) {
+			}
+			else if (this.field.isTerrain('grassyterrain')) {
 				newType = 'Grass';
-			} else if (this.isTerrain('mistyterrain')) {
+			}
+			else if (this.field.isTerrain('mistyterrain')) {
 				newType = 'Fairy';
-			} else if (this.isTerrain('psychicterrain')) {
+			}
+			else if (this.field.isTerrain('psychicterrain')) {
 				newType = 'Psychic';
 			}
-
-			if (!target.setType(newType)) return false;
+			if (target.getTypes().join() === newType || !target.setType(newType))
+				return false;
 			this.add('-start', target, 'typechange', newType);
 		}
 	""" 

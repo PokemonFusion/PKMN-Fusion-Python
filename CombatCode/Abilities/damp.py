@@ -1,9 +1,9 @@
 def onAnyTryMove(**bvalues):
 	"""function (target, source, effect) {
-			if (['explosion', 'mindblown', 'selfdestruct'].includes(effect.id)) {
+			if (['explosion', 'mindblown', 'mistyexplosion', 'selfdestruct'].includes(effect.id)) {
 				this.attrLastMove('[still]');
-				this.add('cant', this.effectData.target, 'ability: Damp', effect, '[of] ' + target);
-				return false;
+				this.add('cant', this.effectState.target, 'ability: Damp', effect, '[of] ' + target);
+				return False;
 			}
 		}
 	""" 
@@ -12,7 +12,7 @@ def onAnyTryMove(**bvalues):
 def onAnyDamage(**bvalues):
 	"""function (damage, target, source, effect) {
 			if (effect && effect.id === 'aftermath') {
-				return false;
+				return False;
 			}
 		}
 	""" 

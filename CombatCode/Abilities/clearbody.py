@@ -1,16 +1,18 @@
 def onBoost(**bvalues):
 	"""function (boost, target, source, effect) {
-			if (source && target === source) return;
-			let showMsg = false;
-			for (let i in boost) {
-				// @ts-ignore
+			if (source && target === source)
+				return;
+			var showMsg = False;
+			var i;
+			for (i in boost) {
 				if (boost[i] < 0) {
-					// @ts-ignore
 					delete boost[i];
-					showMsg = true;
+					showMsg = True;
 				}
 			}
-			if (showMsg && !effect.secondaries) this.add("-fail", target, "unboost", "[from] ability: Clear Body", "[of] " + target);
+			if (showMsg && !effect.secondaries && effect.id !== 'octolock') {
+				this.add("-fail", target, "unboost", "[from] ability: Clear Body", "[of] " + target);
+			}
 		}
 	""" 
 	pass

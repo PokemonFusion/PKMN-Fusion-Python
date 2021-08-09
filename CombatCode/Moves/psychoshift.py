@@ -1,6 +1,7 @@
-def onPrepareHit(**bvalues):
+def onTryHit(**bvalues):
 	"""function (target, source, move) {
-			if (!source.status) return false;
+			if (!source.status)
+				return false;
 			move.status = source.status;
 		}
 	""" 

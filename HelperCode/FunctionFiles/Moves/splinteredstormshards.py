@@ -1,6 +1,13 @@
+def onAfterSubDamage ():
+	"""function () {
+			this.field.clearTerrain();
+		}
+	""" 
+	pass
+
 def onHit ():
 	"""function () {
-			this.clearTerrain();
+			this.field.clearTerrain();
 		}
 	""" 
 	pass

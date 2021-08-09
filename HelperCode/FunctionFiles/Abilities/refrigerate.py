@@ -1,8 +1,11 @@
-def onModifyMove (move, pokemon):
+def onModifyType (move, pokemon):
 	"""function (move, pokemon) {
-			if (move.type === 'Normal' && !['judgment', 'multiattack', 'naturalgift', 'revelationdance', 'technoblast', 'weatherball'].includes(move.id) && !(move.isZ && move.category !== 'Status')) {
+			var noModifyType = [
+				'judgment', 'multiattack', 'naturalgift', 'revelationdance', 'technoblast', 'terrainpulse', 'weatherball',
+			];
+			if (move.type === 'Normal' && !noModifyType.includes(move.id) && !(move.isZ && move.category !== 'Status')) {
 				move.type = 'Ice';
-				move.refrigerateBoosted = true;
+				move.refrigerateBoosted = True;
 			}
 		}
 	""" 
@@ -10,7 +13,8 @@ def onModifyMove (move, pokemon):
 
 def onBasePower (basePower, pokemon, target, move):
 	"""function (basePower, pokemon, target, move) {
-			if (move.refrigerateBoosted) return this.chainModify([0x1333, 0x1000]);
+			if (move.refrigerateBoosted)
+				return this.chainModify([4915, 4096]);
 		}
 	""" 
 	pass

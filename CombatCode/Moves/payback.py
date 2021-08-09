@@ -1,6 +1,6 @@
 def basePowerCallback(**bvalues):
 	"""function (pokemon, target, move) {
-			if (target.newlySwitched || this.willMove(target)) {
+			if (target.newlySwitched || this.queue.willMove(target)) {
 				this.debug('Payback NOT boosted');
 				return move.basePower;
 			}

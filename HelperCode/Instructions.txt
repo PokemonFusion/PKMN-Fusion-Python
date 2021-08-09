@@ -1,0 +1,67 @@
+This is to make someone's life easier.
+
+There may be some missing instructions here that I forgot to write down, but this should at least help you get started.
+
+You will find the data for converting using the Pokemon Showdown source code.  If you can't find that via google, then
+good luck.  Read all before you begin so you don't waste time.
+
+In order to convert the JS dictionaries into something python can understand,
+you will need to convert them into json objects.  The main complication with this is the "function" parts within the
+javascript objects.  You will need to comment them out into strings using ` on both sides.  Visual Studio Code will
+be helpful with finding anything that is broken. You will want to do a replace for any ': function' with ': `function'
+and then find all of the matching closing brackets.  Some are easy and paired with a ; before, but some aren't and will
+be difficult to build a regix to auto fix.  You may need to convert the spacing to tabs for this to work.
+
+regix replace:
+
+Find
+Replace
+
+: function
+: `function
+
+;\n\t\t},
+;\n\t\t}`,
+
+;\n\t\t\t},
+;\n\t\t\t}`,
+
+;\n\t\t\t\t},
+;\n\t\t\t\t}`,
+
+}\n\t\t},
+}\n\t\t}`,
+
+}\n\t\t\t},
+}\n\t\t\t}`,
+
+}\n\t\t\t\t},
+}\n\t\t\t\t}`,
+
+
+Anything else will need to be manually found.
+
+At time of conversion, I used this site, if it doesn't exist you will need to find another site.
+https://www.convertsimple.com/convert-javascript-to-json/
+
+If the files are in TS format instead of JS, which is likely new, you will need to convert to JS first.
+I used this site.
+https://extendsclass.com/typescript-to-javascript.html
+
+
+The next thing you will want to do is use 'jsontodict.py' to convert the json files into dictionaries
+
+abilities and the pokemondex currently error when using this so you may want to do this manually, this involves just copying
+the data into the dictionary file and fixing the capitalization on True and False and any NULL
+
+Next you will want to run the 'functionextraction.py' code followed by 'functionFilesFix.py'
+
+for functionFilesFix.py, you will need to move the folders that get created, the abilities, moves, and items, and place
+them in the import folder.  If the folder doesn't exist, run the program and it will create them.
+
+The last thing you will need to do is, other than renaming return to Return, because python, is you will need to compare
+the exported code with the code in the combatcode layer.  You don't want to overwrite things that are working with commented out
+code.
+
+Granted... if all goes well and you finished the code, you won't need this, and you'll just need to add in what is needed
+by hand.

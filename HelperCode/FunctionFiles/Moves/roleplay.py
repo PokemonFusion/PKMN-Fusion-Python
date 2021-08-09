@@ -1,22 +1,27 @@
-def onTryHit (target, source):
+def onHit (target, source):
 	"""function (target, source) {
-			let bannedTargetAbilities = ['battlebond', 'comatose', 'disguise', 'flowergift', 'forecast', 'illusion', 'imposter', 'multitype', 'powerconstruct', 'powerofalchemy', 'receiver', 'rkssystem', 'schooling', 'shieldsdown', 'stancechange', 'trace', 'wonderguard', 'zenmode'];
-			let bannedSourceAbilities = ['battlebond', 'comatose', 'disguise', 'multitype', 'powerconstruct', 'rkssystem', 'schooling', 'shieldsdown', 'stancechange'];
-			if (bannedTargetAbilities.includes(target.ability) || bannedSourceAbilities.includes(source.ability) || target.ability === source.ability) {
-				return false;
+			var oldAbility = source.setAbility(target.ability);
+			if (oldAbility) {
+				this.add('-ability', source, source.getAbility().name, '[from] move: Role Play', '[of] ' + target);
+				return;
 			}
+			return false;
 		}
 	""" 
 	pass
 
-def onHit (target, source):
+def onTryHit (target, source):
 	"""function (target, source) {
-			let oldAbility = source.setAbility(target.ability);
-			if (oldAbility) {
-				this.add('-ability', source, this.getAbility(source.ability).name, '[from] move: Role Play', '[of] ' + target);
-				return;
+			if (target.ability === source.ability)
+				return false;
+			var additionalBannedTargetAbilities = [
+				// Zen Mode included here for compatability with Gen 5-6
+				'flowergift', 'forecast', 'hungerswitch', 'illusion', 'imposter', 'neutralizinggas', 'powerofalchemy', 'receiver', 'trace', 'wonderguard', 'zenmode',
+			];
+			if (target.getAbility().isPermanent || additionalBannedTargetAbilities.includes(target.ability) ||
+				source.getAbility().isPermanent) {
+				return false;
 			}
-			return false;
 		}
 	""" 
 	pass

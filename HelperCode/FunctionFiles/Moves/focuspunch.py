@@ -1,10 +1,3 @@
-def beforeTurnCallback (pokemon):
-	"""function (pokemon) {
-			pokemon.addVolatile('focuspunch');
-		}
-	""" 
-	pass
-
 def beforeMoveCallback (pokemon):
 	"""function (pokemon) {
 			if (pokemon.volatiles['focuspunch'] && pokemon.volatiles['focuspunch'].lostFocus) {
@@ -15,10 +8,10 @@ def beforeMoveCallback (pokemon):
 	""" 
 	pass
 
-def onStart (pokemon):
+def beforeTurnCallback (pokemon):
 	"""function (pokemon) {
-				this.add('-singleturn', pokemon, 'move: Focus Punch');
-			}
+			pokemon.addVolatile('focuspunch');
+		}
 	""" 
 	pass
 
@@ -27,6 +20,21 @@ def onHit (pokemon, source, move):
 				if (move.category !== 'Status') {
 					pokemon.volatiles['focuspunch'].lostFocus = true;
 				}
+			}
+	""" 
+	pass
+
+def onStart (pokemon):
+	"""function (pokemon) {
+				this.add('-singleturn', pokemon, 'move: Focus Punch');
+			}
+	""" 
+	pass
+
+def onTryAddVolatile (status, pokemon):
+	"""function (status, pokemon) {
+				if (status.id === 'flinch')
+					return null;
 			}
 	""" 
 	pass

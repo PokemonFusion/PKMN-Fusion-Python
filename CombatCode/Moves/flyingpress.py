@@ -1,6 +1,6 @@
 def onEffectiveness(**bvalues):
-	"""function (typeMod, type, move) {
-			return typeMod + this.getEffectiveness('Flying', type);
+	"""function (typeMod, target, type, move) {
+			return typeMod + this.dex.getEffectiveness('Flying', type);
 		}
 	""" 
 	pass

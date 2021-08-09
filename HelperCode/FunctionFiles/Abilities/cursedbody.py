@@ -1,9 +1,10 @@
-def onAfterDamage (damage, target, source, move):
+def onDamagingHit (damage, target, source, move):
 	"""function (damage, target, source, move) {
-			if (!source || source.volatiles['disable']) return;
-			if (source !== target && move && move.effectType === 'Move' && !move.isFutureMove) {
+			if (source.volatiles['disable'])
+				return;
+			if (!move.isMax && !move.isFutureMove && move.id !== 'struggle') {
 				if (this.randomChance(3, 10)) {
-					source.addVolatile('disable', this.effectData.target);
+					source.addVolatile('disable', this.effectState.target);
 				}
 			}
 		}

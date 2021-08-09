@@ -5,25 +5,18 @@ def beforeTurnCallback(**bvalues):
 	""" 
 	pass
 
-def onStart(**bvalues):
-	"""function (pokemon) {
-				this.add('-singleturn', pokemon, 'move: Beak Blast');
-			}
-	""" 
-	pass
-
 def onHit(**bvalues):
-	"""function (pokemon, source, move) {
-				if (move.flags['contact']) {
-					source.trySetStatus('brn', pokemon);
+	"""function (target, source, move) {
+				if (this.checkMoveMakesContact(move, source, target)) {
+					source.trySetStatus('brn', target);
 				}
 			}
 	""" 
 	pass
 
-def onMoveAborted(**bvalues):
+def onStart(**bvalues):
 	"""function (pokemon) {
-			pokemon.removeVolatile('beakblast');
+				this.add('-singleturn', pokemon, 'move: Beak Blast');
 		}
 	""" 
 	pass

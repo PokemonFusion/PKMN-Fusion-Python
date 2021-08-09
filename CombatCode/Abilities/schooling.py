@@ -1,12 +1,14 @@
 def onStart(**bvalues):
 	"""function (pokemon) {
-			if (pokemon.baseTemplate.baseSpecies !== 'Wishiwashi' || pokemon.level < 20 || pokemon.transformed) return;
+			if (pokemon.baseSpecies.baseSpecies !== 'Wishiwashi' || pokemon.level < 20 || pokemon.transformed)
+				return;
 			if (pokemon.hp > pokemon.maxhp / 4) {
-				if (pokemon.template.speciesid === 'wishiwashi') {
+				if (pokemon.species.id === 'wishiwashi') {
 					pokemon.formeChange('Wishiwashi-School');
 				}
-			} else {
-				if (pokemon.template.speciesid === 'wishiwashischool') {
+			}
+			else {
+				if (pokemon.species.id === 'wishiwashischool') {
 					pokemon.formeChange('Wishiwashi');
 				}
 			}
@@ -16,13 +18,16 @@ def onStart(**bvalues):
 
 def onResidual(**bvalues):
 	"""function (pokemon) {
-			if (pokemon.baseTemplate.baseSpecies !== 'Wishiwashi' || pokemon.level < 20 || pokemon.transformed || !pokemon.hp) return;
+			if (pokemon.baseSpecies.baseSpecies !== 'Wishiwashi' || pokemon.level < 20 ||
+				pokemon.transformed || !pokemon.hp)
+				return;
 			if (pokemon.hp > pokemon.maxhp / 4) {
-				if (pokemon.template.speciesid === 'wishiwashi') {
+				if (pokemon.species.id === 'wishiwashi') {
 					pokemon.formeChange('Wishiwashi-School');
 				}
-			} else {
-				if (pokemon.template.speciesid === 'wishiwashischool') {
+			}
+			else {
+				if (pokemon.species.id === 'wishiwashischool') {
 					pokemon.formeChange('Wishiwashi');
 				}
 			}

@@ -1,10 +1,16 @@
 def onHit(**bvalues):
-	"""function (target) {
-			if (this.isTerrain('grassyterrain')) {
-				return this.heal(this.modify(target.maxhp, 0.667)); // TODO: find out the real value
-			} else {
-				return this.heal(Math.ceil(target.maxhp * 0.5));
+	"""function (target, source) {
+			var success = false;
+			if (this.field.isTerrain('grassyterrain')) {
+				success = !!this.heal(this.modify(target.baseMaxhp, 0.667));
 			}
+			else {
+				success = !!this.heal(Math.ceil(target.baseMaxhp * 0.5));
+			}
+			if (success && !target.isAlly(source)) {
+				target.staleness = 'external';
+			}
+			return success;
 		}
 	""" 
 	pass

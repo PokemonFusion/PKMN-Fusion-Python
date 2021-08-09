@@ -1,8 +1,9 @@
 def onModifyAccuracy(**bvalues):
 	"""function (accuracy) {
-			if (typeof accuracy !== 'number') return;
+			if (typeof accuracy !== 'number')
+				return;
 			this.debug('lax incense - decreasing accuracy');
-			return accuracy * 0.9;
+			return this.chainModify([3686, 4096]);
 		}
 	""" 
 	pass

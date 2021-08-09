@@ -1,8 +1,8 @@
 def onSourceModifyAccuracy(**bvalues):
 	"""function (accuracy, target) {
-			if (typeof accuracy === 'number' && !this.willMove(target)) {
+			if (typeof accuracy === 'number' && !this.queue.willMove(target)) {
 				this.debug('Zoom Lens boosting accuracy');
-				return accuracy * 1.2;
+				return this.chainModify([4915, 4096]);
 			}
 		}
 	""" 

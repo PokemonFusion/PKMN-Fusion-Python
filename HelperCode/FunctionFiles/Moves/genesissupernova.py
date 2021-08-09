@@ -1,6 +1,6 @@
 def onHit ():
 	"""function () {
-					this.setTerrain('psychicterrain');
+					this.field.setTerrain('psychicterrain');
 				}
 	""" 
 	pass

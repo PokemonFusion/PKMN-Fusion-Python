@@ -1,16 +1,20 @@
-def onHit(**bvalues):
-	"""function (target) {
-			if (['battlebond', 'comatose', 'disguise', 'multitype', 'powerconstruct', 'rkssystem', 'schooling', 'shieldsdown', 'stancechange'].includes(target.ability)) return;
-			if (target.newlySwitched || this.willMove(target)) return;
+def onAfterSubDamage(**bvalues):
+	"""function (damage, target) {
+			if (target.getAbility().isPermanent)
+				return;
+			if (target.newlySwitched || this.queue.willMove(target))
+				return;
 			target.addVolatile('gastroacid');
 		}
 	""" 
 	pass
 
-def onAfterSubDamage(**bvalues):
+def onHit(**bvalues):
 	"""function (target) {
-			if (['battlebond', 'comatose', 'disguise', 'multitype', 'powerconstruct', 'rkssystem', 'schooling', 'shieldsdown', 'stancechange'].includes(target.ability)) return;
-			if (target.newlySwitched || this.willMove(target)) return;
+			if (target.getAbility().isPermanent)
+				return;
+			if (target.newlySwitched || this.queue.willMove(target))
+				return;
 			target.addVolatile('gastroacid');
 		}
 	""" 

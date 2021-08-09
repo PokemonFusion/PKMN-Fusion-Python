@@ -1,14 +1,15 @@
 def onHit(**bvalues):
 	"""function (target) {
-			let success = false;
-			for (let i in target.boosts) {
-				// @ts-ignore
-				if (target.boosts[i] === 0) continue;
-				// @ts-ignore
+			var success = false;
+			var i;
+			for (i in target.boosts) {
+				if (target.boosts[i] === 0)
+					continue;
 				target.boosts[i] = -target.boosts[i];
 				success = true;
 			}
-			if (!success) return false;
+			if (!success)
+				return false;
 			this.add('-invertboost', target, '[from] move: Topsy-Turvy');
 		}
 	""" 

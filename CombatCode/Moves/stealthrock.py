@@ -1,4 +1,4 @@
-def onStart(**bvalues):
+def onSideStart(**bvalues):
 	"""function (side) {
 				this.add('-sidestart', side, 'move: Stealth Rock');
 			}
@@ -7,7 +7,9 @@ def onStart(**bvalues):
 
 def onSwitchIn(**bvalues):
 	"""function (pokemon) {
-				let typeMod = this.clampIntRange(pokemon.runEffectiveness('Rock'), -6, 6);
+				if (pokemon.hasItem('heavydutyboots'))
+					return;
+				var typeMod = this.clampIntRange(pokemon.runEffectiveness(this.dex.getActiveMove('stealthrock')), -6, 6);
 				this.damage(pokemon.maxhp * Math.pow(2, typeMod) / 8);
 			}
 	""" 

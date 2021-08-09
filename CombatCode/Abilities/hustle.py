@@ -5,10 +5,10 @@ def onModifyAtk(**bvalues):
 	""" 
 	pass
 
-def onModifyMove(**bvalues):
-	"""function (move) {
-			if (move.category === 'Physical' && typeof move.accuracy === 'number') {
-				move.accuracy *= 0.8;
+def onSourceModifyAccuracy(**bvalues):
+	"""function (accuracy, target, source, move) {
+			if (move.category === 'Physical' && typeof accuracy === 'number') {
+				return this.chainModify([3277, 4096]);
 			}
 		}
 	""" 

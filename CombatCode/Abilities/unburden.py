@@ -1,6 +1,7 @@
 def onAfterUseItem(**bvalues):
 	"""function (item, pokemon) {
-			if (pokemon !== this.effectData.target) return;
+			if (pokemon !== this.effectState.target)
+				return;
 			pokemon.addVolatile('unburden');
 		}
 	""" 
@@ -22,7 +23,7 @@ def onEnd(**bvalues):
 
 def onModifySpe(**bvalues):
 	"""function (spe, pokemon) {
-				if (!pokemon.item) {
+				if (!pokemon.item && !pokemon.ignoringAbility()) {
 					return this.chainModify(2);
 				}
 			}

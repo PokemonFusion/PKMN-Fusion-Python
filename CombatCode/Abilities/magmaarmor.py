@@ -10,7 +10,8 @@ def onUpdate(**bvalues):
 
 def onImmunity(**bvalues):
 	"""function (type, pokemon) {
-			if (type === 'frz') return false;
+			if (type === 'frz')
+				return False;
 		}
 	""" 
 	pass

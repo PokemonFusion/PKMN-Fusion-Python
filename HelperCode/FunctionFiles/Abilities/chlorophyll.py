@@ -1,6 +1,6 @@
-def onModifySpe (spe):
-	"""function (spe) {
-			if (this.isWeather(['sunnyday', 'desolateland'])) {
+def onModifySpe (spe, pokemon):
+	"""function (spe, pokemon) {
+			if (['sunnyday', 'desolateland'].includes(pokemon.effectiveWeather())) {
 				return this.chainModify(2);
 			}
 		}

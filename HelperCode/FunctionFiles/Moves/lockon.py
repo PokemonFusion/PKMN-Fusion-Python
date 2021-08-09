@@ -1,7 +1,16 @@
-def onTryHit (target, source):
-	"""function (target, source) {
-			if (source.volatiles['lockon']) return false;
-		}
+def onSourceAccuracy (accuracy, target, source, move):
+	"""function (accuracy, target, source, move) {
+				if (move && source === this.effectState.target && target === this.effectState.source)
+					return true;
+			}
+	""" 
+	pass
+
+def onSourceInvulnerability (target, source, move):
+	"""function (target, source, move) {
+				if (move && source === this.effectState.target && target === this.effectState.source)
+					return 0;
+			}
 	""" 
 	pass
 
@@ -13,9 +22,10 @@ def onHit (target, source):
 	""" 
 	pass
 
-def onSourceAccuracy (accuracy, target, source, move):
-	"""function (accuracy, target, source, move) {
-				if (move && source === this.effectData.target && target === this.effectData.source) return true;
-			}
+def onTryHit (target, source):
+	"""function (target, source) {
+			if (source.volatiles['lockon'])
+				return false;
+		}
 	""" 
 	pass

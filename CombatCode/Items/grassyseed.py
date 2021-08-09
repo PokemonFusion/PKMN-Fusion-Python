@@ -1,7 +1,17 @@
-def onUpdate(**bvalues):
+def onAnyTerrainStart(**bvalues):
+	"""function () {
+			var pokemon = this.effectState.target;
+			if (this.field.isTerrain('grassyterrain')) {
+				pokemon.useItem();
+			}
+		}
+	""" 
+	pass
+
+def onStart(**bvalues):
 	"""function (pokemon) {
-			if (this.isTerrain('grassyterrain') && pokemon.useItem()) {
-				this.boost({def: 1});
+			if (!pokemon.ignoringItem() && this.field.isTerrain('grassyterrain')) {
+				pokemon.useItem();
 			}
 		}
 	""" 

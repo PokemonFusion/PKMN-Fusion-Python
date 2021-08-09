@@ -1,7 +1,7 @@
 def onStart (pokemon):
 	"""function (pokemon) {
 			pokemon.removeVolatile('truant');
-			if (pokemon.activeTurns && (pokemon.moveThisTurnResult !== undefined || !this.willMove(pokemon))) {
+			if (pokemon.activeTurns && (pokemon.moveThisTurnResult !== undefined || !this.queue.willMove(pokemon))) {
 				pokemon.addVolatile('truant');
 			}
 		}
@@ -12,7 +12,7 @@ def onBeforeMove (pokemon):
 	"""function (pokemon) {
 			if (pokemon.removeVolatile('truant')) {
 				this.add('cant', pokemon, 'ability: Truant');
-				return false;
+				return False;
 			}
 			pokemon.addVolatile('truant');
 		}

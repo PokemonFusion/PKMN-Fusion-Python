@@ -1,11 +1,11 @@
 def onHit(**bvalues):
 	"""function (target, source) {
-			let newdef = Math.floor((target.stats.def + source.stats.def) / 2);
-			target.stats.def = newdef;
-			source.stats.def = newdef;
-			let newspd = Math.floor((target.stats.spd + source.stats.spd) / 2);
-			target.stats.spd = newspd;
-			source.stats.spd = newspd;
+			var newdef = Math.floor((target.storedStats.def + source.storedStats.def) / 2);
+			target.storedStats.def = newdef;
+			source.storedStats.def = newdef;
+			var newspd = Math.floor((target.storedStats.spd + source.storedStats.spd) / 2);
+			target.storedStats.spd = newspd;
+			source.storedStats.spd = newspd;
 			this.add('-activate', source, 'move: Guard Split', '[of] ' + target);
 		}
 	""" 

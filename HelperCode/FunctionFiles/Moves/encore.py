@@ -1,33 +1,13 @@
-def onStart (target):
-	"""function (target) {
-				let noEncore = ['assist', 'copycat', 'encore', 'mefirst', 'metronome', 'mimic', 'mirrormove', 'naturepower', 'sketch', 'sleeptalk', 'struggle', 'transform'];
-				let moveIndex = target.lastMove ? target.moves.indexOf(target.lastMove.id) : -1;
-				if (!target.lastMove || target.lastMove.isZ || noEncore.includes(target.lastMove.id) || !target.moveSlots[moveIndex] || target.moveSlots[moveIndex].pp <= 0) {
-					// it failed
-					delete target.volatiles['encore'];
-					return false;
+def onDisableMove (pokemon):
+	"""function (pokemon) {
+				if (!this.effectState.move || !pokemon.hasMove(this.effectState.move)) {
+					return;
 				}
-				this.effectData.move = target.lastMove.id;
-				this.add('-start', target, 'Encore');
-				if (!this.willMove(target)) {
-					this.effectData.duration++;
-				}
-			}
-	""" 
-	pass
-
-def onOverrideAction (pokemon, target, move):
-	"""function (pokemon, target, move) {
-				if (move.id !== this.effectData.move) return this.effectData.move;
-			}
-	""" 
-	pass
-
-def onResidual (target):
-	"""function (target) {
-				if (target.moves.includes(this.effectData.move) && target.moveSlots[target.moves.indexOf(this.effectData.move)].pp <= 0) { // early termination if you run out of PP
-					delete target.volatiles.encore;
-					this.add('-end', target, 'Encore');
+				for (var _i = 0, _a = pokemon.moveSlots; _i < _a.length; _i++) {
+					var moveSlot = _a[_i];
+					if (moveSlot.id !== this.effectState.move) {
+						pokemon.disableMove(moveSlot.id);
+					}
 				}
 			}
 	""" 
@@ -40,15 +20,44 @@ def onEnd (target):
 	""" 
 	pass
 
-def onDisableMove (pokemon):
-	"""function (pokemon) {
-				if (!this.effectData.move || !pokemon.hasMove(this.effectData.move)) {
-					return;
+def onOverrideAction (pokemon, target, move):
+	"""function (pokemon, target, move) {
+				if (move.id !== this.effectState.move)
+					return this.effectState.move;
+			}
+	""" 
+	pass
+
+def onResidual (target):
+	"""function (target) {
+				if (target.moves.includes(this.effectState.move) &&
+					target.moveSlots[target.moves.indexOf(this.effectState.move)].pp <= 0) {
+					// early termination if you run out of PP
+					target.removeVolatile('encore');
 				}
-				for (const moveSlot of pokemon.moveSlots) {
-					if (moveSlot.id !== this.effectData.move) {
-						pokemon.disableMove(moveSlot.id);
-					}
+			}
+	""" 
+	pass
+
+def onStart (target):
+	"""function (target) {
+				var noEncore = [
+					'assist', 'copycat', 'encore', 'mefirst', 'metronome', 'mimic', 'mirrormove', 'naturepower', 'sketch', 'sleeptalk', 'struggle', 'transform',
+				];
+				var move = target.lastMove;
+				if (!move || target.volatiles['dynamax'])
+					return false;
+				if (move.isMax && move.baseMove)
+					move = this.dex.moves.get(move.baseMove);
+				var moveIndex = target.moves.indexOf(move.id);
+				if (move.isZ || noEncore.includes(move.id) || !target.moveSlots[moveIndex] || target.moveSlots[moveIndex].pp <= 0) {
+					// it failed
+					return false;
+				}
+				this.effectState.move = move.id;
+				this.add('-start', target, 'Encore');
+				if (!this.queue.willMove(target)) {
+					this.effectState.duration++;
 				}
 			}
 	""" 

@@ -1,7 +1,7 @@
-def onAllyModifyMove (move):
-	"""function (move) {
-			if (typeof move.accuracy === 'number') {
-				move.accuracy *= 1.1;
+def onAnyModifyAccuracy (accuracy, target, source):
+	"""function (accuracy, target, source) {
+			if (source.isAlly(this.effectState.target) && typeof accuracy === 'number') {
+				return this.chainModify([4506, 4096]);
 			}
 		}
 	""" 

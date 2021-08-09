@@ -1,7 +1,7 @@
 def basePowerCallback(**bvalues):
 	"""function (pokemon, target, move) {
 			// You can't get here unless the pursuit succeeds
-			if (target.beingCalledBack) {
+			if (target.beingCalledBack || target.switchFlag) {
 				this.debug('Pursuit damage boost');
 				return move.basePower * 2;
 			}
@@ -12,21 +12,56 @@ def basePowerCallback(**bvalues):
 
 def beforeTurnCallback(**bvalues):
 	"""function (pokemon) {
-			for (const side of this.sides) {
-				if (side === pokemon.side) continue;
+			for (var _i = 0, _a = this.sides; _i < _a.length; _i++) {
+				var side = _a[_i];
+				if (side.hasAlly(pokemon))
+					continue;
 				side.addSideCondition('pursuit', pokemon);
-				if (!side.sideConditions['pursuit'].sources) {
-					side.sideConditions['pursuit'].sources = [];
+				var data = side.getSideConditionData('pursuit');
+				if (!data.sources) {
+					data.sources = [];
 				}
-				side.sideConditions['pursuit'].sources.push(pokemon);
+				data.sources.push(pokemon);
 			}
 		}
 	""" 
 	pass
 
+def onBeforeSwitchOut(**bvalues):
+	"""function (pokemon) {
+				this.debug('Pursuit start');
+				var alreadyAdded = false;
+				pokemon.removeVolatile('destinybond');
+				for (var _i = 0, _a = this.effectState.sources; _i < _a.length; _i++) {
+					var source = _a[_i];
+					if (!this.queue.cancelMove(source) || !source.hp)
+						continue;
+					if (!alreadyAdded) {
+						this.add('-activate', pokemon, 'move: Pursuit');
+						alreadyAdded = true;
+					}
+					// Run through each action in queue to check if the Pursuit user is supposed to Mega Evolve this turn.
+					// If it is, then Mega Evolve before moving.
+					if (source.canMegaEvo || source.canUltraBurst) {
+						for (var _b = 0, _c = this.queue.entries(); _b < _c.length; _b++) {
+							var _d = _c[_b], actionIndex = _d[0], action = _d[1];
+							if (action.pokemon === source && action.choice === 'megaEvo') {
+								this.actions.runMegaEvo(source);
+								this.queue.list.splice(actionIndex, 1);
+								break;
+							}
+						}
+					}
+					this.actions.runMove('pursuit', source, source.getLocOf(pokemon));
+				}
+			}
+	""" 
+	pass
+
 def onModifyMove(**bvalues):
 	"""function (move, source, target) {
-			if (target && target.beingCalledBack) move.accuracy = true;
+			if ((target === null || target === void 0 ? void 0 : target.beingCalledBack) || (target === null || target === void 0 ? void 0 : target.switchFlag))
+				move.accuracy = true;
 		}
 	""" 
 	pass
@@ -35,32 +70,5 @@ def onTryHit(**bvalues):
 	"""function (target, pokemon) {
 			target.side.removeSideCondition('pursuit');
 		}
-	""" 
-	pass
-
-def onBeforeSwitchOut(**bvalues):
-	"""function (pokemon) {
-				this.debug('Pursuit start');
-				let alreadyAdded = false;
-				for (const source of this.effectData.sources) {
-					if (!this.cancelMove(source) || !source.hp) continue;
-					if (!alreadyAdded) {
-						this.add('-activate', pokemon, 'move: Pursuit');
-						alreadyAdded = true;
-					}
-					// Run through each action in queue to check if the Pursuit user is supposed to Mega Evolve this turn.
-					// If it is, then Mega Evolve before moving.
-					if (source.canMegaEvo || source.canUltraBurst) {
-						for (const [actionIndex, action] of this.queue.entries()) {
-							if (action.pokemon === source && action.choice === 'megaEvo') {
-								this.runMegaEvo(source);
-								this.queue.splice(actionIndex, 1);
-								break;
-							}
-						}
-					}
-					this.runMove('pursuit', source, this.getTargetLoc(pokemon, source));
-				}
-			}
 	""" 
 	pass

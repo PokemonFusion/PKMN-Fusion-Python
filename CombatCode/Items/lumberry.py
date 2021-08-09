@@ -1,8 +1,6 @@
-def onUpdate(**bvalues):
-	"""function (pokemon) {
-			if (pokemon.status || pokemon.volatiles['confusion']) {
-				pokemon.eatItem();
-			}
+def onAfterSetStatus(**bvalues):
+	"""function (status, pokemon) {
+			pokemon.eatItem();
 		}
 	""" 
 	pass
@@ -11,6 +9,15 @@ def onEat(**bvalues):
 	"""function (pokemon) {
 			pokemon.cureStatus();
 			pokemon.removeVolatile('confusion');
+		}
+	""" 
+	pass
+
+def onUpdate(**bvalues):
+	"""function (pokemon) {
+			if (pokemon.status || pokemon.volatiles['confusion']) {
+				pokemon.eatItem();
+			}
 		}
 	""" 
 	pass

@@ -1,7 +1,7 @@
 def onModifyPriority (priority, pokemon, target, move):
 	"""function (priority, pokemon, target, move) {
-			if (move && move.category === 'Status') {
-				move.pranksterBoosted = true;
+			if ((move === null || move === void 0 ? void 0 : move.category) === 'Status') {
+				move.pranksterBoosted = True;
 				return priority + 1;
 			}
 		}

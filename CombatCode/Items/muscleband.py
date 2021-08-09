@@ -1,7 +1,7 @@
 def onBasePower(**bvalues):
 	"""function (basePower, user, target, move) {
 			if (move.category === 'Physical') {
-				return this.chainModify([0x1199, 0x1000]);
+				return this.chainModify([4505, 4096]);
 			}
 		}
 	""" 

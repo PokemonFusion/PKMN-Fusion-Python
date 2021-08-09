@@ -2,7 +2,8 @@ def onAllyTryAddVolatile (status, target, source, effect):
 	"""function (status, target, source, effect) {
 			if (['attract', 'disable', 'encore', 'healblock', 'taunt', 'torment'].includes(status.id)) {
 				if (effect.effectType === 'Move') {
-					this.add('-activate', this.effectData.target, 'ability: Aroma Veil', '[of] ' + target);
+					var effectHolder = this.effectState.target;
+					this.add('-block', target, 'ability: Aroma Veil', '[of] ' + effectHolder);
 				}
 				return null;
 			}

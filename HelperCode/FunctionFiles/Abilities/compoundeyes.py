@@ -1,8 +1,9 @@
 def onSourceModifyAccuracy (accuracy):
 	"""function (accuracy) {
-			if (typeof accuracy !== 'number') return;
+			if (typeof accuracy !== 'number')
+				return;
 			this.debug('compoundeyes - enhancing accuracy');
-			return accuracy * 1.3;
+			return this.chainModify([5325, 4096]);
 		}
 	""" 
 	pass

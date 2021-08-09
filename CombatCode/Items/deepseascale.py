@@ -1,6 +1,6 @@
 def onModifySpD(**bvalues):
 	"""function (spd, pokemon) {
-			if (pokemon.baseTemplate.species === 'Clamperl') {
+			if (pokemon.baseSpecies.name === 'Clamperl') {
 				return this.chainModify(2);
 			}
 		}

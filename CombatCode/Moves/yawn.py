@@ -1,9 +1,8 @@
-def onTryHit(**bvalues):
+def onEnd(**bvalues):
 	"""function (target) {
-			if (target.status || !target.runStatusImmunity('slp')) {
-				return false;
+				this.add('-end', target, 'move: Yawn', '[silent]');
+				target.trySetStatus('slp', this.effectState.source);
 			}
-		}
 	""" 
 	pass
 
@@ -14,10 +13,11 @@ def onStart(**bvalues):
 	""" 
 	pass
 
-def onEnd(**bvalues):
+def onTryHit(**bvalues):
 	"""function (target) {
-				this.add('-end', target, 'move: Yawn', '[silent]');
-				target.trySetStatus('slp');
+			if (target.status || !target.runStatusImmunity('slp')) {
+				return false;
 			}
+		}
 	""" 
 	pass

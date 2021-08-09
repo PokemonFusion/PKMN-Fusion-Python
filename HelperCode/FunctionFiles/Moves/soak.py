@@ -1,6 +1,8 @@
 def onHit (target):
 	"""function (target) {
-			if (!target.setType('Water')) {
+			if (target.getTypes().join() === 'Water' || !target.setType('Water')) {
+				// Soak should animate even when it fails.
+				// Returning false would suppress the animation.
 				this.add('-fail', target);
 				return null;
 			}

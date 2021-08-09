@@ -1,11 +1,9 @@
 def onSourceTryPrimaryHit(**bvalues):
 	"""function (target, source, move) {
-			if (target === source || move.category === 'Status') return;
-			if (move.type === 'Dragon') {
-				if (source.useItem()) {
-					this.add('-enditem', source, 'Dragon Gem', '[from] gem', '[move] ' + move.name);
-					source.addVolatile('gem');
-				}
+			if (target === source || move.category === 'Status')
+				return;
+			if (move.type === 'Dragon' && source.useItem()) {
+				source.addVolatile('gem');
 			}
 		}
 	""" 

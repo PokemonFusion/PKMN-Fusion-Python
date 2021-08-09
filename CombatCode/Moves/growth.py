@@ -1,6 +1,7 @@
 def onModifyMove(**bvalues):
-	"""function (move) {
-			if (this.isWeather(['sunnyday', 'desolateland'])) move.boosts = {atk: 2, spa: 2};
+	"""function (move, pokemon) {
+			if (['sunnyday', 'desolateland'].includes(pokemon.effectiveWeather()))
+				move.boosts = { atk: 2, spa: 2 };
 		}
 	""" 
 	pass

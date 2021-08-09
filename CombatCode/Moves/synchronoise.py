@@ -1,9 +1,6 @@
-def onTryHit(**bvalues):
+def onTryImmunity(**bvalues):
 	"""function (target, source) {
-			if (!target.hasType(source.getTypes())) {
-				this.add('-immune', target);
-				return null;
-			}
+			return target.hasType(source.getTypes());
 		}
 	""" 
 	pass

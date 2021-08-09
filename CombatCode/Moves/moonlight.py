@@ -1,12 +1,19 @@
 def onHit(**bvalues):
 	"""function (pokemon) {
-			if (this.isWeather(['sunnyday', 'desolateland'])) {
-				return this.heal(this.modify(pokemon.maxhp, 0.667));
-			} else if (this.isWeather(['raindance', 'primordialsea', 'sandstorm', 'hail'])) {
-				return this.heal(this.modify(pokemon.maxhp, 0.25));
-			} else {
-				return this.heal(this.modify(pokemon.maxhp, 0.5));
+			var factor = 0.5;
+			switch (pokemon.effectiveWeather()) {
+				case 'sunnyday':
+				case 'desolateland':
+					factor = 0.667;
+					break;
+				case 'raindance':
+				case 'primordialsea':
+				case 'sandstorm':
+				case 'hail':
+					factor = 0.25;
+					break;
 			}
+			return !!this.heal(this.modify(pokemon.maxhp, factor));
 		}
 	""" 
 	pass

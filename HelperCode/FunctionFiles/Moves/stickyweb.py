@@ -1,4 +1,4 @@
-def onStart (side):
+def onSideStart (side):
 	"""function (side) {
 				this.add('-sidestart', side, 'move: Sticky Web');
 			}
@@ -7,9 +7,12 @@ def onStart (side):
 
 def onSwitchIn (pokemon):
 	"""function (pokemon) {
-				if (!pokemon.isGrounded()) return;
+				if (!pokemon.isGrounded())
+					return;
+				if (pokemon.hasItem('heavydutyboots'))
+					return;
 				this.add('-activate', pokemon, 'move: Sticky Web');
-				this.boost({spe: -1}, pokemon, pokemon.side.foe.active[0], this.getMove('stickyweb'));
+				this.boost({ spe: -1 }, pokemon, this.effectState.source, this.dex.getActiveMove('stickyweb'));
 			}
 	""" 
 	pass
