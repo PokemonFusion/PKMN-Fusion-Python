@@ -1,10 +1,15 @@
-def onAfterDamage(**bvalues):
+def onDamagingHit(**bvalues):
 	"""function (damage, target, source, move) {
-			if (source && source.hp && source !== target && move && move.category === 'Special') {
+			if (move.category === 'Special' && source.hp && source.isActive) {
 				if (target.eatItem()) {
-					this.damage(source.maxhp / 8, source, target);
+					this.damage(source.baseMaxhp / (target.hasAbility('ripen') ? 4 : 8), source, target);
 				}
 			}
 		}
+	""" 
+	pass
+
+def onEat(**bvalues):
+	"""function () { }
 	""" 
 	pass

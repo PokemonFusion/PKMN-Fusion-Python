@@ -1,12 +1,13 @@
 def onHit (target):
 	"""function (target) {
-			if (target.side.active.length < 2) return false; // fails in singles
-			let action = this.willMove(target);
+			if (target.side.active.length < 2)
+				return false; // fails in singles
+			var action = this.queue.willMove(target);
 			if (action) {
-				this.cancelMove(target);
-				this.queue.unshift(action);
+				this.queue.prioritizeAction(action);
 				this.add('-activate', target, 'move: After You');
-			} else {
+			}
+			else {
 				return false;
 			}
 		}

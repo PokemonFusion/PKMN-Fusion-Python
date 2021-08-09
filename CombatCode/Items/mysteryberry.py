@@ -1,25 +1,14 @@
-def onUpdate(**bvalues):
-	"""function (pokemon) {
-			if (!pokemon.hp) return;
-			let moveSlot = pokemon.lastMove && pokemon.getMoveData(pokemon.lastMove.id);
-			if (moveSlot && moveSlot.pp === 0) {
-				pokemon.addVolatile('leppaberry');
-				pokemon.volatiles['leppaberry'].moveSlot = moveSlot;
-				pokemon.eatItem();
-			}
-		}
-	""" 
-	pass
-
 def onEat(**bvalues):
 	"""function (pokemon) {
-			let moveSlot;
+			var moveSlot;
 			if (pokemon.volatiles['leppaberry']) {
 				moveSlot = pokemon.volatiles['leppaberry'].moveSlot;
 				pokemon.removeVolatile('leppaberry');
-			} else {
-				let pp = 99;
-				for (const possibleMoveSlot of pokemon.moveSlots) {
+			}
+			else {
+				var pp = 99;
+				for (var _i = 0, _a = pokemon.moveSlots; _i < _a.length; _i++) {
+					var possibleMoveSlot = _a[_i];
 					if (possibleMoveSlot.pp < pp) {
 						moveSlot = possibleMoveSlot;
 						pp = moveSlot.pp;
@@ -27,21 +16,23 @@ def onEat(**bvalues):
 				}
 			}
 			moveSlot.pp += 5;
-			if (moveSlot.pp > moveSlot.maxpp) moveSlot.pp = moveSlot.maxpp;
+			if (moveSlot.pp > moveSlot.maxpp)
+				moveSlot.pp = moveSlot.maxpp;
 			this.add('-activate', pokemon, 'item: Mystery Berry', moveSlot.move);
-			if (pokemon.item !== 'leppaberry') {
-				let foeActive = pokemon.side.foe.active;
-				let foeIsStale = False;
-				for (let i = 0; i < foeActive.length; i++) {
-					if (foeActive[i].isStale >= 2) {
-						foeIsStale = True;
-						break;
-					}
-				}
-				if (!foeIsStale) return;
+		}
+	""" 
+	pass
+
+def onUpdate(**bvalues):
+	"""function (pokemon) {
+			if (!pokemon.hp)
+				return;
+			var moveSlot = pokemon.lastMove && pokemon.getMoveData(pokemon.lastMove.id);
+			if (moveSlot && moveSlot.pp === 0) {
+				pokemon.addVolatile('leppaberry');
+				pokemon.volatiles['leppaberry'].moveSlot = moveSlot;
+				pokemon.eatItem();
 			}
-			pokemon.isStale = 2;
-			pokemon.isStaleSource = 'useleppa';
 		}
 	""" 
 	pass

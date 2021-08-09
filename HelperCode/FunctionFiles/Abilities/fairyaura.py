@@ -1,5 +1,7 @@
 def onStart (pokemon):
 	"""function (pokemon) {
+			if (this.suppressingAbility(pokemon))
+				return;
 			this.add('-ability', pokemon, 'Fairy Aura');
 		}
 	""" 
@@ -7,10 +9,13 @@ def onStart (pokemon):
 
 def onAnyBasePower (basePower, source, target, move):
 	"""function (basePower, source, target, move) {
-			if (target === source || move.category === 'Status' || move.type !== 'Fairy') return;
-			if (!move.auraBooster) move.auraBooster = this.effectData.target;
-			if (move.auraBooster !== this.effectData.target) return;
-			return this.chainModify([move.hasAuraBreak ? 0x0C00 : 0x1547, 0x1000]);
+			if (target === source || move.category === 'Status' || move.type !== 'Fairy')
+				return;
+			if (!move.auraBooster)
+				move.auraBooster = this.effectState.target;
+			if (move.auraBooster !== this.effectState.target)
+				return;
+			return this.chainModify([move.hasAuraBreak ? 3072 : 5448, 4096]);
 		}
 	""" 
 	pass

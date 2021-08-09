@@ -1,7 +1,7 @@
 def onDamage (damage, target, source, effect):
 	"""function (damage, target, source, effect) {
 			if (effect && effect.id === 'stealthrock') {
-				return false;
+				return False;
 			}
 		}
 	""" 

@@ -1,15 +1,17 @@
-def onSourceFaint(**bvalues):
-	"""function (target, source, effect) {
+def onSourceAfterFaint(**bvalues):
+	"""function (length, target, source, effect) {
+			var _a;
 			if (effect && effect.effectType === 'Move') {
-				let stat = 'atk';
-				let bestStat = 0;
-				for (let i in source.stats) {
-					if (source.stats[i] > bestStat) {
-						stat = i;
-						bestStat = source.stats[i];
+				var statName = 'atk';
+				var bestStat = 0;
+				var s = void 0;
+				for (s in source.storedStats) {
+					if (source.storedStats[s] > bestStat) {
+						statName = s;
+						bestStat = source.storedStats[s];
 					}
 				}
-				this.boost({[stat]: 1}, source);
+				this.boost((_a = {}, _a[statName] = length, _a), source);
 			}
 		}
 	""" 

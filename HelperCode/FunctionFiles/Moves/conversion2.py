@@ -1,13 +1,15 @@
 def onHit (target, source):
 	"""function (target, source) {
-			if (!target.lastMove) {
+			if (!target.lastMoveUsed) {
 				return false;
 			}
-			let possibleTypes = [];
-			let attackType = target.lastMove.type;
-			for (let type in this.data.TypeChart) {
-				if (source.hasType(type)) continue;
-				let typeCheck = this.data.TypeChart[type].damageTaken[attackType];
+			var possibleTypes = [];
+			var attackType = target.lastMoveUsed.type;
+			for (var _i = 0, _a = this.dex.types.names(); _i < _a.length; _i++) {
+				var type = _a[_i];
+				if (source.hasType(type))
+					continue;
+				var typeCheck = this.dex.types.get(type).damageTaken[attackType];
 				if (typeCheck === 2 || typeCheck === 3) {
 					possibleTypes.push(type);
 				}
@@ -15,9 +17,9 @@ def onHit (target, source):
 			if (!possibleTypes.length) {
 				return false;
 			}
-			let randomType = this.sample(possibleTypes);
-
-			if (!source.setType(randomType)) return false;
+			var randomType = this.sample(possibleTypes);
+			if (!source.setType(randomType))
+				return false;
 			this.add('-start', source, 'typechange', randomType);
 		}
 	""" 

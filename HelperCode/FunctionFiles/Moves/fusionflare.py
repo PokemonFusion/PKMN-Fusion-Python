@@ -1,10 +1,8 @@
 def onBasePower (basePower, pokemon):
 	"""function (basePower, pokemon) {
-			for (const active of pokemon.side.active) {
-				if (active && active.moveThisTurn === 'fusionbolt') {
-					this.debug('double power');
-					return this.chainModify(2);
-				}
+			if (this.lastSuccessfulMoveThisTurn === 'fusionbolt') {
+				this.debug('double power');
+				return this.chainModify(2);
 			}
 		}
 	""" 

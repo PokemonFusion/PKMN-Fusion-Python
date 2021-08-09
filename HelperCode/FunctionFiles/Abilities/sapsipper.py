@@ -1,7 +1,7 @@
 def onTryHit (target, source, move):
 	"""function (target, source, move) {
 			if (target !== source && move.type === 'Grass') {
-				if (!this.boost({atk: 1})) {
+				if (!this.boost({ atk: 1 })) {
 					this.add('-immune', target, '[from] ability: Sap Sipper');
 				}
 				return null;
@@ -12,9 +12,10 @@ def onTryHit (target, source, move):
 
 def onAllyTryHitSide (target, source, move):
 	"""function (target, source, move) {
-			if (target === this.effectData.target || target.side !== source.side) return;
+			if (source === this.effectState.target || !target.isAlly(source))
+				return;
 			if (move.type === 'Grass') {
-				this.boost({atk: 1}, this.effectData.target);
+				this.boost({ atk: 1 }, this.effectState.target);
 			}
 		}
 	""" 

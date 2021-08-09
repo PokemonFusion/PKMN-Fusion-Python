@@ -1,13 +1,13 @@
-def onStart (side):
+def onSideEnd (side):
 	"""function (side) {
-				this.add('-sidestart', side, 'move: Lucky Chant'); // "The Lucky Chant shielded [side.name]'s team from critical hits!"
+				this.add('-sideend', side, 'move: Lucky Chant'); // "[side.name]'s team's Lucky Chant wore off!"
 			}
 	""" 
 	pass
 
-def onEnd (side):
+def onSideStart (side):
 	"""function (side) {
-				this.add('-sideend', side, 'move: Lucky Chant'); // "[side.name]'s team's Lucky Chant wore off!"
+				this.add('-sidestart', side, 'move: Lucky Chant'); // "The Lucky Chant shielded [side.name]'s team from critical hits!"
 			}
 	""" 
 	pass

@@ -1,7 +1,10 @@
-def onTryHit (target):
-	"""function (target) {
-			if (!this.willMove(target) && target.activeTurns) return false;
-		}
+def onModifyType (move):
+	"""function (move) {
+				if (move.id !== 'struggle') {
+					this.debug('Electrify making move type electric');
+					move.type = 'Electric';
+				}
+			}
 	""" 
 	pass
 
@@ -12,10 +15,10 @@ def onStart (target):
 	""" 
 	pass
 
-def onModifyMove (move):
-	"""function (move) {
-				this.debug('Electrify making move type electric');
-				move.type = 'Electric';
-			}
+def onTryHit (target):
+	"""function (target) {
+			if (!this.queue.willMove(target) && target.activeTurns)
+				return false;
+		}
 	""" 
 	pass

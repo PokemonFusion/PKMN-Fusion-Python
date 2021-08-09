@@ -1,7 +1,7 @@
 def onTryHit (target, source, move):
 	"""function (target, source, move) {
 			if (target !== source && move.type === 'Electric') {
-				if (!this.boost({spa: 1})) {
+				if (!this.boost({ spa: 1 })) {
 					this.add('-immune', target, '[from] ability: Lightning Rod');
 				}
 				return null;
@@ -12,12 +12,16 @@ def onTryHit (target, source, move):
 
 def onAnyRedirectTarget (target, source, source2, move):
 	"""function (target, source, source2, move) {
-			if (move.type !== 'Electric' || ['firepledge', 'grasspledge', 'waterpledge'].includes(move.id)) return;
-			if (this.validTarget(this.effectData.target, source, move.target)) {
-				if (this.effectData.target !== target) {
-					this.add('-activate', this.effectData.target, 'ability: Lightning Rod');
+			if (move.type !== 'Electric' || ['firepledge', 'grasspledge', 'waterpledge'].includes(move.id))
+				return;
+			var redirectTarget = ['randomNormal', 'adjacentFoe'].includes(move.target) ? 'normal' : move.target;
+			if (this.validTarget(this.effectState.target, source, redirectTarget)) {
+				if (move.smartTarget)
+					move.smartTarget = False;
+				if (this.effectState.target !== target) {
+					this.add('-activate', this.effectState.target, 'ability: Lightning Rod');
 				}
-				return this.effectData.target;
+				return this.effectState.target;
 			}
 		}
 	""" 

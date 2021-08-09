@@ -1,15 +1,16 @@
-def onHitSide (side, source):
-	"""function (side, source) {
-			let targets = [];
-			for (let p in side.active) {
-				if (side.active[p].hasAbility(['plus', 'minus'])) {
-					targets.push(side.active[p]);
-				}
+def onHitSide (side, source, move):
+	"""function (side, source, move) {
+			var _this = this;
+			var targets = side.allies().filter(function (ally) { return (ally.hasAbility(['plus', 'minus']) &&
+				(!ally.volatiles['maxguard'] || _this.runEvent('TryHit', ally, source, move))); });
+			if (!targets.length)
+				return false;
+			var didSomething = false;
+			for (var _i = 0, targets_3 = targets; _i < targets_3.length; _i++) {
+				var target = targets_3[_i];
+				didSomething = this.boost({ def: 1, spd: 1 }, target, source, move, false, true) || didSomething;
 			}
-			if (!targets.length) return false;
-			for (const target of targets) {
-				this.boost({def: 1, spd: 1}, target, source, 'move: Magnetic Flux');
-			}
+			return didSomething;
 		}
 	""" 
 	pass

@@ -1,12 +1,11 @@
 def effect(**bvalues):
 	"""function (pokemon) {
-				let activate = False;
-				/**@type {{[k: string]: number}} */
-				let boosts = {};
-				for (let i in pokemon.boosts) {
-					// @ts-ignore
+				var activate = false;
+				var boosts = {};
+				var i;
+				for (i in pokemon.boosts) {
 					if (pokemon.boosts[i] < 0) {
-						activate = True;
+						activate = true;
 						boosts[i] = 0;
 					}
 				}
@@ -20,13 +19,12 @@ def effect(**bvalues):
 
 def onUpdate(**bvalues):
 	"""function (pokemon) {
-			let activate = False;
-			/**@type {{[k: string]: number}} */
-			let boosts = {};
-			for (let i in pokemon.boosts) {
-				// @ts-ignore
+			var activate = false;
+			var boosts = {};
+			var i;
+			for (i in pokemon.boosts) {
 				if (pokemon.boosts[i] < 0) {
-					activate = True;
+					activate = true;
 					boosts[i] = 0;
 				}
 			}

@@ -1,7 +1,7 @@
-def onHit(**bvalues):
-	"""function (target, source, move) {
-			if (target.hp && move.category !== 'Status' && !move.damage && !move.damageCallback && move.typeMod > 0 && target.useItem()) {
-				this.boost({atk: 2, spa: 2});
+def onDamagingHit(**bvalues):
+	"""function (damage, target, source, move) {
+			if (!move.damage && !move.damageCallback && target.getMoveHitData(move).typeMod > 0) {
+				target.useItem();
 			}
 		}
 	""" 

@@ -1,6 +1,7 @@
 def basePowerCallback(**bvalues):
 	"""function (pokemon, target, move) {
-			if (target.status === 'par') return move.basePower * 2;
+			if (target.status === 'par')
+				return move.basePower * 2;
 			return move.basePower;
 		}
 	""" 
@@ -8,7 +9,8 @@ def basePowerCallback(**bvalues):
 
 def onHit(**bvalues):
 	"""function (target) {
-			if (target.status === 'par') target.cureStatus();
+			if (target.status === 'par')
+				target.cureStatus();
 		}
 	""" 
 	pass

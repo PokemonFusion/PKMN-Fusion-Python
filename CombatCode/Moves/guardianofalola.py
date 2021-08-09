@@ -1,10 +1,12 @@
 def damageCallback(**bvalues):
 	"""function (pokemon, target) {
-			if (target.volatiles['banefulbunker'] || target.volatiles['kingsshield'] || target.side.sideConditions['matblock'] || target.volatiles['protect'] || target.volatiles['spikyshield']) {
+			var hp75 = Math.floor(target.getUndynamaxedHP() * 3 / 4);
+			if (target.volatiles['protect'] || target.volatiles['banefulbunker'] || target.volatiles['kingsshield'] ||
+				target.volatiles['spikyshield'] || target.side.getSideCondition('matblock')) {
 				this.add('-zbroken', target);
-				return this.clampIntRange(Math.ceil(Math.floor(target.hp * 3 / 4) / 4 - 0.5), 1);
+				return this.clampIntRange(Math.ceil(hp75 / 4 - 0.5), 1);
 			}
-			return this.clampIntRange(Math.floor(target.hp * 3 / 4), 1);
+			return this.clampIntRange(hp75, 1);
 		}
 	""" 
 	pass

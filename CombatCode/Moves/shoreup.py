@@ -1,10 +1,10 @@
 def onHit(**bvalues):
 	"""function (pokemon) {
-			if (this.isWeather('sandstorm')) {
-				return this.heal(this.modify(pokemon.maxhp, 0.667));
-			} else {
-				return this.heal(this.modify(pokemon.maxhp, 0.5));
+			var factor = 0.5;
+			if (this.field.isWeather('sandstorm')) {
+				factor = 0.667;
 			}
+			return !!this.heal(this.modify(pokemon.maxhp, factor));
 		}
 	""" 
 	pass

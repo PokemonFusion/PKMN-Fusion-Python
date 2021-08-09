@@ -1,10 +1,8 @@
 def onTry(**bvalues):
 	"""function (source, target) {
-			target.side.addSideCondition('futuremove');
-			if (target.side.sideConditions['futuremove'].positions[target.position]) {
+			if (!target.side.addSlotCondition(target, 'futuremove'))
 				return false;
-			}
-			target.side.sideConditions['futuremove'].positions[target.position] = {
+			Object.assign(target.side.slotConditions[target.position]['futuremove'], {
 				duration: 3,
 				move: 'futuresight',
 				source: source,
@@ -21,9 +19,9 @@ def onTry(**bvalues):
 					isFutureMove: true,
 					type: 'Psychic',
 				},
-			};
+			});
 			this.add('-start', source, 'move: Future Sight');
-			return null;
+			return this.NOT_FAIL;
 		}
 	""" 
 	pass

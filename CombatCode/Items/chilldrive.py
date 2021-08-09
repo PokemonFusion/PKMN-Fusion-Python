@@ -1,9 +1,9 @@
 def onTakeItem(**bvalues):
 	"""function (item, pokemon, source) {
-			if ((source && source.baseTemplate.num === 649) || pokemon.baseTemplate.num === 649) {
-				return False;
+			if ((source && source.baseSpecies.num === 649) || pokemon.baseSpecies.num === 649) {
+				return false;
 			}
-			return True;
+			return true;
 		}
 	""" 
 	pass

@@ -1,18 +1,15 @@
 def onHit (target, source):
 	"""function (target, source) {
-			let targetBoosts = {};
-			let sourceBoosts = {};
-
-			for (const stat of ['def', 'spd']) {
-				// @ts-ignore
+			var targetBoosts = {};
+			var sourceBoosts = {};
+			var defSpd = ['def', 'spd'];
+			for (var _i = 0, defSpd_1 = defSpd; _i < defSpd_1.length; _i++) {
+				var stat = defSpd_1[_i];
 				targetBoosts[stat] = target.boosts[stat];
-				// @ts-ignore
 				sourceBoosts[stat] = source.boosts[stat];
 			}
-
 			source.setBoost(targetBoosts);
 			target.setBoost(sourceBoosts);
-
 			this.add('-swapboost', source, target, 'def, spd', '[from] move: Guard Swap');
 		}
 	""" 

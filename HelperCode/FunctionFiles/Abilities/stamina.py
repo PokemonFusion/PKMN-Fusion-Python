@@ -1,8 +1,6 @@
-def onAfterDamage (damage, target, source, effect):
+def onDamagingHit (damage, target, source, effect):
 	"""function (damage, target, source, effect) {
-			if (effect && effect.effectType === 'Move' && effect.id !== 'confused') {
-				this.boost({def: 1});
-			}
+			this.boost({ def: 1 });
 		}
 	""" 
 	pass

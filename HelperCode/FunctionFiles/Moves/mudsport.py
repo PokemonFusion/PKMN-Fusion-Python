@@ -1,23 +1,23 @@
-def onStart (side, source):
-	"""function (side, source) {
-				this.add('-fieldstart', 'move: Mud Sport', '[of] ' + source);
-			}
-	""" 
-	pass
-
 def onBasePower (basePower, attacker, defender, move):
 	"""function (basePower, attacker, defender, move) {
 				if (move.type === 'Electric') {
 					this.debug('mud sport weaken');
-					return this.chainModify([0x548, 0x1000]);
+					return this.chainModify([1352, 4096]);
 				}
 			}
 	""" 
 	pass
 
-def onEnd ():
+def onFieldEnd ():
 	"""function () {
 				this.add('-fieldend', 'move: Mud Sport');
+			}
+	""" 
+	pass
+
+def onFieldStart (field, source):
+	"""function (field, source) {
+				this.add('-fieldstart', 'move: Mud Sport', '[of] ' + source);
 			}
 	""" 
 	pass

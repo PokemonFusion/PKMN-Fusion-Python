@@ -1,6 +1,6 @@
 def onStart(**bvalues):
 	"""function (source) {
-			this.setTerrain('electricterrain');
+			this.field.setTerrain('electricterrain');
 		}
 	""" 
 	pass

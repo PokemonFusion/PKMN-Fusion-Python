@@ -1,17 +1,18 @@
 def onBasePower(**bvalues):
 	"""function (basePower, pokemon) {
-			let boosted = true;
-			let allActives = pokemon.side.active.concat(pokemon.side.foe.active);
-			for (const target of allActives) {
-				if (target === pokemon) continue;
-				if (this.willMove(target)) {
-					boosted = false;
+			var boosted = True;
+			for (var _i = 0, _a = this.getAllActive(); _i < _a.length; _i++) {
+				var target = _a[_i];
+				if (target === pokemon)
+					continue;
+				if (this.queue.willMove(target)) {
+					boosted = False;
 					break;
 				}
 			}
 			if (boosted) {
 				this.debug('Analytic boost');
-				return this.chainModify([0x14CD, 0x1000]);
+				return this.chainModify([5325, 4096]);
 			}
 		}
 	""" 

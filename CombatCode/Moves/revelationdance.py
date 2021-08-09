@@ -1,7 +1,8 @@
-def onModifyMove(**bvalues):
+def onModifyType(**bvalues):
 	"""function (move, pokemon) {
-			let type = pokemon.types[0];
-			if (type === "Bird") type = "???";
+			var type = pokemon.getTypes()[0];
+			if (type === "Bird")
+				type = "???";
 			move.type = type;
 		}
 	""" 

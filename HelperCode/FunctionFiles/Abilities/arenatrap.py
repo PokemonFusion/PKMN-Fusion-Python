@@ -1,8 +1,9 @@
 def onFoeTrapPokemon (pokemon):
 	"""function (pokemon) {
-			if (!this.isAdjacent(pokemon, this.effectData.target)) return;
+			if (!pokemon.isAdjacent(this.effectState.target))
+				return;
 			if (pokemon.isGrounded()) {
-				pokemon.tryTrap(true);
+				pokemon.tryTrap(True);
 			}
 		}
 	""" 
@@ -10,10 +11,12 @@ def onFoeTrapPokemon (pokemon):
 
 def onFoeMaybeTrapPokemon (pokemon, source):
 	"""function (pokemon, source) {
-			if (!source) source = this.effectData.target;
-			if (!this.isAdjacent(pokemon, source)) return;
+			if (!source)
+				source = this.effectState.target;
+			if (!source || !pokemon.isAdjacent(source))
+				return;
 			if (pokemon.isGrounded(!pokemon.knownType)) { // Negate immunity if the type is unknown
-				pokemon.maybeTrapped = true;
+				pokemon.maybeTrapped = True;
 			}
 		}
 	""" 

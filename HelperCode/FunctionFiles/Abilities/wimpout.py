@@ -1,24 +1,16 @@
-def onAfterMoveSecondary (target, source, move):
-	"""function (target, source, move) {
-			if (!source || source === target || !target.hp || !move.totalDamage) return;
-			if (target.hp <= target.maxhp / 2 && target.hp + move.totalDamage > target.maxhp / 2) {
-				if (!this.canSwitch(target.side) || target.forceSwitchFlag || target.switchFlag) return;
-				target.switchFlag = true;
-				source.switchFlag = false;
-				this.add('-activate', target, 'ability: Wimp Out');
+def onEmergencyExit (target):
+	"""function (target) {
+			if (!this.canSwitch(target.side) || target.forceSwitchFlag || target.switchFlag)
+				return;
+			for (var _i = 0, _a = this.sides; _i < _a.length; _i++) {
+				var side = _a[_i];
+				for (var _b = 0, _c = side.active; _b < _c.length; _b++) {
+					var active = _c[_b];
+					active.switchFlag = False;
+				}
 			}
-		}
-	""" 
-	pass
-
-def onAfterDamage (damage, target, source, effect):
-	"""function (damage, target, source, effect) {
-			if (!target.hp || effect.effectType === 'Move') return;
-			if (target.hp <= target.maxhp / 2 && target.hp + damage > target.maxhp / 2) {
-				if (!this.canSwitch(target.side) || target.forceSwitchFlag || target.switchFlag) return;
-				target.switchFlag = true;
-				this.add('-activate', target, 'ability: Wimp Out');
-			}
+			target.switchFlag = True;
+			this.add('-activate', target, 'ability: Wimp Out');
 		}
 	""" 
 	pass

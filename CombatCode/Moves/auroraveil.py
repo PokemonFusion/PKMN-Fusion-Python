@@ -1,13 +1,6 @@
-def onTryHitSide(**bvalues):
-	"""function () {
-			if (!this.isWeather('hail')) return false;
-		}
-	""" 
-	pass
-
 def durationCallback(**bvalues):
 	"""function (target, source, effect) {
-				if (source && source.hasItem('lightclay')) {
+				if (source === null || source === void 0 ? void 0 : source.hasItem('lightclay')) {
 					return 8;
 				}
 				return 5;
@@ -17,14 +10,15 @@ def durationCallback(**bvalues):
 
 def onAnyModifyDamage(**bvalues):
 	"""function (damage, source, target, move) {
-				if (target !== source && target.side === this.effectData.target) {
-					if ((target.side.sideConditions['reflect'] && this.getCategory(move) === 'Physical') ||
-							(target.side.sideConditions['lightscreen'] && this.getCategory(move) === 'Special')) {
+				if (target !== source && this.effectState.target.hasAlly(target)) {
+					if ((target.side.getSideCondition('reflect') && this.getCategory(move) === 'Physical') ||
+						(target.side.getSideCondition('lightscreen') && this.getCategory(move) === 'Special')) {
 						return;
 					}
-					if (!move.crit && !move.infiltrates) {
+					if (!target.getMoveHitData(move).crit && !move.infiltrates) {
 						this.debug('Aurora Veil weaken');
-						if (target.side.active.length > 1) return this.chainModify([0xAAC, 0x1000]);
+						if (this.activePerHalf > 1)
+							return this.chainModify([2732, 4096]);
 						return this.chainModify(0.5);
 					}
 				}
@@ -32,16 +26,23 @@ def onAnyModifyDamage(**bvalues):
 	""" 
 	pass
 
-def onStart(**bvalues):
+def onSideEnd(**bvalues):
+	"""function (side) {
+				this.add('-sideend', side, 'move: Aurora Veil');
+			}
+	""" 
+	pass
+
+def onSideStart(**bvalues):
 	"""function (side) {
 				this.add('-sidestart', side, 'move: Aurora Veil');
 			}
 	""" 
 	pass
 
-def onEnd(**bvalues):
-	"""function (side) {
-				this.add('-sideend', side, 'move: Aurora Veil');
+def onTry(**bvalues):
+	"""function () {
+			return this.field.isWeather('hail');
 			}
 	""" 
 	pass

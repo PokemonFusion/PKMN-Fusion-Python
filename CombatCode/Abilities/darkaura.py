@@ -1,5 +1,7 @@
 def onStart(**bvalues):
 	"""function (pokemon) {
+			if (this.suppressingAbility(pokemon))
+				return;
 			this.add('-ability', pokemon, 'Dark Aura');
 		}
 	""" 
@@ -7,10 +9,13 @@ def onStart(**bvalues):
 
 def onAnyBasePower(**bvalues):
 	"""function (basePower, source, target, move) {
-			if (target === source || move.category === 'Status' || move.type !== 'Dark') return;
-			if (!move.auraBooster) move.auraBooster = this.effectData.target;
-			if (move.auraBooster !== this.effectData.target) return;
-			return this.chainModify([move.hasAuraBreak ? 0x0C00 : 0x1547, 0x1000]);
+			if (target === source || move.category === 'Status' || move.type !== 'Dark')
+				return;
+			if (!move.auraBooster)
+				move.auraBooster = this.effectState.target;
+			if (move.auraBooster !== this.effectState.target)
+				return;
+			return this.chainModify([move.hasAuraBreak ? 3072 : 5448, 4096]);
 		}
 	""" 
 	pass

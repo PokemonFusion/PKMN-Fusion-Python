@@ -1,16 +1,13 @@
 def damageCallback(**bvalues):
 	"""function (pokemon, target) {
-			return target.hp - pokemon.hp;
+			return target.getUndynamaxedHP() - pokemon.hp;
 		}
 	""" 
 	pass
 
-def onTry(**bvalues):
-	"""function (pokemon, target) {
-			if (pokemon.hp >= target.hp) {
-				this.add('-immune', target);
-				return null;
-			}
+def onTryImmunity(**bvalues):
+	"""function (target, pokemon) {
+			return pokemon.hp < target.hp;
 		}
 	""" 
 	pass

@@ -1,6 +1,6 @@
 def basePowerCallback (pokemon, target):
 	"""function (pokemon, target) {
-			let ratio = pokemon.hp * 48 / pokemon.maxhp;
+			var ratio = pokemon.hp * 48 / pokemon.maxhp;
 			if (ratio < 2) {
 				return 200;
 			}

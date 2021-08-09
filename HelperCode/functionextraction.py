@@ -79,11 +79,12 @@ def fixdict(dicfile):
     with open(os.path.join(basefolder,dicfile), "w+") as filename:
         filename.write(data)
 
+
 makedir(basefolder)
 with open(os.path.join(basefolder, "TODO"), "w+", encoding='utf-8') as todofile:
     pass
 tasks = {"Abilities" : { "dictionary" : BattleAbilities, "file" : "abilitiesdex.py", "dicname" : "BattleAbilities"} ,
-         "Moves": {"dictionary" : BattleMovedex, "file" : "movesdex.py", "dicname" : "BattleMovedex"}
+         "Moves": {"dictionary" : BattleMovedex, "file" : "movesdex.py", "dicname" : "BattleMovedex"},
          "Items": {"dictionary" : BattleItems, "file": "itemsdex.py", "dicname" : "BattleItems"}
          }
 

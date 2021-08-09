@@ -1,6 +1,6 @@
 def onMoveFail (target, source, move):
 	"""function (target, source, move) {
-			this.damage(source.maxhp / 2, source, source, 'highjumpkick');
+			this.damage(source.baseMaxhp / 2, source, source, this.dex.conditions.get('High Jump Kick'));
 		}
 	""" 
 	pass

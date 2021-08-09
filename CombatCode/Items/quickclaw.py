@@ -1,8 +1,8 @@
-def onModifyPriority(**bvalues):
+def onFractionalPriority(**bvalues):
 	"""function (priority, pokemon) {
-			if (this.randomChance(1, 5)) {
+			if (priority <= 0 && this.randomChance(1, 5)) {
 				this.add('-activate', pokemon, 'item: Quick Claw');
-				return Math.round(priority) + 0.1;
+				return 0.1;
 			}
 		}
 	""" 

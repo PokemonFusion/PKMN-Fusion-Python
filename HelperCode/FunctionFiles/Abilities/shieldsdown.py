@@ -1,12 +1,14 @@
 def onStart (pokemon):
 	"""function (pokemon) {
-			if (pokemon.baseTemplate.baseSpecies !== 'Minior' || pokemon.transformed) return;
+			if (pokemon.baseSpecies.baseSpecies !== 'Minior' || pokemon.transformed)
+				return;
 			if (pokemon.hp > pokemon.maxhp / 2) {
-				if (pokemon.template.speciesid === 'minior') {
+				if (pokemon.species.forme !== 'Meteor') {
 					pokemon.formeChange('Minior-Meteor');
 				}
-			} else {
-				if (pokemon.template.speciesid !== 'minior') {
+			}
+			else {
+				if (pokemon.species.forme === 'Meteor') {
 					pokemon.formeChange(pokemon.set.species);
 				}
 			}
@@ -16,13 +18,15 @@ def onStart (pokemon):
 
 def onResidual (pokemon):
 	"""function (pokemon) {
-			if (pokemon.baseTemplate.baseSpecies !== 'Minior' || pokemon.transformed || !pokemon.hp) return;
+			if (pokemon.baseSpecies.baseSpecies !== 'Minior' || pokemon.transformed || !pokemon.hp)
+				return;
 			if (pokemon.hp > pokemon.maxhp / 2) {
-				if (pokemon.template.speciesid === 'minior') {
+				if (pokemon.species.forme !== 'Meteor') {
 					pokemon.formeChange('Minior-Meteor');
 				}
-			} else {
-				if (pokemon.template.speciesid !== 'minior') {
+			}
+			else {
+				if (pokemon.species.forme === 'Meteor') {
 					pokemon.formeChange(pokemon.set.species);
 				}
 			}
@@ -32,18 +36,23 @@ def onResidual (pokemon):
 
 def onSetStatus (status, target, source, effect):
 	"""function (status, target, source, effect) {
-			if (target.template.speciesid !== 'miniormeteor' || target.transformed) return;
-			if (!effect || !effect.status) return false;
-			this.add('-immune', target, '[from] ability: Shields Down');
-			return false;
+			var _a;
+			if (target.species.id !== 'miniormeteor' || target.transformed)
+				return;
+			if ((_a = effect) === null || _a === void 0 ? void 0 : _a.status) {
+				this.add('-immune', target, '[from] ability: Shields Down');
+			}
+			return False;
 		}
 	""" 
 	pass
 
 def onTryAddVolatile (status, target):
 	"""function (status, target) {
-			if (target.template.speciesid !== 'miniormeteor' || target.transformed) return;
-			if (status.id !== 'yawn') return;
+			if (target.species.id !== 'miniormeteor' || target.transformed)
+				return;
+			if (status.id !== 'yawn')
+				return;
 			this.add('-immune', target, '[from] ability: Shields Down');
 			return null;
 		}

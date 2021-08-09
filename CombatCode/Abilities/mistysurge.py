@@ -1,6 +1,6 @@
 def onStart(**bvalues):
 	"""function (source) {
-			this.setTerrain('mistyterrain');
+			this.field.setTerrain('mistyterrain');
 		}
 	""" 
 	pass

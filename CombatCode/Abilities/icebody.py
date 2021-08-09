@@ -1,7 +1,7 @@
 def onWeather(**bvalues):
 	"""function (target, source, effect) {
 			if (effect.id === 'hail') {
-				this.heal(target.maxhp / 16);
+				this.heal(target.baseMaxhp / 16);
 			}
 		}
 	""" 
@@ -9,7 +9,8 @@ def onWeather(**bvalues):
 
 def onImmunity(**bvalues):
 	"""function (type, pokemon) {
-			if (type === 'hail') return false;
+			if (type === 'hail')
+				return False;
 		}
 	""" 
 	pass

@@ -1,17 +1,3 @@
-def onPrepareHit (pokemon):
-	"""function (pokemon) {
-			return !!this.willAct() && this.runEvent('StallMove', pokemon);
-		}
-	""" 
-	pass
-
-def onHit (pokemon):
-	"""function (pokemon) {
-			pokemon.addVolatile('stall');
-		}
-	""" 
-	pass
-
 def onStart (target):
 	"""function (target) {
 				this.add('-singleturn', target, 'Protect');
@@ -22,19 +8,40 @@ def onStart (target):
 def onTryHit (target, source, move):
 	"""function (target, source, move) {
 				if (!move.flags['protect']) {
-					if (move.isZ) move.zBrokeProtect = true;
+					if (['gmaxoneblow', 'gmaxrapidflow'].includes(move.id))
+						return;
+					if (move.isZ || move.isMax)
+						target.getMoveHitData(move).zBrokeProtect = true;
 					return;
 				}
-				this.add('-activate', target, 'move: Protect');
-				source.moveThisTurnResult = true;
-				let lockedmove = source.getVolatile('lockedmove');
+				if (move.smartTarget) {
+					move.smartTarget = false;
+				}
+				else {
+					this.add('-activate', target, 'move: Protect');
+				}
+				var lockedmove = source.getVolatile('lockedmove');
 				if (lockedmove) {
 					// Outrage counter is reset
 					if (source.volatiles['lockedmove'].duration === 2) {
 						delete source.volatiles['lockedmove'];
 					}
 				}
-				return null;
+				return this.NOT_FAIL;
 			}
+	""" 
+	pass
+
+def onHit (pokemon):
+	"""function (pokemon) {
+			pokemon.addVolatile('stall');
+		}
+	""" 
+	pass
+
+def onPrepareHit (pokemon):
+	"""function (pokemon) {
+			return !!this.queue.willAct() && this.runEvent('StallMove', pokemon);
+		}
 	""" 
 	pass

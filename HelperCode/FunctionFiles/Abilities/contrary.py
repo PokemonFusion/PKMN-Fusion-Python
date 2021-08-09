@@ -1,8 +1,9 @@
 def onBoost (boost, target, source, effect):
 	"""function (boost, target, source, effect) {
-			if (effect && effect.id === 'zpower') return;
-			for (let i in boost) {
-				// @ts-ignore
+			if (effect && effect.id === 'zpower')
+				return;
+			var i;
+			for (i in boost) {
 				boost[i] *= -1;
 			}
 		}

@@ -10,15 +10,26 @@ def onUpdate(**bvalues):
 
 def onTryAddVolatile(**bvalues):
 	"""function (status, pokemon) {
-			if (status.id === 'confusion') return null;
+			if (status.id === 'confusion')
+				return null;
 		}
 	""" 
 	pass
 
 def onHit(**bvalues):
 	"""function (target, source, move) {
-			if (move && move.volatileStatus === 'confusion') {
+			if ((move === null || move === void 0 ? void 0 : move.volatileStatus) === 'confusion') {
 				this.add('-immune', target, 'confusion', '[from] ability: Own Tempo');
+			}
+		}
+	""" 
+	pass
+
+def onBoost(**bvalues):
+	"""function (boost, target, source, effect) {
+			if (effect.id === 'intimidate') {
+				delete boost.atk;
+				this.add('-fail', target, 'unboost', 'Attack', '[from] ability: Own Tempo', '[of] ' + target);
 			}
 		}
 	""" 

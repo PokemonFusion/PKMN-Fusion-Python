@@ -1,10 +1,15 @@
 def onHit (target, source):
 	"""function (target, source) {
-			let disallowedMoves = ['chatter', 'mimic', 'sketch', 'struggle', 'transform'];
-			if (source.transformed || !target.lastMove || disallowedMoves.includes(target.lastMove.id) || source.moves.indexOf(target.lastMove.id) >= 0 || target.lastMove.isZ) return false;
-			let mimicIndex = source.moves.indexOf('mimic');
-			if (mimicIndex < 0) return false;
-			let move = this.getMove(target.lastMove.id);
+			var disallowedMoves = ['chatter', 'mimic', 'sketch', 'struggle', 'transform'];
+			var move = target.lastMove;
+			if (source.transformed || !move || disallowedMoves.includes(move.id) || source.moves.includes(move.id)) {
+				return false;
+			}
+			if (move.isZ || move.isMax)
+				return false;
+			var mimicIndex = source.moves.indexOf('mimic');
+			if (mimicIndex < 0)
+				return false;
 			source.moveSlots[mimicIndex] = {
 				move: move.name,
 				id: move.id,

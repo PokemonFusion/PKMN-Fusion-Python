@@ -46,10 +46,13 @@ def onUpdate(**bvalues):
 
 def onSetStatus(**bvalues):
 	"""function (status, target, source, effect) {
-			if (status.id !== 'brn') return;
-			if (!effect || !effect.status) return false;
-			this.add('-immune', target, '[from] ability: Water Bubble');
-			return false;
+			var _a;
+			if (status.id !== 'brn')
+				return;
+			if ((_a = effect) === null || _a === void 0 ? void 0 : _a.status) {
+				this.add('-immune', target, '[from] ability: Water Bubble');
+			}
+			return False;
 		}
 	""" 
 	pass

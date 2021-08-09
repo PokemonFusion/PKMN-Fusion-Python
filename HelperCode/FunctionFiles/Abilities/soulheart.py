@@ -1,6 +1,6 @@
 def onAnyFaint ():
 	"""function () {
-			this.boost({spa: 1}, this.effectData.target);
+			this.boost({ spa: 1 }, this.effectState.target);
 		}
 	""" 
 	pass

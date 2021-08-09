@@ -1,25 +1,30 @@
 def onUpdate (pokemon):
 	"""function (pokemon) {
-			if (pokemon.baseTemplate.baseSpecies !== 'Castform' || pokemon.transformed) return;
-			let forme = null;
-			switch (this.effectiveWeather()) {
-			case 'sunnyday':
-			case 'desolateland':
-				if (pokemon.template.speciesid !== 'castformsunny') forme = 'Castform-Sunny';
-				break;
-			case 'raindance':
-			case 'primordialsea':
-				if (pokemon.template.speciesid !== 'castformrainy') forme = 'Castform-Rainy';
-				break;
-			case 'hail':
-				if (pokemon.template.speciesid !== 'castformsnowy') forme = 'Castform-Snowy';
-				break;
-			default:
-				if (pokemon.template.speciesid !== 'castform') forme = 'Castform';
-				break;
+			if (pokemon.baseSpecies.baseSpecies !== 'Castform' || pokemon.transformed)
+				return;
+			var forme = null;
+			switch (pokemon.effectiveWeather()) {
+				case 'sunnyday':
+				case 'desolateland':
+					if (pokemon.species.id !== 'castformsunny')
+						forme = 'Castform-Sunny';
+					break;
+				case 'raindance':
+				case 'primordialsea':
+					if (pokemon.species.id !== 'castformrainy')
+						forme = 'Castform-Rainy';
+					break;
+				case 'hail':
+					if (pokemon.species.id !== 'castformsnowy')
+						forme = 'Castform-Snowy';
+					break;
+				default:
+					if (pokemon.species.id !== 'castform')
+						forme = 'Castform';
+					break;
 			}
 			if (pokemon.isActive && forme) {
-				pokemon.formeChange(forme, this.effect, false, '[msg]');
+				pokemon.formeChange(forme, this.effect, False, '[msg]');
 			}
 		}
 	""" 

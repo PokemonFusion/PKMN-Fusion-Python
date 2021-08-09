@@ -1,8 +1,41 @@
+def onDamage (damage, target, source, effect):
+	"""function (damage, target, source, effect) {
+			if (effect.effectType === "Move" &&
+				!effect.multihit &&
+				(!effect.negateSecondary && !(effect.hasSheerForce && source.hasAbility('sheerforce')))) {
+				target.abilityState.checkedBerserk = False;
+			}
+			else {
+				target.abilityState.checkedBerserk = True;
+			}
+		}
+	""" 
+	pass
+
+def onTryEatItem (item, pokemon):
+	"""function (item, pokemon) {
+			var healingItems = [
+				'aguavberry', 'enigmaberry', 'figyberry', 'iapapaberry', 'magoberry', 'sitrusberry', 'wikiberry', 'oranberry', 'berryjuice',
+			];
+			if (healingItems.includes(item.id)) {
+				return pokemon.abilityState.checkedBerserk;
+			}
+			return True;
+		}
+	""" 
+	pass
+
 def onAfterMoveSecondary (target, source, move):
 	"""function (target, source, move) {
-			if (!source || source === target || !target.hp || !move.totalDamage) return;
-			if (target.hp <= target.maxhp / 2 && target.hp + move.totalDamage > target.maxhp / 2) {
-				this.boost({spa: 1});
+			target.abilityState.checkedBerserk = True;
+			if (!source || source === target || !target.hp || !move.totalDamage)
+				return;
+			var lastAttackedBy = target.getLastAttackedBy();
+			if (!lastAttackedBy)
+				return;
+			var damage = move.multihit ? move.totalDamage : lastAttackedBy.damage;
+			if (target.hp <= target.maxhp / 2 && target.hp + damage > target.maxhp / 2) {
+				this.boost({ spa: 1 });
 			}
 		}
 	""" 

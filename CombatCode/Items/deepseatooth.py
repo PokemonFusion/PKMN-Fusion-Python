@@ -1,6 +1,6 @@
 def onModifySpA(**bvalues):
 	"""function (spa, pokemon) {
-			if (pokemon.baseTemplate.species === 'Clamperl') {
+			if (pokemon.baseSpecies.name === 'Clamperl') {
 				return this.chainModify(2);
 			}
 		}

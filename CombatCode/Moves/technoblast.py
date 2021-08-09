@@ -1,6 +1,8 @@
-def onModifyMove(**bvalues):
+def onModifyType(**bvalues):
 	"""function (move, pokemon) {
-			move.type = this.runEvent('Drive', pokemon, null, 'technoblast', 'Normal');
+			if (pokemon.ignoringItem())
+				return;
+			move.type = this.runEvent('Drive', pokemon, null, move, 'Normal');
 		}
 	""" 
 	pass

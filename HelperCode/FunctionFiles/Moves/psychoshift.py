@@ -1,6 +1,7 @@
-def onPrepareHit (target, source, move):
+def onTryHit (target, source, move):
 	"""function (target, source, move) {
-			if (!source.status) return false;
+			if (!source.status)
+				return false;
 			move.status = source.status;
 		}
 	""" 

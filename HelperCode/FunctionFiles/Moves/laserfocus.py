@@ -1,14 +1,6 @@
-def onStart (pokemon):
+def onEnd (pokemon):
 	"""function (pokemon) {
-				this.add('-start', pokemon, 'move: Laser Focus');
-			}
-	""" 
-	pass
-
-def onRestart (pokemon):
-	"""function (pokemon) {
-				this.effectData.duration = 2;
-				this.add('-start', pokemon, 'move: Laser Focus');
+				this.add('-end', pokemon, 'move: Laser Focus', '[silent]');
 			}
 	""" 
 	pass
@@ -20,9 +12,22 @@ def onModifyCritRatio (critRatio):
 	""" 
 	pass
 
-def onEnd (pokemon):
+def onRestart (pokemon):
 	"""function (pokemon) {
-				this.add('-end', pokemon, 'move: Laser Focus', '[silent]');
+				this.effectState.duration = 2;
+				this.add('-start', pokemon, 'move: Laser Focus');
+			}
+	""" 
+	pass
+
+def onStart (pokemon, source, effect):
+	"""function (pokemon, source, effect) {
+				if (effect && (['imposter', 'psychup', 'transform'].includes(effect.id))) {
+					this.add('-start', pokemon, 'move: Laser Focus', '[silent]');
+				}
+				else {
+					this.add('-start', pokemon, 'move: Laser Focus');
+				}
 			}
 	""" 
 	pass

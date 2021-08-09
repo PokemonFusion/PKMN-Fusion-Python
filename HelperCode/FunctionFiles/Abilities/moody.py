@@ -1,28 +1,30 @@
 def onResidual (pokemon):
 	"""function (pokemon) {
-			let stats = [];
-			let boost = {};
-			for (let statPlus in pokemon.boosts) {
-				// @ts-ignore
+			var stats = [];
+			var boost = {};
+			var statPlus;
+			for (statPlus in pokemon.boosts) {
+				if (statPlus === 'accuracy' || statPlus === 'evasion')
+					continue;
 				if (pokemon.boosts[statPlus] < 6) {
 					stats.push(statPlus);
 				}
 			}
-			let randomStat = stats.length ? this.sample(stats) : "";
-			// @ts-ignore
-			if (randomStat) boost[randomStat] = 2;
-
+			var randomStat = stats.length ? this.sample(stats) : undefined;
+			if (randomStat)
+				boost[randomStat] = 2;
 			stats = [];
-			for (let statMinus in pokemon.boosts) {
-				// @ts-ignore
+			var statMinus;
+			for (statMinus in pokemon.boosts) {
+				if (statMinus === 'accuracy' || statMinus === 'evasion')
+					continue;
 				if (pokemon.boosts[statMinus] > -6 && statMinus !== randomStat) {
 					stats.push(statMinus);
 				}
 			}
-			randomStat = stats.length ? this.sample(stats) : "";
-			// @ts-ignore
-			if (randomStat) boost[randomStat] = -1;
-
+			randomStat = stats.length ? this.sample(stats) : undefined;
+			if (randomStat)
+				boost[randomStat] = -1;
 			this.boost(boost);
 		}
 	""" 

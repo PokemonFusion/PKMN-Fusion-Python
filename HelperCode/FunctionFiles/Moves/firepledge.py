@@ -9,20 +9,25 @@ def basePowerCallback (target, source, move):
 	""" 
 	pass
 
-def onPrepareHit (target, source, move):
-	"""function (target, source, move) {
-			for (const action of this.queue) {
-				// @ts-ignore
-				if (!action.move || !action.pokemon || !action.pokemon.isActive || action.pokemon.fainted) continue;
-				// @ts-ignore
-				if (action.pokemon.side === source.side && ['grasspledge', 'waterpledge'].includes(action.move.id)) {
-					// @ts-ignore
-					this.prioritizeAction(action);
-					this.add('-waiting', source, action.pokemon);
-					return null;
-				}
+def onResidual (pokemon):
+	"""function (pokemon) {
+				if (!pokemon.hasType('Fire'))
+					this.damage(pokemon.baseMaxhp / 8, pokemon);
 			}
-		}
+	""" 
+	pass
+
+def onSideEnd (targetSide):
+	"""function (targetSide) {
+				this.add('-sideend', targetSide, 'Fire Pledge');
+			}
+	""" 
+	pass
+
+def onSideStart (targetSide):
+	"""function (targetSide) {
+				this.add('-sidestart', targetSide, 'Fire Pledge');
+			}
 	""" 
 	pass
 
@@ -31,48 +36,32 @@ def onModifyMove (move):
 			if (move.sourceEffect === 'waterpledge') {
 				move.type = 'Water';
 				move.forceSTAB = true;
+				move.self = { sideCondition: 'waterpledge' };
 			}
 			if (move.sourceEffect === 'grasspledge') {
 				move.type = 'Fire';
 				move.forceSTAB = true;
+				move.sideCondition = 'firepledge';
 			}
 		}
 	""" 
 	pass
 
-def onHit (target, source, move):
+def onPrepareHit (target, source, move):
 	"""function (target, source, move) {
-			if (move.sourceEffect === 'grasspledge') {
-				target.side.addSideCondition('firepledge');
-			}
-			if (move.sourceEffect === 'waterpledge') {
-				source.side.addSideCondition('waterpledge');
-			}
-		}
-	""" 
-	pass
-
-def onStart (targetSide):
-	"""function (targetSide) {
-				this.add('-sidestart', targetSide, 'Fire Pledge');
-			}
-	""" 
-	pass
-
-def onEnd (targetSide):
-	"""function (targetSide) {
-				this.add('-sideend', targetSide, 'Fire Pledge');
-			}
-	""" 
-	pass
-
-def onResidual (side):
-	"""function (side) {
-				for (const pokemon of side.active) {
-					if (pokemon && !pokemon.hasType('Fire')) {
-						this.damage(pokemon.maxhp / 8, pokemon);
-					}
+			var _a;
+			for (var _i = 0, _b = this.queue.list; _i < _b.length; _i++) {
+				var action = _b[_i];
+				if (!action.move || !((_a = action.pokemon) === null || _a === void 0 ? void 0 : _a.isActive) ||
+					action.pokemon.fainted || action.maxMove || action.zmove) {
+					continue;
+				}
+				if (action.pokemon.isAlly(source) && ['grasspledge', 'waterpledge'].includes(action.move.id)) {
+					this.queue.prioritizeAction(action, move);
+					this.add('-waiting', source, action.pokemon);
+					return null;
 				}
 			}
+		}
 	""" 
 	pass

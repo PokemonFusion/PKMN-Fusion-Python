@@ -9,20 +9,24 @@ def basePowerCallback (target, source, move):
 	""" 
 	pass
 
-def onPrepareHit (target, source, move):
-	"""function (target, source, move) {
-			for (const action of this.queue) {
-				// @ts-ignore
-				if (!action.move || !action.pokemon || !action.pokemon.isActive || action.pokemon.fainted) continue;
-				// @ts-ignore
-				if (action.pokemon.side === source.side && ['waterpledge', 'firepledge'].includes(action.move.id)) {
-					// @ts-ignore
-					this.prioritizeAction(action);
-					this.add('-waiting', source, action.pokemon);
-					return null;
-				}
+def onModifySpe (spe, pokemon):
+	"""function (spe, pokemon) {
+				return this.chainModify(0.25);
 			}
-		}
+	""" 
+	pass
+
+def onSideEnd (targetSide):
+	"""function (targetSide) {
+				this.add('-sideend', targetSide, 'Grass Pledge');
+			}
+	""" 
+	pass
+
+def onSideStart (targetSide):
+	"""function (targetSide) {
+				this.add('-sidestart', targetSide, 'Grass Pledge');
+			}
 	""" 
 	pass
 
@@ -31,44 +35,32 @@ def onModifyMove (move):
 			if (move.sourceEffect === 'waterpledge') {
 				move.type = 'Grass';
 				move.forceSTAB = true;
+				move.sideCondition = 'grasspledge';
 			}
 			if (move.sourceEffect === 'firepledge') {
 				move.type = 'Fire';
 				move.forceSTAB = true;
+				move.sideCondition = 'firepledge';
 			}
 		}
 	""" 
 	pass
 
-def onHit (target, source, move):
+def onPrepareHit (target, source, move):
 	"""function (target, source, move) {
-			if (move.sourceEffect === 'waterpledge') {
-				target.side.addSideCondition('grasspledge');
-			}
-			if (move.sourceEffect === 'firepledge') {
-				target.side.addSideCondition('firepledge');
+			var _a;
+			for (var _i = 0, _b = this.queue.list; _i < _b.length; _i++) {
+				var action = _b[_i];
+				if (!action.move || !((_a = action.pokemon) === null || _a === void 0 ? void 0 : _a.isActive) ||
+					action.pokemon.fainted || action.maxMove || action.zmove) {
+					continue;
+				}
+				if (action.pokemon.isAlly(source) && ['waterpledge', 'firepledge'].includes(action.move.id)) {
+					this.queue.prioritizeAction(action, move);
+					this.add('-waiting', source, action.pokemon);
+					return null;
+				}
 			}
 		}
-	""" 
-	pass
-
-def onStart (targetSide):
-	"""function (targetSide) {
-				this.add('-sidestart', targetSide, 'Grass Pledge');
-			}
-	""" 
-	pass
-
-def onEnd (targetSide):
-	"""function (targetSide) {
-				this.add('-sideend', targetSide, 'Grass Pledge');
-			}
-	""" 
-	pass
-
-def onModifySpe (spe, pokemon):
-	"""function (spe, pokemon) {
-				return this.chainModify(0.25);
-			}
 	""" 
 	pass

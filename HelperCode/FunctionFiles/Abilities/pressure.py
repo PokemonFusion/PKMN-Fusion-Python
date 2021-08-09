@@ -7,7 +7,8 @@ def onStart (pokemon):
 
 def onDeductPP (target, source):
 	"""function (target, source) {
-			if (target.side === source.side) return;
+			if (target.isAlly(source))
+				return;
 			return 1;
 		}
 	""" 

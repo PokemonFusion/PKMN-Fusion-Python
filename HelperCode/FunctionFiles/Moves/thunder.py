@@ -1,9 +1,14 @@
-def onModifyMove (move):
-	"""function (move) {
-			if (this.isWeather(['raindance', 'primordialsea'])) {
-				move.accuracy = true;
-			} else if (this.isWeather(['sunnyday', 'desolateland'])) {
-				move.accuracy = 50;
+def onModifyMove (move, pokemon, target):
+	"""function (move, pokemon, target) {
+			switch (target === null || target === void 0 ? void 0 : target.effectiveWeather()) {
+				case 'raindance':
+				case 'primordialsea':
+					move.accuracy = true;
+					break;
+				case 'sunnyday':
+				case 'desolateland':
+					move.accuracy = 50;
+					break;
 			}
 		}
 	""" 

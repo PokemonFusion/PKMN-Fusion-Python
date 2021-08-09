@@ -1,6 +1,7 @@
-def onStart (pokemon):
+def onDisableMove (pokemon):
 	"""function (pokemon) {
-				this.add('-start', pokemon, 'Torment');
+				if (pokemon.lastMove && pokemon.lastMove.id !== 'struggle')
+					pokemon.disableMove(pokemon.lastMove.id);
 			}
 	""" 
 	pass
@@ -12,9 +13,13 @@ def onEnd (pokemon):
 	""" 
 	pass
 
-def onDisableMove (pokemon):
+def onStart (pokemon):
 	"""function (pokemon) {
-				if (pokemon.lastMove && pokemon.lastMove.id !== 'struggle') pokemon.disableMove(pokemon.lastMove.id);
+				if (pokemon.volatiles['dynamax']) {
+					delete pokemon.volatiles['torment'];
+					return false;
+				}
+				this.add('-start', pokemon, 'Torment');
 			}
 	""" 
 	pass

@@ -1,6 +1,6 @@
 def onModifyDef(**bvalues):
 	"""function (def, pokemon) {
-			if (pokemon.baseTemplate.nfe) {
+			if (pokemon.baseSpecies.nfe) {
 				return this.chainModify(1.5);
 			}
 		}
@@ -9,7 +9,7 @@ def onModifyDef(**bvalues):
 
 def onModifySpD(**bvalues):
 	"""function (spd, pokemon) {
-			if (pokemon.baseTemplate.nfe) {
+			if (pokemon.baseSpecies.nfe) {
 				return this.chainModify(1.5);
 			}
 		}

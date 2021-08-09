@@ -1,10 +1,9 @@
 def onTry(**bvalues):
 	"""function (source, target) {
-			let action = this.willMove(target);
-			if (!action || action.choice !== 'move' || (action.move.category === 'Status' && action.move.id !== 'mefirst') || target.volatiles.mustrecharge) {
-				this.add('-fail', source);
-				this.attrLastMove('[still]');
-				return null;
+			var action = this.queue.willMove(target);
+			var move = (action === null || action === void 0 ? void 0 : action.choice) === 'move' ? action.move : null;
+			if (!move || (move.category === 'Status' && move.id !== 'mefirst') || target.volatiles['mustrecharge']) {
+				return false;
 			}
 		}
 	""" 

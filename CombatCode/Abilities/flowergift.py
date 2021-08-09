@@ -1,20 +1,24 @@
 def onStart(**bvalues):
 	"""function (pokemon) {
-			delete this.effectData.forme;
+			delete this.effectState.forme;
 		}
 	""" 
 	pass
 
 def onUpdate(**bvalues):
 	"""function (pokemon) {
-			if (!pokemon.isActive || pokemon.baseTemplate.baseSpecies !== 'Cherrim' || pokemon.transformed) return;
-			if (this.isWeather(['sunnyday', 'desolateland'])) {
-				if (pokemon.template.speciesid !== 'cherrimsunshine') {
-					pokemon.formeChange('Cherrim-Sunshine', this.effect, false, '[msg]');
+			if (!pokemon.isActive || pokemon.baseSpecies.baseSpecies !== 'Cherrim' || pokemon.transformed)
+				return;
+			if (!pokemon.hp)
+				return;
+			if (['sunnyday', 'desolateland'].includes(pokemon.effectiveWeather())) {
+				if (pokemon.species.id !== 'cherrimsunshine') {
+					pokemon.formeChange('Cherrim-Sunshine', this.effect, False, '[msg]');
 				}
-			} else {
-				if (pokemon.template.speciesid === 'cherrimsunshine') {
-					pokemon.formeChange('Cherrim', this.effect, false, '[msg]');
+			}
+			else {
+				if (pokemon.species.id === 'cherrimsunshine') {
+					pokemon.formeChange('Cherrim', this.effect, False, '[msg]');
 				}
 			}
 		}
@@ -22,9 +26,10 @@ def onUpdate(**bvalues):
 	pass
 
 def onAllyModifyAtk(**bvalues):
-	"""function (atk) {
-			if (this.effectData.target.baseTemplate.baseSpecies !== 'Cherrim') return;
-			if (this.isWeather(['sunnyday', 'desolateland'])) {
+	"""function (atk, pokemon) {
+			if (this.effectState.target.baseSpecies.baseSpecies !== 'Cherrim')
+				return;
+			if (['sunnyday', 'desolateland'].includes(pokemon.effectiveWeather())) {
 				return this.chainModify(1.5);
 			}
 		}
@@ -32,9 +37,10 @@ def onAllyModifyAtk(**bvalues):
 	pass
 
 def onAllyModifySpD(**bvalues):
-	"""function (spd) {
-			if (this.effectData.target.baseTemplate.baseSpecies !== 'Cherrim') return;
-			if (this.isWeather(['sunnyday', 'desolateland'])) {
+	"""function (spd, pokemon) {
+			if (this.effectState.target.baseSpecies.baseSpecies !== 'Cherrim')
+				return;
+			if (['sunnyday', 'desolateland'].includes(pokemon.effectiveWeather())) {
 				return this.chainModify(1.5);
 			}
 		}

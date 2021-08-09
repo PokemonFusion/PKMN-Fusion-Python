@@ -1,6 +1,6 @@
 def onModifyAtk(**bvalues):
 	"""function (atk, pokemon) {
-			if (pokemon.baseTemplate.baseSpecies === 'Pikachu') {
+			if (pokemon.baseSpecies.baseSpecies === 'Pikachu') {
 				return this.chainModify(2);
 			}
 		}
@@ -9,7 +9,7 @@ def onModifyAtk(**bvalues):
 
 def onModifySpA(**bvalues):
 	"""function (spa, pokemon) {
-			if (pokemon.baseTemplate.baseSpecies === 'Pikachu') {
+			if (pokemon.baseSpecies.baseSpecies === 'Pikachu') {
 				return this.chainModify(2);
 			}
 		}

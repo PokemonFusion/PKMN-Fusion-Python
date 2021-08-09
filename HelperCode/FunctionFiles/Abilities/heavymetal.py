@@ -1,6 +1,6 @@
-def onModifyWeight (weight):
-	"""function (weight) {
-			return weight * 2;
+def onModifyWeight (weighthg):
+	"""function (weighthg) {
+			return weighthg * 2;
 		}
 	""" 
 	pass

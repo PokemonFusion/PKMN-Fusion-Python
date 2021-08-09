@@ -1,17 +1,10 @@
 def durationCallback (target, source, effect):
 	"""function (target, source, effect) {
-				if (source && source.hasAbility('persistent')) {
+				if (source === null || source === void 0 ? void 0 : source.hasAbility('persistent')) {
 					this.add('-activate', source, 'ability: Persistent', effect);
 					return 6;
 				}
 				return 4;
-			}
-	""" 
-	pass
-
-def onStart (side):
-	"""function (side) {
-				this.add('-sidestart', side, 'move: Tailwind');
 			}
 	""" 
 	pass
@@ -23,9 +16,16 @@ def onModifySpe (spe, pokemon):
 	""" 
 	pass
 
-def onEnd (side):
+def onSideEnd (side):
 	"""function (side) {
 				this.add('-sideend', side, 'move: Tailwind');
+			}
+	""" 
+	pass
+
+def onSideStart (side):
+	"""function (side) {
+				this.add('-sidestart', side, 'move: Tailwind');
 			}
 	""" 
 	pass

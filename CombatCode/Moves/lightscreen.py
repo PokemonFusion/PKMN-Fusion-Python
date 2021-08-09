@@ -1,6 +1,6 @@
 def durationCallback(**bvalues):
 	"""function (target, source, effect) {
-				if (source && source.hasItem('lightclay')) {
+				if (source === null || source === void 0 ? void 0 : source.hasItem('lightclay')) {
 					return 8;
 				}
 				return 5;
@@ -10,10 +10,11 @@ def durationCallback(**bvalues):
 
 def onAnyModifyDamage(**bvalues):
 	"""function (damage, source, target, move) {
-				if (target !== source && target.side === this.effectData.target && this.getCategory(move) === 'Special') {
-					if (!move.crit && !move.infiltrates) {
+				if (target !== source && this.effectState.target.hasAlly(target) && this.getCategory(move) === 'Special') {
+					if (!target.getMoveHitData(move).crit && !move.infiltrates) {
 						this.debug('Light Screen weaken');
-						if (target.side.active.length > 1) return this.chainModify([0xAAC, 0x1000]);
+						if (this.activePerHalf > 1)
+							return this.chainModify([2732, 4096]);
 						return this.chainModify(0.5);
 					}
 				}
@@ -21,16 +22,16 @@ def onAnyModifyDamage(**bvalues):
 	""" 
 	pass
 
-def onStart(**bvalues):
+def onSideEnd(**bvalues):
 	"""function (side) {
-				this.add('-sidestart', side, 'move: Light Screen');
+				this.add('-sideend', side, 'move: Light Screen');
 			}
 	""" 
 	pass
 
-def onEnd(**bvalues):
+def onSideStart(**bvalues):
 	"""function (side) {
-				this.add('-sideend', side, 'move: Light Screen');
+				this.add('-sidestart', side, 'move: Light Screen');
 			}
 	""" 
 	pass

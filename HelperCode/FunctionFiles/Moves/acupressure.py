@@ -1,19 +1,19 @@
 def onHit (target):
 	"""function (target) {
-			let stats = [];
-			for (let stat in target.boosts) {
-				// @ts-ignore
+			var stats = [];
+			var stat;
+			for (stat in target.boosts) {
 				if (target.boosts[stat] < 6) {
 					stats.push(stat);
 				}
 			}
 			if (stats.length) {
-				let randomStat = this.sample(stats);
-				/**@type {{[k: string]: number}} */
-				let boost = {};
+				var randomStat = this.sample(stats);
+				var boost = {};
 				boost[randomStat] = 2;
 				this.boost(boost);
-			} else {
+			}
+			else {
 				return false;
 			}
 		}

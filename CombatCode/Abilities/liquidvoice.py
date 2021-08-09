@@ -1,6 +1,6 @@
-def onModifyMove(**bvalues):
-	"""function (move) {
-			if (move.flags['sound']) {
+def onModifyType(**bvalues):
+	"""function (move, pokemon) {
+			if (move.flags['sound'] && !pokemon.volatiles['dynamax']) { // hardcode
 				move.type = 'Water';
 			}
 		}

@@ -3,9 +3,7 @@ from CombatCode.diclogging import addlog
 
 def basePowerCallback(**bvalues):
 	"""function (pokemon, target, move) {
-			let damagedByTarget = pokemon.attackedBy.some(p =>
-				p.source === target && p.damage > 0 && p.thisTurn
-			);
+			var damagedByTarget = pokemon.attackedBy.some(function (p) { return p.source === target && p.damage > 0 && p.thisTurn; });
 			if (damagedByTarget) {
 				this.debug('Boosted for getting hit by ' + target);
 				return move.basePower * 2;

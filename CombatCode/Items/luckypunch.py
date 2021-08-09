@@ -1,6 +1,6 @@
 def onModifyCritRatio(**bvalues):
 	"""function (critRatio, user) {
-			if (user.baseTemplate.species === 'Chansey') {
+			if (user.baseSpecies.name === 'Chansey') {
 				return critRatio + 2;
 			}
 		}

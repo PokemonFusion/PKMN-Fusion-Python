@@ -1,13 +1,13 @@
-def onPrepareHit (pokemon):
+def onHit (pokemon):
 	"""function (pokemon) {
-			return !!this.willAct() && this.runEvent('StallMove', pokemon);
+			pokemon.addVolatile('stall');
 		}
 	""" 
 	pass
 
-def onHit (pokemon):
+def onPrepareHit (pokemon):
 	"""function (pokemon) {
-			pokemon.addVolatile('stall');
+			return !!this.queue.willAct() && this.runEvent('StallMove', pokemon);
 		}
 	""" 
 	pass

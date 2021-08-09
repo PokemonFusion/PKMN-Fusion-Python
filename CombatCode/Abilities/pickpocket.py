@@ -1,10 +1,10 @@
 def onAfterMoveSecondary(**bvalues):
 	"""function (target, source, move) {
-			if (source && source !== target && move && move.flags['contact']) {
-				if (target.item) {
+			if (source && source !== target && (move === null || move === void 0 ? void 0 : move.flags['contact'])) {
+				if (target.item || target.switchFlag || target.forceSwitchFlag || source.switchFlag === True) {
 					return;
 				}
-				let yourItem = source.takeItem(target);
+				var yourItem = source.takeItem(target);
 				if (!yourItem) {
 					return;
 				}

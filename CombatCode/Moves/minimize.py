@@ -1,18 +1,24 @@
-def onSourceModifyDamage(**bvalues):
-	"""function (damage, source, target, move) {
-				if (['stomp', 'steamroller', 'bodyslam', 'flyingpress', 'dragonrush', 'heatcrash', 'heavyslam', 'maliciousmoonsault'].includes(move.id)) {
-					return this.chainModify(2);
+def onAccuracy(**bvalues):
+	"""function (accuracy, target, source, move) {
+				var boostedMoves = [
+					'stomp', 'steamroller', 'bodyslam', 'flyingpress', 'dragonrush', 'heatcrash', 'heavyslam', 'maliciousmoonsault',
+				];
+				if (boostedMoves.includes(move.id)) {
+					return true;
 				}
+				return accuracy;
 			}
 	""" 
 	pass
 
-def onAccuracy(**bvalues):
-	"""function (accuracy, target, source, move) {
-				if (['stomp', 'steamroller', 'bodyslam', 'flyingpress', 'dragonrush', 'heatcrash', 'heavyslam', 'maliciousmoonsault'].includes(move.id)) {
-					return true;
+def onSourceModifyDamage(**bvalues):
+	"""function (damage, source, target, move) {
+				var boostedMoves = [
+					'stomp', 'steamroller', 'bodyslam', 'flyingpress', 'dragonrush', 'heatcrash', 'heavyslam', 'maliciousmoonsault',
+				];
+				if (boostedMoves.includes(move.id)) {
+					return this.chainModify(2);
 				}
-				return accuracy;
 			}
 	""" 
 	pass

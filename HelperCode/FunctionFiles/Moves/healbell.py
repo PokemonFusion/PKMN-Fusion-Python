@@ -1,11 +1,14 @@
 def onHit (pokemon, source):
 	"""function (pokemon, source) {
 			this.add('-activate', source, 'move: Heal Bell');
-			let side = pokemon.side;
-			let success = false;
-			for (const ally of side.pokemon) {
-				if (ally.hasAbility('soundproof')) continue;
-				if (ally.cureStatus()) success = true;
+			var side = pokemon.side;
+			var success = false;
+			for (var _i = 0, _a = side.pokemon; _i < _a.length; _i++) {
+				var ally = _a[_i];
+				if (ally !== source && ally.hasAbility('soundproof'))
+					continue;
+				if (ally.cureStatus())
+					success = true;
 			}
 			return success;
 		}

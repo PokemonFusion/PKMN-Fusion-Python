@@ -1,7 +1,7 @@
-def onSourceFaint (target, source, effect):
-	"""function (target, source, effect) {
+def onSourceAfterFaint (length, target, source, effect):
+	"""function (length, target, source, effect) {
 			if (effect && effect.effectType === 'Move') {
-				this.boost({atk: 1}, source);
+				this.boost({ atk: length }, source);
 			}
 		}
 	""" 

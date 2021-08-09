@@ -1,30 +1,33 @@
 def onStart(**bvalues):
 	"""function (source) {
-			this.setWeather('primordialsea');
+			this.field.setWeather('primordialsea');
 		}
 	""" 
 	pass
 
 def onAnySetWeather(**bvalues):
 	"""function (target, source, weather) {
-			if (this.getWeather().id === 'primordialsea' && !['desolateland', 'primordialsea', 'deltastream'].includes(weather.id)) return false;
+			var strongWeathers = ['desolateland', 'primordialsea', 'deltastream'];
+			if (this.field.getWeather().id === 'primordialsea' && !strongWeathers.includes(weather.id))
+				return False;
 		}
 	""" 
 	pass
 
 def onEnd(**bvalues):
 	"""function (pokemon) {
-			if (this.weatherData.source !== pokemon) return;
-			for (const side of this.sides) {
-				for (const target of side.active) {
-					if (target === pokemon) continue;
-					if (target && target.hp && target.hasAbility('primordialsea')) {
-						this.weatherData.source = target;
-						return;
-					}
+			if (this.field.weatherState.source !== pokemon)
+				return;
+			for (var _i = 0, _a = this.getAllActive(); _i < _a.length; _i++) {
+				var target = _a[_i];
+				if (target === pokemon)
+					continue;
+				if (target.hasAbility('primordialsea')) {
+					this.field.weatherState.source = target;
+					return;
 				}
 			}
-			this.clearWeather();
+			this.field.clearWeather();
 		}
 	""" 
 	pass

@@ -1,9 +1,10 @@
 
 Abilities:
   ☐ adaptability.onModifyMove
-  ☐ aftermath.onAfterDamage
-  ☐ aerilate.onModifyMove
+  ☐ aerilate.onModifyType
   ☐ aerilate.onBasePower
+  ☐ aftermath.onDamagingHit
+  ☐ airlock.onSwitchIn
   ☐ airlock.onStart
   ☐ analytic.onBasePower
   ☐ angerpoint.onHit
@@ -11,21 +12,33 @@ Abilities:
   ☐ arenatrap.onFoeTrapPokemon
   ☐ arenatrap.onFoeMaybeTrapPokemon
   ☐ aromaveil.onAllyTryAddVolatile
+  ☐ asoneglastrier.onPreStart
+  ☐ asoneglastrier.onEnd
+  ☐ asoneglastrier.onFoeTryEatItem
+  ☐ asoneglastrier.onSourceAfterFaint
+  ☐ asonespectrier.onPreStart
+  ☐ asonespectrier.onEnd
+  ☐ asonespectrier.onFoeTryEatItem
+  ☐ asonespectrier.onSourceAfterFaint
   ☐ aurabreak.onStart
   ☐ aurabreak.onAnyTryPrimaryHit
   ☐ baddreams.onResidual
   ☐ battery.onAllyBasePower
-  ☐ battlebond.onSourceFaint
+  ☐ battlebond.onSourceAfterFaint
   ☐ battlebond.onModifyMove
-  ☐ beastboost.onSourceFaint
+  ☐ beastboost.onSourceAfterFaint
+  ☐ berserk.onDamage
+  ☐ berserk.onTryEatItem
   ☐ berserk.onAfterMoveSecondary
   ☐ bigpecks.onBoost
   ☐ blaze.onModifyAtk
   ☐ blaze.onModifySpA
   ☐ bulletproof.onTryHit
   ☐ cheekpouch.onEatItem
+  ☐ chillingneigh.onSourceAfterFaint
   ☐ chlorophyll.onModifySpe
   ☐ clearbody.onBoost
+  ☐ cloudnine.onSwitchIn
   ☐ cloudnine.onStart
   ☐ colorchange.onAfterMoveSecondary
   ☐ comatose.onStart
@@ -33,12 +46,15 @@ Abilities:
   ☐ competitive.onAfterEachBoost
   ☐ compoundeyes.onSourceModifyAccuracy
   ☐ contrary.onBoost
-  ☐ cursedbody.onAfterDamage
-  ☐ cutecharm.onAfterDamage
+  ☐ cottondown.onDamagingHit
+  ☐ curiousmedicine.onStart
+  ☐ cursedbody.onDamagingHit
+  ☐ cutecharm.onDamagingHit
   ☐ damp.onAnyTryMove
   ☐ damp.onAnyDamage
   ☐ darkaura.onStart
   ☐ darkaura.onAnyBasePower
+  ☐ dauntlessshield.onStart
   ☐ dazzling.onFoeTryMove
   ☐ defeatist.onModifyAtk
   ☐ defeatist.onModifySpA
@@ -50,22 +66,24 @@ Abilities:
   ☐ desolateland.onAnySetWeather
   ☐ desolateland.onEnd
   ☐ disguise.onDamage
+  ☐ disguise.onCriticalHit
   ☐ disguise.onEffectiveness
   ☐ disguise.onUpdate
   ☐ download.onStart
+  ☐ dragonsmaw.onModifyAtk
+  ☐ dragonsmaw.onModifySpA
   ☐ drizzle.onStart
   ☐ drought.onStart
   ☐ dryskin.onTryHit
   ☐ dryskin.onFoeBasePower
   ☐ dryskin.onWeather
-  ☐ effectspore.onAfterDamage
+  ☐ effectspore.onDamagingHit
   ☐ electricsurge.onStart
-  ☐ emergencyexit.onAfterMoveSecondary
-  ☐ emergencyexit.onAfterDamage
+  ☐ emergencyexit.onEmergencyExit
   ☐ fairyaura.onStart
   ☐ fairyaura.onAnyBasePower
   ☐ filter.onSourceModifyDamage
-  ☐ flamebody.onAfterDamage
+  ☐ flamebody.onDamagingHit
   ☐ flareboost.onBasePower
   ☐ flashfire.onTryHit
   ☐ flashfire.onEnd
@@ -88,11 +106,20 @@ Abilities:
   ☐ fullmetalbody.onBoost
   ☐ furcoat.onModifyDef
   ☐ galewings.onModifyPriority
-  ☐ galvanize.onModifyMove
+  ☐ galvanize.onModifyType
   ☐ galvanize.onBasePower
-  ☐ gooey.onAfterDamage
+  ☐ gooey.onDamagingHit
+  ☐ gorillatactics.onStart
+  ☐ gorillatactics.onBeforeMove
+  ☐ gorillatactics.onModifyMove
+  ☐ gorillatactics.onModifyAtk
+  ☐ gorillatactics.onDisableMove
+  ☐ gorillatactics.onEnd
   ☐ grasspelt.onModifyDef
   ☐ grassysurge.onStart
+  ☐ grimneigh.onSourceAfterFaint
+  ☐ gulpmissile.onDamagingHit
+  ☐ gulpmissile.onSourceTryPrimaryHit
   ☐ guts.onModifyAtk
   ☐ harvest.onResidual
   ☐ healer.onResidual
@@ -100,43 +127,56 @@ Abilities:
   ☐ heatproof.onDamage
   ☐ heavymetal.onModifyWeight
   ☐ hugepower.onModifyAtk
+  ☐ hungerswitch.onResidual
   ☐ hustle.onModifyAtk
-  ☐ hustle.onModifyMove
+  ☐ hustle.onSourceModifyAccuracy
   ☐ hydration.onResidual
   ☐ hypercutter.onBoost
   ☐ icebody.onWeather
   ☐ icebody.onImmunity
+  ☐ iceface.onStart
+  ☐ iceface.onDamage
+  ☐ iceface.onCriticalHit
+  ☐ iceface.onEffectiveness
+  ☐ iceface.onUpdate
+  ☐ iceface.onAnyWeatherStart
+  ☐ icescales.onSourceModifyDamage
   ☐ illusion.onBeforeSwitchIn
-  ☐ illusion.onAfterDamage
+  ☐ illusion.onDamagingHit
   ☐ illusion.onEnd
   ☐ illusion.onFaint
   ☐ immunity.onUpdate
   ☐ immunity.onSetStatus
+  ☐ imposter.onSwitchIn
   ☐ imposter.onStart
   ☐ infiltrator.onModifyMove
-  ☐ innardsout.onAfterDamage
+  ☐ innardsout.onDamagingHit
+  ☐ innerfocus.onTryAddVolatile
+  ☐ innerfocus.onBoost
   ☐ insomnia.onUpdate
   ☐ insomnia.onSetStatus
   ☐ intimidate.onStart
-  ☐ ironbarbs.onAfterDamage
+  ☐ intrepidsword.onStart
+  ☐ ironbarbs.onDamagingHit
   ☐ ironfist.onBasePower
-  ☐ justified.onAfterDamage
+  ☐ justified.onDamagingHit
   ☐ keeneye.onBoost
   ☐ keeneye.onModifyMove
   ☐ leafguard.onSetStatus
   ☐ leafguard.onTryAddVolatile
+  ☐ libero.onPrepareHit
   ☐ lightmetal.onModifyWeight
   ☐ lightningrod.onTryHit
   ☐ lightningrod.onAnyRedirectTarget
   ☐ limber.onUpdate
   ☐ limber.onSetStatus
   ☐ liquidooze.onSourceTryHeal
-  ☐ liquidvoice.onModifyMove
+  ☐ liquidvoice.onModifyType
   ☐ longreach.onModifyMove
   ☐ magicbounce.onTryHit
   ☐ magicbounce.onAllyTryHitSide
   ☐ magicguard.onDamage
-  ☐ magician.onSourceHit
+  ☐ magician.onAfterMoveSecondarySelf
   ☐ magmaarmor.onUpdate
   ☐ magmaarmor.onImmunity
   ☐ magnetpull.onFoeTrapPokemon
@@ -144,25 +184,34 @@ Abilities:
   ☐ marvelscale.onModifyDef
   ☐ megalauncher.onBasePower
   ☐ merciless.onModifyCritRatio
+  ☐ mimicry.onStart
+  ☐ mimicry.onAnyTerrainStart
+  ☐ mimicry.onEnd
+  ☐ mimicry.onStart
+  ☐ mimicry.onUpdate
   ☐ minus.onModifySpA
+  ☐ mirrorarmor.onBoost
   ☐ mistysurge.onStart
   ☐ moldbreaker.onStart
   ☐ moldbreaker.onModifyMove
   ☐ moody.onResidual
   ☐ motordrive.onTryHit
-  ☐ moxie.onSourceFaint
+  ☐ moxie.onSourceAfterFaint
   ☐ multiscale.onSourceModifyDamage
-  ☐ mummy.onAfterDamage
-  ☐ mummy.onBasePower
+  ☐ mummy.onDamagingHit
   ☐ naturalcure.onCheckShow
   ☐ naturalcure.onSwitchOut
   ☐ neuroforce.onModifyDamage
+  ☐ neutralizinggas.onPreStart
+  ☐ neutralizinggas.onEnd
+  ☐ noguard.onAnyInvulnerability
   ☐ noguard.onAnyAccuracy
-  ☐ normalize.onModifyMove
+  ☐ normalize.onModifyType
   ☐ normalize.onBasePower
   ☐ oblivious.onUpdate
   ☐ oblivious.onImmunity
   ☐ oblivious.onTryHit
+  ☐ oblivious.onBoost
   ☐ overcoat.onImmunity
   ☐ overcoat.onTryHit
   ☐ overgrow.onModifyAtk
@@ -170,19 +219,26 @@ Abilities:
   ☐ owntempo.onUpdate
   ☐ owntempo.onTryAddVolatile
   ☐ owntempo.onHit
+  ☐ owntempo.onBoost
   ☐ parentalbond.onPrepareHit
-  ☐ parentalbond.onBasePower
   ☐ parentalbond.onSourceModifySecondaries
-  ☐ pickup.onResidual
+  ☐ pastelveil.onStart
+  ☐ pastelveil.onUpdate
+  ☐ pastelveil.onAllySwitchIn
+  ☐ pastelveil.onSetStatus
+  ☐ pastelveil.onAllySetStatus
+  ☐ perishbody.onDamagingHit
   ☐ pickpocket.onAfterMoveSecondary
-  ☐ pixilate.onModifyMove
+  ☐ pickup.onResidual
+  ☐ pixilate.onModifyType
   ☐ pixilate.onBasePower
   ☐ plus.onModifySpA
   ☐ poisonheal.onDamage
-  ☐ poisonpoint.onAfterDamage
+  ☐ poisonpoint.onDamagingHit
   ☐ poisontouch.onModifyMove
   ☐ powerconstruct.onResidual
   ☐ powerofalchemy.onAllyFaint
+  ☐ powerspot.onAllyBasePower
   ☐ prankster.onModifyPriority
   ☐ pressure.onStart
   ☐ pressure.onDeductPP
@@ -190,25 +246,36 @@ Abilities:
   ☐ primordialsea.onAnySetWeather
   ☐ primordialsea.onEnd
   ☐ prismarmor.onSourceModifyDamage
+  ☐ propellertail.onModifyMove
   ☐ protean.onPrepareHit
   ☐ psychicsurge.onStart
+  ☐ punkrock.onBasePower
+  ☐ punkrock.onSourceModifyDamage
   ☐ purepower.onModifyAtk
   ☐ queenlymajesty.onFoeTryMove
+  ☐ quickdraw.onFractionalPriority
   ☐ quickfeet.onModifySpe
   ☐ raindish.onWeather
-  ☐ rattled.onAfterDamage
+  ☐ rattled.onDamagingHit
+  ☐ rattled.onAfterBoost
   ☐ receiver.onAllyFaint
   ☐ reckless.onBasePower
-  ☐ refrigerate.onModifyMove
+  ☐ refrigerate.onModifyType
   ☐ refrigerate.onBasePower
   ☐ regenerator.onSwitchOut
+  ☐ ripen.onTryHeal
+  ☐ ripen.onBoost
+  ☐ ripen.onSourceModifyDamage
+  ☐ ripen.onTryEatItem
+  ☐ ripen.onEatItem
   ☐ rivalry.onBasePower
   ☐ rockhead.onDamage
-  ☐ roughskin.onAfterDamage
+  ☐ roughskin.onDamagingHit
   ☐ sandforce.onBasePower
   ☐ sandforce.onImmunity
   ☐ sandrush.onModifySpe
   ☐ sandrush.onImmunity
+  ☐ sandspit.onDamagingHit
   ☐ sandstream.onStart
   ☐ sandveil.onImmunity
   ☐ sandveil.onModifyAccuracy
@@ -217,6 +284,8 @@ Abilities:
   ☐ schooling.onStart
   ☐ schooling.onResidual
   ☐ scrappy.onModifyMove
+  ☐ scrappy.onBoost
+  ☐ screencleaner.onStart
   ☐ serenegrace.onModifyMove
   ☐ shadowshield.onSourceModifyDamage
   ☐ shadowtag.onFoeTrapPokemon
@@ -251,13 +320,15 @@ Abilities:
   ☐ speedboost.onResidual
   ☐ stakeout.onModifyAtk
   ☐ stakeout.onModifySpA
-  ☐ stall.onModifyPriority
-  ☐ stamina.onAfterDamage
-  ☐ stancechange.onBeforeMove
-  ☐ static.onAfterDamage
+  ☐ stalwart.onModifyMove
+  ☐ stamina.onDamagingHit
+  ☐ stancechange.onModifyMove
+  ☐ static.onDamagingHit
   ☐ steadfast.onFlinch
+  ☐ steamengine.onDamagingHit
   ☐ steelworker.onModifyAtk
   ☐ steelworker.onModifySpA
+  ☐ steelyspirit.onAllyBasePower
   ☐ stench.onModifyMove
   ☐ stickyhold.onTakeItem
   ☐ stormdrain.onTryHit
@@ -276,7 +347,7 @@ Abilities:
   ☐ symbiosis.onAllyAfterUseItem
   ☐ synchronize.onAfterSetStatus
   ☐ tangledfeet.onModifyAccuracy
-  ☐ tanglinghair.onAfterDamage
+  ☐ tanglinghair.onDamagingHit
   ☐ technician.onBasePower
   ☐ telepathy.onTryHit
   ☐ teravolt.onStart
@@ -286,10 +357,12 @@ Abilities:
   ☐ tintedlens.onModifyDamage
   ☐ torrent.onModifyAtk
   ☐ torrent.onModifySpA
-  ☐ toxicboost.onBasePower
   ☐ toughclaws.onBasePower
+  ☐ toxicboost.onBasePower
   ☐ trace.onStart
   ☐ trace.onUpdate
+  ☐ transistor.onModifyAtk
+  ☐ transistor.onModifySpA
   ☐ triage.onModifyPriority
   ☐ truant.onStart
   ☐ truant.onBeforeMove
@@ -301,10 +374,15 @@ Abilities:
   ☐ unburden.onEnd
   ☐ unburden.onModifySpe
   ☐ unnerve.onPreStart
-  ☐ victorystar.onAllyModifyMove
+  ☐ unnerve.onStart
+  ☐ unnerve.onEnd
+  ☐ unnerve.onFoeTryEatItem
+  ☐ unseenfist.onModifyMove
+  ☐ victorystar.onAnyModifyAccuracy
   ☐ vitalspirit.onUpdate
   ☐ vitalspirit.onSetStatus
   ☐ voltabsorb.onTryHit
+  ☐ wanderingspirit.onDamagingHit
   ☐ waterabsorb.onTryHit
   ☐ waterbubble.onSourceModifyAtk
   ☐ waterbubble.onSourceModifySpA
@@ -312,13 +390,12 @@ Abilities:
   ☐ waterbubble.onModifySpA
   ☐ waterbubble.onUpdate
   ☐ waterbubble.onSetStatus
-  ☐ watercompaction.onAfterDamage
+  ☐ watercompaction.onDamagingHit
   ☐ waterveil.onUpdate
   ☐ waterveil.onSetStatus
-  ☐ weakarmor.onAfterDamage
+  ☐ weakarmor.onDamagingHit
   ☐ whitesmoke.onBoost
-  ☐ wimpout.onAfterMoveSecondary
-  ☐ wimpout.onAfterDamage
+  ☐ wimpout.onEmergencyExit
   ☐ wonderguard.onTryHit
   ☐ wonderskin.onModifyAccuracy
   ☐ zenmode.onResidual
@@ -334,689 +411,830 @@ Moves:
   ☑ acrobatics.basePowerCallback
   ☐ acupressure.onHit
   ☐ afteryou.onHit
-  ☐ allyswitch.onTryHit
   ☐ allyswitch.onHit
+  ☐ allyswitch.onTryHit
   ☐ anchorshot.onHit
-  ☐ aquaring.onStart
   ☐ aquaring.onResidual
+  ☐ aquaring.onStart
   ☐ aromatherapy.onHit
   ☐ assist.onHit
   ☐ assurance.basePowerCallback
-  ☐ attract.onStart
-  ☐ attract.onUpdate
   ☐ attract.onBeforeMove
   ☐ attract.onEnd
-  ☐ auroraveil.onTryHitSide
+  ☐ attract.onStart
+  ☐ attract.onUpdate
+  ☐ aurawheel.onModifyType
+  ☐ aurawheel.onTry
   ☐ auroraveil.durationCallback
   ☐ auroraveil.onAnyModifyDamage
-  ☐ auroraveil.onStart
-  ☐ auroraveil.onEnd
+  ☐ auroraveil.onSideEnd
+  ☐ auroraveil.onSideStart
+  ☐ auroraveil.onTry
+  ☐ autotomize.onHit
   ☐ autotomize.onTryHit
-  ☐ autotomize.onStart
-  ☐ autotomize.onRestart
-  ☐ autotomize.onModifyWeight
   ☐ avalanche.basePowerCallback
-  ☐ banefulbunker.onTryHit
   ☐ banefulbunker.onHit
   ☐ banefulbunker.onStart
   ☐ banefulbunker.onTryHit
   ☐ banefulbunker.onHit
+  ☐ banefulbunker.onPrepareHit
+  ☐ batonpass.onHit
   ☐ beakblast.beforeTurnCallback
-  ☐ beakblast.onStart
   ☐ beakblast.onHit
-  ☐ beakblast.onMoveAborted
+  ☐ beakblast.onStart
   ☐ beakblast.onAfterMove
   ☐ beatup.basePowerCallback
   ☐ beatup.onModifyMove
   ☐ bellydrum.onHit
   ☐ bestow.onHit
   ☐ bide.beforeMoveCallback
-  ☐ bide.onStart
-  ☐ bide.onDamage
   ☐ bide.onBeforeMove
-  ☐ bide.onMoveAborted
+  ☐ bide.onDamage
   ☐ bide.onEnd
+  ☐ bide.onMoveAborted
+  ☐ bide.onStart
   ☐ blizzard.onModifyMove
   ☐ block.onHit
-  ☐ bounce.onTryMove
-  ☐ bounce.onTryImmunity
+  ☐ boltbeak.basePowerCallback
+  ☐ bounce.onInvulnerability
   ☐ bounce.onSourceBasePower
+  ☐ bounce.onTryMove
   ☐ brickbreak.onTryHit
   ☐ brine.onBasePower
   ☐ bugbite.onHit
+  ☐ burningjealousy.onHit
   ☐ burnup.onTryMove
   ☐ burnup.onHit
   ☐ camouflage.onHit
-  ☐ captivate.onTryHit
+  ☐ captivate.onTryImmunity
   ☐ celebrate.onTryHit
-  ☐ charge.onHit
-  ☐ charge.onRestart
   ☐ charge.onBasePower
+  ☐ charge.onRestart
+  ☐ charge.onHit
+  ☐ clangoroussoul.onHit
+  ☐ clangoroussoul.onTry
+  ☐ clangoroussoul.onTryHit
   ☐ clearsmog.onHit
   ☐ conversion.onHit
   ☐ conversion2.onHit
   ☐ copycat.onHit
-  ☐ coreenforcer.onHit
   ☐ coreenforcer.onAfterSubDamage
-  ☐ counter.damageCallback
+  ☐ coreenforcer.onHit
+  ☐ corrosivegas.onHit
   ☐ counter.beforeTurnCallback
-  ☐ counter.onTryHit
-  ☐ counter.onStart
+  ☐ counter.onDamagingHit
   ☐ counter.onRedirectTarget
-  ☐ counter.onAfterDamage
+  ☐ counter.onStart
+  ☐ counter.damageCallback
+  ☐ counter.onTryHit
+  ☐ courtchange.onHitField
   ☐ covet.onAfterHit
-  ☐ craftyshield.onTryHitSide
-  ☐ craftyshield.onStart
+  ☐ craftyshield.onSideStart
   ☐ craftyshield.onTryHit
+  ☐ craftyshield.onTry
   ☐ crushgrip.basePowerCallback
+  ☐ curse.onResidual
+  ☐ curse.onStart
+  ☐ curse.onHit
   ☐ curse.onModifyMove
   ☐ curse.onTryHit
-  ☐ curse.onHit
-  ☐ curse.onStart
-  ☐ curse.onResidual
-  ☐ darkvoid.onTryMove
+  ☐ darkvoid.onTry
   ☐ defog.onHit
-  ☐ destinybond.onPrepareHit
-  ☐ destinybond.onStart
-  ☐ destinybond.onFaint
   ☐ destinybond.onBeforeMove
+  ☐ destinybond.onFaint
   ☐ destinybond.onMoveAborted
-  ☐ destinybond.onBeforeSwitchOut
-  ☐ detect.onPrepareHit
+  ☐ destinybond.onStart
+  ☐ destinybond.onPrepareHit
   ☐ detect.onHit
-  ☐ dig.onTryMove
+  ☐ detect.onPrepareHit
   ☐ dig.onImmunity
-  ☐ dig.onTryImmunity
+  ☐ dig.onInvulnerability
   ☐ dig.onSourceModifyDamage
-  ☐ disable.onTryHit
-  ☐ disable.onStart
-  ☐ disable.onEnd
+  ☐ dig.onTryMove
   ☐ disable.onBeforeMove
   ☐ disable.onDisableMove
-  ☐ dive.onTryMove
+  ☐ disable.onEnd
+  ☐ disable.onStart
+  ☐ disable.onTryHit
   ☐ dive.onImmunity
-  ☐ dive.onTryImmunity
+  ☐ dive.onInvulnerability
   ☐ dive.onSourceModifyDamage
+  ☐ dive.onTryMove
   ☐ doomdesire.onTry
-  ☐ dreameater.onTryHit
+  ☐ dragonenergy.basePowerCallback
+  ☐ dreameater.onTryImmunity
   ☐ echoedvoice.basePowerCallback
+  ☐ echoedvoice.onFieldRestart
+  ☐ echoedvoice.onFieldStart
   ☐ echoedvoice.onTry
-  ☐ echoedvoice.onStart
-  ☐ echoedvoice.onRestart
+  ☐ eeriespell.onHit
   ☐ electricterrain.durationCallback
+  ☐ electricterrain.onBasePower
+  ☐ electricterrain.onFieldEnd
+  ☐ electricterrain.onFieldStart
   ☐ electricterrain.onSetStatus
   ☐ electricterrain.onTryAddVolatile
-  ☐ electricterrain.onBasePower
-  ☐ electricterrain.onStart
-  ☐ electricterrain.onEnd
-  ☐ electrify.onTryHit
+  ☐ electrify.onModifyType
   ☐ electrify.onStart
-  ☐ electrify.onModifyMove
+  ☐ electrify.onTryHit
   ☐ electroball.basePowerCallback
-  ☐ embargo.onStart
   ☐ embargo.onEnd
-  ☐ encore.onStart
+  ☐ embargo.onStart
+  ☐ encore.onDisableMove
+  ☐ encore.onEnd
   ☐ encore.onOverrideAction
   ☐ encore.onResidual
-  ☐ encore.onEnd
-  ☐ encore.onDisableMove
+  ☐ encore.onStart
   ☐ endeavor.damageCallback
-  ☐ endeavor.onTry
-  ☐ endure.onTryHit
-  ☐ endure.onHit
-  ☐ endure.onStart
+  ☐ endeavor.onTryImmunity
   ☐ endure.onDamage
-  ☐ entrainment.onTryHit
+  ☐ endure.onStart
+  ☐ endure.onHit
+  ☐ endure.onPrepareHit
   ☐ entrainment.onHit
+  ☐ entrainment.onTryHit
   ☐ eruption.basePowerCallback
+  ☐ expandingforce.onBasePower
+  ☐ expandingforce.onModifyMove
   ☐ facade.onBasePower
   ☐ fairylock.onStart
   ☐ fairylock.onTrapPokemon
   ☐ fakeout.onTry
+  ☐ falseswipe.onDamage
   ☐ fellstinger.onAfterMoveSecondarySelf
   ☐ finalgambit.damageCallback
   ☐ firepledge.basePowerCallback
-  ☐ firepledge.onPrepareHit
-  ☐ firepledge.onModifyMove
-  ☐ firepledge.onHit
-  ☐ firepledge.onStart
-  ☐ firepledge.onEnd
   ☐ firepledge.onResidual
+  ☐ firepledge.onSideEnd
+  ☐ firepledge.onSideStart
+  ☐ firepledge.onModifyMove
+  ☐ firepledge.onPrepareHit
   ☐ firstimpression.onTry
+  ☐ fishiousrend.basePowerCallback
   ☐ flail.basePowerCallback
-  ☐ flameburst.onHit
   ☐ flameburst.onAfterSubDamage
+  ☐ flameburst.onHit
+  ☐ fling.onUpdate
   ☐ fling.onPrepareHit
   ☐ floralhealing.onHit
   ☐ flowershield.onHitField
-  ☐ fly.onTryMove
-  ☐ fly.onTryImmunity
+  ☐ fly.onInvulnerability
   ☐ fly.onSourceModifyDamage
+  ☐ fly.onTryMove
   ☐ flyingpress.onEffectiveness
-  ☐ focusenergy.onStart
   ☐ focusenergy.onModifyCritRatio
-  ☐ focuspunch.beforeTurnCallback
+  ☐ focusenergy.onStart
   ☐ focuspunch.beforeMoveCallback
-  ☐ focuspunch.onStart
+  ☐ focuspunch.beforeTurnCallback
   ☐ focuspunch.onHit
-  ☐ followme.onTryHit
-  ☐ followme.onStart
+  ☐ focuspunch.onStart
+  ☐ focuspunch.onTryAddVolatile
   ☐ followme.onFoeRedirectTarget
-  ☐ foresight.onTryHit
-  ☐ foresight.onStart
-  ☐ foresight.onNegateImmunity
+  ☐ followme.onStart
+  ☐ followme.onTry
   ☐ foresight.onModifyBoost
+  ☐ foresight.onNegateImmunity
+  ☐ foresight.onStart
+  ☐ foresight.onTryHit
   ☐ forestscurse.onHit
   ☐ freezedry.onEffectiveness
   ☐ freezeshock.onTryMove
   ☐ freezyfrost.onHit
   ☐ frustration.basePowerCallback
   ☐ furycutter.basePowerCallback
-  ☐ furycutter.onHit
-  ☐ furycutter.onStart
   ☐ furycutter.onRestart
+  ☐ furycutter.onStart
   ☐ fusionbolt.onBasePower
   ☐ fusionflare.onBasePower
   ☐ futuresight.onTry
-  ☐ gastroacid.onTryHit
+  ☐ gastroacid.onCopy
   ☐ gastroacid.onStart
+  ☐ gastroacid.onTryHit
   ☐ gearup.onHitSide
   ☐ genesissupernova.onHit
   ☐ geomancy.onTryMove
+  ☐ gmaxbefuddle.onHit
+  ☐ gmaxcannonade.onResidual
+  ☐ gmaxcannonade.onSideEnd
+  ☐ gmaxcannonade.onSideStart
+  ☐ gmaxcannonade.onHit
+  ☐ gmaxcentiferno.onHit
+  ☐ gmaxchistrike.onModifyCritRatio
+  ☐ gmaxchistrike.onRestart
+  ☐ gmaxchistrike.onStart
+  ☐ gmaxchistrike.onHit
+  ☐ gmaxcuddle.onHit
+  ☐ gmaxdepletion.onHit
+  ☐ gmaxfinale.onHit
+  ☐ gmaxfoamburst.onHit
+  ☐ gmaxgoldrush.onHit
+  ☐ gmaxmalodor.onHit
+  ☐ gmaxmeltdown.onHit
+  ☐ gmaxreplenish.onHit
+  ☐ gmaxsandblast.onHit
+  ☐ gmaxsmite.onHit
+  ☐ gmaxsnooze.onAfterSubDamage
+  ☐ gmaxsnooze.onHit
+  ☐ gmaxsteelsurge.onSideStart
+  ☐ gmaxsteelsurge.onSwitchIn
+  ☐ gmaxsteelsurge.onHit
+  ☐ gmaxstonesurge.onHit
+  ☐ gmaxstunshock.onHit
+  ☐ gmaxsweetness.onHit
+  ☐ gmaxtartness.onHit
+  ☐ gmaxterror.onHit
+  ☐ gmaxvinelash.onResidual
+  ☐ gmaxvinelash.onSideEnd
+  ☐ gmaxvinelash.onSideStart
+  ☐ gmaxvinelash.onHit
+  ☐ gmaxvolcalith.onResidual
+  ☐ gmaxvolcalith.onSideEnd
+  ☐ gmaxvolcalith.onSideStart
+  ☐ gmaxvolcalith.onHit
+  ☐ gmaxvoltcrash.onHit
+  ☐ gmaxwildfire.onResidual
+  ☐ gmaxwildfire.onSideEnd
+  ☐ gmaxwildfire.onSideStart
+  ☐ gmaxwildfire.onHit
+  ☐ gmaxwindrage.onHit
   ☐ grassknot.basePowerCallback
+  ☐ grassknot.onTryHit
   ☐ grasspledge.basePowerCallback
-  ☐ grasspledge.onPrepareHit
-  ☐ grasspledge.onModifyMove
-  ☐ grasspledge.onHit
-  ☐ grasspledge.onStart
-  ☐ grasspledge.onEnd
   ☐ grasspledge.onModifySpe
+  ☐ grasspledge.onSideEnd
+  ☐ grasspledge.onSideStart
+  ☐ grasspledge.onModifyMove
+  ☐ grasspledge.onPrepareHit
+  ☐ grassyglide.onModifyPriority
   ☐ grassyterrain.durationCallback
   ☐ grassyterrain.onBasePower
-  ☐ grassyterrain.onStart
+  ☐ grassyterrain.onFieldEnd
+  ☐ grassyterrain.onFieldStart
   ☐ grassyterrain.onResidual
-  ☐ grassyterrain.onTerrain
-  ☐ grassyterrain.onEnd
+  ☐ gravapple.onBasePower
   ☐ gravity.durationCallback
-  ☐ gravity.onStart
-  ☐ gravity.onModifyAccuracy
-  ☐ gravity.onDisableMove
   ☐ gravity.onBeforeMove
-  ☐ gravity.onEnd
+  ☐ gravity.onDisableMove
+  ☐ gravity.onFieldEnd
+  ☐ gravity.onFieldStart
+  ☐ gravity.onModifyAccuracy
+  ☐ gravity.onModifyMove
   ☐ growth.onModifyMove
-  ☐ grudge.onStart
-  ☐ grudge.onFaint
   ☐ grudge.onBeforeMove
+  ☐ grudge.onFaint
+  ☐ grudge.onStart
+  ☐ guardianofalola.damageCallback
   ☐ guardsplit.onHit
   ☐ guardswap.onHit
-  ☐ guardianofalola.damageCallback
   ☐ gyroball.basePowerCallback
   ☐ happyhour.onTryHit
   ☐ haze.onHitField
   ☐ healbell.onHit
   ☐ healblock.durationCallback
-  ☐ healblock.onStart
-  ☐ healblock.onDisableMove
   ☐ healblock.onBeforeMove
+  ☐ healblock.onDisableMove
   ☐ healblock.onEnd
+  ☐ healblock.onModifyMove
+  ☐ healblock.onRestart
+  ☐ healblock.onStart
   ☐ healblock.onTryHeal
-  ☐ healpulse.onHit
+  ☐ healingwish.onSwap
   ☐ healingwish.onTryHit
-  ☐ healingwish.onStart
-  ☐ healingwish.onRestart
-  ☐ healingwish.onSwitchIn
+  ☐ healpulse.onHit
   ☐ heartswap.onHit
   ☐ heatcrash.basePowerCallback
+  ☐ heatcrash.onTryHit
   ☐ heavyslam.basePowerCallback
-  ☐ helpinghand.onTryHit
-  ☐ helpinghand.onStart
-  ☐ helpinghand.onRestart
+  ☐ heavyslam.onTryHit
   ☐ helpinghand.onBasePower
+  ☐ helpinghand.onRestart
+  ☐ helpinghand.onStart
+  ☐ helpinghand.onTryHit
   ☐ hex.basePowerCallback
-  ☐ hiddenpower.onModifyMove
+  ☐ hiddenpower.onModifyType
   ☐ highjumpkick.onMoveFail
+  ☐ holdback.onDamage
   ☐ hurricane.onModifyMove
   ☐ hyperspacefury.onTry
   ☐ iceball.basePowerCallback
-  ☐ iceball.onStart
-  ☐ iceball.onRestart
   ☐ iceball.onResidual
+  ☐ iceball.onRestart
+  ☐ iceball.onStart
   ☐ iceburn.onTryMove
-  ☐ imprison.onStart
-  ☐ imprison.onFoeDisableMove
   ☐ imprison.onFoeBeforeMove
+  ☐ imprison.onFoeDisableMove
+  ☐ imprison.onStart
   ☐ incinerate.onHit
-  ☐ ingrain.onStart
-  ☐ ingrain.onResidual
-  ☐ ingrain.onTrapPokemon
   ☐ ingrain.onDragOut
+  ☐ ingrain.onResidual
+  ☐ ingrain.onStart
+  ☐ ingrain.onTrapPokemon
   ☐ instruct.onHit
+  ☐ iondeluge.onModifyType
   ☐ iondeluge.onStart
-  ☐ iondeluge.onModifyMove
-  ☐ judgment.onModifyMove
+  ☐ jawlock.onHit
+  ☐ judgment.onModifyType
   ☐ jumpkick.onMoveFail
-  ☐ kingsshield.onTryHit
+  ☐ junglehealing.onHit
   ☐ kingsshield.onHit
   ☐ kingsshield.onStart
   ☐ kingsshield.onTryHit
   ☐ kingsshield.onHit
-  ☐ knockoff.onBasePower
+  ☐ kingsshield.onPrepareHit
   ☐ knockoff.onAfterHit
-  ☐ laserfocus.onStart
-  ☐ laserfocus.onRestart
-  ☐ laserfocus.onModifyCritRatio
+  ☐ knockoff.onBasePower
   ☐ laserfocus.onEnd
-  ☐ lastresort.onTryHit
-  ☐ leechseed.onStart
+  ☐ laserfocus.onModifyCritRatio
+  ☐ laserfocus.onRestart
+  ☐ laserfocus.onStart
+  ☐ lashout.onBasePower
+  ☐ lastresort.onTry
   ☐ leechseed.onResidual
-  ☐ leechseed.onTryHit
+  ☐ leechseed.onStart
+  ☐ leechseed.onTryImmunity
   ☐ lightscreen.durationCallback
   ☐ lightscreen.onAnyModifyDamage
-  ☐ lightscreen.onStart
-  ☐ lightscreen.onEnd
+  ☐ lightscreen.onSideEnd
+  ☐ lightscreen.onSideStart
   ☐ lightthatburnsthesky.onModifyMove
-  ☐ lockon.onTryHit
-  ☐ lockon.onHit
   ☐ lockon.onSourceAccuracy
+  ☐ lockon.onSourceInvulnerability
+  ☐ lockon.onHit
+  ☐ lockon.onTryHit
   ☐ lowkick.basePowerCallback
-  ☐ luckychant.onStart
-  ☐ luckychant.onEnd
+  ☐ lowkick.onTryHit
+  ☐ luckychant.onSideEnd
+  ☐ luckychant.onSideStart
+  ☐ lunardance.onSwap
   ☐ lunardance.onTryHit
-  ☐ lunardance.onStart
-  ☐ lunardance.onRestart
-  ☐ lunardance.onSwitchIn
+  ☐ magiccoat.onAllyTryHitSide
   ☐ magiccoat.onStart
   ☐ magiccoat.onTryHit
-  ☐ magiccoat.onAllyTryHitSide
+  ☐ magicpowder.onHit
   ☐ magicroom.durationCallback
-  ☐ magicroom.onStart
-  ☐ magicroom.onRestart
-  ☐ magicroom.onEnd
+  ☐ magicroom.onFieldEnd
+  ☐ magicroom.onFieldRestart
+  ☐ magicroom.onFieldStart
   ☐ magneticflux.onHitSide
-  ☐ magnetrise.onStart
-  ☐ magnetrise.onImmunity
   ☐ magnetrise.onEnd
+  ☐ magnetrise.onImmunity
+  ☐ magnetrise.onStart
+  ☐ magnetrise.onTry
   ☐ magnitude.onModifyMove
   ☐ magnitude.onUseMoveMessage
-  ☐ matblock.onTryHitSide
-  ☐ matblock.onStart
+  ☐ matblock.onSideStart
   ☐ matblock.onTryHit
-  ☐ mefirst.onTryHit
-  ☐ mefirst.onBasePower
+  ☐ matblock.onTry
+  ☐ maxairstream.onHit
+  ☐ maxdarkness.onHit
+  ☐ maxflare.onHit
+  ☐ maxflutterby.onHit
+  ☐ maxgeyser.onHit
+  ☐ maxguard.onStart
+  ☐ maxguard.onTryHit
+  ☐ maxguard.onHit
+  ☐ maxguard.onPrepareHit
+  ☐ maxhailstorm.onHit
+  ☐ maxknuckle.onHit
+  ☐ maxlightning.onHit
+  ☐ maxmindstorm.onHit
+  ☐ maxooze.onHit
+  ☐ maxovergrowth.onHit
+  ☐ maxphantasm.onHit
+  ☐ maxquake.onHit
+  ☐ maxrockfall.onHit
+  ☐ maxstarfall.onHit
+  ☐ maxsteelspike.onHit
+  ☐ maxstrike.onHit
+  ☐ maxwyrmwind.onHit
   ☐ meanlook.onHit
+  ☐ mefirst.onBasePower
+  ☐ mefirst.onTryHit
   ☐ metalburst.damageCallback
-  ☐ metalburst.beforeTurnCallback
+  ☐ metalburst.onModifyTarget
   ☐ metalburst.onTryHit
-  ☐ metalburst.onStart
-  ☐ metalburst.onRedirectTarget
-  ☐ metalburst.onAfterDamage
+  ☐ meteorbeam.onTryMove
   ☐ metronome.onHit
   ☐ mimic.onHit
   ☐ mindblown.onAfterMove
-  ☐ mindreader.onTryHit
   ☐ mindreader.onHit
-  ☐ minimize.onSourceModifyDamage
+  ☐ mindreader.onTryHit
   ☐ minimize.onAccuracy
-  ☐ miracleeye.onTryHit
-  ☐ miracleeye.onStart
-  ☐ miracleeye.onNegateImmunity
+  ☐ minimize.onSourceModifyDamage
   ☐ miracleeye.onModifyBoost
-  ☐ mirrorcoat.damageCallback
+  ☐ miracleeye.onNegateImmunity
+  ☐ miracleeye.onStart
+  ☐ miracleeye.onTryHit
   ☐ mirrorcoat.beforeTurnCallback
-  ☐ mirrorcoat.onTryHit
-  ☐ mirrorcoat.onStart
+  ☐ mirrorcoat.onDamagingHit
   ☐ mirrorcoat.onRedirectTarget
-  ☐ mirrorcoat.onAfterDamage
+  ☐ mirrorcoat.onStart
+  ☐ mirrorcoat.damageCallback
+  ☐ mirrorcoat.onTryHit
   ☐ mirrormove.onTryHit
   ☐ mist.onBoost
-  ☐ mist.onStart
-  ☐ mist.onEnd
+  ☐ mist.onSideEnd
+  ☐ mist.onSideStart
+  ☐ mistyexplosion.onBasePower
   ☐ mistyterrain.durationCallback
+  ☐ mistyterrain.onBasePower
+  ☐ mistyterrain.onFieldEnd
+  ☐ mistyterrain.onFieldStart
   ☐ mistyterrain.onSetStatus
   ☐ mistyterrain.onTryAddVolatile
-  ☐ mistyterrain.onBasePower
-  ☐ mistyterrain.onStart
-  ☐ mistyterrain.onEnd
   ☐ moonlight.onHit
   ☐ morningsun.onHit
-  ☐ mudsport.onStart
   ☐ mudsport.onBasePower
-  ☐ mudsport.onEnd
-  ☐ multiattack.onModifyMove
+  ☐ mudsport.onFieldEnd
+  ☐ mudsport.onFieldStart
+  ☐ multiattack.onModifyType
+  ☐ naturalgift.onModifyType
   ☐ naturalgift.onPrepareHit
   ☐ naturepower.onTryHit
   ☐ naturesmadness.damageCallback
-  ☐ nightmare.onStart
   ☐ nightmare.onResidual
+  ☐ nightmare.onStart
+  ☐ noretreat.onStart
+  ☐ noretreat.onTrapPokemon
+  ☐ noretreat.onTry
+  ☐ obstruct.onHit
+  ☐ obstruct.onStart
+  ☐ obstruct.onTryHit
+  ☐ obstruct.onHit
+  ☐ obstruct.onPrepareHit
+  ☐ octolock.onResidual
+  ☐ octolock.onStart
+  ☐ octolock.onTrapPokemon
+  ☐ octolock.onTryImmunity
   ☐ odorsleuth.onTryHit
   ☐ outrage.onAfterMove
   ☐ painsplit.onHit
-  ☐ payday.onHit
+  ☐ partingshot.onHit
   ☐ payback.basePowerCallback
-  ☐ perishsong.onHitField
+  ☐ payday.onHit
   ☐ perishsong.onEnd
   ☐ perishsong.onResidual
+  ☐ perishsong.onHitField
   ☐ petaldance.onAfterMove
   ☐ phantomforce.onTryMove
-  ☐ phantomforce.onTryImmunity
   ☐ photongeyser.onModifyMove
   ☐ pikapapow.basePowerCallback
   ☐ pluck.onHit
+  ☐ pollenpuff.onHit
   ☐ pollenpuff.onTryHit
+  ☐ poltergeist.onTry
+  ☐ poltergeist.onTryHit
   ☐ powder.onStart
   ☐ powder.onTryMove
   ☐ powersplit.onHit
   ☐ powerswap.onHit
-  ☐ powertrick.onStart
   ☐ powertrick.onCopy
   ☐ powertrick.onEnd
   ☐ powertrick.onRestart
+  ☐ powertrick.onStart
   ☐ powertrip.basePowerCallback
   ☐ present.onModifyMove
-  ☐ protect.onPrepareHit
-  ☐ protect.onHit
   ☐ protect.onStart
   ☐ protect.onTryHit
-  ☐ psychup.onHit
+  ☐ protect.onHit
+  ☐ protect.onPrepareHit
   ☐ psychicfangs.onTryHit
   ☐ psychicterrain.durationCallback
-  ☐ psychicterrain.onTryHit
   ☐ psychicterrain.onBasePower
-  ☐ psychicterrain.onStart
-  ☐ psychicterrain.onEnd
-  ☐ psychoshift.onPrepareHit
+  ☐ psychicterrain.onFieldEnd
+  ☐ psychicterrain.onFieldStart
+  ☐ psychicterrain.onTryHit
+  ☐ psychoshift.onTryHit
   ☐ psychoshift.onHit
+  ☐ psychup.onHit
   ☐ psywave.damageCallback
   ☐ punishment.basePowerCallback
   ☐ purify.onHit
   ☐ pursuit.basePowerCallback
   ☐ pursuit.beforeTurnCallback
+  ☐ pursuit.onBeforeSwitchOut
   ☐ pursuit.onModifyMove
   ☐ pursuit.onTryHit
-  ☐ pursuit.onBeforeSwitchOut
   ☐ quash.onHit
-  ☐ quickguard.onTryHitSide
-  ☐ quickguard.onHitSide
-  ☐ quickguard.onStart
+  ☐ quickguard.onSideStart
   ☐ quickguard.onTryHit
-  ☐ rage.onStart
-  ☐ rage.onHit
+  ☐ quickguard.onHitSide
+  ☐ quickguard.onTry
   ☐ rage.onBeforeMove
-  ☐ ragepowder.onTryHit
-  ☐ ragepowder.onStart
+  ☐ rage.onHit
+  ☐ rage.onStart
   ☐ ragepowder.onFoeRedirectTarget
-  ☐ rapidspin.onHit
+  ☐ ragepowder.onStart
+  ☐ ragepowder.onTry
+  ☐ rapidspin.onAfterHit
+  ☐ rapidspin.onAfterSubDamage
   ☐ razorwind.onTryMove
   ☐ recycle.onHit
   ☐ reflect.durationCallback
   ☐ reflect.onAnyModifyDamage
-  ☐ reflect.onStart
-  ☐ reflect.onEnd
+  ☐ reflect.onSideEnd
+  ☐ reflect.onSideStart
   ☐ reflecttype.onHit
   ☐ refresh.onHit
-  ☐ relicsong.onHit
   ☐ relicsong.onAfterMoveSecondarySelf
-  ☐ rest.onTryMove
+  ☐ relicsong.onHit
   ☐ rest.onHit
+  ☐ rest.onTry
   ☐ retaliate.onBasePower
   ☐ return.basePowerCallback
-  ☐ revelationdance.onModifyMove
+  ☐ revelationdance.onModifyType
   ☐ revenge.basePowerCallback
   ☐ reversal.basePowerCallback
-  ☐ roleplay.onTryHit
+  ☐ risingvoltage.onBasePower
   ☐ roleplay.onHit
+  ☐ roleplay.onTryHit
   ☐ rollout.basePowerCallback
-  ☐ rollout.onStart
-  ☐ rollout.onRestart
   ☐ rollout.onResidual
+  ☐ rollout.onRestart
+  ☐ rollout.onStart
+  ☐ roost.onStart
   ☐ roost.onType
   ☐ rototiller.onHitField
   ☐ round.basePowerCallback
   ☐ round.onTry
   ☐ safeguard.durationCallback
   ☐ safeguard.onSetStatus
+  ☐ safeguard.onSideEnd
+  ☐ safeguard.onSideStart
   ☐ safeguard.onTryAddVolatile
-  ☐ safeguard.onStart
-  ☐ safeguard.onEnd
   ☐ sappyseed.onHit
   ☐ secretpower.onModifyMove
   ☐ shadowforce.onTryMove
-  ☐ shadowforce.onTryImmunity
+  ☐ shellsidearm.onAfterSubDamage
+  ☐ shellsidearm.onHit
+  ☐ shellsidearm.onModifyMove
+  ☐ shellsidearm.onPrepareHit
   ☐ shelltrap.beforeTurnCallback
-  ☐ shelltrap.beforeMoveCallback
-  ☐ shelltrap.onStart
   ☐ shelltrap.onHit
+  ☐ shelltrap.onStart
+  ☐ shelltrap.onTryMove
   ☐ shoreup.onHit
-  ☐ simplebeam.onTryHit
   ☐ simplebeam.onHit
+  ☐ simplebeam.onTryHit
   ☐ sketch.onHit
-  ☐ skillswap.onTryHit
   ☐ skillswap.onHit
+  ☐ skillswap.onTryHit
   ☐ skullbash.onTryMove
   ☐ skyattack.onTryMove
+  ☐ skydrop.onAnyBasePower
+  ☐ skydrop.onAnyDragOut
+  ☐ skydrop.onAnyInvulnerability
+  ☐ skydrop.onFaint
+  ☐ skydrop.onFoeBeforeMove
+  ☐ skydrop.onFoeTrapPokemon
+  ☐ skydrop.onRedirectTarget
+  ☐ skydrop.onHit
   ☐ skydrop.onModifyMove
   ☐ skydrop.onMoveFail
+  ☐ skydrop.onTry
   ☐ skydrop.onTryHit
-  ☐ skydrop.onHit
-  ☐ skydrop.onAnyDragOut
-  ☐ skydrop.onFoeTrapPokemon
-  ☐ skydrop.onFoeBeforeMove
-  ☐ skydrop.onRedirectTarget
-  ☐ skydrop.onAnyTryImmunity
-  ☐ skydrop.onAnyBasePower
-  ☐ skydrop.onFaint
-  ☐ sleeptalk.onTryHit
   ☐ sleeptalk.onHit
-  ☐ smackdown.onStart
+  ☐ sleeptalk.onTry
   ☐ smackdown.onRestart
+  ☐ smackdown.onStart
   ☐ smellingsalts.basePowerCallback
   ☐ smellingsalts.onHit
+  ☐ snatch.onAnyPrepareHit
   ☐ snatch.onStart
-  ☐ snatch.onAnyTryMove
-  ☐ snore.onTryHit
+  ☐ snore.onTry
+  ☐ soak.onHit
+  ☐ solarbeam.onBasePower
+  ☐ solarbeam.onTryMove
+  ☐ solarblade.onBasePower
+  ☐ solarblade.onTryMove
+  ☐ sparklingaria.onHit
+  ☐ sparklyswirl.onHit
   ☐ speedswap.onHit
-  ☐ spikyshield.onTryHit
+  ☐ spiderweb.onHit
+  ☐ spikes.onSideRestart
+  ☐ spikes.onSideStart
+  ☐ spikes.onSwitchIn
   ☐ spikyshield.onHit
   ☐ spikyshield.onStart
   ☐ spikyshield.onTryHit
   ☐ spikyshield.onHit
+  ☐ spikyshield.onPrepareHit
   ☐ spiritshackle.onHit
-  ☐ soak.onHit
-  ☐ solarbeam.onTryMove
-  ☐ solarbeam.onBasePower
-  ☐ solarblade.onTryMove
-  ☐ solarblade.onBasePower
-  ☐ sparklingaria.onHit
-  ☐ sparklyswirl.onHit
-  ☐ spiderweb.onHit
-  ☐ spikes.onStart
-  ☐ spikes.onRestart
-  ☐ spikes.onSwitchIn
-  ☐ spitup.basePowerCallback
-  ☐ spitup.onTry
-  ☐ spitup.onAfterMove
   ☐ spite.onHit
+  ☐ spitup.basePowerCallback
+  ☐ spitup.onAfterMove
+  ☐ spitup.onTry
+  ☐ splash.onTry
   ☐ splash.onTryHit
+  ☐ splinteredstormshards.onAfterSubDamage
   ☐ splinteredstormshards.onHit
-  ☐ spotlight.onTryHit
-  ☐ spotlight.onStart
   ☐ spotlight.onFoeRedirectTarget
-  ☐ stealthrock.onStart
+  ☐ spotlight.onStart
+  ☐ spotlight.onTryHit
+  ☐ stealthrock.onSideStart
   ☐ stealthrock.onSwitchIn
-  ☐ stickyweb.onStart
+  ☐ steelbeam.onAfterMove
+  ☐ steelroller.onAfterSubDamage
+  ☐ steelroller.onHit
+  ☐ steelroller.onTry
+  ☐ stickyweb.onSideStart
   ☐ stickyweb.onSwitchIn
-  ☐ stockpile.onTryHit
-  ☐ stockpile.onStart
-  ☐ stockpile.onRestart
   ☐ stockpile.onEnd
+  ☐ stockpile.onRestart
+  ☐ stockpile.onStart
+  ☐ stockpile.onTry
   ☐ stompingtantrum.basePowerCallback
   ☐ storedpower.basePowerCallback
   ☐ strengthsap.onHit
   ☐ struggle.onModifyMove
-  ☐ substitute.onTryHit
-  ☐ substitute.onHit
+  ☐ stuffcheeks.onTry
+  ☐ substitute.onEnd
   ☐ substitute.onStart
   ☐ substitute.onTryPrimaryHit
-  ☐ substitute.onEnd
+  ☐ substitute.onHit
+  ☐ substitute.onTryHit
   ☐ suckerpunch.onTry
   ☐ superfang.damageCallback
-  ☐ swallow.onTryHit
   ☐ swallow.onHit
-  ☐ switcheroo.onTryHit
+  ☐ swallow.onTry
   ☐ switcheroo.onHit
-  ☐ synchronoise.onTryHit
+  ☐ switcheroo.onTryImmunity
+  ☐ synchronoise.onTryImmunity
   ☐ synthesis.onHit
   ☐ tailwind.durationCallback
-  ☐ tailwind.onStart
   ☐ tailwind.onModifySpe
-  ☐ tailwind.onEnd
-  ☐ taunt.onStart
-  ☐ taunt.onEnd
-  ☐ taunt.onDisableMove
+  ☐ tailwind.onSideEnd
+  ☐ tailwind.onSideStart
+  ☐ tarshot.onEffectiveness
+  ☐ tarshot.onStart
   ☐ taunt.onBeforeMove
-  ☐ technoblast.onModifyMove
-  ☐ telekinesis.onStart
+  ☐ taunt.onDisableMove
+  ☐ taunt.onEnd
+  ☐ taunt.onStart
+  ☐ teatime.onHitField
+  ☐ technoblast.onModifyType
   ☐ telekinesis.onAccuracy
-  ☐ telekinesis.onImmunity
-  ☐ telekinesis.onUpdate
   ☐ telekinesis.onEnd
+  ☐ telekinesis.onImmunity
+  ☐ telekinesis.onStart
+  ☐ telekinesis.onUpdate
+  ☐ telekinesis.onTry
+  ☐ terrainpulse.onModifyMove
+  ☐ terrainpulse.onModifyType
   ☐ thief.onAfterHit
   ☐ thousandarrows.onEffectiveness
   ☐ thousandwaves.onHit
   ☐ thrash.onAfterMove
-  ☐ throatchop.onStart
-  ☐ throatchop.onDisableMove
   ☐ throatchop.onBeforeMove
+  ☐ throatchop.onDisableMove
   ☐ throatchop.onEnd
+  ☐ throatchop.onModifyMove
+  ☐ throatchop.onStart
   ☐ throatchop.onHit
   ☐ thunder.onModifyMove
   ☐ topsyturvy.onHit
-  ☐ torment.onStart
-  ☐ torment.onEnd
   ☐ torment.onDisableMove
-  ☐ toxicspikes.onStart
-  ☐ toxicspikes.onRestart
+  ☐ torment.onEnd
+  ☐ torment.onStart
+  ☐ toxicspikes.onSideRestart
+  ☐ toxicspikes.onSideStart
   ☐ toxicspikes.onSwitchIn
   ☐ transform.onHit
   ☐ triattack.onHit
-  ☐ trick.onTryHit
   ☐ trick.onHit
+  ☐ trick.onTryImmunity
   ☐ trickortreat.onHit
   ☐ trickroom.durationCallback
-  ☐ trickroom.onStart
-  ☐ trickroom.onRestart
-  ☐ trickroom.onEnd
+  ☐ trickroom.onFieldEnd
+  ☐ trickroom.onFieldRestart
+  ☐ trickroom.onFieldStart
+  ☐ tripleaxel.basePowerCallback
   ☐ triplekick.basePowerCallback
   ☐ trumpcard.basePowerCallback
-  ☐ uproar.onTryHit
-  ☐ uproar.onStart
-  ☐ uproar.onResidual
-  ☐ uproar.onEnd
   ☐ uproar.onAnySetStatus
+  ☐ uproar.onEnd
+  ☐ uproar.onResidual
+  ☐ uproar.onStart
+  ☐ uproar.onTryHit
   ☐ veeveevolley.basePowerCallback
   ☐ venomdrench.onHit
   ☐ venoshock.onBasePower
   ☐ wakeupslap.basePowerCallback
   ☐ wakeupslap.onHit
   ☐ waterpledge.basePowerCallback
+  ☐ waterpledge.onModifyMove
+  ☐ waterpledge.onSideEnd
+  ☐ waterpledge.onSideStart
+  ☐ waterpledge.onModifyMove
   ☐ waterpledge.onPrepareHit
-  ☐ waterpledge.onModifyMove
-  ☐ waterpledge.onHit
-  ☐ waterpledge.onStart
-  ☐ waterpledge.onEnd
-  ☐ waterpledge.onModifyMove
-  ☐ watersport.onStart
-  ☐ watersport.onBasePower
-  ☐ watersport.onEnd
-  ☐ waterspout.basePowerCallback
   ☐ watershuriken.basePowerCallback
+  ☐ watersport.onBasePower
+  ☐ watersport.onFieldEnd
+  ☐ watersport.onFieldStart
+  ☐ waterspout.basePowerCallback
   ☐ weatherball.onModifyMove
-  ☐ wideguard.onTryHitSide
-  ☐ wideguard.onHitSide
-  ☐ wideguard.onStart
+  ☐ weatherball.onModifyType
+  ☐ wideguard.onSideStart
   ☐ wideguard.onTryHit
-  ☐ wish.onStart
+  ☐ wideguard.onHitSide
+  ☐ wideguard.onTry
   ☐ wish.onEnd
+  ☐ wish.onStart
   ☐ wonderroom.durationCallback
-  ☐ wonderroom.onStart
-  ☐ wonderroom.onRestart
-  ☐ wonderroom.onEnd
-  ☐ worryseed.onTryHit
+  ☐ wonderroom.onFieldEnd
+  ☐ wonderroom.onFieldRestart
+  ☐ wonderroom.onFieldStart
   ☐ worryseed.onHit
+  ☐ worryseed.onTryHit
+  ☐ worryseed.onTryImmunity
   ☐ wringout.basePowerCallback
-  ☐ yawn.onTryHit
-  ☐ yawn.onStart
   ☐ yawn.onEnd
-  ☐ magikarpsrevenge.onTry
-  ☐ magikarpsrevenge.onHit
+  ☐ yawn.onStart
+  ☐ yawn.onTryHit
   
 Items:
   ☐ abomasite.onTakeItem
   ☐ absolite.onTakeItem
-  ☐ absorbbulb.onAfterDamage
+  ☐ absorbbulb.onDamagingHit
   ☐ adamantorb.onBasePower
   ☐ adrenalineorb.onAfterBoost
+  ☐ adrenalineorb.onBoost
   ☐ aerodactylite.onTakeItem
   ☐ aggronite.onTakeItem
-  ☐ aguavberry.onUpdate
-  ☐ aguavberry.onTryEatItem
   ☐ aguavberry.onEat
-  ☐ airballoon.onStart
-  ☐ airballoon.onAfterDamage
+  ☐ aguavberry.onTryEatItem
+  ☐ aguavberry.onUpdate
   ☐ airballoon.onAfterSubDamage
+  ☐ airballoon.onDamagingHit
+  ☐ airballoon.onStart
   ☐ alakazite.onTakeItem
   ☐ altarianite.onTakeItem
   ☐ ampharosite.onTakeItem
-  ☐ apicotberry.onUpdate
   ☐ apicotberry.onEat
-  ☐ aspearberry.onUpdate
+  ☐ apicotberry.onUpdate
   ☐ aspearberry.onEat
-  ☐ assaultvest.onModifySpD
+  ☐ aspearberry.onUpdate
   ☐ assaultvest.onDisableMove
+  ☐ assaultvest.onModifySpD
   ☐ audinite.onTakeItem
+  ☐ babiriberry.onEat
   ☐ babiriberry.onSourceModifyDamage
   ☐ banettite.onTakeItem
   ☐ beedrillite.onTakeItem
+  ☐ berry.onEat
+  ☐ berry.onResidual
+  ☐ berry.onTryEatItem
   ☐ berryjuice.onUpdate
+  ☐ berserkgene.onUpdate
   ☐ bigroot.onTryHeal
+  ☐ bitterberry.onEat
+  ☐ bitterberry.onUpdate
   ☐ blackbelt.onBasePower
-  ☐ blacksludge.onResidual
-  ☐ blacksludge.onTerrain
   ☐ blackglasses.onBasePower
+  ☐ blacksludge.onResidual
   ☐ blastoisinite.onTakeItem
   ☐ blazikenite.onTakeItem
-  ☐ blueorb.onSwitchIn
   ☐ blueorb.onPrimal
+  ☐ blueorb.onSwitchIn
   ☐ blueorb.onTakeItem
   ☐ brightpowder.onModifyAccuracy
   ☐ buggem.onSourceTryPrimaryHit
   ☐ bugmemory.onTakeItem
   ☐ burndrive.onTakeItem
+  ☐ burntberry.onEat
+  ☐ burntberry.onUpdate
   ☐ cameruptite.onTakeItem
-  ☐ cellbattery.onAfterDamage
+  ☐ cellbattery.onDamagingHit
   ☐ charcoal.onBasePower
   ☐ charizarditex.onTakeItem
   ☐ charizarditey.onTakeItem
+  ☐ chartiberry.onEat
   ☐ chartiberry.onSourceModifyDamage
-  ☐ cheriberry.onUpdate
   ☐ cheriberry.onEat
-  ☐ chestoberry.onUpdate
+  ☐ cheriberry.onUpdate
   ☐ chestoberry.onEat
+  ☐ chestoberry.onUpdate
+  ☐ chilanberry.onEat
   ☐ chilanberry.onSourceModifyDamage
   ☐ chilldrive.onTakeItem
-  ☐ choiceband.onStart
-  ☐ choiceband.onModifyMove
   ☐ choiceband.onModifyAtk
-  ☐ choicescarf.onStart
+  ☐ choiceband.onModifyMove
+  ☐ choiceband.onStart
   ☐ choicescarf.onModifyMove
   ☐ choicescarf.onModifySpe
-  ☐ choicespecs.onStart
+  ☐ choicescarf.onStart
   ☐ choicespecs.onModifyMove
   ☐ choicespecs.onModifySpA
+  ☐ choicespecs.onStart
+  ☐ chopleberry.onEat
   ☐ chopleberry.onSourceModifyDamage
+  ☐ cobaberry.onEat
   ☐ cobaberry.onSourceModifyDamage
+  ☐ colburberry.onEat
   ☐ colburberry.onSourceModifyDamage
-  ☐ custapberry.onModifyPriority
+  ☐ crucibellite.onTakeItem
+  ☐ custapberry.onEat
+  ☐ custapberry.onFractionalPriority
   ☐ darkgem.onSourceTryPrimaryHit
   ☐ darkmemory.onTakeItem
   ☐ deepseascale.onModifySpD
@@ -1034,9 +1252,12 @@ Items:
   ☐ earthplate.onBasePower
   ☐ earthplate.onTakeItem
   ☐ ejectbutton.onAfterMoveSecondary
+  ☐ ejectpack.onAfterBoost
   ☐ electricgem.onSourceTryPrimaryHit
   ☐ electricmemory.onTakeItem
-  ☐ electricseed.onUpdate
+  ☐ electricseed.onAnyTerrainStart
+  ☐ electricseed.onStart
+  ☐ enigmaberry.onEat
   ☐ enigmaberry.onHit
   ☐ enigmaberry.onTryEatItem
   ☐ eviolite.onModifyDef
@@ -1046,9 +1267,9 @@ Items:
   ☐ fairymemory.onTakeItem
   ☐ fightinggem.onSourceTryPrimaryHit
   ☐ fightingmemory.onTakeItem
-  ☐ figyberry.onUpdate
-  ☐ figyberry.onTryEatItem
   ☐ figyberry.onEat
+  ☐ figyberry.onTryEatItem
+  ☐ figyberry.onUpdate
   ☐ firegem.onSourceTryPrimaryHit
   ☐ firememory.onTakeItem
   ☐ fistplate.onBasePower
@@ -1061,31 +1282,37 @@ Items:
   ☐ flyingmemory.onTakeItem
   ☐ focusband.onDamage
   ☐ focussash.onDamage
-  ☐ fullincense.onModifyPriority
   ☐ galladite.onTakeItem
-  ☐ ganlonberry.onUpdate
   ☐ ganlonberry.onEat
+  ☐ ganlonberry.onUpdate
   ☐ garchompite.onTakeItem
   ☐ gardevoirite.onTakeItem
   ☐ gengarite.onTakeItem
   ☐ ghostgem.onSourceTryPrimaryHit
   ☐ ghostmemory.onTakeItem
   ☐ glalitite.onTakeItem
+  ☐ goldberry.onEat
+  ☐ goldberry.onResidual
+  ☐ goldberry.onTryEatItem
   ☐ grassgem.onSourceTryPrimaryHit
   ☐ grassmemory.onTakeItem
-  ☐ grassyseed.onUpdate
+  ☐ grassyseed.onAnyTerrainStart
+  ☐ grassyseed.onStart
   ☐ griseousorb.onBasePower
   ☐ griseousorb.onTakeItem
   ☐ groundgem.onSourceTryPrimaryHit
   ☐ groundmemory.onTakeItem
   ☐ gyaradosite.onTakeItem
+  ☐ habanberry.onEat
   ☐ habanberry.onSourceModifyDamage
   ☐ hardstone.onBasePower
   ☐ heracronite.onTakeItem
   ☐ houndoominite.onTakeItem
-  ☐ iapapaberry.onUpdate
-  ☐ iapapaberry.onTryEatItem
   ☐ iapapaberry.onEat
+  ☐ iapapaberry.onTryEatItem
+  ☐ iapapaberry.onUpdate
+  ☐ iceberry.onEat
+  ☐ iceberry.onUpdate
   ☐ icegem.onSourceTryPrimaryHit
   ☐ icememory.onTakeItem
   ☐ icicleplate.onBasePower
@@ -1096,41 +1323,44 @@ Items:
   ☐ ironball.onModifySpe
   ☐ ironplate.onBasePower
   ☐ ironplate.onTakeItem
-  ☐ jabocaberry.onAfterDamage
+  ☐ jabocaberry.onDamagingHit
+  ☐ jabocaberry.onEat
+  ☐ kangaskhanite.onTakeItem
+  ☐ kasibberry.onEat
   ☐ kasibberry.onSourceModifyDamage
+  ☐ kebiaberry.onEat
   ☐ kebiaberry.onSourceModifyDamage
   ☐ keeberry.onAfterMoveSecondary
   ☐ keeberry.onEat
-  ☐ kangaskhanite.onTakeItem
   ☐ kingsrock.onModifyMove
-  ☐ laggingtail.onModifyPriority
-  ☐ lansatberry.onUpdate
   ☐ lansatberry.onEat
+  ☐ lansatberry.onUpdate
   ☐ latiasite.onTakeItem
   ☐ latiosite.onTakeItem
   ☐ laxincense.onModifyAccuracy
+  ☐ leek.onModifyCritRatio
   ☐ leftovers.onResidual
-  ☐ leftovers.onTerrain
-  ☐ leppaberry.onUpdate
   ☐ leppaberry.onEat
-  ☐ liechiberry.onUpdate
+  ☐ leppaberry.onUpdate
   ☐ liechiberry.onEat
-  ☐ lifeorb.onModifyDamage
+  ☐ liechiberry.onUpdate
   ☐ lifeorb.onAfterMoveSecondarySelf
+  ☐ lifeorb.onModifyDamage
   ☐ lightball.onModifyAtk
   ☐ lightball.onModifySpA
   ☐ lopunnite.onTakeItem
   ☐ lucarionite.onTakeItem
   ☐ luckypunch.onModifyCritRatio
-  ☐ lumberry.onUpdate
+  ☐ lumberry.onAfterSetStatus
   ☐ lumberry.onEat
-  ☐ luminousmoss.onAfterDamage
+  ☐ lumberry.onUpdate
+  ☐ luminousmoss.onDamagingHit
   ☐ lustrousorb.onBasePower
   ☐ machobrace.onModifySpe
   ☐ magnet.onBasePower
-  ☐ magoberry.onUpdate
-  ☐ magoberry.onTryEatItem
   ☐ magoberry.onEat
+  ☐ magoberry.onTryEatItem
+  ☐ magoberry.onUpdate
   ☐ mail.onTakeItem
   ☐ manectite.onTakeItem
   ☐ marangaberry.onAfterMoveSecondary
@@ -1144,43 +1374,55 @@ Items:
   ☐ metagrossite.onTakeItem
   ☐ metalcoat.onBasePower
   ☐ metalpowder.onModifyDef
-  ☐ metronome.onStart
+  ☐ metronome.onModifyDamage
   ☐ metronome.onStart
   ☐ metronome.onTryMove
-  ☐ metronome.onModifyDamage
+  ☐ metronome.onStart
   ☐ mewtwonitex.onTakeItem
   ☐ mewtwonitey.onTakeItem
-  ☐ micleberry.onResidual
+  ☐ micleberry.onSourceAccuracy
   ☐ micleberry.onEat
-  ☐ micleberry.onSourceModifyAccuracy
+  ☐ micleberry.onResidual
   ☐ mindplate.onBasePower
   ☐ mindplate.onTakeItem
+  ☐ mintberry.onEat
+  ☐ mintberry.onUpdate
+  ☐ miracleberry.onEat
+  ☐ miracleberry.onUpdate
   ☐ miracleseed.onBasePower
-  ☐ mistyseed.onUpdate
+  ☐ mistyseed.onAnyTerrainStart
+  ☐ mistyseed.onStart
   ☐ muscleband.onBasePower
+  ☐ mysteryberry.onEat
+  ☐ mysteryberry.onUpdate
   ☐ mysticwater.onBasePower
   ☐ nevermeltice.onBasePower
   ☐ normalgem.onSourceTryPrimaryHit
+  ☐ occaberry.onEat
   ☐ occaberry.onSourceModifyDamage
   ☐ oddincense.onBasePower
-  ☐ oranberry.onUpdate
-  ☐ oranberry.onTryEatItem
   ☐ oranberry.onEat
+  ☐ oranberry.onTryEatItem
+  ☐ oranberry.onUpdate
+  ☐ passhoberry.onEat
   ☐ passhoberry.onSourceModifyDamage
+  ☐ payapaberry.onEat
   ☐ payapaberry.onSourceModifyDamage
-  ☐ pechaberry.onUpdate
   ☐ pechaberry.onEat
-  ☐ persimberry.onUpdate
+  ☐ pechaberry.onUpdate
   ☐ persimberry.onEat
-  ☐ petayaberry.onUpdate
+  ☐ persimberry.onUpdate
   ☐ petayaberry.onEat
+  ☐ petayaberry.onUpdate
   ☐ pidgeotite.onTakeItem
+  ☐ pinkbow.onBasePower
   ☐ pinsirite.onTakeItem
   ☐ pixieplate.onBasePower
   ☐ pixieplate.onTakeItem
   ☐ poisonbarb.onBasePower
   ☐ poisongem.onSourceTryPrimaryHit
   ☐ poisonmemory.onTakeItem
+  ☐ polkadotbow.onBasePower
   ☐ poweranklet.onModifySpe
   ☐ powerband.onModifySpe
   ☐ powerbelt.onModifySpe
@@ -1188,37 +1430,43 @@ Items:
   ☐ powerherb.onChargeMove
   ☐ powerlens.onModifySpe
   ☐ powerweight.onModifySpe
-  ☐ protectivepads.onAttract
-  ☐ protectivepads.onBoost
-  ☐ protectivepads.onDamage
-  ☐ protectivepads.onSetAbility
-  ☐ protectivepads.onSetStatus
+  ☐ przcureberry.onEat
+  ☐ przcureberry.onUpdate
+  ☐ psncureberry.onEat
+  ☐ psncureberry.onUpdate
   ☐ psychicgem.onSourceTryPrimaryHit
   ☐ psychicmemory.onTakeItem
-  ☐ psychicseed.onUpdate
-  ☐ quickclaw.onModifyPriority
+  ☐ psychicseed.onAnyTerrainStart
+  ☐ psychicseed.onStart
+  ☐ quickclaw.onFractionalPriority
   ☐ quickpowder.onModifySpe
-  ☐ rawstberry.onUpdate
   ☐ rawstberry.onEat
+  ☐ rawstberry.onUpdate
   ☐ razorclaw.onModifyCritRatio
   ☐ razorfang.onModifyMove
   ☐ redcard.onAfterMoveSecondary
-  ☐ redorb.onSwitchIn
   ☐ redorb.onPrimal
+  ☐ redorb.onSwitchIn
   ☐ redorb.onTakeItem
+  ☐ rindoberry.onEat
   ☐ rindoberry.onSourceModifyDamage
   ☐ rockgem.onSourceTryPrimaryHit
   ☐ rockincense.onBasePower
   ☐ rockmemory.onTakeItem
-  ☐ rockyhelmet.onAfterDamage
+  ☐ rockyhelmet.onDamagingHit
+  ☐ roomservice.onUpdate
   ☐ roseincense.onBasePower
+  ☐ roseliberry.onEat
   ☐ roseliberry.onSourceModifyDamage
-  ☐ rowapberry.onAfterDamage
+  ☐ rowapberry.onDamagingHit
+  ☐ rowapberry.onEat
+  ☐ rustedshield.onTakeItem
+  ☐ rustedsword.onTakeItem
   ☐ sablenite.onTakeItem
   ☐ safetygoggles.onImmunity
   ☐ safetygoggles.onTryHit
-  ☐ salacberry.onUpdate
   ☐ salacberry.onEat
+  ☐ salacberry.onUpdate
   ☐ salamencite.onTakeItem
   ☐ sceptilite.onTakeItem
   ☐ scizorite.onTakeItem
@@ -1229,16 +1477,17 @@ Items:
   ☐ shedshell.onTrapPokemon
   ☐ shellbell.onAfterMoveSecondarySelf
   ☐ shockdrive.onTakeItem
+  ☐ shucaberry.onEat
   ☐ shucaberry.onSourceModifyDamage
   ☐ silkscarf.onBasePower
   ☐ silverpowder.onBasePower
-  ☐ sitrusberry.onUpdate
-  ☐ sitrusberry.onTryEatItem
   ☐ sitrusberry.onEat
+  ☐ sitrusberry.onTryEatItem
+  ☐ sitrusberry.onUpdate
   ☐ skyplate.onBasePower
   ☐ skyplate.onTakeItem
   ☐ slowbronite.onTakeItem
-  ☐ snowball.onAfterDamage
+  ☐ snowball.onDamagingHit
   ☐ softsand.onBasePower
   ☐ souldew.onBasePower
   ☐ spelltag.onBasePower
@@ -1246,65 +1495,42 @@ Items:
   ☐ splashplate.onTakeItem
   ☐ spookyplate.onBasePower
   ☐ spookyplate.onTakeItem
-  ☐ starfberry.onUpdate
   ☐ starfberry.onEat
-  ☐ steelixite.onTakeItem
+  ☐ starfberry.onUpdate
   ☐ steelgem.onSourceTryPrimaryHit
+  ☐ steelixite.onTakeItem
   ☐ steelmemory.onTakeItem
   ☐ stick.onModifyCritRatio
-  ☐ stickybarb.onResidual
   ☐ stickybarb.onHit
+  ☐ stickybarb.onResidual
   ☐ stoneplate.onBasePower
   ☐ stoneplate.onTakeItem
   ☐ swampertite.onTakeItem
+  ☐ tangaberry.onEat
   ☐ tangaberry.onSourceModifyDamage
   ☐ thickclub.onModifyAtk
+  ☐ throatspray.onAfterMoveSecondarySelf
   ☐ toxicorb.onResidual
   ☐ toxicplate.onBasePower
   ☐ toxicplate.onTakeItem
   ☐ twistedspoon.onBasePower
   ☐ tyranitarite.onTakeItem
   ☐ venusaurite.onTakeItem
+  ☐ wacanberry.onEat
   ☐ wacanberry.onSourceModifyDamage
   ☐ watergem.onSourceTryPrimaryHit
   ☐ watermemory.onTakeItem
   ☐ waveincense.onBasePower
-  ☐ weaknesspolicy.onHit
+  ☐ weaknesspolicy.onDamagingHit
   ☐ whiteherb.effect
   ☐ whiteherb.onUpdate
   ☐ widelens.onSourceModifyAccuracy
-  ☐ wikiberry.onUpdate
-  ☐ wikiberry.onTryEatItem
   ☐ wikiberry.onEat
+  ☐ wikiberry.onTryEatItem
+  ☐ wikiberry.onUpdate
   ☐ wiseglasses.onBasePower
+  ☐ yacheberry.onEat
   ☐ yacheberry.onSourceModifyDamage
   ☐ zapplate.onBasePower
   ☐ zapplate.onTakeItem
   ☐ zoomlens.onSourceModifyAccuracy
-  ☐ berserkgene.onUpdate
-  ☐ berry.onResidual
-  ☐ berry.onTryEatItem
-  ☐ berry.onEat
-  ☐ bitterberry.onUpdate
-  ☐ bitterberry.onEat
-  ☐ burntberry.onUpdate
-  ☐ burntberry.onEat
-  ☐ goldberry.onResidual
-  ☐ goldberry.onTryEatItem
-  ☐ goldberry.onEat
-  ☐ iceberry.onUpdate
-  ☐ iceberry.onEat
-  ☐ mintberry.onUpdate
-  ☐ mintberry.onEat
-  ☐ miracleberry.onUpdate
-  ☐ miracleberry.onEat
-  ☐ mysteryberry.onUpdate
-  ☐ mysteryberry.onEat
-  ☐ pinkbow.onBasePower
-  ☐ polkadotbow.onBasePower
-  ☐ przcureberry.onUpdate
-  ☐ przcureberry.onEat
-  ☐ psncureberry.onUpdate
-  ☐ psncureberry.onEat
-  ☐ crucibellite.onTakeItem
-  

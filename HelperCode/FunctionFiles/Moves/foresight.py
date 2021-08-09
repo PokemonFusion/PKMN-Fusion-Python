@@ -1,7 +1,17 @@
-def onTryHit (target):
-	"""function (target) {
-			if (target.volatiles['miracleeye']) return false;
-		}
+def onModifyBoost (boosts):
+	"""function (boosts) {
+				if (boosts.evasion && boosts.evasion > 0) {
+					boosts.evasion = 0;
+				}
+			}
+	""" 
+	pass
+
+def onNegateImmunity (pokemon, type):
+	"""function (pokemon, type) {
+				if (pokemon.hasType('Ghost') && ['Normal', 'Fighting'].includes(type))
+					return false;
+			}
 	""" 
 	pass
 
@@ -12,18 +22,10 @@ def onStart (pokemon):
 	""" 
 	pass
 
-def onNegateImmunity (pokemon, type):
-	"""function (pokemon, type) {
-				if (pokemon.hasType('Ghost') && ['Normal', 'Fighting'].includes(type)) return false;
-			}
-	""" 
-	pass
-
-def onModifyBoost (boosts):
-	"""function (boosts) {
-				if (boosts.evasion && boosts.evasion > 0) {
-					boosts.evasion = 0;
-				}
-			}
+def onTryHit (target):
+	"""function (target) {
+			if (target.volatiles['miracleeye'])
+				return false;
+		}
 	""" 
 	pass

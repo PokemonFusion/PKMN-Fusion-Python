@@ -1,9 +1,6 @@
-def onTryHit (target):
+def onTryImmunity (target):
 	"""function (target) {
-			if (target.status !== 'slp' && !target.hasAbility('comatose')) {
-				this.add('-immune', target);
-				return null;
-			}
+			return target.status === 'slp' || target.hasAbility('comatose');
 		}
 	""" 
 	pass

@@ -1,16 +1,16 @@
-def onUpdate(**bvalues):
+def onEat(**bvalues):
 	"""function (pokemon) {
 			if (pokemon.status === 'frz') {
-				pokemon.eatItem();
+				pokemon.cureStatus();
 			}
 		}
 	""" 
 	pass
 
-def onEat(**bvalues):
+def onUpdate(**bvalues):
 	"""function (pokemon) {
 			if (pokemon.status === 'frz') {
-				pokemon.cureStatus();
+				pokemon.eatItem();
 			}
 		}
 	""" 

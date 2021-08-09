@@ -1,6 +1,6 @@
 def onAnyModifyDamage (damage, source, target, move):
 	"""function (damage, source, target, move) {
-			if (target !== this.effectData.target && target.side === this.effectData.target.side) {
+			if (target !== this.effectState.target && target.isAlly(this.effectState.target)) {
 				this.debug('Friend Guard weaken');
 				return this.chainModify(0.75);
 			}

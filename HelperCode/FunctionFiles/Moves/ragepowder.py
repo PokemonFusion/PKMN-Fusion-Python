@@ -1,7 +1,15 @@
-def onTryHit (target):
-	"""function (target) {
-			if (target.side.active.length < 2) return false;
-		}
+def onFoeRedirectTarget (target, source, source2, move):
+	"""function (target, source, source2, move) {
+				var ragePowderUser = this.effectState.target;
+				if (ragePowderUser.isSkyDropped())
+					return;
+				if (source.runStatusImmunity('powder') && this.validTarget(ragePowderUser, source, move.target)) {
+					if (move.smartTarget)
+						move.smartTarget = false;
+					this.debug("Rage Powder redirected target of move");
+					return ragePowderUser;
+				}
+			}
 	""" 
 	pass
 
@@ -12,12 +20,9 @@ def onStart (pokemon):
 	""" 
 	pass
 
-def onFoeRedirectTarget (target, source, source2, move):
-	"""function (target, source, source2, move) {
-				if (!this.effectData.target.isSkyDropped() && source.runStatusImmunity('powder') && this.validTarget(this.effectData.target, source, move.target)) {
-					this.debug("Rage Powder redirected target of move");
-					return this.effectData.target;
-				}
-			}
+def onTry (source):
+	"""function (source) {
+			return this.activePerHalf > 1;
+		}
 	""" 
 	pass

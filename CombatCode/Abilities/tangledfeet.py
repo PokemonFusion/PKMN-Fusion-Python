@@ -1,9 +1,10 @@
 def onModifyAccuracy(**bvalues):
 	"""function (accuracy, target) {
-			if (typeof accuracy !== 'number') return;
-			if (target && target.volatiles['confusion']) {
+			if (typeof accuracy !== 'number')
+				return;
+			if (target === null || target === void 0 ? void 0 : target.volatiles['confusion']) {
 				this.debug('Tangled Feet - decreasing accuracy');
-				return accuracy * 0.5;
+				return this.chainModify(0.5);
 			}
 		}
 	""" 

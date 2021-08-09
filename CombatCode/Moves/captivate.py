@@ -1,9 +1,6 @@
-def onTryHit(**bvalues):
+def onTryImmunity(**bvalues):
 	"""function (pokemon, source) {
-			if ((pokemon.gender === 'M' && source.gender === 'F') || (pokemon.gender === 'F' && source.gender === 'M')) {
-				return;
-			}
-			return false;
+			return (pokemon.gender === 'M' && source.gender === 'F') || (pokemon.gender === 'F' && source.gender === 'M');
 		}
 	""" 
 	pass

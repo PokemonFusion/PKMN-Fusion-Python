@@ -1,8 +1,11 @@
 def onSetStatus(**bvalues):
 	"""function (status, target, source, effect) {
-			if (this.isWeather(['sunnyday', 'desolateland'])) {
-				if (effect && effect.status) this.add('-immune', target, '[from] ability: Leaf Guard');
-				return false;
+			var _a;
+			if (['sunnyday', 'desolateland'].includes(target.effectiveWeather())) {
+				if ((_a = effect) === null || _a === void 0 ? void 0 : _a.status) {
+					this.add('-immune', target, '[from] ability: Leaf Guard');
+				}
+				return False;
 			}
 		}
 	""" 
@@ -10,7 +13,7 @@ def onSetStatus(**bvalues):
 
 def onTryAddVolatile(**bvalues):
 	"""function (status, target) {
-			if (status.id === 'yawn' && this.isWeather(['sunnyday', 'desolateland'])) {
+			if (status.id === 'yawn' && ['sunnyday', 'desolateland'].includes(target.effectiveWeather())) {
 				this.add('-immune', target, '[from] ability: Leaf Guard');
 				return null;
 			}

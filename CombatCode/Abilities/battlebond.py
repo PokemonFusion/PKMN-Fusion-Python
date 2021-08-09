@@ -1,8 +1,11 @@
-def onSourceFaint(**bvalues):
-	"""function (target, source, effect) {
-			if (effect && effect.effectType === 'Move' && source.template.speciesid === 'greninja' && source.hp && !source.transformed && source.side.foe.pokemonLeft) {
+def onSourceAfterFaint(**bvalues):
+	"""function (length, target, source, effect) {
+			if ((effect === null || effect === void 0 ? void 0 : effect.effectType) !== 'Move') {
+				return;
+			}
+			if (source.species.id === 'greninja' && source.hp && !source.transformed && source.side.foePokemonLeft()) {
 				this.add('-activate', source, 'ability: Battle Bond');
-				source.formeChange('Greninja-Ash', this.effect, true);
+				source.formeChange('Greninja-Ash', this.effect, True);
 			}
 		}
 	""" 
@@ -10,7 +13,7 @@ def onSourceFaint(**bvalues):
 
 def onModifyMove(**bvalues):
 	"""function (move, attacker) {
-			if (move.id === 'watershuriken' && attacker.template.species === 'Greninja-Ash') {
+			if (move.id === 'watershuriken' && attacker.species.name === 'Greninja-Ash') {
 				move.multihit = 3;
 			}
 		}

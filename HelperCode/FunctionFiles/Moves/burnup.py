@@ -1,6 +1,7 @@
 def onTryMove (pokemon, target, move):
 	"""function (pokemon, target, move) {
-			if (pokemon.hasType('Fire')) return;
+			if (pokemon.hasType('Fire'))
+				return;
 			this.add('-fail', pokemon, 'move: Burn Up');
 			this.attrLastMove('[still]');
 			return null;
@@ -10,7 +11,7 @@ def onTryMove (pokemon, target, move):
 
 def onHit (pokemon):
 	"""function (pokemon) {
-				pokemon.setType(pokemon.getTypes(true).map(type => type === "Fire" ? "???" : type));
+				pokemon.setType(pokemon.getTypes(true).map(function (type) { return type === "Fire" ? "???" : type; }));
 				this.add('-start', pokemon, 'typechange', pokemon.types.join('/'), '[from] move: Burn Up');
 			}
 	""" 

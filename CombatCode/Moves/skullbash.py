@@ -3,8 +3,8 @@ def onTryMove(**bvalues):
 			if (attacker.removeVolatile(move.id)) {
 				return;
 			}
-			this.add('-prepare', attacker, move.name, defender);
-			this.boost({def: 1}, attacker, attacker, this.getMove('skullbash'));
+			this.add('-prepare', attacker, move.name);
+			this.boost({ def: 1 }, attacker, attacker, move);
 			if (!this.runEvent('ChargeMove', attacker, defender, move)) {
 				return;
 			}

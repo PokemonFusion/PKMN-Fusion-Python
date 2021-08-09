@@ -1,6 +1,6 @@
 def onModifySpe (spe, pokemon):
 	"""function (spe, pokemon) {
-			if (this.isWeather('hail')) {
+			if (this.field.isWeather('hail')) {
 				return this.chainModify(2);
 			}
 		}

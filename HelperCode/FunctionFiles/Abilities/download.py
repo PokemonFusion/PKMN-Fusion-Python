@@ -1,16 +1,17 @@
 def onStart (pokemon):
 	"""function (pokemon) {
-			let totaldef = 0;
-			let totalspd = 0;
-			for (const target of pokemon.side.foe.active) {
-				if (!target || target.fainted) continue;
-				totaldef += target.getStat('def', false, true);
-				totalspd += target.getStat('spd', false, true);
+			var totaldef = 0;
+			var totalspd = 0;
+			for (var _i = 0, _a = pokemon.foes(); _i < _a.length; _i++) {
+				var target = _a[_i];
+				totaldef += target.getStat('def', False, True);
+				totalspd += target.getStat('spd', False, True);
 			}
 			if (totaldef && totaldef >= totalspd) {
-				this.boost({spa: 1});
-			} else if (totalspd) {
-				this.boost({atk: 1});
+				this.boost({ spa: 1 });
+			}
+			else if (totalspd) {
+				this.boost({ atk: 1 });
 			}
 		}
 	""" 

@@ -1,16 +1,9 @@
 def basePowerCallback (pokemon):
 	"""function (pokemon) {
-			if (!pokemon.volatiles['stockpile'] || !pokemon.volatiles['stockpile'].layers) return false;
-			return pokemon.volatiles['stockpile'].layers * 100;
-		}
-	""" 
-	pass
-
-def onTry (pokemon):
-	"""function (pokemon) {
-			if (!pokemon.volatiles['stockpile']) {
+			var _a;
+			if (!((_a = pokemon.volatiles['stockpile']) === null || _a === void 0 ? void 0 : _a.layers))
 				return false;
-			}
+			return pokemon.volatiles['stockpile'].layers * 100;
 		}
 	""" 
 	pass
@@ -18,6 +11,13 @@ def onTry (pokemon):
 def onAfterMove (pokemon):
 	"""function (pokemon) {
 			pokemon.removeVolatile('stockpile');
+		}
+	""" 
+	pass
+
+def onTry (source):
+	"""function (source) {
+			return !!source.volatiles['stockpile'];
 		}
 	""" 
 	pass

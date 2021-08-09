@@ -1,13 +1,14 @@
 def onHit(**bvalues):
 	"""function (target) {
-			if (target.lastMove && !target.lastMove.isZ) {
-				let ppDeducted = target.deductPP(target.lastMove.id, 4);
-				if (ppDeducted) {
-					this.add("-activate", target, 'move: Spite', this.getMove(target.lastMove.id).name, ppDeducted);
-					return;
-				}
-			}
-			return false;
+			var move = target.lastMove;
+			if (!move || move.isZ)
+				return false;
+			if (move.isMax && move.baseMove)
+				move = this.dex.moves.get(move.baseMove);
+			var ppDeducted = target.deductPP(move.id, 4);
+			if (!ppDeducted)
+				return false;
+			this.add("-activate", target, 'move: Spite', move.name, ppDeducted);
 		}
 	""" 
 	pass

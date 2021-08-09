@@ -1,11 +1,11 @@
 def onHit(**bvalues):
 	"""function (target, source) {
-			let newatk = Math.floor((target.stats.atk + source.stats.atk) / 2);
-			target.stats.atk = newatk;
-			source.stats.atk = newatk;
-			let newspa = Math.floor((target.stats.spa + source.stats.spa) / 2);
-			target.stats.spa = newspa;
-			source.stats.spa = newspa;
+			var newatk = Math.floor((target.storedStats.atk + source.storedStats.atk) / 2);
+			target.storedStats.atk = newatk;
+			source.storedStats.atk = newatk;
+			var newspa = Math.floor((target.storedStats.spa + source.storedStats.spa) / 2);
+			target.storedStats.spa = newspa;
+			source.storedStats.spa = newspa;
 			this.add('-activate', source, 'move: Power Split', '[of] ' + target);
 		}
 	""" 

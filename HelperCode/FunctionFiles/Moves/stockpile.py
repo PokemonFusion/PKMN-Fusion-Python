@@ -1,35 +1,58 @@
-def onTryHit (pokemon):
-	"""function (pokemon) {
-			if (pokemon.volatiles['stockpile'] && pokemon.volatiles['stockpile'].layers >= 3) return false;
-		}
-	""" 
-	pass
-
-def onStart (target):
+def onEnd (target):
 	"""function (target) {
-				this.effectData.layers = 1;
-				this.add('-start', target, 'stockpile' + this.effectData.layers);
-				this.boost({def: 1, spd: 1}, target, target, this.getMove('stockpile'));
+				if (this.effectState.def || this.effectState.spd) {
+					var boosts = {};
+					if (this.effectState.def)
+						boosts.def = this.effectState.def;
+					if (this.effectState.spd)
+						boosts.spd = this.effectState.spd;
+					this.boost(boosts, target, target);
+				}
+				this.add('-end', target, 'Stockpile');
+				if (this.effectState.def !== this.effectState.layers * -1 || this.effectState.spd !== this.effectState.layers * -1) {
+					this.hint("In Gen 7, Stockpile keeps track of how many times it successfully altered each stat individually.");
+				}
 			}
 	""" 
 	pass
 
 def onRestart (target):
 	"""function (target) {
-				if (this.effectData.layers >= 3) return false;
-				this.effectData.layers++;
-				this.add('-start', target, 'stockpile' + this.effectData.layers);
-				this.boost({def: 1, spd: 1}, target, target, this.getMove('stockpile'));
+				if (this.effectState.layers >= 3)
+					return false;
+				this.effectState.layers++;
+				this.add('-start', target, 'stockpile' + this.effectState.layers);
+				var curDef = target.boosts.def;
+				var curSpD = target.boosts.spd;
+				this.boost({ def: 1, spd: 1 }, target, target);
+				if (curDef !== target.boosts.def)
+					this.effectState.def--;
+				if (curSpD !== target.boosts.spd)
+					this.effectState.spd--;
 			}
 	""" 
 	pass
 
-def onEnd (target):
+def onStart (target):
 	"""function (target) {
-				let layers = this.effectData.layers * -1;
-				this.effectData.layers = 0;
-				this.boost({def: layers, spd: layers}, target, target, this.getMove('stockpile'));
-				this.add('-end', target, 'Stockpile');
+				this.effectState.layers = 1;
+				this.effectState.def = 0;
+				this.effectState.spd = 0;
+				this.add('-start', target, 'stockpile' + this.effectState.layers);
+				var _a = [target.boosts.def, target.boosts.spd], curDef = _a[0], curSpD = _a[1];
+				this.boost({ def: 1, spd: 1 }, target, target);
+				if (curDef !== target.boosts.def)
+					this.effectState.def--;
+				if (curSpD !== target.boosts.spd)
+					this.effectState.spd--;
 			}
+	""" 
+	pass
+
+def onTry (source):
+	"""function (source) {
+			if (source.volatiles['stockpile'] && source.volatiles['stockpile'].layers >= 3)
+				return false;
+		}
 	""" 
 	pass

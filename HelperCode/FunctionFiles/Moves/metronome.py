@@ -1,24 +1,27 @@
 def onHit (target, source, effect):
 	"""function (target, source, effect) {
-			let moves = [];
-			for (let i in exports.BattleMovedex) {
-				let move = exports.BattleMovedex[i];
-				if (i !== move.id) continue;
-				if (move.isZ || move.isNonstandard) continue;
-				// @ts-ignore
-				if (effect.noMetronome.includes(move.id)) continue;
-				if (this.getMove(i).gen > this.gen) continue;
+			var moves = [];
+			for (var id in exports.Moves) {
+				var move = exports.Moves[id];
+				if (move.realMove)
+					continue;
+				if (move.isZ || move.isMax || move.isNonstandard)
+					continue;
+				if (effect.noMetronome.includes(move.name))
+					continue;
+				if (this.dex.moves.get(id).gen > this.gen)
+					continue;
 				moves.push(move);
 			}
-			let randomMove = '';
+			var randomMove = '';
 			if (moves.length) {
-				moves.sort((a, b) => a.num - b.num);
-				randomMove = this.sample(moves).id;
+				moves.sort(function (a, b) { return a.num - b.num; });
+				randomMove = this.sample(moves).name;
 			}
 			if (!randomMove) {
 				return false;
 			}
-			this.useMove(randomMove, target);
+			this.actions.useMove(randomMove, target);
 		}
 	""" 
 	pass

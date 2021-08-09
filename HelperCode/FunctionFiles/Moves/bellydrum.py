@@ -4,7 +4,7 @@ def onHit (target):
 				return false;
 			}
 			this.directDamage(target.maxhp / 2);
-			this.boost({atk: 12}, target);
+			this.boost({ atk: 12 }, target);
 		}
 	""" 
 	pass
