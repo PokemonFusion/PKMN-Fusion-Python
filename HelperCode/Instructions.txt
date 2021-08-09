@@ -47,3 +47,21 @@ https://www.convertsimple.com/convert-javascript-to-json/
 If the files are in TS format instead of JS, which is likely new, you will need to convert to JS first.
 I used this site.
 https://extendsclass.com/typescript-to-javascript.html
+
+
+The next thing you will want to do is use 'jsontodict.py' to convert the json files into dictionaries
+
+abilities and the pokemondex currently error when using this so you may want to do this manually, this involves just copying
+the data into the dictionary file and fixing the capitalization on True and False and any NULL
+
+Next you will want to run the 'functionextraction.py' code followed by 'functionFilesFix.py'
+
+for functionFilesFix.py, you will need to move the folders that get created, the abilities, moves, and items, and place
+them in the import folder.  If the folder doesn't exist, run the program and it will create them.
+
+The last thing you will need to do is, other than renaming return to Return, because python, is you will need to compare
+the exported code with the code in the combatcode layer.  You don't want to overwrite things that are working with commented out
+code.
+
+Granted... if all goes well and you finished the code, you won't need this, and you'll just need to add in what is needed
+by hand.
