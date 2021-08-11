@@ -150,7 +150,7 @@ class Pokemon:
         # experience points, as an int
         self.xp = self.getXPtoLv(self.level)  # Give just enough to reach that level.
 
-        # Whether the Pokémon starts as an egg.
+        # Whether the Pokemon starts as an egg.
         self.isEgg = isEgg  # This doesn't check if it has previous evolutions or anything. So, if for some insane
         # reason, you want a Charizard egg...
 
@@ -165,6 +165,8 @@ class Pokemon:
         # this is assuming that nufusion's fusion mechanics are the same
         # so this might not stick
         self.bond = 0  # Note from Joat: I have no clue what this is. Bulbapedia has no clue what this is. What?
+        # Note from Yang/Koden: Bond is a stat we created for the pokemon fusion techneque that fuses trainer with
+        # pokemon, if this doesn't get used then it can be ignored.
 
         # affection, as an int
         # if bond sticks, this might just be replaced with bond
@@ -261,6 +263,8 @@ class Pokemon:
     # The species parameter is to account for mega evolution.
     def getDicEntry(self, keyName, species=None):
         # take into consideration that the stat may not exist outside of the base form
+        if species is None:
+            species = self.species
         entry = self.getDic(species).get(keyName)
         if entry is None and keyName != "baseSpecies":
             entry = self.getDic(self.getDicEntry("baseSpecies")).get(keyName)
@@ -402,21 +406,21 @@ class Pokemon:
         else:
             return 1
 
+    def setStatMod(self, stat: str, amount: int):
+        if stat is not None and stat in self.statMods:
+            self.statMods[stat] += amount
+            # if the value goes over 6 or under -6, we will fix it when it's called to be checked
+            # Any messaging about the stat change should be done when this function is called
+            # and compared before and after.
+
     # Get the name of the active ability.
     # As with getStat, the species parameter is to account for megas.
     def getAbilityName(self, species=None):
         if species is None or species not in dex:
             species = self.species
-        # sdic is the dictionary entry for the species.
-        try:
-            sdic = dex[
-                species.lower()]
-            # Retrieve the dictionary for the species. lower() is used as a
-            # safeguard against programmer error, since uppercase keys do not
-            # exist in this dictionary (if they do, they should be corrected).
-        except KeyError:
-            sdic = dex["missingno"]  # If the key is not found, default to missingno.
-        return sdic["abilities"].get[self.ability]  # Remember, this can be None. Account for this.
+
+        return self.getDicEntry("abilities").get(self.ability, None) #return None, find a better way to error this
+
 
     def getName(self):
         if self.nickname is None:

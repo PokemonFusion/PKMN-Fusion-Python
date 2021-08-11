@@ -47,7 +47,7 @@ def onTryHit (target, source, effect):
 				if (!target.isGrounded()) {
 					var baseMove = this.dex.moves.get(effect.id);
 					if (baseMove.priority > 0) {
-						this.hint("Psychic Terrain doesn't affect Pokémon immune to Ground.");
+						this.hint("Psychic Terrain doesn't affect Pokemon immune to Ground.");
 					}
 					return;
 				}

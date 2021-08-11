@@ -14,7 +14,7 @@ def onFaint (target, source, effect):
 					return;
 				if (effect.effectType === 'Move' && !effect.isFutureMove) {
 					if (source.volatiles['dynamax']) {
-						this.add('-hint', "Dynamaxed Pokémon are immune to Destiny Bond.");
+						this.add('-hint', "Dynamaxed Pokemon are immune to Destiny Bond.");
 						return;
 					}
 					this.add('-activate', target, 'move: Destiny Bond');

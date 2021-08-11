@@ -2854,7 +2854,7 @@ BattlePokedex = {
         },
         "farfetchd": {
             "num": 83,
-            "name": "Farfetch’d",
+            "name": "Farfetch'd",
             "types": ["Normal", "Flying"],
             "baseStats": {
                 "hp": 52,
@@ -2869,13 +2869,13 @@ BattlePokedex = {
             "weightkg": 15,
             "color": "Brown",
             "eggGroups": ["Flying", "Field"],
-            "otherFormes": ["Farfetch’d-Galar"],
-            "formeOrder": ["Farfetch’d", "Farfetch’d-Galar"],
+            "otherFormes": ["Farfetch'd-Galar"],
+            "formeOrder": ["Farfetch'd", "Farfetch'd-Galar"],
         },
         "farfetchdgalar": {
             "num": 83,
-            "name": "Farfetch’d-Galar",
-            "baseSpecies": "Farfetch’d",
+            "name": "Farfetch'd-Galar",
+            "baseSpecies": "Farfetch'd",
             "forme": "Galar",
             "types": ["Fighting"],
             "baseStats": {
@@ -2890,7 +2890,7 @@ BattlePokedex = {
             "heightm": 0.8,
             "weightkg": 15,
             "color": "Brown",
-            "evos": ["Sirfetch’d"],
+            "evos": ["Sirfetch`d"],
             "eggGroups": ["Flying", "Field"],
         },
         "doduo": {
@@ -23389,7 +23389,7 @@ BattlePokedex = {
         },
         "sirfetchd": {
             "num": 865,
-            "name": "Sirfetch’d",
+            "name": "Sirfetch`d",
             "types": ["Fighting"],
             "baseStats": {
                 "hp": 62,
@@ -23403,7 +23403,7 @@ BattlePokedex = {
             "heightm": 0.8,
             "weightkg": 117,
             "color": "White",
-            "prevo": "Farfetch’d-Galar",
+            "prevo": "Farfetch'd-Galar",
             "evoType": "other",
             "evoCondition": "Land 3 critical hits in 1 battle",
             "eggGroups": ["Flying", "Field"],

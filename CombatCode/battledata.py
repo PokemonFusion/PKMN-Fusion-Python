@@ -202,6 +202,10 @@ class Pokemon(pokemon.Pokemon):
 		                 gender=gender, isEgg=isEgg, level=level, ability=ability)
 		# self.turninit = None  # TurnInit Class
 		self.tempvals = {}
+		if self.ability == '1' and super().getDicEntry("abilities").get("1", None) is None:
+			self.ability = '0'
+
+
 
 	def setStatus(self, status: int):
 		"""

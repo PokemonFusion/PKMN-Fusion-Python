@@ -1,6 +1,7 @@
 import copy
 from CombatCode.movesdex import BattleMovedex
 from CombatCode.itemsdex import BattleItems
+from CombatCode.abilitiesdex import BattleAbilities
 
 
 def keycheck(dictionary, subdictionary, key) -> object:
@@ -83,4 +84,13 @@ class Moves:
 
 	def __repr__(self):
 		return "{}. {}".format(self.num, self.name)
+
+class Abilities:
+	def __init__(self, ability:str):
+		def abilitycheck(key):
+			return keycheck(BattleAbilities, ability, key)
+
+		self.num = abilitycheck("num")
+		self.name = abilitycheck("name")
+		self.isBreakable = abilitycheck("isBreakable")
 

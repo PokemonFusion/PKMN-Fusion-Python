@@ -2179,8 +2179,8 @@
     "spritenum": 475,
     "onModifyCritRatio": "function (critRatio, user) {\n\t\t\tif ([\"farfetchd\", \"sirfetchd\"].includes(this.toID(user.baseSpecies.baseSpecies))) {\n\t\t\t\treturn critRatio + 2;\n\t\t\t}\n\t\t}",
     "itemUser": [
-      "Farfetch’d",
-      "Sirfetch’d"
+      "Farfetch'd",
+      "Sirfetch`d"
     ],
     "num": 259,
     "gen": 8
@@ -4108,7 +4108,7 @@
     "spritenum": 475,
     "onModifyCritRatio": "function (critRatio, user) {\n\t\t\tif (this.toID(user.baseSpecies.baseSpecies) === 'farfetchd') {\n\t\t\t\treturn critRatio + 2;\n\t\t\t}\n\t\t}",
     "itemUser": [
-      "Farfetch’d"
+      "Farfetch'd"
     ],
     "num": 259,
     "gen": 2,
