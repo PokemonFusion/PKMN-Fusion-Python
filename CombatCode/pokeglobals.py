@@ -67,7 +67,6 @@ class Moves:
 		self.onHit = movecheck("onHit")
 		self.onModifyMove = movecheck("onModifyMove")
 		self.critRatio = movecheck("critRatio")
-		self.rawData = BattleMovedex[move]
 
 	def calculateBasePower(self, **bvalues) -> int:
 		"""
@@ -85,12 +84,19 @@ class Moves:
 	def __repr__(self):
 		return "{}. {}".format(self.num, self.name)
 
+
 class Abilities:
-	def __init__(self, ability:str):
+	def __init__(self, ability: str):
 		def abilitycheck(key):
-			return keycheck(BattleAbilities, ability, key)
+			return keycheck(BattleAbilities, ability.lower(), key)
 
 		self.num = abilitycheck("num")
 		self.name = abilitycheck("name")
 		self.isBreakable = abilitycheck("isBreakable")
-
+		self.onModifyAtk = abilitycheck("onModifyAtk")
+		self.onModifyAtkPriority = abilitycheck("onModifyAtkPriority")
+		self.onModifySpA = abilitycheck("onModifySpA")
+		self.onModifySpAPriority = abilitycheck("onModifySpAPriority")
+		self.rating = abilitycheck("rating")
+		self.onModifySpe = abilitycheck("onModifySpe")
+		self.onHit = abilitycheck("onHit")

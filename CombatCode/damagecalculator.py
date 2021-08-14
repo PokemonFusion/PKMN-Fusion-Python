@@ -115,7 +115,7 @@ def damage_calc(attacker: Pokemon, target: Pokemon, attackerpos, targetpos, move
 
 	# begin by checking accuracy
 	if accuracy_check(attacker, target, move):
-		onHit = target.getAbilityName()
+		onHit = target.getAbility().onHit
 		onHit = move.onHit
 		if onHit is not None:
 			if not onHit(pokemon=attacker, target=target, move=move):

@@ -1,5 +1,4 @@
 BattlePokedex = {
-    {
         "bulbasaur": {
             "num": 1,
             "name": "Bulbasaur",
@@ -26097,6 +26096,5 @@ BattlePokedex = {
             "color": "White",
             "eggGroups": ["Undiscovered"],
             "gen": 5,
-        },
+        }
     }
-}

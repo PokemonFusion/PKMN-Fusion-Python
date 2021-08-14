@@ -2,6 +2,8 @@ import CombatCode.pokemon as pokemon
 import CombatCode.pokeglobals as pglobals
 import random
 
+import pokeglobals
+
 
 class BattleData:
 
@@ -164,6 +166,7 @@ class TurnData:
 
 		return teampokemon
 
+
 class DeclareAttack:
 	def __init__(self, target: str, move: pglobals.Moves):
 		self.target = target  # target is the position value
@@ -197,13 +200,11 @@ class Pokemon(pokemon.Pokemon):
 	# may remove this because of it being made somewhere else.
 
 	def __init__(self, ot, species='missingno', nickname=None, gender=None, isEgg=False, level=1,
-	             ability=random.choice(['0', '1'])):
+	             ability=None):
 		super().__init__(ot, species=species, nickname=nickname,
 		                 gender=gender, isEgg=isEgg, level=level, ability=ability)
 		# self.turninit = None  # TurnInit Class
 		self.tempvals = {}
-		if self.ability == '1' and super().getDicEntry("abilities").get("1", None) is None:
-			self.ability = '0'
 
 
 
