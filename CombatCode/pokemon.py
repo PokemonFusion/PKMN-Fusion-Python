@@ -5,7 +5,6 @@ from CombatCode.learnset_code import level_moves as lm
 sys.path.append(os.path.abspath(os.path.join('')))
 sys.path.append(os.path.abspath('../CombatCode'))
 from CombatCode.pokemondex import BattlePokedex as Dex
-from CombatCode.abilitiesdex import BattleAbilities as ADex
 import pokeglobals
 
 # dict of all the natures and their stat bonuses
@@ -425,10 +424,10 @@ class Pokemon:
 
         ability = self.ability
 
-        if ability not in ADex[species.lower()]["abilities"]:
+        if ability not in Dex[species.lower()]["abilities"]:
             ability = '0'
 
-        return pokeglobals.Abilities(ADex[species.lower()]["abilities"][ability].lower())
+        return pokeglobals.Abilities(Dex[species.lower()]["abilities"][ability])
 
 
     def getName(self):
