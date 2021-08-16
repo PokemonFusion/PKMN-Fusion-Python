@@ -49,6 +49,7 @@ class BattleData:
 		self.turndata.positions[pos].pokemon = newpoke
 		return f"{pos}.{newpoke.getName()} is changing places with {pos}.{oldpoke.getName()} due to fainting!"
 
+
 class Team:
 
 	def __init__(self, trainer, pokemon_list: list = []):
@@ -94,12 +95,7 @@ class Team:
 		pos1 = fixposnum(pos1)
 		pos2 = fixposnum(pos2)
 
-		slotdic = {1: self.slot1,
-		           2: self.slot2,
-		           3: self.slot3,
-		           4: self.slot4,
-		           5: self.slot5,
-		           6: self.slot6}
+		slotdic = self.returndict()
 
 		result = f"Switching positions {pos1}. {slotdic[pos1].getName()} with {pos2}. {slotdic[pos2].getName()}."
 
@@ -117,12 +113,7 @@ class Team:
 		if pos > 6:
 			pos = 6
 
-		slotdic = {1: self.slot1,
-		           2: self.slot2,
-		           3: self.slot3,
-		           4: self.slot4,
-		           5: self.slot5,
-		           6: self.slot6}
+		slotdic = self.returndict()
 
 		return slotdic[pos]
 

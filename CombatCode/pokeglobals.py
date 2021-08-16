@@ -67,14 +67,16 @@ class Moves:
 		self.onHit = movecheck("onHit")
 		self.onModifyMove = movecheck("onModifyMove")
 		self.critRatio = movecheck("critRatio")
+		self.basePowerCallback = movecheck("basePowerCallback")
+		self.onBasePower = movecheck("onBasePower")
 
 	def calculateBasePower(self, **bvalues) -> int:
 		"""
 		you'll need to check basePowerCallback and onBasePower
 		"""
-		calc = BattleMovedex[self.name.lower()].get('basePowerCallback', None)
+		calc = self.basePowerCallback
 		if calc is None:
-			calc = BattleMovedex[self.name.lower()].get('onBasePower', None)
+			calc = self.onBasePower
 
 		if calc is None:
 			return self.basePower
