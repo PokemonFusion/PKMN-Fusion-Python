@@ -4278,7 +4278,7 @@
   },
   "farfetchd": {
     "num": 83,
-    "name": "Farfetch’d",
+    "name": "Farfetch'd",
     "types": [
       "Normal",
       "Flying"
@@ -4304,17 +4304,17 @@
       "Field"
     ],
     "otherFormes": [
-      "Farfetch’d-Galar"
+      "Farfetch'd-Galar"
     ],
     "formeOrder": [
-      "Farfetch’d",
-      "Farfetch’d-Galar"
+      "Farfetch'd",
+      "Farfetch'd-Galar"
     ]
   },
   "farfetchdgalar": {
     "num": 83,
-    "name": "Farfetch’d-Galar",
-    "baseSpecies": "Farfetch’d",
+    "name": "Farfetch'd-Galar",
+    "baseSpecies": "Farfetch'd",
     "forme": "Galar",
     "types": [
       "Fighting"
@@ -4335,7 +4335,7 @@
     "weightkg": 15,
     "color": "Brown",
     "evos": [
-      "Sirfetch’d"
+      "Sirfetch`d"
     ],
     "eggGroups": [
       "Flying",
@@ -34510,7 +34510,7 @@
   },
   "sirfetchd": {
     "num": 865,
-    "name": "Sirfetch’d",
+    "name": "Sirfetch`d",
     "types": [
       "Fighting"
     ],
@@ -34529,7 +34529,7 @@
     "heightm": 0.8,
     "weightkg": 117,
     "color": "White",
-    "prevo": "Farfetch’d-Galar",
+    "prevo": "Farfetch'd-Galar",
     "evoType": "other",
     "evoCondition": "Land 3 critical hits in 1 battle",
     "eggGroups": [

@@ -1,8 +1,9 @@
 import json
 import string
+import sys
+
 import CombatCode.parsed_learnset as pl
 import CombatCode.learnsets as learnsets
-
 
 # Each move is defined as follows, with the first character being the generation number:
 #	T - Move is learned via Move Tutor
@@ -10,24 +11,22 @@ import CombatCode.learnsets as learnsets
 #	E - Move is an egg move.
 #	M - Move is a TM move
 #	S - Event move
+#   V - Imported from another version
 
 def create_move_tables():
     i = 0
     previous = "!"
-    learnset = {}
     parsed_learnset = {}
-    m_moves = {}
-    t_moves = {}
-    l_moves = {}
-    e_moves = {}
+    gen = ["7", "8"]
     learnset = learnsets.BattleLearnsets
     for pokemon in learnset:
         # Make sure we don't get any alternate-form pokemon, like Alolan or like Luchador Pikachu.
         # Also make sure Porygon and Kabuto are okay, as the both fit into a similar format.
         if previous in pokemon[:len(previous)] and previous != "porygon" and previous != "kabuto": continue
-        # Prevent going past 806, Zeraora
-        if i > 806: continue
+        # Prevent going past 898, Calyrex
+        #if i > 898: continue
         if "alola" not in pokemon:
+            leveledmoves = []
             # Create the entries and everything immediately
             parsed_learnset.update({pokemon: {}})
             parsed_learnset[pokemon].update({"tutor": []})
@@ -35,20 +34,27 @@ def create_move_tables():
             parsed_learnset[pokemon].update({"tm": []})
             parsed_learnset[pokemon].update({"level": {}})
             # print(f"Learnset of {pokemon}: {learnset[pokemon]['learnset']}")
+
+            if not learnset[pokemon].get("learnset", None): continue
             for move in learnset[pokemon]['learnset']:
                 for method in learnset[pokemon]['learnset'][move]:
-                    if (method[0] == "7"):
+                    if (method[0] in gen):
                         if ("T" in method):
+                            if move in parsed_learnset[pokemon]["tutor"]: continue
                             parsed_learnset[pokemon]["tutor"].append(move)
                         if ("L" in method):
-                            move_level = method[method.find("L") + 1:]
-                            try:
-                                parsed_learnset[pokemon]["level"][f"{move_level}"] += f", {move}"
-                            except KeyError:
-                                parsed_learnset[pokemon]["level"].update({move_level: move})
+                            if move not in leveledmoves:
+                                leveledmoves.append(move)
+                                move_level = method[method.find("L") + 1:]
+                                try:
+                                    parsed_learnset[pokemon]["level"][f"{move_level}"] += f", {move}"
+                                except KeyError:
+                                    parsed_learnset[pokemon]["level"].update({move_level: move})
                         if ("E" in method):
+                            if move in parsed_learnset[pokemon]["egg"]: continue
                             parsed_learnset[pokemon]["egg"].append(move)
                         if ("M" in method):
+                            if move in parsed_learnset[pokemon]["tm"]: continue
                             parsed_learnset[pokemon]["tm"].append(move)
             previous = pokemon
             i += 1
@@ -83,3 +89,7 @@ def level_moves(pokemon, level):
     except KeyError:
         return ['None','None','None','None']
     return moveList
+
+
+if __name__ == "__main__":
+    create_move_tables()

@@ -4,7 +4,8 @@ from CombatCode.learnset_code import level_moves as lm
 
 sys.path.append(os.path.abspath(os.path.join('')))
 sys.path.append(os.path.abspath('../CombatCode'))
-from CombatCode.pokemonCombinedDex import BattlePokedex as dex
+from CombatCode.pokemondex import BattlePokedex as Dex
+import pokeglobals
 
 # dict of all the natures and their stat bonuses
 # there's nothing preventing the addition of natures that modify hp,
@@ -84,7 +85,7 @@ class Pokemon:
         return ratedict.get(rate)
 
     def __init__(self, ot, species="missingno", nickname=None, gender=None, isEgg=False, level=1,
-                 ability=random.choice(["0", "1"])):
+                 ability=None):
 
         # Pokemon species, as a dict key
         # this should always be set in actual Pokemon, as a lot of info is derived directly
@@ -120,6 +121,8 @@ class Pokemon:
         # note that species without second or hidden abilities should still be able to
         # get '1' and 'H', as evolutions will inherit this
         # a getter function below will handle translating these into actual ability keys
+        if ability is None:
+            ability = random.choice(['0', '1'])
         self.ability = ability
 
         # ot, as a dbref
@@ -150,7 +153,7 @@ class Pokemon:
         # experience points, as an int
         self.xp = self.getXPtoLv(self.level)  # Give just enough to reach that level.
 
-        # Whether the Pokémon starts as an egg.
+        # Whether the Pokemon starts as an egg.
         self.isEgg = isEgg  # This doesn't check if it has previous evolutions or anything. So, if for some insane
         # reason, you want a Charizard egg...
 
@@ -165,6 +168,8 @@ class Pokemon:
         # this is assuming that nufusion's fusion mechanics are the same
         # so this might not stick
         self.bond = 0  # Note from Joat: I have no clue what this is. Bulbapedia has no clue what this is. What?
+        # Note from Yang/Koden: Bond is a stat we created for the pokemon fusion techneque that fuses trainer with
+        # pokemon, if this doesn't get used then it can be ignored.
 
         # affection, as an int
         # if bond sticks, this might just be replaced with bond
@@ -188,7 +193,7 @@ class Pokemon:
                              [None, None, None, None],
                              [None, None, None, None],
                              [None, None, None, None],
-                         ],
+                         ]
         # ivs, as a dict
         # uses the same keys as base stats, for simpler stat calculations
         self.iv = {
@@ -244,16 +249,16 @@ class Pokemon:
     # immutable traits of the species are retrieved here from the Pokedex dictionary.
     # The species parameter is to account for mega evolution.
     def getDic(self, species=None):
-        if species is None or species not in dex:
+        if species is None or species not in Dex:
             species = self.species
         # sdic is the dictionary entry for the species.
         try:
-            sdic = dex[
+            sdic = Dex[
                 species.lower()]  # Retrieve the dictionary for the species. lower() is used as a safeguard against
             # programmer error, since uppercase keys do not exist in this dictionary (if they do, they should be
             # corrected).
         except KeyError:
-            sdic = dex["missingno"]  # If the key is not found, default to missingno.
+            sdic = Dex["missingno"]  # If the key is not found, default to missingno.
         return sdic
 
     # While mutable traits are stored in the class itself,
@@ -261,6 +266,8 @@ class Pokemon:
     # The species parameter is to account for mega evolution.
     def getDicEntry(self, keyName, species=None):
         # take into consideration that the stat may not exist outside of the base form
+        if species is None:
+            species = self.species
         entry = self.getDic(species).get(keyName)
         if entry is None and keyName != "baseSpecies":
             entry = self.getDic(self.getDicEntry("baseSpecies")).get(keyName)
@@ -343,7 +350,7 @@ class Pokemon:
                 (2 * baseStat + self.iv[statType] + int(self.ev[statType] / 4)) * self.level / 100) + 5) * natureMod
                        * statmod * critbonus)
 
-            if self.status["name"] == 3 and statType == 'spd' and self.getAbilityName() != "Quick Feet":
+            if self.status["name"] == 3 and statType == 'spd' and self.getAbility().name != "Quick Feet":
                 stat = stat / 2
 
             return stat
@@ -402,21 +409,26 @@ class Pokemon:
         else:
             return 1
 
-    # Get the name of the active ability.
+    def setStatMod(self, stat: str, amount: int):
+        if stat is not None and stat in self.statMods:
+            self.statMods[stat] += amount
+            # if the value goes over 6 or under -6, we will fix it when it's called to be checked
+            # Any messaging about the stat change should be done when this function is called
+            # and compared before and after.
+
+    # Get active ability.
     # As with getStat, the species parameter is to account for megas.
-    def getAbilityName(self, species=None):
-        if species is None or species not in dex:
+    def getAbility(self, species=None):
+        if species is None or species not in Dex:
             species = self.species
-        # sdic is the dictionary entry for the species.
-        try:
-            sdic = dex[
-                species.lower()]
-            # Retrieve the dictionary for the species. lower() is used as a
-            # safeguard against programmer error, since uppercase keys do not
-            # exist in this dictionary (if they do, they should be corrected).
-        except KeyError:
-            sdic = dex["missingno"]  # If the key is not found, default to missingno.
-        return sdic["abilities"].get[self.ability]  # Remember, this can be None. Account for this.
+
+        ability = self.ability
+
+        if ability not in Dex[species.lower()]["abilities"]:
+            ability = '0'
+
+        return pokeglobals.Abilities(Dex[species.lower()]["abilities"][ability])
+
 
     def getName(self):
         if self.nickname is None:

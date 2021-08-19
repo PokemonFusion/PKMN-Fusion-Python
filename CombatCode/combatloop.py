@@ -5,15 +5,19 @@ from CombatCode.turnorder import calculateTurnorder
 from CombatCode.damagecalculator import damage_calc
 
 
-def combatloop(battledata: BattleData):
+def combatloop(battledata: BattleData) -> list:
+    """Does the combat loop and returns a list of the fainted pokemon"""
     turndata = battledata.turndata
-    turnorder = calculateTurnorder(battledata.turndata)
+    turnorder = calculateTurnorder(turndata)
     fainted = []
     for att in turnorder:
         curpoke = turndata.positions[att]
         result = Result()
         if curpoke.turninit.attack is not None:
-            result = damage_calc(curpoke.pokemon, turndata.positions[curpoke.getTarget()].pokemon, att, curpoke.getTarget(),
+            result = damage_calc(curpoke.pokemon,
+                                 turndata.positions[curpoke.getTarget()].pokemon,
+                                 att,
+                                 curpoke.getTarget(),
                                  curpoke.getAction())
             print(result.text)
             print(result.debug["hp_percent"])

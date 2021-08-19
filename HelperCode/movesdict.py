@@ -3043,7 +3043,7 @@ BattleMovedex = {'10000000voltthunderbolt': {'accuracy': True,
                                           '\t\t\t\t\tif '
                                           "(source.volatiles['dynamax']) {\n"
                                           "\t\t\t\t\t\tthis.add('-hint', "
-                                          '"Dynamaxed Pokémon are immune to '
+                                          '"Dynamaxed Pokemon are immune to '
                                           'Destiny Bond.");\n'
                                           '\t\t\t\t\t\treturn;\n'
                                           '\t\t\t\t\t}\n'
@@ -13293,7 +13293,7 @@ BattleMovedex = {'10000000voltthunderbolt': {'accuracy': True,
                                               '\t\t\t\t\tif (baseMove.priority '
                                               '> 0) {\n'
                                               '\t\t\t\t\t\tthis.hint("Psychic '
-                                              "Terrain doesn't affect Pokémon "
+                                              "Terrain doesn't affect Pokemon "
                                               'immune to Ground.");\n'
                                               '\t\t\t\t\t}\n'
                                               '\t\t\t\t\treturn;\n'

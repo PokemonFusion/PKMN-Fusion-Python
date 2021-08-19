@@ -1,6 +1,7 @@
 import copy
 from CombatCode.movesdex import BattleMovedex
 from CombatCode.itemsdex import BattleItems
+from CombatCode.abilitiesdex import BattleAbilities
 
 
 def keycheck(dictionary, subdictionary, key) -> object:
@@ -66,15 +67,16 @@ class Moves:
 		self.onHit = movecheck("onHit")
 		self.onModifyMove = movecheck("onModifyMove")
 		self.critRatio = movecheck("critRatio")
-		self.rawData = BattleMovedex[move]
+		self.basePowerCallback = movecheck("basePowerCallback")
+		self.onBasePower = movecheck("onBasePower")
 
 	def calculateBasePower(self, **bvalues) -> int:
 		"""
 		you'll need to check basePowerCallback and onBasePower
 		"""
-		calc = BattleMovedex[self.name.lower()].get('basePowerCallback', None)
+		calc = self.basePowerCallback
 		if calc is None:
-			calc = BattleMovedex[self.name.lower()].get('onBasePower', None)
+			calc = self.onBasePower
 
 		if calc is None:
 			return self.basePower
@@ -84,3 +86,19 @@ class Moves:
 	def __repr__(self):
 		return "{}. {}".format(self.num, self.name)
 
+
+class Abilities:
+	def __init__(self, ability: str):
+		def abilitycheck(key):
+			return keycheck(BattleAbilities, ability.lower(), key)
+
+		self.num = abilitycheck("num")
+		self.name = abilitycheck("name")
+		self.isBreakable = abilitycheck("isBreakable")
+		self.onModifyAtk = abilitycheck("onModifyAtk")
+		self.onModifyAtkPriority = abilitycheck("onModifyAtkPriority")
+		self.onModifySpA = abilitycheck("onModifySpA")
+		self.onModifySpAPriority = abilitycheck("onModifySpAPriority")
+		self.rating = abilitycheck("rating")
+		self.onModifySpe = abilitycheck("onModifySpe")
+		self.onHit = abilitycheck("onHit")

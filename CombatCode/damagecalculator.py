@@ -4,6 +4,7 @@ from CombatCode.pokeglobals import Moves, Result
 from CombatCode.elements import ElementEffectiveness as TypeEff
 from CombatCode.battledata import Pokemon
 from CombatCode.movesdex import BattleMovedex
+from CombatCode.abilitiesdex import BattleAbilities
 from CombatCode.pokemon import STATUSES_REVERSE_SHORT
 
 """
@@ -114,7 +115,8 @@ def damage_calc(attacker: Pokemon, target: Pokemon, attackerpos, targetpos, move
 
 	# begin by checking accuracy
 	if accuracy_check(attacker, target, move):
-		onHit = BattleMovedex[move.name.lower()].get('onHit', None)
+		onHit = target.getAbility().onHit
+		onHit = move.onHit
 		if onHit is not None:
 			if not onHit(pokemon=attacker, target=target, move=move):
 				# say something about how the move failed and return the result of that.
@@ -193,6 +195,12 @@ def damage_calc(attacker: Pokemon, target: Pokemon, attackerpos, targetpos, move
 				)
 			if curhp == 0:
 				result.text += "\n{tarname} fainted!".format(tarname="{}.{}".format(targetpos, target.getName()))
+		else: #catetory == 'Status'
+			# We will add to this as needed.
+			boosts = move.get("boosts")
+			if boosts:
+				for boost in boosts:
+					move.target
 
 			# Put secondary effects here
 		if move.secondary:

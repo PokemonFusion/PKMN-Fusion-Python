@@ -3196,7 +3196,7 @@ let Moves = {
 					return;
 				if (effect.effectType === 'Move' && !effect.isFutureMove) {
 					if (source.volatiles['dynamax']) {
-						this.add('-hint', "Dynamaxed Pokémon are immune to Destiny Bond.");
+						this.add('-hint', "Dynamaxed Pokemon are immune to Destiny Bond.");
 						return;
 					}
 					this.add('-activate', target, 'move: Destiny Bond');
@@ -13459,7 +13459,7 @@ let Moves = {
 				if (!target.isGrounded()) {
 					var baseMove = this.dex.moves.get(effect.id);
 					if (baseMove.priority > 0) {
-						this.hint("Psychic Terrain doesn't affect Pokémon immune to Ground.");
+						this.hint("Psychic Terrain doesn't affect Pokemon immune to Ground.");
 					}
 					return;
 				}
