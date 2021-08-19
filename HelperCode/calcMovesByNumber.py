@@ -4,8 +4,6 @@ from pprint import pprint
 dicnamekey = {}
 
 for key in dex:
-	if dicnamekey[key].get("isNonstandard", None):
-		continue
 	dicnamekey[key] = dex[key]["num"]
 
 dicnumkey = {}
