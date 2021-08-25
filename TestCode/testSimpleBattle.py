@@ -11,8 +11,8 @@ team2 = CombatCode.battledata.Team("Player2",
                          CombatCode.battledata.Pokemon(1, "charmander", level=50)])
 
 testbattle = CombatCode.battledata.BattleData(team1, team2)
-testbattle.turndata.positions["A1"].declareAttack("B1", "tackle")
-testbattle.turndata.positions["B1"].declareAttack("A1", "tackle")
+testbattle.turndata.positions["A1"].declareAttack("B1", "doubleslap")
+testbattle.turndata.positions["B1"].declareAttack("A1", "doubleslap")
 
 faint = []
 print(testbattle.validtoswitch('A'))

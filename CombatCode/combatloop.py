@@ -19,8 +19,8 @@ def combatloop(battledata: BattleData) -> list:
                                  att,
                                  curpoke.getTarget(),
                                  curpoke.getAction())
-            print(result.text)
-            print(result.debug["hp_percent"])
+            print(*result.text, sep="\n")
+            print(result.debug.get("hp_percent", "Errored percent"))
             if len(result.fainted) > 0:
                 fainted += result.fainted
         elif curpoke.turninit.item is not None:
@@ -33,8 +33,8 @@ def combatloop(battledata: BattleData) -> list:
             newpoke = battledata.teams[team].returndict()[slot]
             oldpoke = curpoke.pokemon
             turndata.positions[att].pokemon = newpoke
-            result.text = f"{att}.{newpoke.getName()} is changing places with {att}.{oldpoke.getName()}!"
-            print(result.text)
+            result.text.append(f"{att}.{newpoke.getName()} is changing places with {att}.{oldpoke.getName()}!")
+            print(*result.text, sep="\n")
 
 
 

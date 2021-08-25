@@ -427,7 +427,7 @@ class Pokemon:
         if ability not in Dex[species.lower()]["abilities"]:
             ability = '0'
 
-        return pokeglobals.Abilities(Dex[species.lower()]["abilities"][ability])
+        return pokeglobals.Abilities(Dex[species.lower()]["abilities"][ability].replace(" ",""))
 
 
     def getName(self):
@@ -444,7 +444,7 @@ class Pokemon:
         # For now return 1, we will need to decide how to store this variable properly.
         return self.getStatMod('eva')
 
-    def checkCrit(self, moveCritRatio=0):
+    def checkCrit(self, moveCritRatio=1):
         """ 
         For now this will just return 0, but have it calculate this later
         1. Start with a variable C and set it to 0.
@@ -461,8 +461,12 @@ class Pokemon:
         """
         if moveCritRatio is None:
             moveCritRatio = 0
+        else:
+            # Given that hit ratio is stored in the dex as either 2 or 3, subtract the number by 1
+            # to follow above formula
+            moveCritRatio -= 1
         C = moveCritRatio
-        # TODO: Make this actually do something, going to be touching this later when moves and items are put in.
+        # TODO: Step 2, 4, 5, 6, 7, 8, 9
         return C
 
     def getTypes(self) -> list:

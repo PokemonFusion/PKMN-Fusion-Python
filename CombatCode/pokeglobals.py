@@ -15,7 +15,7 @@ class Result:
 	def __init__(self):
 		self.debug = dict()
 		self.fainted = list()
-		self.text = ""
+		self.text = list() # make this a list so you can append to it
 
 
 class Items:

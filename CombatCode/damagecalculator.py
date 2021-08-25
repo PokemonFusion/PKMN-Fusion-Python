@@ -25,6 +25,10 @@ from CombatCode.pokemon import STATUSES_REVERSE_SHORT
 
 """
 
+MULTIHITCOUNT = {2: 3,
+                 3: 3,
+                 4: 1,
+                 5: 1}
 
 def percent_check(check) -> bool:
 	"""Enter a number between 0.0 and 1.0.
@@ -46,7 +50,7 @@ def accuracy_check(attacker, target, move) -> bool:
 
 
 def critical_hit_check(attacker, move) -> bool:
-	"""This will return if an attack is a crit or a miss"""
+	"""This will return if an attack is a crit or a regular hit"""
 	critstage = attacker.checkCrit(move.critRatio)
 
 	# just because I can, I'm going to make a switch statement here
@@ -110,111 +114,128 @@ def damage_calc(attacker: Pokemon, target: Pokemon, attackerpos, targetpos, move
 	"""Use this for calculating damage fully"""
 	# Initial version of this will heavily reference the way I (Yang/Koden) had coded it in MUF
 	result = Result()
+	numhits = 1
+	if isinstance(move.multihit, list):
+		population, weights = zip(*MULTIHITCOUNT.items())
+		numhits = random.choices(population, weights)[0]
+	elif move.multihit is not None:
+		numhits = move.multihit
 
-	# around here I think is where we would be calling any 'onModifyMove' flags for the ability or move involved
+	attname = "{}.{}".format(attackerpos, attacker.getName())
+	tarname = "{}.{}".format(targetpos, target.getName())
 
-	# begin by checking accuracy
-	if accuracy_check(attacker, target, move):
-		onHit = target.getAbility().onHit
-		onHit = move.onHit
-		if onHit is not None:
-			if not onHit(pokemon=attacker, target=target, move=move):
-				# say something about how the move failed and return the result of that.
-				return result
-			# else:
-			# 	pass
-				# In case the move is changed, change it from the dictionary.
-				# old code, find different way to change the move if the move is changed
-				# move = datadic['move']
-				
+	for _ in range(numhits):
+		# around here I think is where we would be calling any 'onModifyMove' flags for the ability or move involved
 
-
-
-
-
-		crit = 1
-		if move.category != 'Status':
-
-			isCrit = False
-			if critical_hit_check(attacker, move):
-				crit = 1.5  # TODO: Criticals ignore def boots and atk drops, except for burn
-				isCrit = True
-			attackStat = 0
-			defenseStat = 0
-			if move.category == 'Physical':
-				attackStat = attacker.getStat("atk", isCrit)
-				defenseStat = target.getStat("def", isCrit)
-
-			elif move.category == 'Special':
-				attackStat = attacker.getStat("spa", isCrit)
-				defenseStat = target.getStat("spd", isCrit)
-
-			basedamage = base_damage(
-				attacker.level, move.calculateBasePower(pokemon=attacker, target=target, move=move), attackStat, defenseStat)
-
-			# TODO: figure out where to put 'onUseMoveMessage' functions.
-			damage = basedamage * STAB(attacker, move)
-			typetotal = elementTypeTotal(target, move)  # hold on to typetotal for the super effective print
-			damage = floor(damage * typetotal * crit)
-			phrase = damagephrase(target, damage)
-
-			# TODO: Substitute would go somewhere around here I think
-			curhp = target.takeDamage(damage)
-			if curhp == 0:
-				result.fainted.append(targetpos)
-
-			result.debug['damage'] = damage
-			result.debug['curhp'] = curhp
-			result.debug['hp_percent'] = curhp/target.getStat("hp")
-
-			effectivePhrase = ""
-
-			if typetotal > 1:
-				effectivePhrase = "it's SUPER EFFECTIVE"
-				if typetotal > 2:
-					effectivePhrase += " x2"
-			elif typetotal == 0:
-				effectivePhrase = "they are immune..."
-			elif typetotal < 1:
-				effectivePhrase = "it's not very effective..."
-				if typetotal < 0.5:
-					effectivePhrase += " x2"
-			critphrase = ""
-			if crit > 1:
-				critphrase = " CRITICAL"  # mind the space
-
-			if damage > 0:
-				target.tempvals['hurtThisTurn'] = True
-				target.tempvals.setdefault('attackers', []).append(attackerpos)
-
-			result.text = \
-				"{attname} uses {movename} against {tarname}, {effective}and deals {damphrase}{crit} damage!".format(
-					attname="{}.{}".format(attackerpos, attacker.getName()),
-					tarname="{}.{}".format(targetpos, target.getName()), effective=effectivePhrase,
-					movename=move.name, damphrase=phrase, crit=critphrase
-				)
-			if curhp == 0:
-				result.text += "\n{tarname} fainted!".format(tarname="{}.{}".format(targetpos, target.getName()))
-		else: #catetory == 'Status'
-			# We will add to this as needed.
-			boosts = move.get("boosts")
-			if boosts:
-				for boost in boosts:
-					move.target
-
-			# Put secondary effects here
-		if move.secondary:
-			if move.secondary.get('status') and target.status["name"] != 0: # can't change status if there is one
-				status = move.secondary.get('status').capitalize()
-				chance = move.secondary.get('chance', 100)
-				if percent_check(chance/100):
-					target.setStatus(STATUSES_REVERSE_SHORT[status])
+		# begin by checking accuracy
+		if accuracy_check(attacker, target, move):
+			onHit = target.getAbility().onHit
+			onHit = move.onHit
+			if onHit is not None:
+				if not onHit(pokemon=attacker, target=target, move=move):
+					# say something about how the move failed and return the result of that.
+					return result
+				# else:
+				# 	pass
+					# In case the move is changed, change it from the dictionary.
+					# old code, find different way to change the move if the move is changed
+					# move = datadic['move']
 
 
 
 
-	else:
-		result.text = "{attname} uses {movename} against {tarname} but it missed!".format(attname="{}.{}".format(
-			attackerpos, attacker.getName()), movename=move.name, tarname="{}.{}".format(targetpos, target.getName))
 
+
+			crit = 1
+			if move.category != 'Status':
+
+				isCrit = False
+				if critical_hit_check(attacker, move):
+					crit = 1.5  # TODO: Criticals ignore def boots and atk drops, except for burn
+					isCrit = True
+				attackStat = 0
+				defenseStat = 0
+				if move.category == 'Physical':
+					attackStat = attacker.getStat("atk", isCrit)
+					defenseStat = target.getStat("def", isCrit)
+
+				elif move.category == 'Special':
+					attackStat = attacker.getStat("spa", isCrit)
+					defenseStat = target.getStat("spd", isCrit)
+
+				basedamage = base_damage(
+					attacker.level, move.calculateBasePower(pokemon=attacker, target=target, move=move), attackStat, defenseStat)
+
+				# TODO: figure out where to put 'onUseMoveMessage' functions.
+				damage = basedamage * STAB(attacker, move)
+				typetotal = elementTypeTotal(target, move)  # hold on to typetotal for the super effective print
+				damage = floor(damage * typetotal * crit)
+				phrase = damagephrase(target, damage)
+
+				# TODO: Substitute would go somewhere around here I think
+				current_hp = target.takeDamage(damage)
+				if current_hp == 0:
+					result.fainted.append(targetpos)
+
+				result.debug['damage'] = damage
+				result.debug['current_hp'] = current_hp
+				result.debug['hp_percent'] = current_hp/target.getStat("hp")
+
+				effectivePhrase = ""
+
+				if typetotal > 1:
+					effectivePhrase = "it's SUPER EFFECTIVE"
+					if typetotal > 2:
+						effectivePhrase += " x2"
+				elif typetotal == 0:
+					effectivePhrase = "they are immune..."
+				elif typetotal < 1:
+					effectivePhrase = "it's not very effective..."
+					if typetotal < 0.5:
+						effectivePhrase += " x2"
+				critphrase = ""
+				if crit > 1:
+					critphrase = " CRITICAL"  # mind the space
+
+				if damage > 0:
+					target.tempvals['hurtThisTurn'] = True
+					target.tempvals.setdefault('attackers', []).append(attackerpos)
+
+				result.text.append(\
+					"{attname} uses {movename} against {tarname}, {effective}and deals {damphrase}{crit} damage!".format(
+						attname=attname,
+						tarname=tarname, effective=effectivePhrase,
+						movename=move.name, damphrase=phrase, crit=critphrase
+					))
+				if current_hp == 0:
+					result.text.append("{tarname} fainted!".format(tarname="{}.{}".format(targetpos, target.getName())))
+			else: #catetory == 'Status'
+				# We will add to this as needed.
+				boosts = move.get("boosts")
+				if boosts:
+					for boost in boosts:
+						move.target
+
+				# Put secondary effects here
+			if move.secondary:
+				if move.secondary.get('status') and target.status["name"] != 0: # can't change status if there is one
+					status = move.secondary.get('status').capitalize()
+					chance = move.secondary.get('chance', 100)
+					if percent_check(chance/100):
+						target.setStatus(STATUSES_REVERSE_SHORT[status])
+
+
+
+
+		else:
+			result.text.append("{attname} uses {movename} against {tarname} but it missed!".format(
+				attname=attname, movename=move.name, tarname=tarname))
+
+	if numhits > 1:
+		result.text.append("{attname} attacked {numhits} times!".format(
+			attname=attname,
+			numhits=numhits
+		))
+
+	result.debug['hp_percent'] = current_hp / target.getStat("hp")
 	return result
