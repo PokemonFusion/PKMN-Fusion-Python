@@ -12,6 +12,9 @@ def combatloop(battledata: BattleData) -> list:
     fainted = []
     for att in turnorder:
         curpoke = turndata.positions[att]
+        # if the pokemon is out of hp, it can't do anything
+        if curpoke.pokemon.hp == 0:
+            continue
         result = Result()
         if curpoke.turninit.attack is not None:
             result = damage_calc(curpoke.pokemon,

@@ -5,51 +5,6 @@ import random
 import pokeglobals
 
 
-class BattleData:
-
-	def __init__(self, TeamA, TeamB):
-
-		self.teams = {"A": TeamA, "B": TeamB}
-		self.battle = Battle()
-		self.turndata = TurnData(self.teams)
-
-	def pokemonswitchstatus(self, team):
-		fieldpokemon = self.turndata.teamPositions(team)
-		switchpokedata = {}
-
-		def checkposition(poke):
-			for key, p in fieldpokemon.items():
-				if p.pokemon == poke:
-					return key
-			return ''
-
-		for key, poke in self.teams[team].returndict().items():
-			switchpokedata[key] = {
-				"pokedata": poke,
-				"pos": checkposition(poke)
-			}
-
-		return switchpokedata
-
-	def validtoswitch(self, team):
-		switchlist = self.pokemonswitchstatus(team)
-		validlist = []
-		for key, value in switchlist.items():
-			if value["pokedata"] is None:
-				continue
-			if value["pokedata"].hp > 0 and value["pos"] == '':
-				validlist.append(key)
-		return validlist
-
-	def faintswitch(self, pos, slot) -> str:
-		"Use this only if a faint happened, since it happens outside of the combat loop. Returns string of result."
-		team = pos[0]
-		newpoke = self.teams[team].returndict()[slot]
-		oldpoke = self.turndata.positions[pos].pokemon
-		self.turndata.positions[pos].pokemon = newpoke
-		return f"{pos}.{newpoke.getName()} is changing places with {pos}.{oldpoke.getName()} due to fainting!"
-
-
 class Team:
 
 	def __init__(self, trainer, pokemon_list: list = []):
@@ -116,6 +71,80 @@ class Team:
 		slotdic = self.returndict()
 
 		return slotdic[pos]
+
+
+class Field:
+	"""Anything that goes into the battle field will go here."""
+
+	def __init__(self):
+		# this will need to be regulated some how
+		# also because the amount of money is calculated based on the new level
+		# of the pokemon that casted it, we will use a dictionary with the key
+		# being the id of the pokemon and the value being how many times the move was used
+		self.payday = {}
+
+
+class BattleData:
+
+	def __init__(self, TeamA: Team, TeamB: Team):
+
+		self.teams = {"A": TeamA, "B": TeamB}
+		self.battle = Battle()
+		self.turndata = TurnData(self.teams)
+		self.field = Field()
+
+	def paydayPayout(self) -> int:
+		# the current plan for payday is that it will be an attribute that gets added to the pokemon but it isn't a
+		# default attribute, so it will be created on the fly with the use of payday, so we will have to check for it
+		payout = 0
+		for team in self.teams:
+			for pokemon in self.teams[team].returnlist():
+				if pokemon is None:
+					continue
+				if hasattr(pokemon, 'payday'):
+					payout += pokemon.level * pokemon.payday * 5
+					del pokemon.payday
+
+		return payout
+
+	def pokemonswitchstatus(self, team):
+		fieldpokemon = self.turndata.teamPositions(team)
+		switchpokedata = {}
+
+		def checkposition(poke):
+			for key, p in fieldpokemon.items():
+				if p.pokemon == poke:
+					return key
+			return ''
+
+		for key, poke in self.teams[team].returndict().items():
+			switchpokedata[key] = {
+				"pokedata": poke,
+				"pos": checkposition(poke)
+			}
+
+		return switchpokedata
+
+	def validtoswitch(self, team):
+		switchlist = self.pokemonswitchstatus(team)
+		validlist = []
+		for key, value in switchlist.items():
+			if value["pokedata"] is None:
+				continue
+			if value["pokedata"].hp > 0 and value["pos"] == '':
+				validlist.append(key)
+		return validlist
+
+	def faintswitch(self, pos, slot) -> str:
+		"Use this only if a faint happened, since it happens outside of the combat loop. Returns string of result."
+		team = pos[0]
+		newpoke = self.teams[team].returndict()[slot]
+		oldpoke = self.turndata.positions[pos].pokemon
+		self.turndata.positions[pos].pokemon = newpoke
+		return f"{pos}.{newpoke.getName()} is changing places with {pos}.{oldpoke.getName()} due to fainting!"
+
+
+
 
 
 class Battle:
@@ -189,6 +218,8 @@ class TurnInit:
 
 class Pokemon(pokemon.Pokemon):
 	# may remove this because of it being made somewhere else.
+	# 8.27.2021: on second thought, I may keep this, this would be a good layer for temp values
+	# I will just need to make sure that the values that need to be removed, are removed.
 
 	def __init__(self, ot, species='missingno', nickname=None, gender=None, isEgg=False, level=1,
 	             ability=None):

@@ -130,21 +130,12 @@ def damage_calc(attacker: Pokemon, target: Pokemon, attackerpos, targetpos, move
 		# begin by checking accuracy
 		if accuracy_check(attacker, target, move):
 			onHit = target.getAbility().onHit
+			if onHit is not None:
+				onHit(pokemon=attacker, target=target, move=move, result=result, attname=attname, tarname=tarname)
+
 			onHit = move.onHit
 			if onHit is not None:
-				if not onHit(pokemon=attacker, target=target, move=move):
-					# say something about how the move failed and return the result of that.
-					return result
-				# else:
-				# 	pass
-					# In case the move is changed, change it from the dictionary.
-					# old code, find different way to change the move if the move is changed
-					# move = datadic['move']
-
-
-
-
-
+				onHit(pokemon=attacker, target=target, move=move, result=result, attname=attname, tarname=tarname)
 
 			crit = 1
 			if move.category != 'Status':

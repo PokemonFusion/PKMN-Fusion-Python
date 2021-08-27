@@ -11,14 +11,14 @@ team2 = CombatCode.battledata.Team("Player2",
                          CombatCode.battledata.Pokemon(1, "charmander", level=50)])
 
 testbattle = CombatCode.battledata.BattleData(team1, team2)
-testbattle.turndata.positions["A1"].declareAttack("B1", "doubleslap")
-testbattle.turndata.positions["B1"].declareAttack("A1", "doubleslap")
+testbattle.turndata.positions["A1"].declareAttack("B1", "payday")
+testbattle.turndata.positions["B1"].declareAttack("A1", "megapunch")
 
 faint = []
-print(testbattle.validtoswitch('A'))
-testbattle.turndata.positions["A1"].declareSwitch(2)
-faint = combatloop(testbattle)
-testbattle.turndata.positions["A1"].declareAttack("B1", "tackle")
+# print(testbattle.validtoswitch('A'))
+# testbattle.turndata.positions["A1"].declareSwitch(2)
+# faint = combatloop(testbattle)
+# testbattle.turndata.positions["A1"].declareAttack("B1", "tackle")
 
 while len(faint) < 1:
     faint = combatloop(testbattle)
@@ -28,5 +28,7 @@ for x in faint:
     switchables = testbattle.validtoswitch(x[0])
     print(switchables)
     print(testbattle.faintswitch(x, switchables[0]))
+
+print(testbattle.paydayPayout())
 
 
