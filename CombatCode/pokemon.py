@@ -68,6 +68,54 @@ STATUSES_REVERSE_SHORT = {
     "TOX": 6
 }
 
+
+class Status:
+    def __init__(self):
+        # these are the default values
+        self.name = 0
+        self.duration = -1  # -1 means indefinite duration
+
+    def setStatus(self, status: int):
+        def setNormal():
+            self.name = 0
+            self.duration = -1
+
+        def setBurn():
+            self.name = 1
+            self.duration = -1
+
+        def setFreeze():
+            self.name = 2
+            self.duration = -1
+
+        def setParalysis():
+            self.name = 3
+            self.duration = -1
+
+        def setPoision():
+            self.name = 4
+            self.duration = -1
+
+        def setSleep():
+            self.name = 5
+            self.duration = random.randint(1, 3)
+
+        def setToxic():
+            self.name = 6
+            self.duration = 1
+
+        setStat = {0: setNormal,
+                   1: setBurn,
+                   2: setFreeze,
+                   3: setParalysis,
+                   4: setPoision,
+                   5: setSleep,
+                   6: setToxic
+                   }
+
+        setStat[status]()
+
+
 class Pokemon:
 
     # Get the XP Rate of the pokemon in question.
@@ -240,7 +288,7 @@ class Pokemon:
         # only includes statuses that persist out of battle,
         # like sleep, burn, freeze, etc.
         # this and hp may go unused if pokemon automatically heal after battle
-        self.status = {"name": 0, "duration": 0}  # these are the default values
+        self.status = Status()
 
         # current steps for hatching egg, if applicable.
         self.eggSteps = 0
@@ -445,7 +493,7 @@ class Pokemon:
         return self.getStatMod('eva')
 
     def checkCrit(self, moveCritRatio=1):
-        """ 
+        """
         For now this will just return 0, but have it calculate this later
         1. Start with a variable C and set it to 0.
         2. If the user is a Farfetch'd holding a Stick or a Chansey holding a Lucky Punch, set C to 2. (In G/S/C, no

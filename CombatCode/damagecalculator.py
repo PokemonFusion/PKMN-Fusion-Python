@@ -157,6 +157,9 @@ def damage_calc(attacker: Pokemon, target: Pokemon, attackerpos, targetpos, move
 				basedamage = base_damage(
 					attacker.level, move.calculateBasePower(pokemon=attacker, target=target, move=move), attackStat, defenseStat)
 
+				# moves that deal direct damage should not be effected by burn lowering damage by half.
+				if attacker.getStatusName == "Burn":
+					basedamage = basedamage / 2
 				# TODO: figure out where to put 'onUseMoveMessage' functions.
 				damage = basedamage * STAB(attacker, move)
 				typetotal = elementTypeTotal(target, move)  # hold on to typetotal for the super effective print
@@ -209,8 +212,8 @@ def damage_calc(attacker: Pokemon, target: Pokemon, attackerpos, targetpos, move
 
 				# Put secondary effects here
 			if move.secondary:
-				if move.secondary.get('status') and target.status["name"] != 0: # can't change status if there is one
-					status = move.secondary.get('status').capitalize()
+				if move.secondary.get('status') and target.status["name"] == 0: # can't change status if there is one
+					status = move.secondary.get('status').upper()
 					chance = move.secondary.get('chance', 100)
 					if percent_check(chance/100):
 						target.setStatus(STATUSES_REVERSE_SHORT[status])

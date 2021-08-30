@@ -4,7 +4,7 @@ import os
 sys.path.append(os.path.abspath(os.path.join('')))
 sys.path.append(os.path.abspath('../CombatCode'))
 from pokemon import Pokemon
-from pokemonCombinedDex import BattlePokedex as dex
+from pokemondex import BattlePokedex as dex
 from pokemon import teamGeneration as teamGen
 
 # tp = Pokemon(1,'thundurus', level=35)

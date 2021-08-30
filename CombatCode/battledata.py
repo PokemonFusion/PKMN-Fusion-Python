@@ -243,7 +243,7 @@ class Pokemon(pokemon.Pokemon):
 	    6: "Toxic"
 		}
 		"""
-		pass
+		self.status.setStatus(status)
 
 
 class PositionData:
