@@ -170,6 +170,7 @@ def damage_calc(attacker: Pokemon, target: Pokemon, attackerpos, targetpos, move
 				current_hp = target.takeDamage(damage)
 				if current_hp == 0:
 					result.fainted.append(targetpos)
+					target.setStatus(7)
 
 				result.debug['damage'] = damage
 				result.debug['current_hp'] = current_hp
@@ -212,7 +213,7 @@ def damage_calc(attacker: Pokemon, target: Pokemon, attackerpos, targetpos, move
 
 				# Put secondary effects here
 			if move.secondary:
-				if move.secondary.get('status') and target.status["name"] == 0: # can't change status if there is one
+				if move.secondary.get('status') and target.status.name == 0:  # can't change status if there is one
 					status = move.secondary.get('status').upper()
 					chance = move.secondary.get('chance', 100)
 					if percent_check(chance/100):

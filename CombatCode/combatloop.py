@@ -48,4 +48,29 @@ def combatloop(battledata: BattleData) -> list:
         elif curpoke.turninit.run:
             pass
 
+    # This is where everything after the turn happens.
+    for pos in battledata.turndata.positions:
+        curpoke = battledata.turndata.positions[pos].pokemon
+        stat = curpoke.getStatusName(True)
+
+        def statNormal():
+            pass  # intentionally do nothing
+
+        def statBurn():
+            """Take 1/16 of max hp in damage"""
+            curpoke.modifyHP(-(curpoke.getStat("hp") / 16))
+            print(f"{pos}.{curpoke.getName()} was damaged by burn!")
+
+
+        statdic = {
+            "NRM": statNormal,
+            "BRN": statBurn,
+        }
+
+        statdic.get(stat, statNormal)()
+        #because health was changed, we will need to check for new fainting
+
+    print(f"Turn {battledata.battle.turn} ended")
+
+    battledata.battle.incrementTurn()
     return fainted

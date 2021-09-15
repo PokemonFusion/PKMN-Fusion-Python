@@ -136,7 +136,7 @@ class BattleData:
 		return validlist
 
 	def faintswitch(self, pos, slot) -> str:
-		"Use this only if a faint happened, since it happens outside of the combat loop. Returns string of result."
+		"""Use this only if a faint happened, since it happens outside of the combat loop. Returns string of result."""
 		team = pos[0]
 		newpoke = self.teams[team].returndict()[slot]
 		oldpoke = self.turndata.positions[pos].pokemon
@@ -144,13 +144,13 @@ class BattleData:
 		return f"{pos}.{newpoke.getName()} is changing places with {pos}.{oldpoke.getName()} due to fainting!"
 
 
-
-
-
 class Battle:
 	def __init__(self, battletype=1):
-		self.turn = 0  # start at 0, but at the start of the turn increment by one.
+		self.turn = 1
 		self.battletype = battletype  # current valid input, 1, 2, 3, as in how many pokemon out per team
+
+	def incrementTurn(self):
+		self.turn += 1
 
 
 class TurnData:
@@ -178,7 +178,7 @@ class TurnData:
 			populateslots(team, members)
 
 	def teamPositions(self, team):
-		"Returns a dictionary of the pokemon in each position for requested team."
+		"""Returns a dictionary of the pokemon in each position for requested team."""
 		teampokemon = {}
 		for key, poke in self.positions.items():
 			if key.startswith(team):
@@ -226,9 +226,7 @@ class Pokemon(pokemon.Pokemon):
 		super().__init__(ot, species=species, nickname=nickname,
 		                 gender=gender, isEgg=isEgg, level=level, ability=ability)
 		# self.turninit = None  # TurnInit Class
-		self.tempvals = {}
-
-
+		self.tempvals = {} # TODO consider changing this later to a custom object per each instance instead of a catch all
 
 	def setStatus(self, status: int):
 		"""
@@ -241,6 +239,7 @@ class Pokemon(pokemon.Pokemon):
 	    4: "Poison",
 	    5: "Sleep",
 	    6: "Toxic"
+	    7: "Fainted"
 		}
 		"""
 		self.status.setStatus(status)

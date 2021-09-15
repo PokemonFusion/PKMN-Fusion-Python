@@ -1,9 +1,7 @@
 import random
-import sys, os
+
 from CombatCode.learnset_code import level_moves as lm
 
-sys.path.append(os.path.abspath(os.path.join('')))
-sys.path.append(os.path.abspath('../CombatCode'))
 from CombatCode.pokemondex import BattlePokedex as Dex
 import pokeglobals
 
@@ -46,7 +44,8 @@ STATUSES = {
     3: "Paralysis",
     4: "Poison",
     5: "Sleep",
-    6: "Toxic"
+    6: "Toxic",
+    7: "Fainted"
 }
 STATUSES_SHORT = {
     0: "NRM",
@@ -55,7 +54,8 @@ STATUSES_SHORT = {
     3: "PAR",
     4: "PSN",
     5: "SLP",
-    6: "TOX"
+    6: "TOX",
+    7: "FNT"
 }
 
 STATUSES_REVERSE_SHORT = {
@@ -65,7 +65,8 @@ STATUSES_REVERSE_SHORT = {
     "PAR": 3,
     "PSN": 4,
     "SLP": 5,
-    "TOX": 6
+    "TOX": 6,
+    "FNT": 7
 }
 
 
@@ -104,13 +105,18 @@ class Status:
             self.name = 6
             self.duration = 1
 
+        def setFaint():
+            self.name = 7
+            self.duration = -1
+
         setStat = {0: setNormal,
                    1: setBurn,
                    2: setFreeze,
                    3: setParalysis,
                    4: setPoision,
                    5: setSleep,
-                   6: setToxic
+                   6: setToxic,
+                   7: setFaint
                    }
 
         setStat[status]()
@@ -354,7 +360,8 @@ class Pokemon:
 
     # HP modification function, for convenience. Species parameter is for megas. And Trix is for kids.
     def modifyHP(self, amount, species=None):
-        self.hp += amount  # Modify HP.
+
+        self.hp += amount.floor()  # Modify HP.
         if self.hp > self.getStat("hp", species):  # Enforce max HP.
             self.hp = self.getStat("hp", species)
         if self.hp < 0:  # Enforce non-negative.
@@ -398,7 +405,7 @@ class Pokemon:
                 (2 * baseStat + self.iv[statType] + int(self.ev[statType] / 4)) * self.level / 100) + 5) * natureMod
                        * statmod * critbonus)
 
-            if self.status["name"] == 3 and statType == 'spd' and self.getAbility().name != "Quick Feet":
+            if self.status.name == 3 and statType == 'spd' and self.getAbility().name != "Quick Feet":
                 stat = stat / 2
 
             return stat
@@ -477,7 +484,6 @@ class Pokemon:
 
         return pokeglobals.Abilities(Dex[species.lower()]["abilities"][ability].replace(" ",""))
 
-
     def getName(self):
         if self.nickname is None:
             return self.species.title()
@@ -539,13 +545,35 @@ class Pokemon:
         return f"{self.getName()} - {hex(id(self))}"
 
     def getStatusName(self, short=False) -> str:
+        """Return the status name of the pokemon's current status, short being 3 letter version.
+
+        STATUSES = {
+    0: "Normal",
+    1: "Burn",
+    2: "Freeze",
+    3: "Paralysis",
+    4: "Poison",
+    5: "Sleep",
+    6: "Toxic",
+    7: "Fainted"
+}
+STATUSES_SHORT = {
+    0: "NRM",
+    1: "BRN",
+    2: "FRZ",
+    3: "PAR",
+    4: "PSN",
+    5: "SLP",
+    6: "TOX",
+    7: "FNT"
+}"""
 
         if short:
             statdic = STATUSES_SHORT
         else:
             statdic = STATUSES
 
-        return statdic[self.status["name"]]
+        return statdic[self.status.name]
 
 
 def teamGeneration(specify=False, team=None):
