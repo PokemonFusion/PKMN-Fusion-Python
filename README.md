@@ -7,4 +7,6 @@ The idea of this project is currently to write the combat code that will be tied
 
 https://github.com/evennia/evennia
 
-# WE ARE NOT AFFLIATED WITH POKEMON OR NINTENDO.
+# WE ARE NOT AFFILIATED WITH POKEMON OR NINTENDO.
+
+# NOTICE: THE PROJECT IS ACTIVE AND HAS BEEN MOVED TO https://github.com/PokemonFusion/Fusion2
